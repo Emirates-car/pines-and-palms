@@ -46,21 +46,6 @@ module.exports = withPWA({
         destination: '/search-by-cities-in-uae/Dibba Al Fujairah (Fujairah)',
         permanent: true
       },
-      {
-        source: '/search-by-make/:make/:model/:year',
-        destination: '/get-in-touch',
-        permanent: true
-      },
-      {
-        source: '/search-by-make/:make/:model/parts/:parts',
-        destination: '/get-in-touch',
-        permanent: true
-      },
-      {
-        source: '/search-by-make/:make/:model/:year/:parts',
-        destination: '/get-in-touch',
-        permanent: true
-      }
     ];
   },
   redirects: async () => [

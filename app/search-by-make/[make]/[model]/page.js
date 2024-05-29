@@ -32,7 +32,7 @@ import FormComponent from '../../../FormComponent';
 
 export async function generateStaticParams({ make, model }) {
   const posts = await fetch(
-    `https://rozy.vercel.app/api/palms/${make}/${model}`,
+    `https://rozy-api-two.vercel.app/api/palms/${make}/${model}`,
     { cache: 'no-store' }
   ).then(res => res.json());
   return posts.map(post => ({
@@ -127,7 +127,7 @@ export async function generateMetadata({ params }) {
 }
 async function getYear(make, model) {
   const response = await fetch(
-    `https://rozy.vercel.app/api/grooves/${make}/${model}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
     { cache: 'no-store' }
   );
   const dat = await response.json();
@@ -138,7 +138,7 @@ async function getYear(make, model) {
 }
 async function getMakeImage(make, model) {
   const re = await fetch(
-    `https://rozy.vercel.app/api/grooves/${make}/${model}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
     { cache: 'no-store' }
   );
   const reDat = await re.json();
@@ -153,7 +153,7 @@ async function getMakeImage(make, model) {
 
 async function getDescription(make, model) {
   const re = await fetch(
-    `https://rozy.vercel.app/api/grooves/${make}/${model}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
     { cache: 'no-store' }
   );
   const reDat = await re.json();
@@ -166,7 +166,7 @@ async function getDescription(make, model) {
 }
 
 async function getModel(make, model) {
-  const response = await fetch(`https://rozy.vercel.app/api/grooves/${make}`, {
+  const response = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`, {
     cache: 'no-store'
   });
   const dat = await response.json();
@@ -177,7 +177,7 @@ async function getModel(make, model) {
 }
 
 async function getMake() {
-  const resp = await fetch(`https://rozy.vercel.app/api/grooves`, {
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
     cache: 'no-store'
   });
   const data = await resp.json();

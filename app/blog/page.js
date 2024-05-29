@@ -5,7 +5,7 @@ import Footer from '../footer';
 import RelatedPost from './relatedpost/page.js';
 
 async function getPosts() {
-  const res = await fetch(`https://rozy.vercel.app/api/blog`);
+  const res = await fetch(`https://rozy-api-two.vercel.app/api/blog`);
   const posts = await res.json();
   return posts;
 }

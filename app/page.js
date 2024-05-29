@@ -13,7 +13,7 @@ import Footer from './footer';
 import StaticCities from './StaticCities';
 
 export async function getMake() {
-  const resp = await fetch(`https://rozy.vercel.app/api/grooves`, {
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
     cache: 'no-store'
   });
   const data = await resp.json();
@@ -24,7 +24,7 @@ export async function getMake() {
 }
 
 export async function getYear() {
-  const resp = await fetch(`https://rozy.vercel.app/api/grooves`, {
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
     cache: 'no-store'
   });
   const data = await resp.json();
@@ -36,7 +36,7 @@ export async function getYear() {
 
 export async function getFormModel() {
   //Pass it to forms to get appropriate model for make
-  const respo = await fetch(`https://rozy.vercel.app/api/palms`, {
+  const respo = await fetch(`https://rozy-api-two.vercel.app/api/palms`, {
     cache: 'no-store'
   });
   const forms = await respo.json();
@@ -44,7 +44,7 @@ export async function getFormModel() {
 }
 
 export async function getCity() {
-  const cityresponse = await fetch(`https://rozy.vercel.app/api/cities`, {
+  const cityresponse = await fetch(`https://rozy-api-two.vercel.app/api/cities`, {
     cache: 'no-store'
   });
   const cities = await cityresponse.json();
@@ -52,7 +52,7 @@ export async function getCity() {
 }
 
 export async function getParts() {
-  const respnse = await fetch(`https://rozy.vercel.app/api/parts`, {
+  const respnse = await fetch(`https://rozy-api-two.vercel.app/api/parts`, {
     cache: 'no-store'
   });
   const partsposts = await respnse.json();

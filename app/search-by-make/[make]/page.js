@@ -34,7 +34,7 @@ import MudFlap from '../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import HondaProducts from '../../HondaProducts';
 
 export async function generateStaticParams({ make }) {
-  const posts = await fetch(`https://rozy.vercel.app/api/palms/${make}`, {
+  const posts = await fetch(`https://rozy-api-two.vercel.app/api/palms/${make}`, {
     cache: 'no-store'
   }).then(res => res.json());
   return posts.map(post => ({
@@ -98,7 +98,7 @@ export async function generateMetadata({ params }) {
 }
 
 async function getModel(make) {
-  const res = await fetch(`https://rozy.vercel.app/api/grooves/${make}`, {
+  const res = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`, {
     cache: 'no-store'
   });
   const data = await res.json();

@@ -255,13 +255,262 @@ export default function FormComponent({ formsData, postFilter }) {
   }
   return (
     <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSfmBdBIzmhyOCP-4KH0lAMysR8OLvWA-xso-bfwZFbjmDw_SQ/viewform?embedded=true"
-        width={500}
-        height={700}
+      <form
+        id="myForm"
+        method="POST"
+        onSubmit={handleSubmit}
+        className="w-full shadow-xl px-8 py-8 xs:px-4 xs:py-3 xxs:px-4 sm:px-4"
       >
-        Loading…
-      </iframe>
+        <div className="grid grid-cols-1 pt-3">
+          <label
+            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+            htmlFor="model"
+          >
+            Name
+          </label>
+          <div className="relative">
+            <input
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+              id="name"
+              type="text"
+              placeholder="Name"
+              onChange={handleNameChange}
+              value={Name}
+              autoComplete="off"
+              required
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-3 xs:grid-cols-1 sm:grid sm:grid-cols-1 xs:grid xxs:grid xxs:grid-cols-1 s:grid s:grid-cols-1 pt-3">
+          <div>
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              htmlFor="year"
+            >
+              Year
+            </label>
+            <div className="relative">
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+                id="year"
+                type="text"
+                placeholder="Year"
+                name="entry.902626710"
+                onChange={handleYearChange}
+                value={Year}
+                autoComplete="off"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              htmlFor="make"
+            >
+              Make
+            </label>
+            <div className="relative">
+              <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 xs:py-1 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+                id="make"
+                name="entry.741646505"
+                required="required"
+                onChange={handleMakeChange}
+                value={Make}
+              >
+                <option value="" disabled>
+                  Select your Make
+                </option>
+                {make.map((m, i) => (
+                  <option key={i}>{m}</option>
+                ))}{' '}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              htmlFor="model"
+            >
+              Model
+            </label>
+            <div className="relative">
+              <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 xs:py-1 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+                id="model"
+                name="entry.402947466"
+                required
+                onChange={handleModelChange}
+                value={Model}
+              >
+                <option value="" disabled>
+                  Select your Model
+                </option>
+                {formsData
+                  .filter(s => s.make === Make)
+                  .map((s, i) => (
+                    <option key={i} value={s.model}>
+                      {s.model}{' '}
+                    </option>
+                  ))}{' '}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-3 xs:grid-cols-1 sm:grid sm:grid-cols-1 xs:grid xxs:grid xxs:grid-cols-1 s:grid s:grid-cols-1 pt-3">
+          <div className="flex flex-wrap -mx-3 mb-2">
+            <div className="w-2/5 px-3 mb-6 xs:mb-0 md:mb-0">
+              <label
+                htmlFor="Code"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              >
+                CODE
+              </label>
+              <input
+                id="Code"
+                name="entry.44547744"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+                type="text"
+                placeholder="Eg. +971, +27 ..."
+                onChange={handleCodeChange}
+                value={Code}
+                required
+              />
+            </div>
+            <div className="w-3/5 px-3 mb-6 xs:mb-0 md:mb-0">
+              <label
+                htmlFor="whatsappno"
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              >
+                WhatsApp no
+              </label>
+              <input
+                id="whatsappno"
+                name="entry.902626710"
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 xs:py-1 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs "
+                type="text"
+                placeholder="WhatsApp No"
+                onChange={handleWhatsAppNoChange}
+                value={Whatsappno}
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              htmlFor="city"
+            >
+              Location
+            </label>
+            <input
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+              id="city"
+              type="text"
+              placeholder="(Area, Emirates) or (City, Country)"
+              onChange={handleAddressChange}
+              value={Address}
+              autoComplete="off"
+            />
+          </div>
+          <div>
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              htmlFor="email"
+            >
+              Email(Optional)
+            </label>
+            <input
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+              id="email"
+              type="text"
+              placeholder="Mail ID"
+              onChange={handleEmailChange}
+              value={Email}
+              autoComplete="off"
+              name="entry.113755516"
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 pt-3">
+          <div>
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"
+              htmlFor="partname"
+            >
+              PART NAME
+            </label>
+            <textarea
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
+              id="partname"
+              type="text"
+              placeholder="Eg. AC Compressor, Radiator, Gearbox, Antenna, Door glass, Driving light..."
+              rows={5}
+              name="entry.1660104041"
+              onChange={e => onPartFormChange(e.target.value)}
+              value={text}
+              autoComplete="off"
+              required
+            />{' '}
+            {suggestion &&
+              suggestion.map((suggestion, i) => (
+                <div
+                  key={i}
+                  className="cursor-pointer border-gray-400 p-4"
+                  onClick={() => onSuggestionHandler(suggestion)}
+                >
+                  {suggestion}{' '}
+                </div>
+              ))}{' '}
+          </div>
+        </div>
+        <div className="grid grid-cols-1 pt-3">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-xl xs:text-xs"
+          >
+            Submit
+          </button>
+        </div>
+        <div className="flex float-left text-xs">
+          <Link
+            href="https://emirates-car.com/privacy-policy"
+            target="_newtab"
+            className="underline"
+          >
+            Privacy policy
+          </Link>
+          &nbsp;
+          <Link
+            href="https://emirates-car.com/terms-and-condition"
+            target="_newtab"
+            className="underline"
+          >
+            Terms and conditions
+          </Link>
+        </div>
+
+        <div className="flex float-right text-xs">100% secure and trusted</div>
+      </form>
     </div>
   );
 }

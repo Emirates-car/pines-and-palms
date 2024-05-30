@@ -11,11 +11,10 @@ import TenEntries from './tenentries';
 import Contents from './Contents';
 import Footer from './footer';
 import StaticCities from './StaticCities';
+import StaticParts from './StaticParts';
 
 export async function getMake() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
-    cache: 'no-store'
-  });
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);
   const data = await resp.json();
   let uniqueMakeArray = [
     ...new Map(data.map(item => [item['make'], item])).values()
@@ -24,9 +23,7 @@ export async function getMake() {
 }
 
 export async function getYear() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
-    cache: 'no-store'
-  });
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);
   const data = await resp.json();
   let uniqueYearArray = [
     ...new Map(data.map(item => [item['year'], item])).values()
@@ -36,25 +33,21 @@ export async function getYear() {
 
 export async function getFormModel() {
   //Pass it to forms to get appropriate model for make
-  const respo = await fetch(`https://rozy-api-two.vercel.app/api/palms`, {
-    cache: 'no-store'
-  });
+  const respo = await fetch(`https://rozy-api-two.vercel.app/api/palms`);
   const forms = await respo.json();
   return forms;
 }
 
 export async function getCity() {
-  const cityresponse = await fetch(`https://rozy-api-two.vercel.app/api/cities`, {
-    cache: 'no-store'
-  });
+  const cityresponse = await fetch(
+    `https://rozy-api-two.vercel.app/api/cities`
+  );
   const cities = await cityresponse.json();
   return cities;
 }
 
 export async function getParts() {
-  const respnse = await fetch(`https://rozy-api-two.vercel.app/api/parts`, {
-    cache: 'no-store'
-  });
+  const respnse = await fetch(`https://rozy-api-two.vercel.app/api/parts`);
   const partsposts = await respnse.json();
   return partsposts;
 }
@@ -1274,27 +1267,12 @@ export default async function Home() {
         <div className="text-black text-4xl text-center md:text-2xl lg:text-2xl font-extrabold xs:text-xl xxs:text-2xl pt-10 uppercase">
           POPULAR SEARCHED PARTS IN UAE
         </div>
-        <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10">
-          {partsposts.map((post, i) => (
-            <div key={i}>
-              <Link
-                href="/search-by-part-name/[parts]"
-                as={'/search-by-part-name/' + post.parts}
-                title={post.parts + ' in uae'}
-              >
-                <main className="border-blue-800 h-full  hover:border-blue-900 py-3 bg-gray-100">
-                  <p className="text-lg text-center text-blue-500 font-medium hover:text-gray-800">
-                    {post.parts}
-                  </p>
-                </main>
-              </Link>
-            </div>
-          ))}
-        </div>
+        <StaticParts />
+
         <div className="text-black text-4xl text-center md:text-2xl lg:text-2xl font-extrabold xs:text-xl xxs:text-2xl pt-10 uppercase">
           SEARCH AUTO SPARE PARTS ANYWHERE IN UAE
         </div>
-        <StaticCities/>
+        <StaticCities />
 
         <Featured />
         <Contents />

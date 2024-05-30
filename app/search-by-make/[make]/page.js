@@ -34,9 +34,7 @@ import MudFlap from '../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import HondaProducts from '../../HondaProducts';
 
 export async function generateStaticParams({ make }) {
-  const posts = await fetch(`https://rozy-api-two.vercel.app/api/palms/${make}`, {
-    cache: 'no-store'
-  }).then(res => res.json());
+  const posts = await fetch(`https://rozy-api-two.vercel.app/api/palms/${make}`).then(res => res.json());
   return posts.map(post => ({
     make: post.make
   }));
@@ -98,9 +96,7 @@ export async function generateMetadata({ params }) {
 }
 
 async function getModel(make) {
-  const res = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`, {
-    cache: 'no-store'
-  });
+  const res = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`);
   const data = await res.json();
 
   let uniqueObjectArray = [
@@ -358,7 +354,7 @@ export default async function MakePage({ params }) {
           >
             Why choose {make} genuine parts ?
           </h3>
-          <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+          <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
             <li>
               Aftermarket parts are not regularized or standardized because it
               is manufactured as a duplicate to genuine parts.
@@ -369,15 +365,15 @@ export default async function MakePage({ params }) {
               Warranty
             </li>
           </ol>
-          <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+          <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
             {make} Genuine parts are better to buy for many reasons:
           </p>
-          <p className="text-xl font-mono text-gray-700 mx-auto">
+          <p className="text-xl font-sans text-gray-700 mx-auto">
             However, if you weigh your pros and cons and which kind of parts you
             really need, you can come to the best conclusion yourself. And we
             can serve you with both kind of parts.
           </p>
-          <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-extrabold">
+          <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-extrabold">
             Availability of {make} parts in UAE:
           </p>
           <h3
@@ -386,10 +382,10 @@ export default async function MakePage({ params }) {
           >
             Why choose {make} aftermarket parts ?
           </h3>
-          <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+          <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
             {make} aftermarket parts are better to buy for many reasons:
           </p>
-          <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+          <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
             <li>It is more affordable than genuine parts</li>
             <li>Some genuine parts are similar to genuine parts itself.</li>
             <li>
@@ -406,7 +402,7 @@ export default async function MakePage({ params }) {
               5 ways you can find parts for your car.
             </p>
             There are 5 ways you can try finding spare parts for your car.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Traditional way its pros and cons
             </p>
             You find a spare parts shop nearby and go and purchase and the work
@@ -418,7 +414,7 @@ export default async function MakePage({ params }) {
             sells only Audi, Lincoln and Ferrari. So to see for next option, you
             can opt for shopping from Giant E-commerce company like Amazon,
             EBay, Flipkart etc.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Giant E-commerce Company its pros and cons:
             </p>
             If you don't find spare parts nearby your house location, generally
@@ -431,7 +427,7 @@ export default async function MakePage({ params }) {
             the check-in process. So it is not always safe to buy spare parts
             from giant e-commerce company. Hence we see for other option which
             is the Local dealers.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Local Dealers
             </p>
             Local dealers are known through other person like through friends
@@ -439,7 +435,7 @@ export default async function MakePage({ params }) {
             directly the car brands he deals with. However with the current
             digital advancement, the local dealers are decreasing gradually. So
             we move to the next option to search on online marketplace.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Online Marketplace (Only CONS!)
             </p>
             Through Online marketplace we find spare parts for our car easily.
@@ -451,7 +447,7 @@ export default async function MakePage({ params }) {
             reported from those who purchase from small vendor marketplace and
             also the larger companies. In this case you should go for Online
             dealer website.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Online Dealer Website ONLY PROS!
             </p>
             Online dealers website is the easiest way to order spare parts. You
@@ -484,7 +480,7 @@ export default async function MakePage({ params }) {
                   title={post.make + post.model + ' spare parts'}
                 >
                   <main className="border border-blue-800 h-full p-3 ">
-                    <p className="text-center text-lg xs:text-xl xs:text-center font-mono text-blue-800 underline hover:text-gray-800 focus:text-gray-800 font-bold ">
+                    <p className="text-center text-lg xs:text-xl xs:text-center font-sans text-blue-800 underline hover:text-gray-800 focus:text-gray-800 font-bold ">
                       {make + ' ' + post.model.replace('%2F', '/') + ' parts'}{' '}
                     </p>
                   </main>
@@ -505,7 +501,7 @@ export default async function MakePage({ params }) {
         <div className="text-center">
           <HondaOfferButton />
         </div>
-        <div className="text-xl font-mono text-gray-700 mx-auto xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-5">
+        <div className="text-xl font-sans text-gray-700 mx-auto xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-5">
           Emirates-car.com is the online Dealers specialist in {make} spare
           parts. We find pleasure is finding the best
           genuine (otherwise called OEM parts) and aftermarket parts for any
@@ -525,14 +521,14 @@ export default async function MakePage({ params }) {
           . You can get callback or whatsapp chat or email after submitting your
           form inquiry.
         </div>
-        <p className="text-xl font-mono text-gray-700 mx-auto font-extrabold xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-10">
+        <p className="text-xl font-sans text-gray-700 mx-auto font-extrabold xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-10">
           Availability of {make} parts in UAE:
         </p>
         <div className="grid grid-cols-4 xs:grid-cols-1 gap-3 p-5 border-2 border-gray-500 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
           <div>
             <Link
               href="/search-by-cities-in-uae/Dubai"
-              className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+              className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
               title={make + ' spare parts dubai'}
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
@@ -543,7 +539,7 @@ export default async function MakePage({ params }) {
             {' '}
             <Link
               href="/search-by-cities-in-uae/Sharjah"
-              className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+              className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
               title={make + ' spare parts dubai'}
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
@@ -554,7 +550,7 @@ export default async function MakePage({ params }) {
             {' '}
             <Link
               href="/search-by-cities-in-uae/Ajman"
-              className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+              className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
               title={make + ' spare parts ajman'}
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>
@@ -565,7 +561,7 @@ export default async function MakePage({ params }) {
             {' '}
             <Link
               href="/search-by-cities-in-uae/Ras%20al%20Khaimah"
-              className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+              className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
               title={make + ' spare parts ras al khaimah'}
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>
@@ -575,7 +571,7 @@ export default async function MakePage({ params }) {
           <div>
             <Link
               href="/search-by-cities-in-uae/Al%20Quoz%20(Dubai)"
-              className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+              className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
               title={make + ' spare parts al quoz'}
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>
@@ -585,7 +581,7 @@ export default async function MakePage({ params }) {
           <div>
             <Link
               href="/search-by-cities-in-uae/Sheikh%20Zayed%20Road%20(Dubai)"
-              className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+              className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
               title={make + ' spare parts dubai sheikh zayed road'}
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>
@@ -595,7 +591,7 @@ export default async function MakePage({ params }) {
           <div>
             <Link
               href="/search-by-cities-in-uae/Deira%20(Dubai)"
-              className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+              className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
               title={make + ' spare parts deira'}
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>
@@ -661,14 +657,14 @@ export default async function MakePage({ params }) {
         </p>
         <div className="grid grid-cols-3 xs:grid-cols-1">
           <div>
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               {make} Engine parts
             </p>
-            <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+            <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
               <li>
                 <Link
                   href="/search-by-part-name/Engine%20Assembly"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Engine Assembly
                 </Link>
@@ -676,7 +672,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Engine%20Block"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Engine Block
                 </Link>
@@ -684,7 +680,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Engine%20Mount"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Engine Mount
                 </Link>
@@ -692,7 +688,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Engine%20Block"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Engine Block
                 </Link>
@@ -700,7 +696,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Cylinder%20Head"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Cylinder Head
                 </Link>
@@ -708,7 +704,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Cylinder%20Block"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Cylinder Block
                 </Link>
@@ -716,7 +712,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Crankshaft"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Crankshaft
                 </Link>
@@ -724,7 +720,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Camshaft"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Camshaft
                 </Link>
@@ -732,7 +728,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Piston"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Piston
                 </Link>
@@ -740,7 +736,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Exhaust%20Manifold"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Exhaust Manifold
                 </Link>
@@ -748,7 +744,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Intake%20Manifold"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Intake Manifold
                 </Link>
@@ -756,7 +752,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Ignition%20Switch"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Ignition Switch
                 </Link>
@@ -764,7 +760,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Ignition%20Control%20Module"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Ignition Control Module
                 </Link>
@@ -772,7 +768,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Transmission%20Control%20Module"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   TCM
                 </Link>
@@ -781,14 +777,14 @@ export default async function MakePage({ params }) {
           </div>
 
           <div>
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               {make} Mechanical parts
             </p>
-            <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+            <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
               <li>
                 <Link
                   href="/search-by-part-name/Engine%20Assembly"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Engine
                 </Link>
@@ -796,7 +792,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Engine%20Assembly"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Battery
                 </Link>
@@ -804,7 +800,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Engine%20Assembly"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Alternator
                 </Link>
@@ -812,7 +808,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Brake%20Pads"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Brake Pads
                 </Link>
@@ -820,7 +816,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Radiator"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Radiator
                 </Link>
@@ -828,7 +824,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Transmission%20Control%20Module"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Transmission
                 </Link>
@@ -836,7 +832,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Shock%20Absorber"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Shock Absorber
                 </Link>
@@ -844,7 +840,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Convertible%20Top%20Motor"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Catalytic Converter
                 </Link>
@@ -852,7 +848,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Power%20Steering%20Box"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Power Steering
                 </Link>
@@ -861,14 +857,14 @@ export default async function MakePage({ params }) {
           </div>
 
           <div>
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               {make} Body Parts
             </p>
-            <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+            <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
               <li>
                 <Link
                   href="/search-by-part-name/Bonnet"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Bonnet
                 </Link>
@@ -876,7 +872,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Fender%20(Front)"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Fender
                 </Link>
@@ -884,7 +880,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Decklid"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Decklid
                 </Link>
@@ -892,7 +888,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Grille"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Grille
                 </Link>
@@ -900,7 +896,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Wheel"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Wheel
                 </Link>
@@ -909,14 +905,14 @@ export default async function MakePage({ params }) {
           </div>
 
           <div>
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               {make} Electrical Parts
             </p>
-            <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+            <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
               <li>
                 <Link
                   href="/search-by-part-name/Spark%20Plug"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Spark Plug
                 </Link>
@@ -924,7 +920,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Alternator"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Alternator
                 </Link>
@@ -932,7 +928,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Battery"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Battery
                 </Link>
@@ -940,7 +936,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/Ignition%20Switch"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Ignition Switch
                 </Link>
@@ -948,7 +944,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/get-in-touch"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Many more...
                 </Link>
@@ -957,14 +953,14 @@ export default async function MakePage({ params }) {
           </div>
 
           <div>
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               {make} AC Parts
             </p>
-            <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+            <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
               <li>
                 <Link
                   href="/search-by-part-name/AC%20Compressor"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   {' '}
                   AC Compressor
@@ -973,7 +969,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/AC%20Condenser"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   AC Condenser
                 </Link>
@@ -981,7 +977,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/AC%20Selector"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   AC Selector
                 </Link>
@@ -989,7 +985,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/search-by-part-name/AC%20Controls"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   AC Controls
                 </Link>
@@ -997,7 +993,7 @@ export default async function MakePage({ params }) {
               <li>
                 <Link
                   href="/get-in-touch"
-                  className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                  className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                 >
                   Many more...
                 </Link>

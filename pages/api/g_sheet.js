@@ -18,7 +18,6 @@ async function handler(req, res) {
       spreadsheetId: process.env.EMIRATES_CAR_DATABASE_ID,
       range: 'emirates-car-sheet'
     });
-    console.log(readData);
 
     const today = new Date();
     const thisYear = today.getFullYear();

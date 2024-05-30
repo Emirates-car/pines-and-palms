@@ -32,8 +32,7 @@ import FormComponent from '../../../FormComponent';
 
 export async function generateStaticParams({ make, model }) {
   const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/palms/${make}/${model}`,
-    { cache: 'no-store' }
+    `https://rozy-api-two.vercel.app/api/palms/${make}/${model}`
   ).then(res => res.json());
   return posts.map(post => ({
     make: post.make,
@@ -61,16 +60,16 @@ export async function generateMetadata({ params }) {
         model
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
       url: 'https://emirates-car.com/search-by-make/' + make + '/' + model,
-      image: 'https://emirates-car.com/img/car-spare-parts.png',
+      image: '/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
         {
-          url: 'https://emirates-car.com/icon-192x192.png',
+          url: '/icon-192x192.png',
           width: 192,
           height: 192
         },
         {
-          url: 'https://emirates-car.com/icons/icon-512x512.png',
+          url: '/icons/icon-512x512.png',
           width: 512,
           height: 512,
           alt: 'car parts'
@@ -85,11 +84,11 @@ export async function generateMetadata({ params }) {
         model
       )} Car Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
-      url: 'https://emirates-car.com/search-by-make/' + make + '/' + model,
+      url: '/search-by-make/' + make + '/' + model,
       description: `Buy ${make} - ${decodeURIComponent(
         model
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
-      images: ['https://emirates-car.com/favicon.png']
+      images: ['/favicon.png']
     },
     icons: {
       icon: '/favicon.png',
@@ -101,7 +100,7 @@ export async function generateMetadata({ params }) {
       }
     },
     alternates: {
-      canonical: `https://emirates-car.com/search-by-make/${make}/${model}`
+      canonical: `/search-by-make/${make}/${model}`
     },
     category: `${make} ${decodeURIComponent(model)} auto spare parts`,
     keywords: `${make} ${decodeURIComponent(
@@ -127,8 +126,7 @@ export async function generateMetadata({ params }) {
 }
 async function getYear(make, model) {
   const response = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
-    { cache: 'no-store' }
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
   );
   const dat = await response.json();
   let uniqueYearArray = [
@@ -138,8 +136,7 @@ async function getYear(make, model) {
 }
 async function getMakeImage(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
-    { cache: 'no-store' }
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
   );
   const reDat = await re.json();
   let uniqueMkeArray = [
@@ -153,8 +150,7 @@ async function getMakeImage(make, model) {
 
 async function getDescription(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
-    { cache: 'no-store' }
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
   );
   const reDat = await re.json();
   let uniqueDescriptionArray = [
@@ -166,9 +162,7 @@ async function getDescription(make, model) {
 }
 
 async function getModel(make, model) {
-  const response = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`, {
-    cache: 'no-store'
-  });
+  const response = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`);
   const dat = await response.json();
   let uniqueMakeArray = [
     ...new Map(dat.map(item => [item['model'], item])).values()
@@ -177,9 +171,7 @@ async function getModel(make, model) {
 }
 
 async function getMake() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
-    cache: 'no-store'
-  });
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);
   const data = await resp.json();
   let makeArray = [...new Map(data.map(item => [item['make'], item])).values()];
   return makeArray;
@@ -193,7 +185,6 @@ export default async function Model({ params }) {
   const makeArray = await getMake();
   const partspost = await getParts();
   const modelsform = await getFormModel();
-  const yearData = await getYear(make, model);
 
   const images = [
     {
@@ -201,20 +192,20 @@ export default async function Model({ params }) {
       name: 'ABS',
       alt: `${make} ${model} "anti lock braking system"`,
       link:
-        'https://emirates-car.com/search-by-part-name/Anti-Lock%20Brake%20Control%20Module%20(ABS)'
+        '/search-by-part-name/Anti-Lock%20Brake%20Control%20Module%20(ABS)'
     },
     {
       images: AirFilter,
       name: 'Air Filter',
       alt: `${make} ${model} "air filter"`,
-      link: 'https://emirates-car.com/get-in-touch'
+      link: '/get-in-touch'
     },
 
     {
       images: AirSuspension,
       name: 'Air Suspension',
       alt: `${make} ${model} "air suspension"`,
-      link: 'https://emirates-car.com/get-in-touch'
+      link: '/get-in-touch'
     },
 
     {
@@ -222,131 +213,131 @@ export default async function Model({ params }) {
       name: 'Axle',
       alt: `${make} ${model} " axle"`,
       link:
-        'https://emirates-car.com/search-by-part-name/Axle%20Assembly%20(Front,%204WD)'
+        '/search-by-part-name/Axle%20Assembly%20(Front,%204WD)'
     },
     {
       images: BrakePads,
       name: 'Brake Pads',
       alt: `${make} ${model} "brake pads"`,
-      link: 'https://emirates-car.com/get-in-touch'
+      link: '/get-in-touch'
     },
     {
       images: CatalyticConverter,
       name: 'Catalytic Convertor',
       alt: `${make} ${model} "catalytic convertor"`,
-      link: 'https://emirates-car.com/get-in-touch'
+      link: '/get-in-touch'
     },
     {
       images: CylinderHead,
       name: 'Cylinder Head',
       alt: `${make} ${model} "cylinder"`,
-      link: 'https://emirates-car.com/search-by-part-name/Cylinder%20Head)'
+      link: '/search-by-part-name/Cylinder%20Head)'
     },
     {
       images: Distributor,
       name: 'Distributor',
       alt: 'honda accord distributor',
-      link: 'https://emirates-car.com/search-by-part-name/Distributor'
+      link: '/search-by-part-name/Distributor'
     },
     {
       images: Engine,
       name: 'Engine',
       alt: `${make} ${model} "engine"`,
-      link: 'https://emirates-car.com/search-by-part-name/Engine%20Assembly'
+      link: '/search-by-part-name/Engine%20Assembly'
     },
     {
       images: ExhaustManifold,
       name: 'Exhaust Manifold',
       alt: `${make} ${model} "exhaust system"`,
-      link: 'https://emirates-car.com/search-by-part-name/Exhaust%20Manifold'
+      link: '/search-by-part-name/Exhaust%20Manifold'
     },
     {
       images: GearBox,
       name: 'Gearbox / Transmission',
       alt: `${make} ${model} "gearbox"`,
       link:
-        'https://emirates-car.com/search-by-part-name/Transmission%20Control%20Module'
+        '/search-by-part-name/Transmission%20Control%20Module'
     },
     {
       images: Grille,
       name: 'Grille',
       alt: `${make} ${model} " grill"`,
-      link: 'https://emirates-car.com/search-by-part-name/Grille'
+      link: '/search-by-part-name/Grille'
     },
     {
       images: Headlight,
       name: 'Headlight',
       alt: `${make} ${model} " headlight bulb"`,
-      link: 'https://emirates-car.com/search-by-part-name/Headlight%20Assembly'
+      link: '/search-by-part-name/Headlight%20Assembly'
     },
     {
       images: MasterCylinderKit,
       name: 'Master Cylinder',
       alt: `${make} ${model} " master cylinder"`,
       link:
-        'https://emirates-car.com/search-by-part-name/Master%20Cylinder%20(Clutch)'
+        '/search-by-part-name/Master%20Cylinder%20(Clutch)'
     },
     {
       images: MudFlap,
       name: 'Mud Flap',
       alt: `${make} ${model} " mud flaps"`,
-      link: 'https://emirates-car.com/get-in-touch'
+      link: '/get-in-touch'
     },
     {
       images: Radiator,
       name: 'Radiator',
       alt: `${make} ${model} " radiator"`,
-      link: 'https://emirates-car.com/search-by-part-name/Radiator'
+      link: '/search-by-part-name/Radiator'
     },
     {
       images: RearBumper,
       name: 'Rear Bumper',
       alt: `${make} ${model}" rear bumper"`,
       link:
-        'https://emirates-car.com/search-by-part-name/Bumper%20Assembly%20(Rear)'
+        '/search-by-part-name/Bumper%20Assembly%20(Rear)'
     },
     {
       images: ReverseLight,
       name: 'Reverse Light',
       alt: `${make} ${model} " reverse light bulb"`,
-      link: 'https://emirates-car.com/search-by-part-name/Reverse%20Light'
+      link: '/search-by-part-name/Reverse%20Light'
     },
     {
       images: Rim,
       name: 'Rims',
       alt: `${make} ${model} " rims for sale"`,
-      link: 'https://emirates-car.com/search-by-part-name/Rim'
+      link: '/search-by-part-name/Rim'
     },
     {
       images: SeatBelt,
       name: 'Seat Belt',
       alt: `${make} ${model} " seat belt"`,
-      link: 'https://emirates-car.com/search-by-part-name/Seat%20Belt'
+      link: '/search-by-part-name/Seat%20Belt'
     },
     {
       images: ShockAbsorber,
       name: 'Shock Absorber',
       alt: `${make} ${model} " shock absorber"`,
-      link: 'https://emirates-car.com/search-by-part-name/Shock%20Absorber'
+      link: '/search-by-part-name/Shock%20Absorber'
     },
     {
       images: SideMirror,
       name: 'Mirror',
       alt: `${make} ${model}" mirrors"`,
       link:
-        'https://emirates-car.com/search-by-part-name/Mirror%20(Rear%20View)'
+        '/search-by-part-name/Mirror%20(Rear%20View)'
     },
     {
       images: SteeringWheel,
       name: 'Steering Wheel',
       alt: `${make} ${model} " steering wheel"`,
-      link: 'https://emirates-car.com/search-by-part-name/Steering%20Wheel'
+      link: '/search-by-part-name/Steering%20Wheel'
     },
     {
       images: Wheel,
       name: 'Wheels',
       alt: `${make} ${model} " wheels"`,
-      link: 'https://emirates-car.com/search-by-part-name/Wheel'
+      link: '/search-by-part-name/Wheel'
     }
   ];
   return (
@@ -372,7 +363,7 @@ export default async function Model({ params }) {
         >
           Inquire Now
         </Link>
-        <p className="text-xl font-mono text-gray-700 mx-auto xs:text-base xl:text-lg 2xs:text-xs">
+        <p className="text-xl font-sans text-gray-700 mx-auto xs:text-base xl:text-lg 2xs:text-xs">
           Emirates-car.com is the online Dealers specialist in {make}{' '}
           {decodeURIComponent(model)} and almost any car brands running on roads
           of UAE. We find pleasure in finding the best used, genuine (otherwise
@@ -384,7 +375,7 @@ export default async function Model({ params }) {
           maintenance parts. You can order Honda spare parts by simply
           submitting the online inquiry form{' '}
           <Link
-            href="https://emirates-car.com"
+            href="/"
             target="_newtab"
             className="text-blue-500 underline hover:text-blue-900"
             title={make + ' ' + model + ' parts'}
@@ -404,7 +395,7 @@ export default async function Model({ params }) {
         </div>
 
         <p
-          className="text-xl font-mono text-gray-700 mx-auto my-5"
+          className="text-xl font-sans text-gray-700 mx-auto my-5"
           dangerouslySetInnerHTML={{ __html: description || '' }}
         ></p>
         <div>
@@ -419,45 +410,16 @@ export default async function Model({ params }) {
                     {uniqueMakeArray.map((post, i) => (
                       <div key={i}>
                         <Link
-                          href="https://emirates-car.com/search-by-make/[make]/[model]"
+                          href="/search-by-make/[make]/[model]"
                           as={
-                            'https://emirates-car.com/search-by-make/' +
+                            '/search-by-make/' +
                             post.make +
                             '/' +
                             post.model
                           }
                         >
-                          <main className=" xs:text-center font-mono text-blue-800 underline hover:text-blue-700 focus:text-blue-700">
+                          <main className=" xs:text-center font-sans text-blue-800 underline hover:text-blue-700 focus:text-blue-700">
                             {post.make}&nbsp;{post.model.replace('%2F', '/')}
-                            &nbsp;Parts
-                          </main>
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10 mx-10 ">
-                  <h3 className="text-center font-bold text-4xl">
-                    Search your {make} {decodeURIComponent(model)} parts by
-                    Years
-                  </h3>
-                  <div className="grid grid-cols-4 xs:grid xs:grid-cols-1  sm:grid sm:grid-cols-4 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 ">
-                    {yearData.map((post, i) => (
-                      <div key={i}>
-                        <Link
-                          href="https://emirates-car.com/search-by-make/[make]/[model]"
-                          as={
-                            'https://emirates-car.com/search-by-make/' +
-                            post.make +
-                            '/' +
-                            post.model +
-                            '/' +
-                            post.year
-                          }
-                        >
-                          <main className=" xs:text-center font-mono text-blue-800 underline hover:text-blue-700 focus:text-blue-700">
-                            {post.make}&nbsp;{post.model.replace('%2F', '/')}
-                            &nbsp;{post.year}
                             &nbsp;Parts
                           </main>
                         </Link>
@@ -473,11 +435,11 @@ export default async function Model({ params }) {
                     dubai, sharjah, abu dhabi, ajman, al quoz, jumeirah, deira
                     etc. You can check our catalogue at{' '}
                     <Link
-                      href="https://emirates-car.com/search-by-part-name"
+                      href="/search-by-part-name"
                       className="text-blue-400 underline"
                       title={make + ' ' + model}
                     >
-                      https://emirates-car.com/search-by-part-name
+                      /search-by-part-name
                     </Link>
                     . We provide auto spare parts for any vehicles including :
                     <ul className="list-disc">
@@ -495,8 +457,8 @@ export default async function Model({ params }) {
                   {makeArray.map((p, i) => (
                     <div key={i}>
                       <Link
-                        href="https://emirates-car.com/search-by-make/[make]"
-                        as={'https://emirates-car.com/search-by-make/' + p.make}
+                        href="/search-by-make/[make]"
+                        as={'/search-by-make/' + p.make}
                         title={p.make + ' spare parts'}
                       >
                         <main className="border h-full  hover:border-blue-600 py-3 bg-gray-100">
@@ -531,11 +493,11 @@ export default async function Model({ params }) {
                 Team Genuine {make} {decodeURIComponent(model)}part VS Team
                 Aftermarket {make} {decodeURIComponent(model)} part
               </h3>
-              <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+              <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
                 {make} {decodeURIComponent(model)} aftermarket parts are better
                 to buy for many reasons:
               </p>
-              <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+              <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
                 <li>It is more affordable than genuine parts</li>
                 <li>Some genuine parts are similar to genuine parts itself.</li>
                 <li>
@@ -547,11 +509,11 @@ export default async function Model({ params }) {
                   parts which can be only from one main manufacturer
                 </li>
               </ol>
-              <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+              <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
                 {make} {decodeURIComponent(model)} Genuine parts are better to
                 buy for many reasons:
               </p>
-              <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
+              <ol className="list-disc text-xl font-sans text-gray-700 mx-auto">
                 <li>
                   Aftermarket parts are not regularized or standardized because
                   it is manufactured as a duplicate to genuine parts.
@@ -564,7 +526,7 @@ export default async function Model({ params }) {
                   no Warranty
                 </li>
               </ol>
-              <p className="text-xl font-mono text-gray-700 mx-auto">
+              <p className="text-xl font-sans text-gray-700 mx-auto">
                 However, if you weigh your pros and cons and which kind of parts
                 you really need, you can come to the best conclusion yourself.
                 And we can serve you with both kind of parts.
@@ -574,14 +536,14 @@ export default async function Model({ params }) {
 
           <div className="d-flex justify-center text-center py-10 xs:pt-5 mx-8 xs:mx-5">
             <div>
-              <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-extrabold">
+              <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-extrabold">
                 Availability of {make} parts in UAE:
               </p>
               <div className="grid grid-cols-5 xs:grid-cols-1 gap-3 mx-auto p-5 border-2 border-gray-500">
                 <div>
                   <Link
-                    href="https://emirates-car.com/search-by-cities-in-uae/Dubai"
-                    className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                    href="/search-by-cities-in-uae/Dubai"
+                    className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     &nbsp; DUBAI
@@ -590,8 +552,8 @@ export default async function Model({ params }) {
                 <div>
                   {' '}
                   <Link
-                    href="https://emirates-car.com/search-by-cities-in-uae/Sharjah"
-                    className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                    href="/search-by-cities-in-uae/Sharjah"
+                    className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     &nbsp; SHARJAH
@@ -601,7 +563,7 @@ export default async function Model({ params }) {
                   {' '}
                   <Link
                     href="search-by-cities-in-uae/Ajman"
-                    className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                    className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     &nbsp;AJMAN
@@ -610,8 +572,8 @@ export default async function Model({ params }) {
                 <div>
                   {' '}
                   <Link
-                    href="https://emirates-car.com/search-by-cities-in-uae/Ras%20al%20Khaimah"
-                    className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                    href="/search-by-cities-in-uae/Ras%20al%20Khaimah"
+                    className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     &nbsp;RAS AL KHAIMAH
@@ -619,8 +581,8 @@ export default async function Model({ params }) {
                 </div>
                 <div>
                   <Link
-                    href="https://emirates-car.com/search-by-cities-in-uae/Al%20Quoz%20(Dubai)"
-                    className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                    href="/search-by-cities-in-uae/Al%20Quoz%20(Dubai)"
+                    className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     &nbsp;Al QUOZ
@@ -628,8 +590,8 @@ export default async function Model({ params }) {
                 </div>
                 <div>
                   <Link
-                    href="https://emirates-car.com/search-by-cities-in-uae/Abu%20Dhabi"
-                    className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                    href="/search-by-cities-in-uae/Abu%20Dhabi"
+                    className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     &nbsp;ABU DHABI
@@ -637,8 +599,8 @@ export default async function Model({ params }) {
                 </div>
                 <div>
                   <Link
-                    href="https://emirates-car.com/search-by-cities-in-uae/Deira%20(Dubai)"
-                    className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
+                    href="/search-by-cities-in-uae/Deira%20(Dubai)"
+                    className="font-sans font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                     &nbsp;DEIRA
@@ -652,7 +614,7 @@ export default async function Model({ params }) {
               5 ways you can find parts for your car.
             </p>
             There are 5 ways you can try finding spare parts for your car.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Traditional way its pros and cons
             </p>
             You find a spare parts shop nearby and go and purchase and the work
@@ -664,7 +626,7 @@ export default async function Model({ params }) {
             sells only Audi, Lincoln and Ferrari. So to see for next option, you
             can opt for shopping from Giant E-commerce company like Amazon,
             EBay, Flipkart etc.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Giant E-commerce Company its pros and cons:
             </p>
             If you don't find spare parts nearby your house location, generally
@@ -677,7 +639,7 @@ export default async function Model({ params }) {
             the check-in process. So it is not always safe to buy spare parts
             from giant e-commerce company. Hence we see for other option which
             is the Local dealers.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Local Dealers
             </p>
             Local dealers are known through other person like through friends
@@ -685,7 +647,7 @@ export default async function Model({ params }) {
             directly the car brands he deals with. However with the current
             digital advancement, the local dealers are decreasing gradually. So
             we move to the next option to search on online marketplace.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Online Marketplace (Only CONS!)
             </p>
             Through Online marketplace we find spare parts for our car easily.
@@ -697,7 +659,7 @@ export default async function Model({ params }) {
             reported from those who purchase from small vendor marketplace and
             also the larger companies. In this case you should go for Online
             dealer website.
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-bold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Online Dealer Website ONLY PROS!
             </p>
             Online dealers website is the easiest way to order spare parts. You
@@ -708,7 +670,7 @@ export default async function Model({ params }) {
             one such website which accept online inquiries. It deals with parts
             and accessories for honda accord, Honda civic and{' '}
             <Link
-              href={'https://emirates-car.com/search-by-make/' + make}
+              href={'/search-by-make/' + make}
               className="text-blue-500 underline hover:text-blue-900"
             >
               other honda models
@@ -717,7 +679,7 @@ export default async function Model({ params }) {
             Visit to search parts you need.
           </div>
           <div>
-            <p className="text-xl font-mono text-gray-700 mx-auto my-5 font-extrabold">
+            <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-extrabold">
               Special Deals on the following parts for {make}{' '}
               {decodeURIComponent(model)}
             </p>
@@ -765,11 +727,11 @@ export default async function Model({ params }) {
               {partspost.map((post, i) => (
                 <div key={i}>
                   <Link
-                    href="/search-by-make/[make]/[model]/parts/[parts]"
-                    as={'/search-by-make/'+make+'/'+model+"/parts/" + post.parts}
+                    href="/search-by-part-name/[parts]"
+                    as={'/search-by-part-name/'+"/" + post.parts}
                     title={make + ' ' + model + ' ' + post.parts}
                   >
-                    <p className="text-gray-700 hover:text-blue-700 focus:text-blue-700 text-xl xs:text-lg font-mono mx-auto my-5 xs:my-0">
+                    <p className="text-gray-700 hover:text-blue-700 focus:text-blue-700 text-xl xs:text-lg font-sans mx-auto my-5 xs:my-0">
                       <i className="far fa-compass"></i>
                       {' ' + make} {' ' + decodeURIComponent(model)}{' '}
                       {post.parts} price list

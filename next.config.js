@@ -48,14 +48,6 @@ module.exports = withPWA({
       },
     ];
   },
-  redirects: async () => [
-    {
-      source: '/',
-      has: [{ type: 'host', value: 'www.emirates-car.com' }],
-      destination: 'https://emirates-car.com',
-      permanent: true
-    }
-  ],
   pwa: {
     dest: 'public',
     register: true,

@@ -39,15 +39,6 @@ module.exports = withPWA({
     }
     return config;
   },
-  async redirects() {
-    return [
-      {
-        source: '/search-by-cities-in-uae/Dibba',
-        destination: '/search-by-cities-in-uae/Dibba Al Fujairah (Fujairah)',
-        permanent: true
-      },
-    ];
-  },
   pwa: {
     dest: 'public',
     register: true,

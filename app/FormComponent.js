@@ -257,10 +257,8 @@ export default function FormComponent({ formsData, postFilter }) {
     <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLSfmBdBIzmhyOCP-4KH0lAMysR8OLvWA-xso-bfwZFbjmDw_SQ/viewform?embedded=true"
-        width="700"
-        frameBorder="0"
-        marginHeight="0"
-        marginWidth="0"
+        width={500}
+        height={700}
       >
         Loading…
       </iframe>

@@ -13,38 +13,7 @@ export default async function Contact() {
   return (
     <div>
       <div className="container place-content-center py-6 xl:mx-auto lg:mx-auto md:mx-auto xs:py-0">
-        <div className="uppercase bg-blue-200 font-serif p-5 xl:mx-10 lg:mx-7 md:mx-5 text-center text-3xl text-blue-900 font-extrabold xs:text-base xs:w-screen s:text-2xl 2xs:text-2xl ">
-          <Social />
-          <div>
-            &nbsp;
-            <span>
-              <Link
-                href="https://emirates-car.com/search-by-part-name"
-                className="underline xs:no-underline hover:text-blue-500"
-              >
-                SEARCH BY PART NAME
-              </Link>{' '}
-            </span>
-            | &nbsp;
-            <span>
-              <Link
-                href="https://emirates-car.com/search-by-cities-in-uae"
-                className="underline xs:no-underline hover:text-blue-500"
-              >
-                SEARCH BY CITY
-              </Link>{' '}
-            </span>
-            | &nbsp;
-            <span>
-              <Link
-                href="https://emirates-car.com/search-by-make"
-                className="underline xs:no-underline hover:text-blue-500"
-              >
-                SEARCH BY MAKE
-              </Link>{' '}
-            </span>
-          </div>
-        </div>
+        <Social/>
         <div className="flex s:grid s:grid-cols-1 xs:grid xs:grid-cols-1 xl:mx-10 lg:mx-7 md:mx-5 xs:w-screen s:w-screen 2xs:w-screen sm:w-screen 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1 shadow-2xl xs:shadow-none 2xs:shadow-none sm:shadow-sm">
           <FormComponent formsData={modelforms} postFilter={partsposts} />
         </div>

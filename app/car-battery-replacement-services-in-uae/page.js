@@ -116,39 +116,7 @@ export default async function CarBatteryDubai() {
         </div>
       </div>
 
-      <div className="uppercase bg-blue-300 font-serif p-5 xl:mx-10 lg:mx-7 md:mx-5 s:mx-3 2xs:mx-4 xs:mx-4 text-center text-3xl text-blue-900 font-extrabold xs:text-base xs:w-screen s:text-2xl 2xs:text-2xl my-10">
-        <Social />
-        <div>
-          &nbsp;
-          <span>
-            <Link
-              href="/search-by-part-name"
-              className="underline xs:no-underline hover:text-blue-500"
-            >
-              SEARCH BY PART NAME
-            </Link>{' '}
-          </span>
-          | &nbsp;
-          <span>
-            <Link
-              href="/search-by-cities-in-uae"
-              passHref
-              className="underline xs:no-underline hover:text-blue-500"
-            >
-              SEARCH BY CITY
-            </Link>{' '}
-          </span>
-          | &nbsp;
-          <span>
-            <Link
-              href="/search-by-make"
-              className="underline xs:no-underline hover:text-blue-500"
-            >
-              SEARCH BY MAKE
-            </Link>{' '}
-          </span>
-        </div>
-      </div>
+      <Social/>
       <div className="place-content-center text-center pt-10 xl:mx-36 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
         <p className="text-blue-600 text-center text-4xl md:text-lg lg:text-2xl font-extrabold xs:text-xl 2xs:text-xl s:text-xl">
           FAQ SESSION

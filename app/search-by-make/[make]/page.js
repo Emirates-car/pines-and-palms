@@ -314,39 +314,7 @@ export default async function MakePage({ params }) {
               inquiry here
             </p>
             <FormComponent formsData={modelsform} postFilter={partspost} />
-            <div className="uppercase bg-blue-200 font-serif text-center text-3xl text-blue-900 font-extrabold xs:text-xl xs:w-auto xxs:w-auto s:w-auto s:text-2xl xxs:text-2xl p-3">
-              <Social />
-              <div>
-                <span>
-                  <Link
-                    href="/search-by-part-name"
-                    className="underline hover:text-blue-500 xs:text-sm"
-                  >
-                    {' '}
-                    SEARCH BY PART NAME
-                  </Link>{' '}
-                  &nbsp;|
-                </span>
-                <span>
-                  <Link
-                    href="/search-by-cities-in-uae"
-                    className="underline hover:text-blue-500 xs:text-sm"
-                  >
-                    SEARCH BY CITY
-                  </Link>{' '}
-                  &nbsp;|
-                </span>
-                <span>
-                  <Link
-                    href="/search-by-make"
-                    className="underline hover:text-blue-500 xs:text-sm"
-                  >
-                    SEARCH BY MAKE
-                  </Link>{' '}
-                  &nbsp;
-                </span>
-              </div>
-            </div>
+            <Social/>
           </div>
           <h3
             className="text-3xl font-extrabold mx-auto my-5"

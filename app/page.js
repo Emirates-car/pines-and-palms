@@ -60,40 +60,7 @@ export default async function Home() {
     <div>
       <div className="max-w-7xl mx-auto font-sans">
         <Hero />
-        <div className="place-content-center py-6 xl:mx-auto lg:mx-auto md:mx-auto xs:py-0">
-          <div className="uppercase bg-blue-200 font-serif xl:mx-10 lg:mx-7 md:mx-5 s:mx-3 xxs:mx-4 xs:mx-4 text-center text-3xl text-blue-900 font-extrabold xs:text-xl xs:w-auto xxs:w-auto s:w-auto s:text-2xl xxs:text-2xl p-3">
-            <Social />
-            <div>
-              <span>
-                <Link
-                  href="/search-by-part-name"
-                  className="underline hover:text-blue-500 xs:text-sm"
-                >
-                  SEARCH BY PART NAME
-                </Link>{' '}
-                &nbsp;|
-              </span>
-              <span>
-                <Link
-                  href="/search-by-cities-in-uae"
-                  className="underline hover:text-blue-500 xs:text-sm"
-                >
-                  SEARCH BY CITY
-                </Link>{' '}
-                &nbsp;|
-              </span>
-              <span>
-                <Link
-                  href="/search-by-make"
-                  className="underline hover:text-blue-500 xs:text-sm"
-                >
-                  SEARCH BY MAKE
-                </Link>{' '}
-                &nbsp;
-              </span>
-            </div>
-          </div>
-        </div>
+        <Social />
         {/*American */}
         <h3 className="text-black text-4xl text-center md:text-2xl lg:text-2xl font-extrabold xs:text-xl xxs:text-2xl pt-10 uppercase">
           Top American Spare parts

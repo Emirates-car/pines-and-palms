@@ -12,38 +12,7 @@ export default async function Forms() {
   return (
     <div>
       <div className="container place-content-center mx-auto py-6">
-        <div className="uppercase bg-blue-200 font-serif p-5 text-center text-3xl text-blue-900 font-extrabold xs:text-base xs:w-screen s:text-2xl 2xs:text-2xl ">
-          <Social />
-          <div>
-            &nbsp;
-            <span>
-              <Link
-                href="/search-by-part-name"
-                className="underline xs:no-underline hover:text-blue-500 text-2xl text-blue-900 font-extrabold xs:text-base s:text-base 2xs:text-base"
-              >
-                SEARCH BY PART NAME
-              </Link>
-            </span>
-            | &nbsp;
-            <span>
-              <Link
-                href="/search-by-cities-in-uae"
-                className="underline xs:no-underline hover:text-blue-500 text-2xl text-blue-900 font-extrabold xs:text-base s:text-base 2xs:text-base"
-              >
-                SEARCH BY CITY
-              </Link>
-            </span>
-            | &nbsp;
-            <span>
-              <Link
-                href="/search-by-make"
-                className="underline xs:no-underline hover:text-blue-500 text-2xl text-blue-900 font-extrabold xs:text-base s:text-base 2xs:text-base "
-              >
-                SEARCH BY MAKE
-              </Link>
-            </span>
-          </div>
-        </div>
+        <Social/>
         <div className="text-center">
           <Link
             href="/honda-accord-8th-gen-parts"

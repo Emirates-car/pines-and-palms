@@ -114,8 +114,7 @@ export default async function Parts({ params }) {
         </h1>
         <p className="w-3/4 md:w-4/5 mx-auto xs:w-full xs:mx-1 xxs:w-full xxs:mx-1 sm:w-full sm:mx-1 mt-3 text-lg font-normal font-sans">
           Buy Premium High Quality {partsData.parts} Used, Genuine, OEM and
-          Aftermarket parts in Dubai, Sharjah, Ajman, Ras al khaimah, Abu dhabi
-          and all over the world. We are dealers {partsData.parts} in Auto Spare
+          Aftermarket parts. We are dealers {partsData.parts} in Auto Spare
           parts in UAE. If you are in need of any Spare parts Submit your
           inquiry now.
         </p>

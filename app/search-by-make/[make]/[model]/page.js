@@ -351,19 +351,19 @@ export default async function Model({ params }) {
           width={100}
           height={100}
         />
-        <h1 className="text-4xl font-extrabold mx-auto my-5 xs:text-lg 2xs:text-xs ">
+        <h1 className="text-4xl font-extrabold mx-auto my-5 xs:text-lg xxs:text-xs ">
           {make} {decodeURIComponent(model)} spare parts - Buy Premium High
           Quality Used, Genuine, OEM and Aftermarket from Dubai to all over UAE
           and World
         </h1>
         <Link
           href="#myForm"
-          className="w-1/4 xs:w-4/5 mx-auto flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-base xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125 my-5"
+          className="w-1/4 xs:w-4/5 mx-auto flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-base xs:my-2 xxs:text-sm xxs:my-2 s:text-sm s:my-2 focus:filter brightness-125 my-5"
           title={'spare parts for ' + make + ' ' + model}
         >
           Inquire Now
         </Link>
-        <p className="text-xl font-sans text-gray-700 mx-auto xs:text-base xl:text-lg 2xs:text-xs">
+        <p className="text-xl font-sans text-gray-700 mx-auto xs:text-base xl:text-lg xxs:text-xs">
           Emirates-car.com is the online Dealers specialist in {make}{' '}
           {decodeURIComponent(model)} and almost any car brands running on roads
           of UAE. We find pleasure in finding the best used, genuine (otherwise
@@ -385,7 +385,7 @@ export default async function Model({ params }) {
           . You can get callback or whatsapp chat or email after submitting your
           form inquiry.
         </p>
-        <div className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-blue-400 font-bold py-4 sm:mt-5 md:mt-5 lg:mx-0 xs:text-base xl:text-lg 2xs:text-xs px-5">
+        <div className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-blue-400 font-bold py-4 sm:mt-5 md:mt-5 lg:mx-0 xs:text-base xl:text-lg xxs:text-xs px-5">
           FILL OUT THE INQUIRY FOR
           <nobr className="text-blue-700 text-3xl md:text-4xl xs:text-sm lg:text-2xl sm:text-xl">
             &nbsp;{make} {decodeURIComponent(model)}{' '}
@@ -399,14 +399,14 @@ export default async function Model({ params }) {
           dangerouslySetInnerHTML={{ __html: description || '' }}
         ></p>
         <div>
-          <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 2xs:grid 2xs:grid-cols-1">
-            <main className="xs:mx-auto 2xs:mx-4 sm:mx-4 md:mx-5 mt-10 border border-gray-100 shadow-sm">
+          <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 xxs:grid xxs:grid-cols-1">
+            <main className="xs:mx-auto xxs:mx-4 sm:mx-4 md:mx-5 mt-10 border border-gray-100 shadow-sm">
               <div className="container place-content-center py-6">
-                <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10 mx-10 ">
+                <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-10 mx-10 ">
                   <h3 className="text-center font-bold text-4xl">
                     Spare parts for All {make} Models:
                   </h3>
-                  <div className="grid grid-cols-4 xs:grid xs:grid-cols-1  sm:grid sm:grid-cols-4 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 ">
+                  <div className="grid grid-cols-4 xs:grid xs:grid-cols-1  sm:grid sm:grid-cols-4 md:grid md:grid-cols-3 xxs:grid xxs:grid-cols-3 gap-1 ">
                     {uniqueMakeArray.map((post, i) => (
                       <div key={i}>
                         <Link
@@ -427,7 +427,7 @@ export default async function Model({ params }) {
                     ))}
                   </div>
                 </div>
-                <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
+                <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
                   <h3 className="text-base font-medium text-gray-500 p-5">
                     We deal with any country auto spare parts including
                     japanese, american, german, chinese, indian, Korean, french,
@@ -450,10 +450,10 @@ export default async function Model({ params }) {
                     </ul>
                   </h3>
                 </div>
-                <p className="text-blue-600 text-4xl md:text-lg lg:text-2xl font-extrabold xs:text-base 2xs:text-xs text-center py-5 xs:hidden sm:hidden s:hidden 2xs:hidden">
+                <p className="text-blue-600 text-4xl md:text-lg lg:text-2xl font-extrabold xs:text-base xxs:text-xs text-center py-5 xs:hidden sm:hidden s:hidden xxs:hidden">
                   WE ALSO DEAL IN OTHER BRANDS
                 </p>
-                <div className="grid grid-cols-12 md:grid md:grid-cols-7 sm:ml-0 xs:hidden sm:hidden s:hidden 2xs:hidden gap-1 mx-5 2xs:mx-4 md:mx-5 my-10">
+                <div className="grid grid-cols-12 md:grid md:grid-cols-7 sm:ml-0 xs:hidden sm:hidden s:hidden xxs:hidden gap-1 mx-5 xxs:mx-4 md:mx-5 my-10">
                   {makeArray.map((p, i) => (
                     <div key={i}>
                       <Link
@@ -706,7 +706,7 @@ export default async function Model({ params }) {
                   <Link
                     href={i.link}
                     title={{ make } + ' ' + { model } + i.name}
-                    className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
+                    className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 xxs:text-sm xxs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                   >
                     Inquire Now
                   </Link>
@@ -718,10 +718,10 @@ export default async function Model({ params }) {
           <div className="text-center text-xl underline font-bold text-red-600">
             <HondaOfferButton />
           </div>
-          <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 2xs:grid 2xs:grid-cols-1">
+          <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 xxs:grid xxs:grid-cols-1">
             {/*Parts list */}
-            <div className="xs:grid xs:grid-cols-1 2xs:w-full sm:w-full md:w-full 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1 sm:mt-5 lg:mx-2 ">
-              <div className="xs:grid xs:grid-cols-1 text-gray-900 font-bold 2xs:w-full sm:w-full md:w-full 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1 py-4 sm:mt-5 lg:mx-2 xs:text-xs xl:text-lg 2xs:text-xs px-5 font-sans">
+            <div className="xs:grid xs:grid-cols-1 xxs:w-full sm:w-full md:w-full xxs:grid xxs:grid-cols-1 sm:grid sm:grid-cols-1 sm:mt-5 lg:mx-2 ">
+              <div className="xs:grid xs:grid-cols-1 text-gray-900 font-bold xxs:w-full sm:w-full md:w-full xxs:grid xxs:grid-cols-1 sm:grid sm:grid-cols-1 py-4 sm:mt-5 lg:mx-2 xs:text-xs xl:text-lg xxs:text-xs px-5 font-sans">
                 SEARCH BY PART NAME
               </div>
               {partspost.map((post, i) => (

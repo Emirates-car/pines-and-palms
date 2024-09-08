@@ -150,15 +150,11 @@ export default async function Parts({ params }) {
                 </div>
               </div>
             </div>
-            <div className="xxs:hidden xs:hidden p-40 md:p-20 lg:p-20">
+            <div className="xxs:hidden xs:hidden p-35 md:p-20 lg:p-20">
               <Image
                 alt="emirates car"
-                className="rounded-sm  "
-                src={
-                  partsData.img
-                    ? '/img/parts/' + partsData.img
-                    : '/img/' + CarParts
-                }
+                className="rounded-sm"
+                src={CarParts}
                 width={400}
                 height={400}
               />

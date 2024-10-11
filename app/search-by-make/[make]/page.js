@@ -287,7 +287,7 @@ export default async function MakePage({ params }) {
                     <h1 className="mt-3 text-5xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
                       Used / Genuine / Aftermarket&nbsp;
                       <span className="block text-blue-600 xl:inline">
-                        {make} Auto parts&nbsp;
+                        {encodeURIComponent(make)} Auto parts&nbsp;
                       </span>
                       in UAE
                     </h1>
@@ -319,7 +319,7 @@ export default async function MakePage({ params }) {
 
           <div className="bg-bglight">
             <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-              Search <span className="text-blue-500">{make}</span> Spare parts
+              Search <span className="text-blue-500">{encodeURIComponent(make)}</span> Spare parts
               by Model
             </h3>
             <SearchModel make={make} car={carmodel} />
@@ -339,9 +339,13 @@ export default async function MakePage({ params }) {
                   </Link>
                 </div>
               ))}{' '}
+              
+
+              
             </div>
           </div>
         </div>
+        
         <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
           **Model not found above?
           <Link href="/get-in-touch">
@@ -357,7 +361,7 @@ export default async function MakePage({ params }) {
 
         <div>
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Popular <span className="text-blue-500">Searched {make} Parts</span>{' '}
+            Popular <span className="text-blue-500">Searched {encodeURIComponent(make)} Parts</span>{' '}
             in UAE
           </div>
           <div className="grid grid-cols-5 sm:gril-cols-2 xxs:grid-cols-2 gap-2 s:grid-cols-2 xs:grid-cols-1 px-5 xs:px-2 xxs:px-2 md:grid-cols-3 lg:grid-cols-3 max-w-7xl mx-auto">
@@ -395,7 +399,7 @@ export default async function MakePage({ params }) {
 
         <div className="bg-bglight ">
           <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Search <span className="text-blue-500">{make}</span> Spare parts
+            Search <span className="text-blue-500">{encodeURIComponent(make)}</span> Spare parts
             Anywhere in UAE
           </h3>
           <SearchCity cities={cities} />

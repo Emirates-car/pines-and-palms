@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 import Social from '../Social';
 import FormComponent from '../FormComponent';
 import SearchPartsComponent from '../SearchPart';
 import { getCity, getFormModel, getMake, getParts } from '../page';
-import Link from "next/link";
-import Count from "../service-countup"
-import Footer from "../footer";
+import Link from 'next/link';
+import Count from '../service-countup';
+import Footer from '../footer';
 import SearchCity from '../SearchCity';
 
 export const metadata = {
   title: 'Quick Car Auto Spare Part Order Online in UAE | Emirates-car.com',
   description:
-    'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE'
+    'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE',
 };
 
 export default async function Cities() {
@@ -32,7 +32,7 @@ export default async function Cities() {
                 </nobr>
                 &nbsp;&nbsp; SELECT YOUR PARTS BY LOCATION IN U.A.E
               </h1>
-              <SearchCity cities={cities}/>
+              <SearchCity cities={cities} />
               <p className="text-gray-600 text-base md:text-lg lg:text-2xl font-normal font-sans xs:text-xs 2xs:text-xs mx-10 xs:ml-3 underline">
                 <nobr className="text-blue-400 no-underline">
                   <i className="fal fa-car-garage"></i> Current
@@ -46,10 +46,7 @@ export default async function Cities() {
                   <div key={i}>
                     <Link
                       href="/search-by-cities-in-uae/[city]"
-                      as={
-                        '/search-by-cities-in-uae/' +
-                        post.city
-                      }
+                      as={'/search-by-cities-in-uae/' + post.city}
                       title={'car spare parts ' + post.city}
                     >
                       <main className="border border-blue-800 h-full p-3 ">
@@ -61,9 +58,10 @@ export default async function Cities() {
                   </div>
                 ))}
               </div>
+
               <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
-               <FormComponent formsData={modelsform} postFilter={partsposts}/>
-                <Social/>
+                <FormComponent formsData={modelsform} postFilter={partsposts} />
+                <Social />
               </div>
               <div>
                 <Count />
@@ -83,10 +81,7 @@ export default async function Cities() {
                   </Link>
                   .We also deal in brands such as{' '}
                   {makeData.map((p, i) => (
-                    <Link
-                      key={i}
-                      href={'/search-by-make/' + p.make}
-                    >
+                    <Link key={i} href={'/search-by-make/' + p.make}>
                       {p.make}
                       {' in UAE, '}
                     </Link>

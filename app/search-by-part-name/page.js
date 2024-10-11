@@ -41,10 +41,7 @@ export default async function PartPage() {
                   <div key={i}>
                     <Link
                       href="/search-by-part-name/[parts]"
-                      as={
-                        '/search-by-part-name/' +
-                        post.parts
-                      }
+                      as={'/search-by-part-name/' + post.parts}
                       title={post.parts + ' in uae'}
                     >
                       <main className="border border-blue-800 h-full p-3 ">
@@ -57,8 +54,9 @@ export default async function PartPage() {
                 ))}
               </div>
             </article>
+
             <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
-              <Social/>
+              <Social />
               <FormComponent formsData={modelsform} postFilter={partsposts} />
             </div>
             <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
@@ -114,10 +112,7 @@ export default async function PartPage() {
               <div key={i}>
                 <Link
                   href="/search-by-cities-in-uae/[city]"
-                  as={
-                    '/search-by-cities-in-uae/' +
-                    post.city
-                  }
+                  as={'/search-by-cities-in-uae/' + post.city}
                   title={'car spare parts ' + post.city}
                 >
                   <p className="text-base hover:text-blue-700 focus:text-blue-700  text-gray-500">

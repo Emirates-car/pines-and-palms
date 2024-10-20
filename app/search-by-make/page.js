@@ -23,7 +23,6 @@ export default async function Make() {
               IN UAE
             </h1>
             <SearchMake posts={modelforms} />
-            
 
             <p className="text-gray-600 text-base md:text-lg lg:text-2xl font-normal font-sans xs:text-xs 2xs:text-xs mx-10 xs:ml-3 underline">
               <nobr className="text-blue-400 no-underline">
@@ -37,9 +36,7 @@ export default async function Make() {
                   <div key={i}>
                     <Link
                       href="/search-by-make/[make]"
-                      as={
-                        '/search-by-make/' + post.make
-                      }
+                      as={'/search-by-make/' + post.make}
                       title={post.make + ' spare parts'}
                     >
                       <main className="text-center text-base xs:text-xs xs:text-center font-mono text-blue-500 underline hover:text-blue-700 focus:text-blue-700 border border-gray-100">
@@ -69,7 +66,7 @@ export default async function Make() {
               </Link>{' '}
             </div>
             <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
-              <Social/>
+              <Social />
               <FormComponent formsData={modelforms} postFilter={partsposts} />
             </div>
             <div className="text-center">
@@ -91,9 +88,7 @@ export default async function Make() {
                 {partsposts.map((p, i) => (
                   <Link
                     href="/search-by-part-name/[parts]"
-                    as={
-                      '/search-by-part-name/' + p.parts
-                    }
+                    as={'/search-by-part-name/' + p.parts}
                     key={i}
                     title={p.parts}
                   >
@@ -139,10 +134,7 @@ export default async function Make() {
               <div key={i}>
                 <Link
                   href="/search-by-cities-in-uae/[city]"
-                  as={
-                    '/search-by-cities-in-uae/' +
-                    post.city
-                  }
+                  as={'/search-by-cities-in-uae/' + post.city}
                   title={'car parts ' + post.city}
                 >
                   <p className="text-base hover:text-blue-700 focus:text-blue-700 h-full text-gray-500">

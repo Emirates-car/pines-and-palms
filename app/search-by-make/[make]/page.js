@@ -311,7 +311,6 @@ export default async function MakePage({ params }) {
             </div>
           </div>
         </div>
-
         <div>
           <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 md:grid md:grid-cols-1 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
             <FormComponent formsData={modelsform} postFilter={partspost} />
@@ -319,8 +318,9 @@ export default async function MakePage({ params }) {
 
           <div className="bg-bglight">
             <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-              Search <span className="text-blue-500">{encodeURIComponent(make)}</span> Spare parts
-              by Model
+              Search{' '}
+              <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
+              Spare parts by Model
             </h3>
             <SearchModel make={make} car={carmodel} />
             <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
@@ -339,13 +339,21 @@ export default async function MakePage({ params }) {
                   </Link>
                 </div>
               ))}{' '}
-              
-
-              
             </div>
           </div>
         </div>
-        
+        {carmodel.map((post, i) => (
+          <div key={i}>
+            {'<url>'}
+            {`<loc>https://emirates-car.com/search-by-make/${encodeURIComponent(
+              post.make
+            )}/${encodeURIComponent(post.model)}</loc>`}
+            {'<lastmod>2024-20-10T15:54:28.931Z</lastmod>'}
+            {'<changefreq>yearly</changefreq>'}
+            {'<priority>1.0</priority>'}
+            {'</url>'}
+          </div>
+        ))}{' '}
         <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
           **Model not found above?
           <Link href="/get-in-touch">
@@ -358,10 +366,12 @@ export default async function MakePage({ params }) {
         <div className="text-center">
           {make === 'Honda' ? <HondaOfferButton /> : <></>}
         </div>
-
         <div>
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Popular <span className="text-blue-500">Searched {encodeURIComponent(make)} Parts</span>{' '}
+            Popular{' '}
+            <span className="text-blue-500">
+              Searched {encodeURIComponent(make)} Parts
+            </span>{' '}
             in UAE
           </div>
           <div className="grid grid-cols-5 sm:gril-cols-2 xxs:grid-cols-2 gap-2 s:grid-cols-2 xs:grid-cols-1 px-5 xs:px-2 xxs:px-2 md:grid-cols-3 lg:grid-cols-3 max-w-7xl mx-auto">
@@ -396,11 +406,11 @@ export default async function MakePage({ params }) {
             ))}
           </div>
         </div>
-
         <div className="bg-bglight ">
           <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Search <span className="text-blue-500">{encodeURIComponent(make)}</span> Spare parts
-            Anywhere in UAE
+            Search{' '}
+            <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
+            Spare parts Anywhere in UAE
           </h3>
           <SearchCity cities={cities} />
           <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">

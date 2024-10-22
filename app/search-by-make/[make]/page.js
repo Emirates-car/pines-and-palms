@@ -342,18 +342,6 @@ export default async function MakePage({ params }) {
             </div>
           </div>
         </div>
-        {carmodel.map((post, i) => (
-          <div key={i}>
-            {'<url>'}
-            {`<loc>https://emirates-car.com/search-by-make/${encodeURIComponent(
-              post.make
-            )}/${encodeURIComponent(post.model)}</loc>`}
-            {'<lastmod>2024-20-10T15:54:28.931Z</lastmod>'}
-            {'<changefreq>yearly</changefreq>'}
-            {'<priority>1.0</priority>'}
-            {'</url>'}
-          </div>
-        ))}{' '}
         <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
           **Model not found above?
           <Link href="/get-in-touch">

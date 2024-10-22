@@ -23,7 +23,6 @@ export default async function Make() {
               IN UAE
             </h1>
             <SearchMake posts={modelforms} />
-
             <p className="text-gray-600 text-base md:text-lg lg:text-2xl font-normal font-sans xs:text-xs 2xs:text-xs mx-10 xs:ml-3 underline">
               <nobr className="text-blue-400 no-underline">
                 <i className="fal fa-car-garage"></i> Current path:&nbsp;&nbsp;
@@ -57,6 +56,13 @@ export default async function Make() {
                 ))}
               </div>
             </article>
+            {posts.map((post, i) => (
+              <div key={i}>
+                {`'https://emirates-car.com/allsitemaps/${encodeURIComponent(
+                  post.make.toLowerCase()
+                )}/sitemap.xml',`}
+              </div>
+            ))}{' '}
             <div className="text-center mt-2 text-red-400 text-sm xs:text-xs">
               **Make not found above?{' '}
               <Link href="/get-in-touch">

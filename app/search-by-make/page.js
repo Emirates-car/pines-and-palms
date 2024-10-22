@@ -56,6 +56,13 @@ export default async function Make() {
                 ))}
               </div>
             </article>
+            {posts.map((post, i) => (
+              <div key={i}>
+                {`'https://emirates-car.com/allsitemaps/${encodeURIComponent(
+                  post.make.toLowerCase()
+                )}/sitemap.xml',`}
+              </div>
+            ))}{' '}
             <div className="text-center mt-2 text-red-400 text-sm xs:text-xs">
               **Make not found above?{' '}
               <Link href="/get-in-touch">

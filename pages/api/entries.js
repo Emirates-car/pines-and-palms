@@ -9,13 +9,13 @@ async function handler(req, res) {
       null,
       process.env.EMIRATES_CAR_FORMS_PRIVATE_KEY.replace(/\\n/g, '\n'),
       scopes,
-      null
+      null,
     );
 
     const readData = await sheets.spreadsheets.values.get({
       auth: jwt,
       spreadsheetId: process.env.EMIRATES_CAR_DATABASE_ID,
-      range: 'emirates-car-sheet'
+      range: 'emirates-car-sheet',
     });
     const values = readData.data.values;
     const startIndex = Math.max(values.length - 10, 0);
@@ -30,7 +30,6 @@ async function handler(req, res) {
       });
       return entry;
     });
-
 
     res.status(201).json(dataValue);
   } else {

@@ -23,10 +23,24 @@ export const metadata = {
   verification: {
     google: '2dbXrKrxCBjzz1bLwaw_6nd4YEhhviwPLiGq6fLXPoU',
     yandex: '1a59e5a3d5ee0eeb',
-    naver: 'naver0db31bf474cde5117209785bc5c104ab.html',
     yahoo: 'yahoo',
     other: {
       me: ['emiratesautomobileparts@gmail.com', 'https://emirates-car.com'],
+    },
+  },
+  alternates: {
+    canonical: 'https://emirates-car.com',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   openGraph: {
@@ -52,9 +66,6 @@ export const metadata = {
     ],
     locale: 'en_US',
     type: 'website',
-    alternates: {
-      canonical: 'https://emirates-car.com',
-    },
   },
   twitter: {
     card: 'summary_large_image',

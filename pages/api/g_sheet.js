@@ -10,13 +10,13 @@ async function handler(req, res) {
       null,
       process.env.EMIRATES_CAR_FORMS_PRIVATE_KEY.replace(/\\n/g, '\n'),
       scopes,
-      null
+      null,
     );
 
     const readData = await sheets.spreadsheets.values.get({
       auth: jwt,
       spreadsheetId: process.env.EMIRATES_CAR_DATABASE_ID,
-      range: 'emirates-car-sheet'
+      range: 'emirates-car-sheet',
     });
 
     const today = new Date();
@@ -50,12 +50,14 @@ async function handler(req, res) {
     fetch(
       `https://api.telegram.org/bot${
         process.env.TELEGRAM_BOT
-      }/sendMessage?chat_id=${process.env.CHAT_ID}&text=${messageURIOne +
+      }/sendMessage?chat_id=${process.env.CHAT_ID}&text=${
+        messageURIOne +
         '\n' +
         'https://api.whatsapp.com/send?phone=' +
         contact +
         '&text=' +
-        messageURIOne}`
+        messageURIOne
+      }`,
     );
 
     const response = await sheets.spreadsheets.values.append({
@@ -82,47 +84,47 @@ async function handler(req, res) {
             N,
             Q,
             Follow,
-            S
-          ]
-        ]
-      }
+            S,
+          ],
+        ],
+      },
     });
     const data = JSON.stringify(response);
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
         user: 'emiratesautomobileparts@gmail.com',
-        pass: process.env.PASSKEY
-      }
+        pass: process.env.PASSKEY,
+      },
     });
-    var details = `${RefNo +
+    var details = `${
+      RefNo +
       '\n' +
       'We received an inquiry for ' +
       '\n' +
       description +
-      'Do you still require it?'}`;
+      'Do you still require it?'
+    }`;
     var detailEncode = encodeURI(details);
 
     // Prepare email message
     const mailOptions = {
       from: 'emiratesautomobileparts@gmail.com',
       to: 'haksinterlance@gmail.com',
-      subject: `${year +
-        ' ' +        brand +
-        ' ' +
-        model +
-        ' ' +
-        address +
-        ' Order Received'}`,
-      text: `${Timestamp +
+      subject: `${
+        year + ' ' + brand + ' ' + model + ' ' + address + ' Order Received'
+      }`,
+      text: `${
+        Timestamp +
         '\n' +
         RefNo +
         '\n' +
         description +
         '\n' +
         `https://api.whatsapp.com/send?phone=${contact}&text=${encodeURI(
-          description
-        )}`}`
+          description,
+        )}`
+      }`,
     };
 
     await transporter.sendMail(mailOptions);

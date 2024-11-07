@@ -1,5 +1,5 @@
-import Links from "../../links";
+import Links from '../../links';
 
 export default function handler(req, res) {
-  res.status(200).json(Links)
+  res.status(200).json(Links);
 }

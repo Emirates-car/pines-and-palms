@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
 import FormComponent from '../FormComponent';
-import Social from '../Social';
 import { getFormModel, getMake, getParts } from '../page';
-import Image from "next/image";
+import Image from 'next/image';
 import Hero_img from '../../public/img/car-spare-parts.png';
+import Social from '../Social';
 
 export default async function Contact() {
   const partsposts = await getParts();
@@ -13,14 +13,16 @@ export default async function Contact() {
   return (
     <div>
       <div className="container place-content-center py-6 xl:mx-auto lg:mx-auto md:mx-auto xs:py-0">
-        <Social/>
-        <div className="flex s:grid s:grid-cols-1 xs:grid xs:grid-cols-1 xl:mx-10 lg:mx-7 md:mx-5 xs:w-screen s:w-screen 2xs:w-screen sm:w-screen 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1 shadow-2xl xs:shadow-none 2xs:shadow-none sm:shadow-sm">
+        <h1 className="text-4xl md:text-lg lg:text-2xl text-center font-extrabold xs:text-base 2xs:text-xs">
+          Auto Spare parts in UAE
+        </h1>
+        <div className="flex s:grid s:grid-cols-1 xs:grid xs:grid-cols-1 xl:mx-10 lg:mx-7 md:mx-5 xs:w-screen s:w-screen 2xs:w-screen sm:w-screen 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1">
           <FormComponent formsData={modelforms} postFilter={partsposts} />
         </div>
       </div>
       <div className="py-6 bg-blue-500">
         <div className="pb-6 xs:pb-3 p-2 sm:pb-3 2xs:pb-3">
-          <h1 className="text-3xl xs:text-sm text-white uppercase text-center font-bold 2xs:text-base md:text-xl lg:text-2xl s:text-sm">
+          <h6 className="text-3xl xs:text-sm text-white uppercase text-center font-bold 2xs:text-base md:text-xl lg:text-2xl s:text-sm">
             COULD&apos;NT FIND YOUR DESIRED AUTO PARTS?{' '}
             <Link
               href="https://emirates-car.com/contact"
@@ -28,8 +30,9 @@ export default async function Contact() {
             >
               CONTACT US NOW
             </Link>
-          </h1>
+          </h6>
         </div>
+        <Social />
         {/*Footer*/}
         <div className=" bg-purple-700 py-10 xs:py-5 2xs:py-5 sm:py-5">
           <div className="grid grid-cols-3 xs:grid xs:grid-cols-1 s:grid s:grid-cols-1 sm:grid sm:grid-cols-1 ">

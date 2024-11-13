@@ -39,7 +39,7 @@ import TenEntries from '../../tenentries';
 
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/palms/${make}`
+    `https://rozy-api-two.vercel.app/api/palms/${make}`,
   ).then(res => res.json());
   return posts.map(post => ({
     make: post.make,
@@ -103,7 +103,7 @@ export async function generateMetadata({ params }) {
 
 async function getModel(make) {
   const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
   );
   const data = await res.json();
 

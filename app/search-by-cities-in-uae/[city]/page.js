@@ -1,10 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import HondaOfferButton from '../../HondaOfferButton';
 import { getFormModel, getMake, getParts } from '../../page';
 import FormComponent from '../../FormComponent';
 import Footer from '../../footer';
-import Social from '../../Social';
 import Image from 'next/image';
 import Britain from '../../../public/img/icons/united-kingdom.png';
 import Indian from '../../../public/img/icons/india.png';
@@ -20,13 +18,13 @@ import Contents from '../../Contents';
 export async function generateMetadata({ params }) {
   const { city } = params;
   return {
-    title: `Quick Car Auto Spare Parts Order Online in ${city} (UAE) | Emirates-car.com`,
-    description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${city}  uae`,
+    title: `Auto spare parts in ${decodeURIComponent(city)}, Order Online from Dubai Dealers UAE - Best Prices`,
+    description: `Used, New, Genuine / Original / OEM, Aftermarket car Online in ${decodeURIComponent(city)} UAE`,
     openGraph: {
       images: '/favicon.png',
-      title: `Quick Car Auto Spare Parts Order Online in ${city} (UAE) |
+      title: `Auto spare parts Order Online from Dubai Dealers in ${decodeURIComponent(city)}, UAE - Best Prices |
           Emirates-car.com`,
-      description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${city}  uae`,
+      description: `Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(city)}  uae`,
       url: 'https://emirates-car.com/search-by-cities-in-uae/' + city,
       image: 'https://emirates-car.com/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
@@ -48,10 +46,10 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Quick Car Auto Spare Parts Order Online in ${city} (UAE) |
+      title: `Quick Car Auto Spare Parts Order Online in ${decodeURIComponent(city)} (UAE) |
           Emirates-car.com`,
       url: 'https://emirates-car.com/search-by-cities-in-uae/' + city,
-      description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${city}  uae`,
+      description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(city)}  uae`,
       images: ['https://emirates-car.com/favicon.png'],
     },
     icons: {
@@ -63,7 +61,7 @@ export async function generateMetadata({ params }) {
         url: '/icons/icon-152x152.png',
       },
     },
-    category: `Auto spare parts in ${city}`,
+    category: `Auto spare parts in ${decodeURIComponent(city)}`,
     alternates: {
       canonical: `https://emirates-car.com/search-by-cities-in-uae/${city}`,
     },

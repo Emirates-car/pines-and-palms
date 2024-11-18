@@ -34,6 +34,8 @@ import SearchModel from '../../../SearchModel';
 import Link from 'next/link';
 import SearchCity from '../../../SearchCity';
 import Footer from '../../../footer';
+import HondaOfferButton from '../../../HondaOfferButton';
+import PartsAccordion from '../../../Parts-Accordion';
 
 export async function generateStaticParams({ make, location }) {
   try {
@@ -154,12 +156,24 @@ async function getModel(make) {
   return uniqueObjectArray;
 }
 
+async function getLocation(make) {
+  const res = await fetch(`https://rozy-api-two.vercel.app/api/desert/${make}`);
+  const data = await res.json();
+
+  let uniqueObjectArray = [
+    ...new Map(data.map(item => [item['location'], item])).values(),
+  ];
+  return uniqueObjectArray;
+}
+
 export default async function Cities({ params }) {
   const { make, location } = params;
   const carmodel = await getModel(make);
   const partspost = await getParts();
   const cities = await getCity();
   const modelsform = await getFormModel();
+  const makeLocation = await getLocation(make);
+  const mapLocation = makeLocation.map(d => d.location);
 
   const images = [
     {
@@ -463,7 +477,7 @@ export default async function Cities({ params }) {
           <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
             Search{' '}
             <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
-            Spare parts Anywhere in UAE
+            Spare parts Anywhere in {location}
           </h3>
           <SearchCity cities={cities} />
           <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
@@ -485,6 +499,7 @@ export default async function Cities({ params }) {
           </div>
         </div>
         <TenEntries />
+        <PartsAccordion make={make} location={location} />
         <Contents />
       </main>
       <Footer />

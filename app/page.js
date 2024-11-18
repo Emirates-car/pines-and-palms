@@ -8,6 +8,7 @@ import TenEntries from './tenentries';
 import Contents from './Contents';
 import Footer from './footer';
 import StaticCities from './StaticCities';
+import MainAccordion from './Main-Accordion';
 
 export async function getMake() {
   const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);
@@ -36,7 +37,7 @@ export async function getFormModel() {
 
 export async function getCity() {
   const cityresponse = await fetch(
-    `https://rozy-api-two.vercel.app/api/cities`
+    `https://rozy-api-two.vercel.app/api/cities`,
   );
   const cities = await cityresponse.json();
   return cities;
@@ -948,6 +949,7 @@ export default async function Home() {
         </div>
 
         <TenEntries />
+        <MainAccordion />
 
         <div className="mx-auto py-10">
           <Count />

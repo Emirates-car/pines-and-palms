@@ -60,10 +60,10 @@ export default async function HomeHero() {
                 <div className="grid grid-cols-8 xs:hidden xxs:hidden md:grid-cols-4 lg:grid-cols-4 gap-2 place-content-center mb-10">
                   <div className="flex justify-center text-center">
                     <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
+                      <Link href="/spare-parts/german-auto-spare-parts">
                         <Image
                           src={Germany}
-                          alt="british car auto spare parts"
+                          alt="german car auto spare parts"
                           className="my-1 px-2 py-1"
                           height={50}
                           width={50}
@@ -93,10 +93,10 @@ export default async function HomeHero() {
 
                   <div className="flex justify-center text-center ">
                     <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
+                      <Link href="/spare-parts/japanese-auto-spare-parts">
                         <Image
                           src={Japan}
-                          alt="british car auto spare parts"
+                          alt="japanese car auto spare parts"
                           className="my-1 px-2 py-1"
                           height={50}
                           width={50}
@@ -110,7 +110,7 @@ export default async function HomeHero() {
                   </div>
                   <div className="flex justify-center text-center">
                     <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
+                      <Link href="/spare-parts/korean-auto-spare-parts">
                         <Image
                           src={Korean}
                           alt="british car auto spare parts"
@@ -179,10 +179,10 @@ export default async function HomeHero() {
                   </div>
                   <div className="flex justify-center text-center">
                     <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
+                      <Link href="/spare-parts/french-auto-spare-parts">
                         <Image
                           src={France}
-                          alt="british car auto spare parts"
+                          alt="french car auto spare parts"
                           className="my-1 px-2 py-1"
                           height={50}
                           width={50}

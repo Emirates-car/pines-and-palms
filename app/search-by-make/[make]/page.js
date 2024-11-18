@@ -36,6 +36,7 @@ import Contents from '../../Contents';
 import Hero_img from '../../../public/img/car-spare-parts.png';
 import SearchCity from '../../SearchCity';
 import TenEntries from '../../tenentries';
+import PartsAccordion from '../../Parts-Accordion';
 
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
@@ -437,6 +438,7 @@ export default async function MakePage({ params }) {
           </div>
         </div>
         <TenEntries />
+        <PartsAccordion make={make} />
         <Contents />
       </main>
       <Footer />

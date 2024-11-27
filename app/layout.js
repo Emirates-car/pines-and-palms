@@ -18,25 +18,25 @@ export const metadata = {
     'Auto Spare Parts Order Online in UAE from Dubai dealers | Emirates-car.com',
   description:
     'Buy Car spare parts Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE for German, American, Korean, Japanese models',
-  metadataBase: new URL('https://emirates-car.com'),
-  manifest: 'https://emirates-car.com/manifest.json',
+  metadataBase: new URL('https://www.emirates-car.com'),
+  manifest: 'https://www.emirates-car.com/manifest.json',
   verification: {
     google: '2dbXrKrxCBjzz1bLwaw_6nd4YEhhviwPLiGq6fLXPoU',
     yandex: '1a59e5a3d5ee0eeb',
     yahoo: 'yahoo',
     other: {
-      me: ['emiratesautomobileparts@gmail.com', 'https://emirates-car.com'],
+      me: ['emiratesautomobileparts@gmail.com', 'https://www.emirates-car.com'],
     },
   },
   alternates: {
-    canonical: 'https://emirates-car.com',
+    canonical: 'https://www.emirates-car.com',
   },
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
-      follow: false,
+      follow: true,
       noimageindex: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
@@ -44,21 +44,20 @@ export const metadata = {
     },
   },
   openGraph: {
-    images: '/favicon.png',
     title:
       'Auto Spare Parts Order Online in UAE from Dubai dealers | Emirates-car.com',
     description:
       'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE for German, American, Korean, Japanese models',
-    url: 'https://emirates-car.com',
+    url: 'https://www.emirates-car.com',
     siteName: 'Emirates Auto Parts',
     images: [
       {
-        url: 'https://emirates-car.com/icon-192x192.png',
+        url: 'https://www.emirates-car.com/icon-192x192.png',
         width: 192,
         height: 192,
       },
       {
-        url: 'https://emirates-car.com/icons/icon-512x512.png',
+        url: 'https://www.emirates-car.com/icons/icon-512x512.png',
         width: 512,
         height: 512,
         alt: 'car parts',
@@ -72,15 +71,15 @@ export const metadata = {
     title: 'Car spare parts',
     description:
       'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE for German, American, Korean, Japanese models',
-    images: ['https://emirates-car.com/favicon.png'],
+    images: 'https://www.emirates-car.com/favicon.png',
   },
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/icons/icon-96x96.png',
-    apple: '/icons/icon-192x192.png',
+    icon: 'https://www.emirates-car.com/favicon.png',
+    shortcut: 'https://www.emirates-car.com/icons/icon-96x96.png',
+    apple: 'https://www.emirates-car.com/icons/icon-192x192.png',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/icons/icon-152x152.png',
+      url: 'https://www.emirates-car.com/icons/icon-152x152.png',
     },
   },
   category: 'car parts',

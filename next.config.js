@@ -1,5 +1,5 @@
 const withPWA = require('next-pwa')({
-  dest: 'public'
+  dest: 'public',
   // disable: process.env.NODE_ENV === 'development',
   // register: true,
   // scope: '/app',
@@ -10,14 +10,14 @@ const withPWA = require('next-pwa')({
 module.exports = withPWA({
   reactStrictMode: true,
   eslint: {
-    ignoreDuringBuilds: true
+    ignoreDuringBuilds: true,
   },
   swcMinify: true,
   serverRuntimeConfig: {
-    GOOGLE_MAPS_API_KEY: process.env.MAP_API_KEY
+    GOOGLE_MAPS_API_KEY: process.env.MAP_API_KEY,
   },
   publicRuntimeConfig: {
-    GOOGLE_MAPS_API_KEY: process.env.MAP_API_KEY
+    GOOGLE_MAPS_API_KEY: process.env.MAP_API_KEY,
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -34,7 +34,7 @@ module.exports = withPWA({
         tls: false,
         http: false,
         stream: false,
-        request: false
+        request: false,
       };
     }
     return config;
@@ -43,7 +43,22 @@ module.exports = withPWA({
     dest: 'public',
     register: true,
     skipWaiting: true,
-    disable: process.env.NODE_ENV === 'development'
+    disable: process.env.NODE_ENV === 'development',
   },
-  staticPageGenerationTimeout: 5000
+  staticPageGenerationTimeout: 5000,
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.emirates-car.com',
+          },
+        ],
+        destination: 'https://emirates-car.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
 });

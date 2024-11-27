@@ -27,7 +27,7 @@ import SideMirror from '../../../../public/img/honda-eighth-gen/Side_Mirror.webp
 import SteeringWheel from '../../../../public/img/honda-eighth-gen/Steering_Wheel.webp';
 import Wheel from '../../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
-import { getCity, getFormModel, getParts } from '../../../page';
+import { getCity, getFormModel, getParts, getMake } from '../../../page';
 import Image from 'next/image';
 import FormComponent from '../../../FormComponent';
 import SearchModel from '../../../SearchModel';
@@ -171,6 +171,7 @@ export default async function Cities({ params }) {
   const carmodel = await getModel(make);
   const partspost = await getParts();
   const cities = await getCity();
+  const posts = await getMake();
   const modelsform = await getFormModel();
   const makeLocation = await getLocation(make);
   const mapLocation = makeLocation.map(d => d.location);
@@ -499,6 +500,31 @@ export default async function Cities({ params }) {
           </div>
         </div>
         <TenEntries />
+        <div className="grid grid-cols-4 xs:ml-4 md:mx-4 sm:ml-0 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-3 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 2xs:mx-4 md:ml-11 mr-3 my-10 font-sans">
+          {posts.map((post, i) => (
+            <div key={i}>
+              <Link
+                href="/search-by-brands-in-uae/[make]/[location]"
+                as={'/search-by-brands-in-uae/' + post.make + '/' + location}
+                title={post.make + ' spare parts'}
+              >
+                <main className="text-center text-base xs:text-xs xs:text-center font-mono text-blue-500 underline hover:text-blue-700 focus:text-blue-700 border border-gray-100">
+                  <div className="flex justify-center">
+                    <Image
+                      alt={post.make + ' parts uae'}
+                      src={'/img/car-logos/' + post.img}
+                      className="object-scale-down shadow-xl"
+                      height={30}
+                      width={30}
+                    />
+                    <br />
+                  </div>
+                  {post.make.toUpperCase()}
+                </main>
+              </Link>
+            </div>
+          ))}
+        </div>
         <PartsAccordion make={make} location={location} />
         <Contents />
       </main>

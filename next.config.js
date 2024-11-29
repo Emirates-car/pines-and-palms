@@ -46,19 +46,5 @@ module.exports = withPWA({
     disable: process.env.NODE_ENV === 'development',
   },
   staticPageGenerationTimeout: 5000,
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.emirates-car.com',
-          },
-        ],
-        destination: 'https://emirates-car.com/:path*',
-        permanent: true,
-      },
-    ];
-  },
+ 
 });

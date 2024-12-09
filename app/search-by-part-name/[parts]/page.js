@@ -21,20 +21,20 @@ export async function generateMetadata({ params }) {
   const { parts } = params;
   return {
     title: `${decodeURIComponent(
-      parts
+      parts,
     )} Car Auto Spare Parts Order Online in UAE |
           Emirates-car.com`,
     description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(
-      parts
+      parts,
     )}  uae`,
     openGraph: {
       images: '/favicon.png',
       title: `${decodeURIComponent(
-        parts
+        parts,
       )} Car Auto Spare Parts Order Online in UAE |
           Emirates-car.com`,
       description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(
-        parts
+        parts,
       )}  uae`,
       url: 'https://emirates-car.com/search-by-part-name/' + parts,
       image: 'https://emirates-car.com/img/car-spare-parts.png',
@@ -58,12 +58,12 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: `${decodeURIComponent(
-        parts
+        parts,
       )} Car Auto Spare Parts Order Online in UAE |
           Emirates-car.com`,
       url: 'https://emirates-car.com/search-by-part-name/' + parts,
       description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(
-        parts
+        parts,
       )}  uae`,
       images: ['https://emirates-car.com/favicon.png'],
     },
@@ -78,26 +78,26 @@ export async function generateMetadata({ params }) {
     },
     category: `${parts}`,
     alternates: {
-      canonical: `https://emirates-car.com/search-by-part-name/${parts}`,
+      canonical: `https://emirates-car.com/search-by-part-name/${encodeURIComponent(parts)}`,
     },
     keywords: `${decodeURIComponent(parts)} for honda, ${decodeURIComponent(
-      parts
+      parts,
     )} in  dubai, ${decodeURIComponent(
-      parts
+      parts,
     )} for porsche, ${decodeURIComponent(
-      parts
+      parts,
     )} for volkswagen, ${decodeURIComponent(
-      parts
+      parts,
     )} for volvo, ${decodeURIComponent(parts)} online, ${decodeURIComponent(
-      parts
+      parts,
     )} for ford, ${decodeURIComponent(
-      parts
+      parts,
     )} spare parts uae, ${decodeURIComponent(
-      parts
+      parts,
     )} spare parts online, ${decodeURIComponent(
-      parts
+      parts,
     )} used spare parts dubai, ${decodeURIComponent(
-      parts
+      parts,
     )} spare parts near me`,
   };
 }

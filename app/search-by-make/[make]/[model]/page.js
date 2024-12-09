@@ -32,11 +32,11 @@ import FormComponent from '../../../FormComponent';
 
 export async function generateStaticParams({ make, model }) {
   const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/palms/${make}/${model}`
+    `https://rozy-api-two.vercel.app/api/palms/${make}/${model}`,
   ).then(res => res.json());
   return posts.map(post => ({
     make: post.make,
-    model: post.model
+    model: post.model,
   }));
 }
 
@@ -44,20 +44,20 @@ export async function generateMetadata({ params }) {
   const { make, model } = params;
   return {
     title: `${make} - ${decodeURIComponent(
-      model
+      model,
     )} Car Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
     description: `Buy ${make} - ${decodeURIComponent(
-      model
+      model,
     )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
     openGraph: {
       images: '/favicon.png',
       title: `${make} - ${decodeURIComponent(
-        model
+        model,
       )} Car Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
       description: `Buy ${make} - ${decodeURIComponent(
-        model
+        model,
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
       url: 'https://emirates-car.com/search-by-make/' + make + '/' + model,
       image: '/img/car-spare-parts.png',
@@ -66,29 +66,29 @@ export async function generateMetadata({ params }) {
         {
           url: '/icon-192x192.png',
           width: 192,
-          height: 192
+          height: 192,
         },
         {
           url: '/icons/icon-512x512.png',
           width: 512,
           height: 512,
-          alt: 'car parts'
-        }
+          alt: 'car parts',
+        },
       ],
       locale: 'en_US',
-      type: 'website'
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: `${make} - ${decodeURIComponent(
-        model
+        model,
       )} Car Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
       url: '/search-by-make/' + make + '/' + model,
       description: `Buy ${make} - ${decodeURIComponent(
-        model
+        model,
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
-      images: ['/favicon.png']
+      images: ['/favicon.png'],
     },
     icons: {
       icon: '/favicon.png',
@@ -96,53 +96,53 @@ export async function generateMetadata({ params }) {
       apple: '/icons/icon-192x192.png',
       other: {
         rel: 'apple-touch-icon-precomposed',
-        url: '/icons/icon-152x152.png'
-      }
+        url: '/icons/icon-152x152.png',
+      },
     },
     alternates: {
-      canonical: `/search-by-make/${make}/${model}`
+      canonical: `/search-by-make/${make}/${model}`,
     },
     category: `${make} ${decodeURIComponent(model)} auto spare parts`,
     keywords: `${make} ${decodeURIComponent(
-      model
+      model,
     )} spare parts sharjah, used ${make} ${model} spare parts, ${make} ${decodeURIComponent(
-      model
+      model,
     )} spare parts online, ${make} ${decodeURIComponent(
-      model
+      model,
     )} spare parts near me, ${make} ${decodeURIComponent(
-      model
+      model,
     )} wheels, ${make} ${decodeURIComponent(
-      model
+      model,
     )} distributor, ${make} ${decodeURIComponent(
-      model
+      model,
     )} shock absorber, ${make} ${decodeURIComponent(
-      model
+      model,
     )} spark plugs, ${make} ${decodeURIComponent(
-      model
+      model,
     )} fuse box, ${make} ${decodeURIComponent(
-      model
-    )} radiator, ${make} ${decodeURIComponent(model)} fuel pump`
+      model,
+    )} radiator, ${make} ${decodeURIComponent(model)} fuel pump`,
   };
 }
 async function getYear(make, model) {
   const response = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
   );
   const dat = await response.json();
   let uniqueYearArray = [
-    ...new Map(dat.map(item => [item['year'], item])).values()
+    ...new Map(dat.map(item => [item['year'], item])).values(),
   ];
   return uniqueYearArray;
 }
 async function getMakeImage(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
   );
   const reDat = await re.json();
   let uniqueMkeArray = [
-    ...new Map(reDat.map(item => [item['img'], item])).values()
+    ...new Map(reDat.map(item => [item['img'], item])).values(),
   ];
-  const imageMake = uniqueMkeArray.map(function(i) {
+  const imageMake = uniqueMkeArray.map(function (i) {
     return i.img;
   });
   return imageMake;
@@ -150,22 +150,24 @@ async function getMakeImage(make, model) {
 
 async function getDescription(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
   );
   const reDat = await re.json();
   let uniqueDescriptionArray = [
-    ...new Map(reDat.map(item => [item['description'], item])).values()
+    ...new Map(reDat.map(item => [item['description'], item])).values(),
   ];
-  const description = uniqueDescriptionArray.map(function(i) {
+  const description = uniqueDescriptionArray.map(function (i) {
     return i.description;
   });
 }
 
 async function getModel(make, model) {
-  const response = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`);
+  const response = await fetch(
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
+  );
   const dat = await response.json();
   let uniqueMakeArray = [
-    ...new Map(dat.map(item => [item['model'], item])).values()
+    ...new Map(dat.map(item => [item['model'], item])).values(),
   ];
   return uniqueMakeArray;
 }
@@ -191,154 +193,148 @@ export default async function Model({ params }) {
       images: ABS,
       name: 'ABS',
       alt: `${make} ${model} "anti lock braking system"`,
-      link:
-        '/search-by-part-name/Anti-Lock%20Brake%20Control%20Module%20(ABS)'
+      link: '/search-by-part-name/Anti-Lock%20Brake%20Control%20Module%20(ABS)',
     },
     {
       images: AirFilter,
       name: 'Air Filter',
       alt: `${make} ${model} "air filter"`,
-      link: '/get-in-touch'
+      link: '/get-in-touch',
     },
 
     {
       images: AirSuspension,
       name: 'Air Suspension',
       alt: `${make} ${model} "air suspension"`,
-      link: '/get-in-touch'
+      link: '/get-in-touch',
     },
 
     {
       images: AxleAssembly,
       name: 'Axle',
       alt: `${make} ${model} " axle"`,
-      link:
-        '/search-by-part-name/Axle%20Assembly%20(Front,%204WD)'
+      link: '/search-by-part-name/Axle%20Assembly%20(Front,%204WD)',
     },
     {
       images: BrakePads,
       name: 'Brake Pads',
       alt: `${make} ${model} "brake pads"`,
-      link: '/get-in-touch'
+      link: '/get-in-touch',
     },
     {
       images: CatalyticConverter,
       name: 'Catalytic Convertor',
       alt: `${make} ${model} "catalytic convertor"`,
-      link: '/get-in-touch'
+      link: '/get-in-touch',
     },
     {
       images: CylinderHead,
       name: 'Cylinder Head',
       alt: `${make} ${model} "cylinder"`,
-      link: '/search-by-part-name/Cylinder%20Head)'
+      link: '/search-by-part-name/Cylinder%20Head)',
     },
     {
       images: Distributor,
       name: 'Distributor',
       alt: 'honda accord distributor',
-      link: '/search-by-part-name/Distributor'
+      link: '/search-by-part-name/Distributor',
     },
     {
       images: Engine,
       name: 'Engine',
       alt: `${make} ${model} "engine"`,
-      link: '/search-by-part-name/Engine%20Assembly'
+      link: '/search-by-part-name/Engine%20Assembly',
     },
     {
       images: ExhaustManifold,
       name: 'Exhaust Manifold',
       alt: `${make} ${model} "exhaust system"`,
-      link: '/search-by-part-name/Exhaust%20Manifold'
+      link: '/search-by-part-name/Exhaust%20Manifold',
     },
     {
       images: GearBox,
       name: 'Gearbox / Transmission',
       alt: `${make} ${model} "gearbox"`,
-      link:
-        '/search-by-part-name/Transmission%20Control%20Module'
+      link: '/search-by-part-name/Transmission%20Control%20Module',
     },
     {
       images: Grille,
       name: 'Grille',
       alt: `${make} ${model} " grill"`,
-      link: '/search-by-part-name/Grille'
+      link: '/search-by-part-name/Grille',
     },
     {
       images: Headlight,
       name: 'Headlight',
       alt: `${make} ${model} " headlight bulb"`,
-      link: '/search-by-part-name/Headlight%20Assembly'
+      link: '/search-by-part-name/Headlight%20Assembly',
     },
     {
       images: MasterCylinderKit,
       name: 'Master Cylinder',
       alt: `${make} ${model} " master cylinder"`,
-      link:
-        '/search-by-part-name/Master%20Cylinder%20(Clutch)'
+      link: '/search-by-part-name/Master%20Cylinder%20(Clutch)',
     },
     {
       images: MudFlap,
       name: 'Mud Flap',
       alt: `${make} ${model} " mud flaps"`,
-      link: '/get-in-touch'
+      link: '/get-in-touch',
     },
     {
       images: Radiator,
       name: 'Radiator',
       alt: `${make} ${model} " radiator"`,
-      link: '/search-by-part-name/Radiator'
+      link: '/search-by-part-name/Radiator',
     },
     {
       images: RearBumper,
       name: 'Rear Bumper',
       alt: `${make} ${model}" rear bumper"`,
-      link:
-        '/search-by-part-name/Bumper%20Assembly%20(Rear)'
+      link: '/search-by-part-name/Bumper%20Assembly%20(Rear)',
     },
     {
       images: ReverseLight,
       name: 'Reverse Light',
-      alt: `${make} ${model} " reverse light bulb"`,
-      link: '/search-by-part-name/Reverse%20Light'
+      alt: `${make} ${model} "reverse light bulb"`,
+      link: '/search-by-part-name/Reverse%20Light',
     },
     {
       images: Rim,
       name: 'Rims',
-      alt: `${make} ${model} " rims for sale"`,
-      link: '/search-by-part-name/Rim'
+      alt: `${make} ${model} "rims for sale"`,
+      link: '/search-by-part-name/Rim',
     },
     {
       images: SeatBelt,
       name: 'Seat Belt',
-      alt: `${make} ${model} " seat belt"`,
-      link: '/search-by-part-name/Seat%20Belt'
+      alt: `${make} ${model} "seat belt"`,
+      link: '/search-by-part-name/Seat%20Belt',
     },
     {
       images: ShockAbsorber,
       name: 'Shock Absorber',
-      alt: `${make} ${model} " shock absorber"`,
-      link: '/search-by-part-name/Shock%20Absorber'
+      alt: `${make} ${model} "shock absorber"`,
+      link: '/search-by-part-name/Shock%20Absorber',
     },
     {
       images: SideMirror,
       name: 'Mirror',
       alt: `${make} ${model}" mirrors"`,
-      link:
-        '/search-by-part-name/Mirror%20(Rear%20View)'
+      link: '/search-by-part-name/Mirror%20(Rear%20View)',
     },
     {
       images: SteeringWheel,
       name: 'Steering Wheel',
       alt: `${make} ${model} " steering wheel"`,
-      link: '/search-by-part-name/Steering%20Wheel'
+      link: '/search-by-part-name/Steering%20Wheel',
     },
     {
       images: Wheel,
       name: 'Wheels',
       alt: `${make} ${model} " wheels"`,
-      link: '/search-by-part-name/Wheel'
-    }
+      link: '/search-by-part-name/Wheel',
+    },
   ];
   return (
     <div>
@@ -411,12 +407,7 @@ export default async function Model({ params }) {
                       <div key={i}>
                         <Link
                           href="/search-by-make/[make]/[model]"
-                          as={
-                            '/search-by-make/' +
-                            post.make +
-                            '/' +
-                            post.model
-                          }
+                          as={'/search-by-make/' + post.make + '/' + post.model}
                         >
                           <main className=" xs:text-center font-sans text-blue-800 underline hover:text-blue-700 focus:text-blue-700">
                             {post.make}&nbsp;{post.model.replace('%2F', '/')}
@@ -728,7 +719,7 @@ export default async function Model({ params }) {
                 <div key={i}>
                   <Link
                     href="/search-by-part-name/[parts]"
-                    as={'/search-by-part-name/'+"/" + post.parts}
+                    as={'/search-by-part-name/' + '/' + post.parts}
                     title={make + ' ' + model + ' ' + post.parts}
                   >
                     <p className="text-gray-700 hover:text-blue-700 focus:text-blue-700 text-xl xs:text-lg font-sans mx-auto my-5 xs:my-0">

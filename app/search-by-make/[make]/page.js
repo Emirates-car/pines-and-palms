@@ -47,19 +47,47 @@ export async function generateStaticParams({ make }) {
   }));
 }
 
+async function getModel(make) {
+  const res = await fetch(
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
+  );
+  const data = await res.json();
+
+  let uniqueObjectArray = [
+    ...new Map(data.map(item => [item['model'], item])).values(),
+  ];
+  return uniqueObjectArray;
+}
+
+async function getKeyword(make) {
+  const res = await fetch(
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
+  );
+  const data = await res.json();
+
+  let uniqueObjectArray = [
+    ...new Map(data.map(item => [item['keyword'], item])).values(),
+  ];
+  return uniqueObjectArray;
+}
+
 export async function generateMetadata({ params }) {
   const { make } = params;
+  const keyword = getKeyword(make);
   return {
     title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
     description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
+    metadataBase: new URL(
+      'https://www.emirates-car.com/search-by-make/${make}',
+    ),
     openGraph: {
       images: '/favicon.png',
       title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
       description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
       url: 'https://emirates-car.com/search-by-make/' + make,
-      image: 'https://emirates-car.com/img/car-spare-parts.png',
+      image: 'https://www.emirates-car.com/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
         {
@@ -96,22 +124,10 @@ export async function generateMetadata({ params }) {
     },
     category: `${make} auto spare parts`,
     alternates: {
-      canonical: `https://emirates-car.com/search-by-make/${make}`,
+      canonical: `https://www.emirates-car.com/search-by-make/${make}`,
     },
     keywords: `${make} spare parts sharjah, ${make} spare parts dubai, ${make} spare parts ras al khaimah, ${make} spare parts ajman, ${make} spare parts deira, ${make} spare parts ras al khor, ${make} spare parts al quoz, ${make} spare parts uae, ${make} spare parts online, ${make} used spare parts dubai, ${make} spare parts near me`,
   };
-}
-
-async function getModel(make) {
-  const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
-  );
-  const data = await res.json();
-
-  let uniqueObjectArray = [
-    ...new Map(data.map(item => [item['model'], item])).values(),
-  ];
-  return uniqueObjectArray;
 }
 
 export default async function MakePage({ params }) {

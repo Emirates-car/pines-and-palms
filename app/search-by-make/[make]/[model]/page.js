@@ -50,6 +50,9 @@ export async function generateMetadata({ params }) {
     description: `Buy ${make} - ${decodeURIComponent(
       model,
     )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
+    metadataBase: new URL(
+      'https://www.emirates-car.com/search-by-make/${make}/${model}',
+    ),
     openGraph: {
       images: '/favicon.png',
       title: `${make} - ${decodeURIComponent(
@@ -59,7 +62,7 @@ export async function generateMetadata({ params }) {
       description: `Buy ${make} - ${decodeURIComponent(
         model,
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
-      url: 'https://emirates-car.com/search-by-make/' + make + '/' + model,
+      url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model,
       image: '/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
@@ -100,7 +103,19 @@ export async function generateMetadata({ params }) {
       },
     },
     alternates: {
-      canonical: `/search-by-make/${make}/${model}`,
+      canonical: `https://www.emirates-car.com/search-by-make/${make}/${model}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
     category: `${make} ${decodeURIComponent(model)} auto spare parts`,
     keywords: `${make} ${decodeURIComponent(

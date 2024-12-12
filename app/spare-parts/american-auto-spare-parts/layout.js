@@ -56,6 +56,9 @@ export const metadata = {
       url: '/icons/icon-152x152.png',
     },
   },
+  alternates: {
+    canonical: `https://emirates-car.com/spare-parts/american-auto-spare-parts}`,
+  },
   category: 'car parts',
   keyword:
     'car parts online, spare parts online,auto spare parts sharjah, auto spare parts dubai, brake pads, body parts, bumper parts, spare parts, 8th gen accord parts, performance parts, headlight, tailight, suspension parts',

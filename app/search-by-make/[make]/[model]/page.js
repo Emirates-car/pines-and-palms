@@ -50,9 +50,7 @@ export async function generateMetadata({ params }) {
     description: `Buy ${make} - ${decodeURIComponent(
       model,
     )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
-    metadataBase: new URL(
-      'https://www.emirates-car.com/search-by-make/${make}/${model}',
-    ),
+
     openGraph: {
       images: '/favicon.png',
       title: `${make} - ${decodeURIComponent(
@@ -103,7 +101,7 @@ export async function generateMetadata({ params }) {
       },
     },
     alternates: {
-      canonical: `https://www.emirates-car.com/search-by-make/${make}/${model}`,
+      canonical: `https://emirates-car.com/search-by-make/${make}/${model}`,
     },
     robots: {
       index: true,

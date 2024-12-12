@@ -29,7 +29,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.emirates-car.com',
+    canonical: 'https://emirates-car.com',
   },
   robots: {
     index: true,

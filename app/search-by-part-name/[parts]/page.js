@@ -2,18 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 import { getCity, getFormModel, getMake, getParts } from '../../page';
 import Link from 'next/link';
-import Social from '../../Social';
 import FormComponent from '../../FormComponent';
 import Footer from '../../footer';
 import TenEntries from '../../tenentries';
-import Britain from '../../../public/img/icons/united-kingdom.png';
-import Indian from '../../../public/img/icons/india.png';
-import Japan from '../../../public/img/icons/japan.png';
-import Korean from '../../../public/img/icons/south-korea.png';
-import USA from '../../../public/img/icons/usa.png';
-import Germany from '../../../public/img/icons/germany.png';
-import China from '../../../public/img/icons/china.png';
-import France from '../../../public/img/icons/france.png';
 import CarParts from '../../../public/img/car-spare-parts.png';
 import Counter from '../../service-countup';
 

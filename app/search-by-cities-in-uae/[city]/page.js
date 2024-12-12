@@ -48,7 +48,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: `Quick Car Auto Spare Parts Order Online in ${decodeURIComponent(city)} (UAE) |
           Emirates-car.com`,
-      url: 'https://emirates-car.com/search-by-cities-in-uae/' + city,
+      url: 'https://www.emirates-car.com/search-by-cities-in-uae/' + city,
       description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(city)}  uae`,
       images: ['https://emirates-car.com/favicon.png'],
     },

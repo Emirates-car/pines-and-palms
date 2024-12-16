@@ -126,7 +126,7 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://emirates-car.com/search-by-make/${make}`,
     },
-    keywords: `${make} spare parts sharjah, ${make} spare parts dubai, ${make} spare parts ras al khaimah, ${make} spare parts ajman, ${make} spare parts deira, ${make} spare parts ras al khor, ${make} spare parts al quoz, ${make} spare parts uae, ${make} spare parts online, ${make} used spare parts dubai, ${make} spare parts near me`,
+    keywords: `${make} parts, ${make} spare parts sharjah, ${make} spare parts dubai, ${make} spare parts ras al khaimah, ${make} spare parts ajman, ${make} spare parts deira, ${make} spare parts ras al khor, ${make} spare parts al quoz, ${make} spare parts uae, ${make} spare parts online, ${make} used spare parts dubai, ${make} spare parts near me, ${make} oem, ${make} oem parts, ${make} car parts, ${make} spares `,
   };
 }
 

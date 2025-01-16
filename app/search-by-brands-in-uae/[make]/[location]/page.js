@@ -40,7 +40,9 @@ import PartsAccordion from '../../../Parts-Accordion';
 export async function generateStaticParams() {
   try {
     // Fetch all data from the API
-    const response = await fetch('https://rozy-api-two.vercel.app/api/desert');
+    const response = await fetch('https://rozy-api-two.vercel.app/api/desert', {
+      cache: 'no-store',
+    });
     const data = await response.json();
 
     // Generate params dynamically

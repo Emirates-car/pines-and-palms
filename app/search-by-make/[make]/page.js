@@ -39,13 +39,22 @@ import TenEntries from '../../tenentries';
 import PartsAccordion from '../../Parts-Accordion';
 import Volkswagen from '../../Volkswagen/page';
 
-export async function generateStaticParams({ make }) {
-  const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/palms/${make}`,
-  ).then(res => res.json());
-  return posts.map(post => ({
-    make: post.make,
-  }));
+export async function generateStaticParams() {
+  try {
+    // Fetch all data for makes
+    const response = await fetch('https://rozy-api-two.vercel.app/api/palms');
+    const data = await response.json();
+
+    // Generate params dynamically
+    const params = data.map(item => ({
+      make: item.make.toLowerCase().replace(/\s+/g, '-'), // Format make for URL
+    }));
+
+    return params;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 async function getModel(make) {

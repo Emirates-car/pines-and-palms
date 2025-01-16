@@ -15,6 +15,24 @@ import France from '../../../public/img/icons/france.png';
 import TenEntries from '../../tenentries';
 import Contents from '../../Contents';
 
+export async function generateStaticParams() {
+  try {
+    // Fetch all data for makes
+    const response = await fetch('https://rozy-api-two.vercel.app/api/cities');
+    const data = await response.json();
+
+    // Generate params dynamically
+    const params = data.map(item => ({
+      city: item.cities.toLowerCase().replace(/\s+/g, '-'), // Format make for URL
+    }));
+
+    return params;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
+}
+
 export async function generateMetadata({ params }) {
   const { city } = params;
   return {

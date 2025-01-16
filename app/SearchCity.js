@@ -1,39 +1,39 @@
-"use client";
-import React, { useEffect, useState } from 'react'
-import Link from "next/link";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function SearchCity() {
-   const [searchCity, setSearchCity] = useState('');
-   const [recommendcities, setRecommendCity] = useState('');
-   const [formCityChange, setFormCityChange] = useState('');
-   useEffect(() => {
-     const loadPart = async () => {
-       var part = [];
-       for (var i in cities) {
-         var filtered = cities[i].city;
-         part.push(filtered);
-       }
-       setFormCityChange(part);
-     };
-     loadPart();
-   });
+  const [searchCity, setSearchCity] = useState('');
+  const [recommendcities, setRecommendCity] = useState('');
+  const [formCityChange, setFormCityChange] = useState('');
+  useEffect(() => {
+    const loadPart = async () => {
+      var part = [];
+      for (var i in cities) {
+        var filtered = cities[i].city;
+        part.push(filtered);
+      }
+      setFormCityChange(part);
+    };
+    loadPart();
+  });
 
-   const onCityFormChange = text => {
-     let matches = [];
-     if (text.length > 0) {
-       matches = formCityChange.filter(part => {
-         const regex = new RegExp(`${text}`, 'gi');
-         return part.match(regex);
-       });
-     }
-     setRecommendCity(matches);
-     setSearchCity(text);
-   };
+  const onCityFormChange = text => {
+    let matches = [];
+    if (text.length > 0) {
+      matches = formCityChange.filter(part => {
+        const regex = new RegExp(`${text}`, 'gi');
+        return part.match(regex);
+      });
+    }
+    setRecommendCity(matches);
+    setSearchCity(text);
+  };
 
-   const onCitySuggestionHandler = searchCity => {
-     setSearchCity(searchCity);
-     setRecommendCity([]);
-   };
+  const onCitySuggestionHandler = searchCity => {
+    setSearchCity(searchCity);
+    setRecommendCity([]);
+  };
   return (
     <div>
       <div className="flex justify-center">
@@ -64,9 +64,7 @@ export default function SearchCity() {
                     target="_newtab"
                     title={'spare parts online in ' + recommendcities}
                   >
-                    <a>
-                      <div>{recommendcities}</div>
-                    </a>
+                    <div>{recommendcities}</div>
                   </Link>
                 </div>
               ))}

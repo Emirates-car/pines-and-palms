@@ -23,6 +23,7 @@
     "emailjs": "^3.7.0",
     "file-loader": "^6.2.0",
     "googleapis": "^39.2.0",
+    "mongoose": "^8.9.2",
     "next": "^14.1.0",
     "next-images": "^1.8.5",
     "next-offline": "^5.0.5",

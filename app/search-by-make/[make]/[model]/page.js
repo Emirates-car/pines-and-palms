@@ -174,7 +174,7 @@ async function getDescription(make, model) {
   });
 }
 
-async function getModel(make, model) {
+async function getModel(make) {
   const response = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}`,
   );

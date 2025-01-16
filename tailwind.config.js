@@ -37,6 +37,12 @@ module.exports = {
       xl: { min: '1280px', max: '1535px' },
       xxl: { min: '1536px', max: '2563px' },
     },
+    boxShadow: {
+      search: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    },
+    borderRadius: {
+      full: '9999px',
+    },
   },
 
   plugins: [],

@@ -37,6 +37,7 @@ import Hero_img from '../../../public/img/car-spare-parts.png';
 import SearchCity from '../../SearchCity';
 import TenEntries from '../../tenentries';
 import PartsAccordion from '../../Parts-Accordion';
+import Volkswagen from '../../Volkswagen/page';
 
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
@@ -302,11 +303,11 @@ export default async function MakePage({ params }) {
                       </span>
                     </h2>
                     <h1 className="mt-3 text-3xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
-                      Used / Genuine / Aftermarket&nbsp;
                       <span className="block text-blue-600 xl:inline">
-                        {encodeURIComponent(make)} Auto parts&nbsp;
+                        {encodeURIComponent(make)} spare parts&nbsp;
                       </span>
-                      in Dubai, Abu dhabi, Sharjah, Ras Al Khaimah, Ajman - UAE
+                      Used, Genuine, Aftermarket&nbsp; in Dubai, Abu dhabi,
+                      Sharjah, Ras Al Khaimah, Ajman - UAE
                     </h1>
                     <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
                       <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
@@ -387,6 +388,9 @@ export default async function MakePage({ params }) {
         </div>
         <div className="text-center">
           {make === 'Honda' ? <HondaOfferButton /> : <></>}
+        </div>
+        <div className="text-center">
+          {make === 'Volkswagen' ? <Volkswagen /> : <></>}
         </div>
         <div>
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">

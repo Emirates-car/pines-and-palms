@@ -37,24 +37,23 @@ import Footer from '../../../footer';
 import HondaOfferButton from '../../../HondaOfferButton';
 import PartsAccordion from '../../../Parts-Accordion';
 
-export async function generateStaticParams({ make, location }) {
+export async function generateStaticParams() {
   try {
-    const response = await fetch(
-      `https://rozy-api-two.vercel.app/api/desert/${make}/${location}`,
+    // Fetch all data from the API
+    const response = await fetch('https://rozy-api-two.vercel.app/api/desert');
+    const data = await response.json();
+
+    // Generate params dynamically
+    const params = data.flatMap(item =>
+      item.location.map(loc => ({
+        make: item.make.toLowerCase().replace(/\s+/g, '-'), // Format make
+        location: loc.toLowerCase().replace(/\s+/g, '-'), // Format location
+      })),
     );
-    const post = await response.json();
-
-    if (!post.location) {
-      return notFound();
-    }
-
-    const params = post.location.map(loc => ({
-      make: post.make,
-      location: loc,
-    }));
 
     return params;
   } catch (error) {
+    console.error('Error generating static params:', error);
     return [];
   }
 }

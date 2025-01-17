@@ -38,8 +38,8 @@ export async function generateStaticParams() {
 
     // Generate params dynamically
     const params = data.map(item => ({
-      make: item.make.toLowerCase().replace(/\s+/g, '-'), // Format make
-      model: item.model.toLowerCase().replace(/\s+/g, '-'), // Format model
+      make: item.make, // Format make
+      model: item.model, // Format model
     }));
 
     return params;

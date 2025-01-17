@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 
     // Generate params dynamically
     const params = data.map(item => ({
-      city: item.cities.toLowerCase().replace(/\s+/g, '-'), // Format make for URL
+      city: item.city, // Format make for URL
     }));
 
     return params;

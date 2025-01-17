@@ -30,27 +30,14 @@ import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../FormComponent';
 
-export async function generateStaticParams() {
-  // Fetch all available makes
-  const makes = await fetch(`https://rozy-api-two.vercel.app/api/palms`).then(
-    res => res.json(),
-  );
-
-  const params = [];
-
-  for (const make of makes) {
-    // Fetch all models for the current make
-    const models = await fetch(
-      `https://rozy-api-two.vercel.app/api/palms/${make}`,
-    ).then(res => res.json());
-
-    // Add each make-model combination to params
-    models.forEach(model => {
-      params.push({ make, model });
-    });
-  }
-
-  return params;
+export async function generateStaticParams({ make, model }) {
+  const posts = await fetch(
+    `https://rozy-api-two.vercel.app/api/palms/${make}/${model}`,
+  ).then(res => res.json());
+  return posts.map(post => ({
+    make: post.make,
+    model: post.model,
+  }));
 }
 
 export async function generateMetadata({ params }) {

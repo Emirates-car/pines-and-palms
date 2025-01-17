@@ -46,7 +46,6 @@ export async function generateStaticParams({ make }) {
 
   return posts.map(post => ({
     make: post.make, // Ensure this corresponds to the `make` dynamic segment
-    model: post.model, // Ensure this corresponds to the `model` dynamic segment
   }));
 }
 

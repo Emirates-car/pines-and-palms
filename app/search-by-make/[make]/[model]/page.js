@@ -33,6 +33,7 @@ import FormComponent from '../../../FormComponent';
 export async function generateStaticParams({ make, model }) {
   const posts = await fetch(
     `https://rozy-api-two.vercel.app/api/palms/${make}/${model}`,
+    { cache: 'no-store' },
   ).then(res => res.json());
   return posts.map(post => ({
     make: post.make,

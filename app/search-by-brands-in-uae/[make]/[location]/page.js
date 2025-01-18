@@ -38,26 +38,30 @@ import HondaOfferButton from '../../../HondaOfferButton';
 import PartsAccordion from '../../../Parts-Accordion';
 
 export async function generateStaticParams() {
-  try {
-    // Fetch all data from the API
-    const response = await fetch('https://rozy-api-two.vercel.app/api/desert', {
-      cache: 'no-store',
+  // Fetching make data
+  const makeResponse = await fetch('https://rozy-api-two.vercel.app/api/palms');
+  const makes = await makeResponse.json();
+
+  // Fetching location data
+  const locationResponse = await fetch(
+    'https://rozy-api-two.vercel.app/api/basecity',
+  );
+  const locations = await locationResponse.json();
+
+  // Generate paths dynamically
+  const paths = [];
+  makes.forEach(make => {
+    locations.forEach(location => {
+      paths.push({
+        params: {
+          make: make.make, // Replace 'name' with the actual key for the make value
+          location: location, // Replace 'name' with the actual key for the location value
+        },
+      });
     });
-    const data = await response.json();
+  });
 
-    // Generate params dynamically
-    const params = data.flatMap(item =>
-      item.location.map(loc => ({
-        make: item.make.toLowerCase().replace(/\s+/g, '-'), // Format make
-        location: loc.toLowerCase().replace(/\s+/g, '-'), // Format location
-      })),
-    );
-
-    return params;
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
+  return paths;
 }
 
 export async function generateMetadata({ params }) {

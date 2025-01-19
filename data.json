@@ -60,7 +60,7 @@
       "$oid": "6773ecc5fad1704d5099889d"
     },
     "id": 6,
-    "partname": "Clutch Shaft / 5",
+    "partname": "Clutch Shaft - 5",
     "partnumber": "VW 020141741B",
     "compatibility": "Cabrio (1999–2002),  Golf Mk3 (1993–1999)\n, Jetta Mk3 (1993–1999), Passat B3 (1990–1993), Passat B4 (1993–1997)",
     "engine": "2.0L 4-cylinder SOHC engine/ 2.0L 16V DOHC engine/ 2.0L 8V SOHC/ ",
@@ -170,7 +170,7 @@
       "$oid": "6773ecc5fad1704d509988a7"
     },
     "id": 16,
-    "partname": "SPARK PLUG SET 4 PIN / FR78X /",
+    "partname": "SPARK PLUG SET 4 PIN or FR78X",
     "partnumber": "VW 0242 232 802 SET BOSCH",
     "compatibility": "Volkswagen Golf",
     "engine": "V6",

@@ -1001,7 +1001,7 @@ export default async function Home() {
               <div className="border h-full  hover:border-blue-600 py-3 ">
                 <div className="flex justify-center">
                   <Image
-                    alt="honda parts sharjah"
+                    alt="benz parts sharjah"
                     src="/img/car-logos/mercedesbenz.webp"
                     className="object-scale-down "
                     height={50}
@@ -1020,7 +1020,7 @@ export default async function Home() {
               <div className="border h-full  hover:border-blue-600 py-3 ">
                 <div className="flex justify-center">
                   <Image
-                    alt="honda parts dubai"
+                    alt="nissan parts dubai"
                     src="/img/car-logos/nissan.webp"
                     className="object-scale-down "
                     height={50}
@@ -1039,7 +1039,7 @@ export default async function Home() {
               <div className="border h-full  hover:border-blue-600 py-3 ">
                 <div className="flex justify-center">
                   <Image
-                    alt="honda parts ajman"
+                    alt="ford parts ajman"
                     src="/img/car-logos/ford.webp"
                     className="object-scale-down "
                     height={50}
@@ -1077,7 +1077,7 @@ export default async function Home() {
               <div className="border h-full hover:border-blue-600 py-3 ">
                 <div className="flex justify-center">
                   <Image
-                    alt="honda spare parts sharjah"
+                    alt="honda parts"
                     src="/img/car-logos/volkswagon.webp"
                     className="object-scale-down "
                     height={50}
@@ -1130,12 +1130,12 @@ export default async function Home() {
             </Link>
           </div>
           <div>
-            <Link href="/search-by-make/Acura">
+            <Link href="/search-by-make/Volvo">
               <div className="border h-full  hover:border-blue-600 py-3 ">
                 <div className="flex justify-center">
                   <Image
-                    alt="toyota spare parts in uae"
-                    src="/img/car-logos/acura.webp"
+                    alt="volvo spare parts in uae"
+                    src="/img/car-logos/volvo.webp"
                     className="object-scale-down "
                     height={50}
                     width={50}
@@ -1143,7 +1143,7 @@ export default async function Home() {
                   <br />
                 </div>
                 <p className="text-center m-1 bg-darkblue hover:bg-blue-400  font-bold text-white text-sm hover:text-gray-800 rounded-sm">
-                  Acura
+                  Volvo
                 </p>
               </div>
             </Link>

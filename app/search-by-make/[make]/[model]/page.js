@@ -31,18 +31,15 @@ import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../FormComponent';
 
 export async function generateStaticParams() {
-  // Fetch data dynamically from the API
-  const posts = await fetch(
-    'https://rozy-api-two.vercel.app/api/palms',
-    {},
-  ).then(res => res.json());
+  // Fetch data from the API
+  const posts = await fetch('https://rozy-api-two.vercel.app/api/palms', {
+    cache: 'no-store',
+  }).then(res => res.json());
 
-  // Map over the fetched data to return the required paths
+  // Map over the data to return the required parameters for the dynamic route
   return posts.map(post => ({
-    params: {
-      make: post.make, // Ensure `post.make` exists in your API response
-      model: post.model, // Ensure `post.model` exists in your API response
-    },
+    make: post.make, // Ensure your API returns `make`
+    model: post.model, // Ensure your API returns `model`
   }));
 }
 

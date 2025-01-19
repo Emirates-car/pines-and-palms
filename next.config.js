@@ -9,7 +9,6 @@ const withPWA = require('next-pwa')({
 
 module.exports = withPWA({
   reactStrictMode: true,
-  productionBrowserSourceMaps: true,
   eslint: {
     ignoreDuringBuilds: true,
   },

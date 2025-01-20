@@ -1,18 +1,21 @@
 import React from 'react';
 import PartnameClient from './PartnameClient';
+import fs from 'fs';
+import path from 'path';
 
 // Function to fetch data dynamically from the public folder
 async function fetchDataFromPublicFolder() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000';
-  const url = new URL('/data.json', baseUrl).toString();
+  // Try reading data.json from the public folder directly for build-time safety
+  const filePath = path.join(process.cwd(), 'public', 'data.json');
 
-  const res = await fetch(url);
-
-  if (!res.ok) {
-    throw new Error(`Failed to fetch JSON: ${res.status}`);
+  try {
+    const jsonData = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(jsonData);
+  } catch (error) {
+    throw new Error(
+      `Failed to fetch JSON from public folder: ${error.message}`
+    );
   }
-  return res.json();
 }
 
 // Dynamic routing for Next.js
@@ -24,6 +27,7 @@ export async function generateStaticParams() {
   }));
 }
 
+// Metadata generation for dynamic routes
 export async function generateMetadata({ params }) {
   const { partname } = params;
   const parts = await getPartsByPartname(partname);
@@ -39,16 +43,11 @@ export async function generateMetadata({ params }) {
     title: `${parts[0].partname} ${parts[0].partnumber} ${parts[0].engine} - Best Prices`,
     description: `Volkswagen ${parts[0].compatibility} - ${parts[0].partname} ${parts[0].partnumber}`,
     openGraph: {
-      images: '/favicon.png',
       title: `${parts[0].partname} ${parts[0].partnumber} ${parts[0].engine} - Best Price`,
       description: `Volkswagen ${parts[0].compatibility} - ${parts[0].partname} ${parts[0].partnumber}`,
-      url: 'https://www.emirates-car.com/parts/' + partname,
+      url: `https://www.emirates-car.com/parts/${partname}`,
       images: [
-        {
-          url: '/icon-192x192.png',
-          width: 192,
-          height: 192,
-        },
+        { url: '/icon-192x192.png', width: 192, height: 192 },
         {
           url: '/icons/icon-512x512.png',
           width: 512,
@@ -62,7 +61,7 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: `${parts[0].partname} ${parts[0].partnumber} ${parts[0].engine} - Best Prices`,
-      url: '/parts/' + partname,
+      url: `/parts/${partname}`,
       description: `Volkswagen ${parts[0].compatibility} - ${parts[0].partname} ${parts[0].partnumber}`,
       images: ['/favicon.png'],
     },
@@ -79,6 +78,7 @@ async function getPartsByPartname(partname) {
   return data.filter(item => item.partname === decodedPartname);
 }
 
+// Main component for rendering part details
 export default async function Partname({ params }) {
   const { partname } = params;
   const parts = await getPartsByPartname(partname);

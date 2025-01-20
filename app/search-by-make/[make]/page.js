@@ -37,11 +37,10 @@ import Hero_img from '../../../public/img/car-spare-parts.png';
 import SearchCity from '../../SearchCity';
 import TenEntries from '../../tenentries';
 import PartsAccordion from '../../Parts-Accordion';
-import Volkswagen from '../../Volkswagen/page';
 
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/palms/${make}`,
+    `https://rozy-api-two.vercel.app/api/palms/${make}`
   ).then(res => res.json());
 
   return posts.map(post => ({
@@ -51,7 +50,7 @@ export async function generateStaticParams({ make }) {
 
 async function getModel(make) {
   const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`
   );
   const data = await res.json();
 
@@ -63,7 +62,7 @@ async function getModel(make) {
 
 async function getKeyword(make) {
   const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`
   );
   const data = await res.json();
 
@@ -81,7 +80,7 @@ export async function generateMetadata({ params }) {
     description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
     metadataBase: new URL(
-      'https://www.emirates-car.com/search-by-make/${make}',
+      'https://www.emirates-car.com/search-by-make/${make}'
     ),
     openGraph: {
       images: '/favicon.png',
@@ -389,9 +388,6 @@ export default async function MakePage({ params }) {
         </div>
         <div className="text-center">
           {make === 'Honda' ? <HondaOfferButton /> : <></>}
-        </div>
-        <div className="text-center">
-          {make === 'Volkswagen' ? <Volkswagen /> : <></>}
         </div>
         <div>
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">

@@ -67,6 +67,7 @@ export async function generateMetadata({ params }) {
       image: '/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
+        '/favicon.png',        
         {
           url: '/icon-192x192.png',
           width: 192,

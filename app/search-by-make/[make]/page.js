@@ -87,7 +87,7 @@ export async function generateMetadata({ params }) {
     description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
     metadataBase: new URL(
-      'https://www.emirates-car.com/search-by-make/${make}'
+      `https://www.emirates-car.com/search-by-make/${make}`
     ),
     openGraph: {
       images: '/favicon.png',
@@ -98,18 +98,19 @@ export async function generateMetadata({ params }) {
       image: 'https://www.emirates-car.com/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
+        '/favicon.png',
         {
-          url: 'https://emirates-car.com/icon-192x192.png',
-          width: 192,
-          height: 192,
+            url: 'https://emirates-car.com/icon-192x192.png',
+            width: 192,
+            height: 192,
         },
         {
           url: 'https://emirates-car.com/icons/icon-512x512.png',
           width: 512,
           height: 512,
           alt: 'car parts',
-        },
-      ],
+      },
+    ],
       locale: 'en_US',
       type: 'website',
     },

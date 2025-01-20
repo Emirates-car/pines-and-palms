@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
 
 // Function to fetch data dynamically from the public folder
 async function fetchDataFromPublicFolder() {
-  const res = await fetch('../../../../data.json');
+  const res = await fetch('/data.json');
   if (!res.ok) {
     throw new Error(`Failed to fetch JSON: ${res.status}`);
   }

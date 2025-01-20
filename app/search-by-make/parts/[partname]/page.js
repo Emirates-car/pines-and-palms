@@ -1,6 +1,20 @@
 import React from 'react';
 import PartnameClient from './PartnameClient';
 
+// Function to fetch data dynamically from the public folder
+async function fetchDataFromPublicFolder() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000';
+  const url = new URL('/data.json', baseUrl).toString();
+
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch JSON: ${res.status}`);
+  }
+  return res.json();
+}
+
 // Dynamic routing for Next.js
 export async function generateStaticParams() {
   const data = await fetchDataFromPublicFolder();
@@ -56,19 +70,6 @@ export async function generateMetadata({ params }) {
       canonical: `https://emirates-car.com/parts/${partname}`,
     },
   };
-}
-
-// Function to fetch data dynamically from the public folder
-async function fetchDataFromPublicFolder() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000';
-  const url = new URL('/data.json', baseUrl).toString();
-
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error(`Failed to fetch JSON: ${res.status}`);
-  }
-  return res.json();
 }
 
 // Function to get parts by partname (case-sensitive)

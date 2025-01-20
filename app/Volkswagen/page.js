@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import data from '../../public/data.json';
+import data from '/data.json';
 import Link from 'next/link';
 
 export default function Home() {

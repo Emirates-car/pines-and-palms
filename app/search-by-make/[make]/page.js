@@ -41,10 +41,6 @@ export async function generateStaticParams({ make }) {
   const posts = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}`
   ).then(res => res.json());
-  if (!posts.ok) {
-    console.error('Error fetching params data:', res.statusText);
-    return []; // Return an empty array if the fetch fails
-  }
 
   return posts.map(post => ({
     make: post.make,

@@ -389,6 +389,9 @@ export default async function MakePage({ params }) {
         <div className="text-center">
           {make === 'Honda' ? <HondaOfferButton /> : <></>}
         </div>
+        <div className="text-center">
+          {make === 'Volkswagen' ? <Volkswagen /> : <></>}
+        </div>
         <div>
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
             Popular{' '}

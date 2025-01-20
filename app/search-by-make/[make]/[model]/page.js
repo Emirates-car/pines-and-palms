@@ -32,9 +32,9 @@ import FormComponent from '../../../FormComponent';
 
 export async function generateStaticParams() {
   // Fetch data from the API
-  const posts = await fetch('https://rozy-api-two.vercel.app/api/palms', {
-    cache: 'no-store',
-  }).then(res => res.json());
+  const posts = await fetch('https://rozy-api-two.vercel.app/api/palms').then(
+    res => res.json()
+  );
 
   // Map over the data to return the required parameters for the dynamic route
   return posts.map(post => ({
@@ -47,21 +47,21 @@ export async function generateMetadata({ params }) {
   const { make, model } = params;
   return {
     title: `${make} - ${decodeURIComponent(
-      model,
+      model
     )} Car Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
     description: `Buy ${make} - ${decodeURIComponent(
-      model,
+      model
     )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
 
     openGraph: {
       images: '/favicon.png',
       title: `${make} - ${decodeURIComponent(
-        model,
+        model
       )} Car Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
       description: `Buy ${make} - ${decodeURIComponent(
-        model,
+        model
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
       url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model,
       image: '/img/car-spare-parts.png',
@@ -85,12 +85,12 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: `${make} - ${decodeURIComponent(
-        model,
+        model
       )} Car Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
       url: '/search-by-make/' + make + '/' + model,
       description: `Buy ${make} - ${decodeURIComponent(
-        model,
+        model
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
       images: ['/favicon.png'],
     },
@@ -120,29 +120,29 @@ export async function generateMetadata({ params }) {
     },
     category: `${make} ${decodeURIComponent(model)} auto spare parts`,
     keywords: `${make} ${decodeURIComponent(
-      model,
+      model
     )} spare parts sharjah, used ${make} ${model} spare parts, ${make} ${decodeURIComponent(
-      model,
+      model
     )} spare parts online, ${make} ${decodeURIComponent(
-      model,
+      model
     )} spare parts near me, ${make} ${decodeURIComponent(
-      model,
+      model
     )} wheels, ${make} ${decodeURIComponent(
-      model,
+      model
     )} distributor, ${make} ${decodeURIComponent(
-      model,
+      model
     )} shock absorber, ${make} ${decodeURIComponent(
-      model,
+      model
     )} spark plugs, ${make} ${decodeURIComponent(
-      model,
+      model
     )} fuse box, ${make} ${decodeURIComponent(
-      model,
+      model
     )} radiator, ${make} ${decodeURIComponent(model)} fuel pump`,
   };
 }
 async function getYear(make, model) {
   const response = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
   );
   const dat = await response.json();
   let uniqueYearArray = [
@@ -152,7 +152,7 @@ async function getYear(make, model) {
 }
 async function getMakeImage(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
   );
   const reDat = await re.json();
   let uniqueMkeArray = [
@@ -166,7 +166,7 @@ async function getMakeImage(make, model) {
 
 async function getDescription(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
   );
   const reDat = await re.json();
   let uniqueDescriptionArray = [
@@ -179,7 +179,7 @@ async function getDescription(make, model) {
 
 async function getModel(make) {
   const response = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`
   );
   const dat = await response.json();
   let uniqueMakeArray = [

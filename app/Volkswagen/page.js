@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import data from '../../data.json';
+import data from '../../public/data.json';
 import Link from 'next/link';
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         product.partname.toLowerCase().includes(query) ||
         product.partnumber.toLowerCase().includes(query) ||
         product.compatibility.toLowerCase().includes(query) ||
-        product.engine.toLowerCase().includes(query),
+        product.engine.toLowerCase().includes(query)
     );
 
     setFilteredProducts(filtered);

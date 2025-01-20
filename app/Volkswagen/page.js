@@ -6,7 +6,9 @@ import Link from 'next/link';
 async function fetchDataFromPublicFolder() {
   const baseUrl =
     process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/data.json`);
+  const url = new URL('/data.json', baseUrl).toString();
+
+  const res = await fetch(url);
   if (!res.ok) {
     throw new Error(`Failed to fetch JSON: ${res.status}`);
   }

@@ -37,7 +37,7 @@ import Hero_img from '../../../public/img/car-spare-parts.png';
 import SearchCity from '../../SearchCity';
 import TenEntries from '../../tenentries';
 import PartsAccordion from '../../Parts-Accordion';
-
+import Volkswagen from '../../Volkswagen/page';
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
     `https://rozy-api-two.vercel.app/api/palms/${make}`

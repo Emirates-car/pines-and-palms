@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import data from '/data.json';
 import Link from 'next/link';
+import data from '../../public/data.json';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,6 +12,7 @@ export default function Home() {
   const handleSearch = e => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
+    const data = fetchDataFromPublicFolder();
 
     // Filter products based on query matching partname, partnumber, compatibility, or engine
     const filtered = data.filter(

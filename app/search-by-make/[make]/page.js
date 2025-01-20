@@ -31,7 +31,6 @@ import SideMirror from '../../../public/img/honda-eighth-gen/Side_Mirror.webp';
 import SteeringWheel from '../../../public/img/honda-eighth-gen/Steering_Wheel.webp';
 import Wheel from '../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../public/img/honda-eighth-gen/Mud_Flap.webp';
-import HondaProducts from '../../HondaProducts';
 import Contents from '../../Contents';
 import Hero_img from '../../../public/img/car-spare-parts.png';
 import SearchCity from '../../SearchCity';
@@ -40,11 +39,15 @@ import PartsAccordion from '../../Parts-Accordion';
 import Volkswagen from '../../Volkswagen/page';
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/palms/${make}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`
   ).then(res => res.json());
+  if (!posts.ok) {
+    console.error('Error fetching params data:', res.statusText);
+    return []; // Return an empty array if the fetch fails
+  }
 
   return posts.map(post => ({
-    make: post.make, // Ensure this corresponds to the `make` dynamic segment
+    make: post.make,
   }));
 }
 
@@ -52,8 +55,12 @@ async function getModel(make) {
   const res = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}`
   );
+  if (!res.ok) {
+    console.error('Error fetching model data:', res.statusText);
+    return []; // Return an empty array if the fetch fails
+  }
   const data = await res.json();
-
+  // Continue processing the data...
   let uniqueObjectArray = [
     ...new Map(data.map(item => [item['model'], item])).values(),
   ];
@@ -64,6 +71,10 @@ async function getKeyword(make) {
   const res = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}`
   );
+  if (!res.ok) {
+    console.error('Error fetching make data:', res.statusText);
+    return []; // Return an empty array if the fetch fails
+  }
   const data = await res.json();
 
   let uniqueObjectArray = [

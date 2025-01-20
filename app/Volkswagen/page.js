@@ -1,18 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import data from '../../public/data.json';
+
+async function fetchDataFromPublicFolder() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000';
+  const res = await fetch(`${baseUrl}/data.json`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch JSON: ${res.status}`);
+  }
+  return res.json();
+}
 
 export default function Home() {
+  const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(data);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  // Fetch data on component mount
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchedData = await fetchDataFromPublicFolder();
+        setData(fetchedData);
+        setFilteredProducts(fetchedData); // Initialize filtered products with full data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    fetchData();
+  }, []);
 
   // Handle search input changes
   const handleSearch = e => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
-    const data = fetchDataFromPublicFolder();
 
     // Filter products based on query matching partname, partnumber, compatibility, or engine
     const filtered = data.filter(
@@ -20,7 +43,7 @@ export default function Home() {
         product.partname.toLowerCase().includes(query) ||
         product.partnumber.toLowerCase().includes(query) ||
         product.compatibility.toLowerCase().includes(query) ||
-        product.engine.toLowerCase().includes(query)
+        (product.engine && product.engine.toLowerCase().includes(query))
     );
 
     setFilteredProducts(filtered);
@@ -79,7 +102,7 @@ export default function Home() {
                   )}
                 </div>
 
-                <button className="w-3/4 mb-3 bg-blue-500 text-white text-sm py-2 px-2  hover:bg-blue-600 transition">
+                <button className="w-3/4 mb-3 bg-blue-500 text-white text-sm py-2 px-2 hover:bg-blue-600 transition">
                   Order Now
                 </button>
               </Link>

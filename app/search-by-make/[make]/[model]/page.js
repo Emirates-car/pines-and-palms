@@ -146,16 +146,6 @@ export async function generateMetadata({ params }) {
     )} radiator, ${make} ${decodeURIComponent(model)} fuel pump`,
   };
 }
-async function getYear(make, model) {
-  const response = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
-  );
-  const dat = await response.json();
-  let uniqueYearArray = [
-    ...new Map(dat.map(item => [item['year'], item])).values(),
-  ];
-  return uniqueYearArray;
-}
 async function getMakeImage(make, model) {
   const re = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`

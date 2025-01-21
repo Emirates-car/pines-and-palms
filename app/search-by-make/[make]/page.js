@@ -37,6 +37,7 @@ import SearchCity from '../../SearchCity';
 import TenEntries from '../../tenentries';
 import PartsAccordion from '../../Parts-Accordion';
 import Volkswagen from '../../Volkswagen/page';
+
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}`
@@ -63,25 +64,8 @@ async function getModel(make) {
   return uniqueObjectArray;
 }
 
-async function getKeyword(make) {
-  const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`
-  );
-  if (!res.ok) {
-    console.error('Error fetching make data:', res.statusText);
-    return []; // Return an empty array if the fetch fails
-  }
-  const data = await res.json();
-
-  let uniqueObjectArray = [
-    ...new Map(data.map(item => [item['keyword'], item])).values(),
-  ];
-  return uniqueObjectArray;
-}
-
 export async function generateMetadata({ params }) {
   const { make } = params;
-  const keyword = getKeyword(make);
   return {
     title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
     description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket

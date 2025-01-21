@@ -35,6 +35,11 @@ export async function generateStaticParams() {
   const posts = await fetch('https://rozy-api-two.vercel.app/api/palms').then(
     res => res.json()
   );
+  if (!posts) {
+    return {
+      notFound: true,
+    };
+  }
 
   // Map over the data to return the required parameters for the dynamic route
   return posts.map(post => ({
@@ -67,7 +72,7 @@ export async function generateMetadata({ params }) {
       image: '/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
-        '/favicon.png',        
+        '/favicon.png',
         {
           url: '/icon-192x192.png',
           width: 192,

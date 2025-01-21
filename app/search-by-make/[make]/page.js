@@ -100,17 +100,17 @@ export async function generateMetadata({ params }) {
       images: [
         '/favicon.png',
         {
-            url: 'https://emirates-car.com/icon-192x192.png',
-            width: 192,
-            height: 192,
+          url: 'https://emirates-car.com/icon-192x192.png',
+          width: 192,
+          height: 192,
         },
         {
           url: 'https://emirates-car.com/icons/icon-512x512.png',
           width: 512,
           height: 512,
           alt: 'car parts',
-      },
-    ],
+        },
+      ],
       locale: 'en_US',
       type: 'website',
     },

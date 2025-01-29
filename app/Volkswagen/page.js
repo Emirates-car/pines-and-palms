@@ -4,18 +4,14 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 async function fetchDataFromPublicFolder() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000';
-  const url = new URL('/data.json', baseUrl).toString();
-
-  const res = await fetch(url);
+  const res = await fetch('/data.json'); // Direct path in production
   if (!res.ok) {
     throw new Error(`Failed to fetch JSON: ${res.status}`);
   }
   return res.json();
 }
 
-export default function Home() {
+export default function VolkswagenParts() {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -75,9 +71,9 @@ export default function Home() {
               className="card bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden"
             >
               <Link
-                href={`/search-by-make/volkswagen-parts/[partname]`}
+                href={`/search-by-make/parts/${product.partname}`}
                 as={'/search-by-make/parts/' + product.partname}
-                target="_newtab"
+                target="_blank"
               >
                 {/* Product Image */}
                 <img

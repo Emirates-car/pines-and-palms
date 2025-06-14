@@ -254,8 +254,8 @@ export default function FormComponent({ formsData, postFilter }) {
     setWhatsappno('');
   }
   return (
-    <div className="max-w-4xl mx-auto xs:px-2">
-      <div className=" bg-blue-400 xs:py-0 xxs:mx-2 s:mx-2 my-5 md:mx-10">
+    <div className="max-w-4xl mx-auto">
+      <div className=" bg-blue-400 xs:py-0 xs:mx-2 xxs:mx-2 s:mx-2 my-5 md:mx-10">
         <h3 className="text-4xl xxs:text-lg  xs:text-lg xs:px-5 md:text-2xl font-bold font-sans text-center py-5 text-white bg-gray-800">
           AUTO SPARE PARTS INQUIRY FORM
         </h3>
@@ -263,7 +263,7 @@ export default function FormComponent({ formsData, postFilter }) {
           id="myForm"
           method="POST"
           onSubmit={handleSubmit}
-          className="w-full px-8 py-8 xs:px-4 xxs:py-4 xs:py-3 xxs:px-4 sm:px-4"
+          className="w-full px-8 py-8 xs:px-2 s:px-2 xxs:py-4 xs:py-3 xxs:px-4 sm:px-4"
         >
           <div className="grid grid-cols-2 gap-3 pt-3">
             <div>

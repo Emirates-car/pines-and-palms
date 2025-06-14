@@ -29,6 +29,7 @@ import Wheel from '../../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../FormComponent';
+import Counter from '../../../service-countup';
 
 export async function generateStaticParams() {
   // Fetch data from the API
@@ -174,14 +175,22 @@ async function getDescription(make, model) {
 }
 
 async function getModel(make) {
-  const response = await fetch(
+  const res = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}`
   );
-  const dat = await response.json();
-  let uniqueMakeArray = [
-    ...new Map(dat.map(item => [item['model'], item])).values(),
+
+  if (!res.ok) {
+    console.error('Error fetching model data:', res.statusText);
+    return []; // Return empty array on fetch error
+  }
+
+  const data = await res.json();
+
+  const uniqueObjectArray = [
+    ...new Map(data.map(item => [item['model'], item])).values(),
   ];
-  return uniqueMakeArray;
+
+  return uniqueObjectArray;
 }
 
 async function getMake() {
@@ -199,6 +208,58 @@ export default async function Model({ params }) {
   const makeArray = await getMake();
   const partspost = await getParts();
   const modelsform = await getFormModel();
+  const excludedMakes = [
+    'Acura',
+    'Buick',
+    'Eagle',
+    'Lotus',
+    'Plymouth',
+    'Pontiac',
+    'Saab',
+    'Subaru',
+    'Alpha Romeo',
+    'Geo',
+    'Oldsmobile',
+    'Isuzu',
+    'Saturn',
+    'Corbin',
+    'Holden',
+    'Spyker',
+    'Spyker Cars',
+    'Aston Martin',
+    'Panoz',
+    'Foose',
+    'Morgan',
+    'Aptera',
+    'Smart',
+    'SRT',
+    'Roush Performance',
+    'Pagani',
+    'Mobility Ventures LLC',
+    'RUF Automobile',
+    'Koenigsegg',
+    'Karma',
+    'Polestar',
+    'STI',
+    'Kandi',
+    'Abarth',
+    'Dorcen',
+    'Foton',
+    'W Motors',
+    'Opel',
+    'Skoda',
+    'Hillman',
+    'Austin',
+    'Fillmore',
+    'Maybach',
+    'Merkur',
+    'Rambler',
+    'RUF Automobile',
+    'Saturn',
+    'Shelby',
+    'Studebaker',
+  ];
+  const isExcludedMake = excludedMakes.includes(make);
 
   const images = [
     {
@@ -350,7 +411,7 @@ export default async function Model({ params }) {
   ];
   return (
     <div>
-      <div className="d-flex justify-center pt-10 xs:pt-5 mx-8">
+      <div className="d-flex justify-center pt-10 xs:pt-5 mx-8 xs:mx-2 s:mx-2 xxs:mx-2 sm:mx-3 md:mx-5">
         <Image
           src={'/img/car-logos/' + imageMake}
           alt={make + ' spare parts'}
@@ -399,8 +460,8 @@ export default async function Model({ params }) {
             &nbsp;{make} {decodeURIComponent(model)}{' '}
           </nobr>
           BELOW
-          <FormComponent formsData={modelsform} postFilter={partspost} />
         </div>
+        <FormComponent formsData={modelsform} postFilter={partspost} />
 
         <p
           className="text-xl font-sans text-gray-700 mx-auto my-5"
@@ -410,28 +471,37 @@ export default async function Model({ params }) {
           <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 xxs:grid xxs:grid-cols-1">
             <main className="xs:mx-auto xxs:mx-4 sm:mx-4 md:mx-5 mt-10 border border-gray-100 shadow-sm">
               <div className="container place-content-center py-6">
-                <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-10 mx-10 ">
+                <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2 md:ml-11 my-10 mx-10">
+
                   <h3 className="text-center font-bold text-4xl">
                     Spare parts for All {make} Models:
                   </h3>
-                  <div className="grid grid-cols-4 xs:grid xs:grid-cols-1  sm:grid sm:grid-cols-4 md:grid md:grid-cols-3 xxs:grid xxs:grid-cols-3 gap-1 ">
-                    {uniqueMakeArray.map((post, i) => (
-                      <div key={i}>
-                        <Link
-                          href="/search-by-make/[make]/[model]"
-                          as={'/search-by-make/' + post.make + '/' + post.model}
-                        >
-                          <main className=" xs:text-center font-sans text-blue-800 underline hover:text-blue-700 focus:text-blue-700">
-                            {post.make}&nbsp;{post.model.replace('%2F', '/')}
-                            &nbsp;Parts
-                          </main>
-                        </Link>
-                      </div>
-                    ))}
+                  <div className="grid grid-cols-4 xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-4 md:grid md:grid-cols-3 xxs:grid xxs:grid-cols-3 gap-1">
+                    {uniqueMakeArray.map((post, i) => {
+                      const linkHref = isExcludedMake
+                        ? '/get-in-touch'
+                        : '/search-by-make/[make]/[model]';
+                      const linkAs = isExcludedMake
+                        ? '/get-in-touch'
+                        : `/search-by-make/${post.make}/${post.model}`;
+
+                      return (
+                        <div key={i}>
+                          <Link href={linkHref} as={linkAs} title={`${post.make} ${post.model} spare parts`}>
+                            <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
+                              <p className="xs:text-center font-sans text-blue-800 underline hover:text-blue-700 focus:text-blue-700">
+                                {make + ' ' + post.model.replace('%2F', '/') + ' parts'}
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
+
                 <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
-                  <h3 className="text-base font-medium text-gray-500 p-5">
+                  <div className="text-base font-medium text-gray-500 p-5">
                     We deal with any country auto spare parts including
                     japanese, american, german, chinese, indian, Korean, french,
                     british in UAE. We also operate in main cities such as
@@ -451,11 +521,11 @@ export default async function Model({ params }) {
                       <li>Genuine auto spare parts in uae</li>
                       <li>Aftermarket auto spare parts in uae</li>
                     </ul>
-                  </h3>
+                  </div>
                 </div>
-                <p className="text-blue-600 text-4xl md:text-lg lg:text-2xl font-extrabold xs:text-base xxs:text-xs text-center py-5 xs:hidden sm:hidden s:hidden xxs:hidden">
-                  WE ALSO DEAL IN OTHER BRANDS
-                </p>
+                <h3 className="text-blue-600 text-4xl md:text-lg lg:text-2xl font-extrabold xs:text-base xxs:text-xs text-center py-5 xs:hidden sm:hidden s:hidden xxs:hidden">
+                  Other Brands
+                </h3>
                 <div className="grid grid-cols-12 md:grid md:grid-cols-7 sm:ml-0 xs:hidden sm:hidden s:hidden xxs:hidden gap-1 mx-5 xxs:mx-4 md:mx-5 my-10">
                   {makeArray.map((p, i) => (
                     <div key={i}>

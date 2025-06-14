@@ -39,6 +39,30 @@ module.exports = withPWA({
     }
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/honda-parts/ajman',
+        destination: '/search-by-make/Honda',
+        permanent: true,
+      },
+      {
+        source: '/honda-parts/deira',
+        destination: '/search-by-make/Honda',
+        permanent: true,
+      },
+      {
+        source: '/honda-parts/ras-al-khaimah',
+        destination: '/search-by-make/Honda',
+        permanent: true,
+      },
+      {
+        source: '/honda-accord-10th-gen-body-parts',
+        destination: '/search-by-make/Honda',
+        permanent: true,
+      },
+    ]
+  },
   pwa: {
     dest: 'public',
     register: true,

@@ -12,7 +12,7 @@ export default async function Contact() {
   const posts = await getMake();
   return (
     <div>
-      <div className="container place-content-center py-6 xl:mx-auto lg:mx-auto md:mx-auto xs:py-0">
+      <div className="container place-content-center py-6 xl:mx-auto lg:mx-auto md:mx-auto">
         <h1 className="text-4xl md:text-lg lg:text-2xl text-center font-extrabold xs:text-base 2xs:text-xs">
           Auto Spare parts in UAE
         </h1>

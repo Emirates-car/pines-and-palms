@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 
-export default function SearchModel({car, make}) {
+export default function SearchModel({ car, make }) {
   const [searchModel, setSearchModel] = useState('');
   const [recommend, setRecommend] = useState('');
   const [formModelChange, setFormModelChange] = useState('');
@@ -20,21 +20,73 @@ export default function SearchModel({car, make}) {
     loadPart();
   });
 
-   const onModelFormChange = searchModel => {
-     let matches = [];
-     if (searchModel.length > 0) {
-       matches = formModelChange.filter(part => {
-         const regex = new RegExp(`${searchModel}`, 'gi');
-         return part.match(regex);
-       });
-     }
-     setRecommend(matches);
-     setSearchModel(searchModel);
-   };
+  const onModelFormChange = searchModel => {
+    let matches = [];
+    if (searchModel.length > 0) {
+      matches = formModelChange.filter(part => {
+        const regex = new RegExp(`${searchModel}`, 'gi');
+        return part.match(regex);
+      });
+    }
+    setRecommend(matches);
+    setSearchModel(searchModel);
+  };
   const onModelSuggestionHandler = searchModel => {
     setSearchModel(searchModel);
     setRecommend([]);
   };
+  const excludedMakes = [
+    'Acura',
+    'Buick',
+    'Eagle',
+    'Lotus',
+    'Plymouth',
+    'Pontiac',
+    'Saab',
+    'Subaru',
+    'Alpha Romeo',
+    'Geo',
+    'Oldsmobile',
+    'Isuzu',
+    'Saturn',
+    'Corbin',
+    'Holden',
+    'Spyker',
+    'Spyker Cars',
+    'Aston Martin',
+    'Panoz',
+    'Foose',
+    'Morgan',
+    'Aptera',
+    'Smart',
+    'SRT',
+    'Roush Performance',
+    'Pagani',
+    'Mobility Ventures LLC',
+    'RUF Automobile',
+    'Koenigsegg',
+    'Karma',
+    'Polestar',
+    'STI',
+    'Kandi',
+    'Abarth',
+    'Dorcen',
+    'Foton',
+    'W Motors',
+    'Opel',
+    'Skoda',
+    'Hillman',
+    'Austin',
+    'Fillmore',
+    'Maybach',
+    'Merkur',
+    'Rambler',
+    'RUF Automobile',
+    'Saturn',
+    'Shelby',
+    'Studebaker',
+  ];
+  const isExcludedMake = excludedMakes.includes(make);
   return (
     <div>
       <div className="flex justify-center">
@@ -54,16 +106,14 @@ export default function SearchModel({car, make}) {
               recommend.map((recommend, i) => (
                 <div
                   key={i}
-                  className="cursor-pointer  text-base p-1 bg-white"
+                  className="cursor-pointer text-base p-1 bg-white"
                   onClick={() => onModelSuggestionHandler(recommend)}
-                  width="100%"
                 >
                   <Link
                     href={
-                      'https://emirates-car.com/search-by-make/' +
-                      make +
-                      '/' +
-                      recommend
+                      isExcludedMake
+                        ? 'https://emirates-car.com/get-in-touch'
+                        : `https://emirates-car.com/search-by-make/${make}/${recommend}`
                     }
                     rel="noopener noreferrer"
                     target="_newtab"
@@ -72,6 +122,7 @@ export default function SearchModel({car, make}) {
                     {recommend}
                   </Link>
                 </div>
+
               ))}
           </div>
         </div>

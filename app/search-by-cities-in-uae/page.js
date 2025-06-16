@@ -1,12 +1,11 @@
 import React from 'react';
-import Social from '../Social';
-import FormComponent from '../FormComponent';
-import SearchPartsComponent from '../SearchPart';
+import Social from '../../components/Social';
+import FormComponent from '../../components/FormComponent';
 import { getCity, getFormModel, getMake, getParts } from '../page';
 import Link from 'next/link';
-import Count from '../service-countup';
-import Footer from '../footer';
-import SearchCity from '../SearchCity';
+import Count from '../../components/service-countup';
+import Footer from '../../components/footer';
+import SearchCity from '../../components/SearchCity';
 
 export const metadata = {
   title: 'Quick Car Auto Spare Part Order Online in UAE | Emirates-car.com',

@@ -1,11 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Footer from '../footer';
-import Social from '../Social';
-import FormBattery from '../FormBattery';
-import BatteryAccordion from '../Battery-Accordion';
-import BatterySlider from '../Battery-Slider';
+import Footer from '../../components/footer';
+import Social from '../../components/Social';
+import FormBattery from '../../components/FormBattery';
+import BatteryAccordion from '../../components/Battery-Accordion';
+import BatterySlider from '../../components/Battery-Slider';
 import { getFormModel } from '../page';
 
 export const metadata = {
@@ -95,7 +95,7 @@ export default async function CarBatteryDubai() {
       <div className="container mx-auto xl:px-10 xs:px-3 md:px-5 lg:px-6 mt-10">
         <div
 
-          style={{  backgroundColor: '#FAFAFA' }}
+          style={{ backgroundColor: '#FAFAFA' }}
         >
           <p
             className="font-extrabold text-5xl xs:text-base md:text-2xl lg:text-2xl text-center p-2"
@@ -116,7 +116,7 @@ export default async function CarBatteryDubai() {
         </div>
       </div>
 
-      <Social/>
+      <Social />
       <div className="place-content-center text-center pt-10 xl:mx-36 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
         <p className="text-blue-600 text-center text-4xl md:text-lg lg:text-2xl font-extrabold xs:text-xl 2xs:text-xl s:text-xl">
           FAQ SESSION

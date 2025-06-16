@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from '../../footer';
-import OtherHondaModels from '../../OtherHondaModels';
+import Footer from '../../../components/footer';
+import OtherHondaModels from '../../../components/OtherHondaModels';
 import Link from 'next/link';
 
 export default function AbuDhabi() {

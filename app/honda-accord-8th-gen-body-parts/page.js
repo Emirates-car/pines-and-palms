@@ -1,7 +1,7 @@
 import React from 'react';
-import FeaturedHonda from '../8th-gen-Honda';
-import Footer from '../footer';
-import OtherHondaModels from '../OtherHondaModels';
+import FeaturedHonda from '../../components/8th-gen-Honda';
+import Footer from '../../components/footer';
+import OtherHondaModels from '../../components/OtherHondaModels';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -26,7 +26,7 @@ export default function HondaAccord() {
             href="/"
             className="text-blue-500 underline hover:text-blue-700"
           >
-          Emirates-car.com
+            Emirates-car.com
           </Link>
           , We are Car parts dealers from Dubai. We deal in Auto spare parts for
           honda accord spare parts for honda body parts, honda mechanical parts,
@@ -353,7 +353,7 @@ export default function HondaAccord() {
                   title="Honda accord air suspension"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
-                   Inquire Now
+                  Inquire Now
                 </Link>
               </div>
             </div>

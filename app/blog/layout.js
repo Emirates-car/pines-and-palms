@@ -1,5 +1,5 @@
 import '../../styles/globals.css';
-import Navbar from '../nav';
+import Navbar from '../../components/nav';
 import Head from 'next/head';
 
 export const viewport = {

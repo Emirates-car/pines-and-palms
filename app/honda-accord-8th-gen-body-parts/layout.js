@@ -1,5 +1,5 @@
 import '../../styles/globals.css';
-import Navbar from '../nav';
+import Navbar from '../../components/nav';
 
 export const viewport = {
   width: 'device-width',
@@ -59,8 +59,8 @@ export const metadata = {
   },
   category: 'car parts',
   alternates: {
-      canonical: 'https://emirates-car.com/honda-accord-8th-gen-body-parts'
-    },
+    canonical: 'https://emirates-car.com/honda-accord-8th-gen-body-parts'
+  },
   keywords:
     'honda accord spare parts sharjah, honda accord spare parts, honda accord 2008 brake pads, honda body parts, honda accord spare parts, 8th gen accord parts, performance parts for honda accord, headlight, tailight, suspension parts'
 };

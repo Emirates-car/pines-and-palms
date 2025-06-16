@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../../footer';
+import Footer from '../../../components/footer';
 import RelatedPost from '../relatedpost/page';
 import Image from 'next/image';
 

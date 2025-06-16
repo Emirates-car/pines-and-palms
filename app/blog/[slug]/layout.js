@@ -1,6 +1,5 @@
 import '../../../styles/globals.css';
-import Navbar from '../../nav';
-import Head from 'next/head';
+import Navbar from '../../../components/nav';
 
 async function getBlogDetail(slug) {
   const res = await fetch(`https://rozy.vercel.app/api/blog/${slug}`);

@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Footer from '../../footer';
-import FormComponent from '../../FormComponent';
+import Footer from '../../../components/footer';
+import FormComponent from '../../../components/FormComponent';
 import { getFormModel, getParts } from '../../page';
 import Accordon from './Accordion';
-import StaticCities from '../../StaticCities';
-import Contents from '../../Contents';
-import HeroCarousel from '../../HeroCarousel';
-import SearchMake from '../../SearchMake';
+import StaticCities from '../../../components/StaticCities';
+import Contents from '../../../components/Contents';
+import HeroCarousel from '../../../components/HeroCarousel';
+import SearchMake from '../../../components/SearchMake';
 
 export default async function German() {
   const modelforms = await getFormModel();

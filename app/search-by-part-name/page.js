@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
-import FormComponent from '../FormComponent';
+import FormComponent from '../../components/FormComponent';
 import { getCity, getFormModel, getMake, getParts } from '../page';
 import Image from 'next/image';
-import Social from '../Social';
+import Social from '../../components/Social';
 import Spare from '../../public/img/car-spare-parts.png';
-import SearchPartsComponent from '../SearchPart';
-import Footer from '../footer';
+import SearchPartsComponent from '../../components/SearchPart';
+import Footer from '../../components/footer';
 
 export default async function PartPage() {
   const cities = await getCity();

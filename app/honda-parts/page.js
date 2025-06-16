@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import React from 'react';
-import Footer from '../footer';
+import Footer from '../../components/footer';
 import Link from 'next/link';
-import OtherHondaModels from '../OtherHondaModels';
+import OtherHondaModels from '../../components/OtherHondaModels';
 import Image from 'next/image';
-import FeaturedHonda from '../8th-gen-Honda';
+import FeaturedHonda from '../../components/featured';
 
 export default function HondaParts() {
   return (

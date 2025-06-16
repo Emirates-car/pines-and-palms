@@ -31,7 +31,6 @@ import Wheel from '../../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../../components/FormComponent';
-import Counter from '../../../../components/service-countup';
 
 export async function generateStaticParams() {
   const posts = await fetch('https://rozy-api-two.vercel.app/api/palms', { cache: 'no-store' }).then(

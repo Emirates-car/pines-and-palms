@@ -2,8 +2,8 @@ export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
 import React from 'react';
 import Hero_img from '../../../../public/img/car-spare-parts.png';
-import TenEntries from '../../../tenentries';
-import Contents from '../../../Contents';
+import TenEntries from '../../../../components/tenentries';
+import Contents from '../../../../components/Contents';
 import ABS from '../../../../public/img/honda-eighth-gen/Anti_Lock_Braking_System.webp';
 import AirFilter from '../../../../public/img/honda-eighth-gen/Air_Filter.webp';
 import AirSuspension from '../../../../public/img/honda-eighth-gen/Air_Suspension_Module.webp';
@@ -30,13 +30,13 @@ import Wheel from '../../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getCity, getFormModel, getParts, getMake } from '../../../page';
 import Image from 'next/image';
-import FormComponent from '../../../FormComponent';
-import SearchModel from '../../../SearchModel';
+import FormComponent from '../../../../components/FormComponent';
+import SearchModel from '../../../../components/SearchModel';
 import Link from 'next/link';
-import SearchCity from '../../../SearchCity';
-import Footer from '../../../footer';
-import HondaOfferButton from '../../../HondaOfferButton';
-import PartsAccordion from '../../../Parts-Accordion';
+import SearchCity from '../../../../components/SearchCity';
+import Footer from '../../../../components/footer';
+import HondaOfferButton from '../../../../components/HondaOfferButton';
+import PartsAccordion from '../../../../components/Parts-Accordion';
 
 export async function generateStaticParams() {
   // Fetching make data

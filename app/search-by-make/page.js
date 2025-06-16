@@ -1,12 +1,12 @@
 import React from 'react';
-import FormComponent from '../FormComponent';
+import FormComponent from '../../components/FormComponent';
 import { getMake, getFormModel, getParts, getCity } from '../page';
 import Image from 'next/image';
 import Link from 'next/link';
-import SearchMake from '../SearchMake';
-import HondaOfferButton from '../HondaOfferButton';
-import Social from '../Social';
-import Footer from '../footer';
+import SearchMake from '../../components/SearchMake';
+import HondaOfferButton from '../../components/HondaOfferButton';
+import Social from '../../components/Social';
+import Footer from '../../components/footer';
 
 export default async function Make() {
   const posts = await getMake();

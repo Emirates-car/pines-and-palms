@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import Navbar from './nav';
+import Navbar from '../components/nav';
 import Script from 'next/script';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'slick-carousel/slick/slick.css';

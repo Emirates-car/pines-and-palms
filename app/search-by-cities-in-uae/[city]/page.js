@@ -3,8 +3,8 @@ export const fetchCache = 'force-no-store';
 import React from 'react';
 import Link from 'next/link';
 import { getFormModel, getMake, getParts } from '../../page';
-import FormComponent from '../../FormComponent';
-import Footer from '../../footer';
+import FormComponent from '../../../components/FormComponent';
+import Footer from '../../../components/footer';
 import Image from 'next/image';
 import Britain from '../../../public/img/icons/united-kingdom.png';
 import Indian from '../../../public/img/icons/india.png';
@@ -14,12 +14,11 @@ import USA from '../../../public/img/icons/usa.png';
 import Germany from '../../../public/img/icons/germany.png';
 import China from '../../../public/img/icons/china.png';
 import France from '../../../public/img/icons/france.png';
-import TenEntries from '../../tenentries';
-import Contents from '../../Contents';
+import TenEntries from '../../../components/tenentries';
+import Contents from '../../../components/Contents';
 
 export async function generateStaticParams() {
   try {
-    // Fetch all data for makes
     const response = await fetch('https://rozy-api-two.vercel.app/api/cities');
     const data = await response.json();
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Footer from '../footer.js';
+import Footer from '../../components/footer.js';
 import RelatedPost from './relatedpost/page.js';
 
 async function getPosts() {

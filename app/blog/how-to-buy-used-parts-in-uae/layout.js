@@ -1,5 +1,5 @@
 import '../../../styles/globals.css';
-import Navbar from '../../nav';
+import Navbar from '../../../components/footer';
 
 export const viewport = {
   width: 'device-width',

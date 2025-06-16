@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import Footer from '../footer';
-import Social from '../Social';
+import Footer from '../../components/footer';
+import Social from '../../components/Social';
 import { getFormModel, getParts } from '../page';
-import FormComponent from '../FormComponent';
 import GetInTouchForm from './GetInTouchForm';
 
 export default async function Forms() {
@@ -12,7 +11,7 @@ export default async function Forms() {
   return (
     <div>
       <div className="container place-content-center mx-auto py-6">
-        <Social/>
+        <Social />
         <div className="text-center">
           <Link
             href="/honda-accord-8th-gen-parts"
@@ -25,7 +24,7 @@ export default async function Forms() {
         </div>
 
         <div className="flex s:grid s:grid-cols-1 xs:grid xs:grid-cols-1 2xs:grid 2xs:grid-cols-1 sm:grid sm:grid-cols-1 shadow-2xl ">
-          <GetInTouchForm/>
+          <GetInTouchForm />
         </div>
       </div>
       <Footer />

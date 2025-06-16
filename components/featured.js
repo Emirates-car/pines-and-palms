@@ -1,6 +1,6 @@
 'use client';
 import React, { Component } from 'react';
-import AutoPartsImages from './AutoPartsImages';
+import AutoPartsImages from '../app/AutoPartsImages';
 import Link from 'next/link';
 
 export default class about extends Component {

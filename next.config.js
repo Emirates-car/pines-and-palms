@@ -1,18 +1,16 @@
 const withPWA = require('next-pwa')({
   dest: 'public',
-  // disable: process.env.NODE_ENV === 'development',
-  // register: true,
-  // scope: '/app',
-  // sw: 'service-worker.js',
-  //...
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV !== 'production',
 });
 
 module.exports = withPWA({
   reactStrictMode: true,
+  swcMinify: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
-  swcMinify: true,
   serverRuntimeConfig: {
     GOOGLE_MAPS_API_KEY: process.env.MAP_API_KEY,
   },
@@ -61,14 +59,7 @@ module.exports = withPWA({
         destination: '/search-by-make/Honda',
         permanent: true,
       },
-
-    ]
+    ];
   },
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === 'production',
-  },
-  staticPageGenerationTimeout: 10000,
+  staticPageGenerationTimeout: 3000,
 });

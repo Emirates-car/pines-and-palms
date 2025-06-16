@@ -1,16 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import American from '../../../public/img/icons/usa.png';
-import Footer from '../../footer';
-import Count from '../../service-countup';
-import FormComponent from '../../FormComponent';
+import Footer from '../../../components/footer';
+import FormComponent from '../../../components/FormComponent';
 import { getFormModel, getParts } from '../../page';
-import HeroCarousel from '../../HeroCarousel';
-import TenEntries from '../../tenentries';
-import StaticParts from '../../StaticParts';
-import Contents from '../../Contents';
-import SearchMake from '../../SearchMake';
+import HeroCarousel from '../../../components/HeroCarousel';
+import TenEntries from '../../../components/tenentries';
+import StaticParts from '../../../components/StaticParts';
+import Contents from '../../../components/Contents';
+import SearchMake from '../../../components/SearchMake';
 
 export default async function America() {
   const modelforms = await getFormModel();

@@ -1,14 +1,14 @@
 import React from 'react';
-import Hero from './home_hero';
-import Count from './service-countup';
-import Featured from './featured';
+import Hero from '../components/home_hero';
+import Count from '../components/service-countup';
+import Featured from '../components/featured';
 import Link from 'next/link';
 import Image from 'next/image';
-import TenEntries from './tenentries';
-import Contents from './Contents';
-import Footer from './footer';
-import StaticCities from './StaticCities';
-import MainAccordion from './Main-Accordion';
+import TenEntries from '../components/tenentries';
+import Contents from '../components/Contents';
+import Footer from '../components/footer';
+import StaticCities from '../components/StaticCities';
+import MainAccordion from '../components/Main-Accordion';
 
 export async function getMake() {
   const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);

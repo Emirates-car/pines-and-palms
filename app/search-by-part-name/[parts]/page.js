@@ -2,11 +2,11 @@ import Image from 'next/image';
 import React from 'react';
 import { getCity, getFormModel, getMake, getParts } from '../../page';
 import Link from 'next/link';
-import FormComponent from '../../FormComponent';
-import Footer from '../../footer';
-import TenEntries from '../../tenentries';
+import FormComponent from '../../../components/FormComponent';
+import Footer from '../../../components/footer';
+import TenEntries from '../../../components/tenentries';
 import CarParts from '../../../public/img/car-spare-parts.png';
-import Counter from '../../service-countup';
+import Counter from '../../../components/service-countup';
 
 export async function generateMetadata({ params }) {
   const { parts } = params;
@@ -94,7 +94,7 @@ export async function generateMetadata({ params }) {
 }
 
 async function getPartsData(parts) {
-  const res = await fetch(`https://rozy-api-two.vercel.app/api/parts/${parts}`);
+  const res = await fetch(`https://rozy-api-two.vercel.app/api/parts/${parts}`, { cache: 'no-store' });
   const data = await res.json();
   return data;
 }

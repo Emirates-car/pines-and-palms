@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
-import FormComponent from '../FormComponent';
+import FormComponent from '../../components/FormComponent';
 import { getFormModel, getMake, getParts } from '../page';
 import Image from 'next/image';
 import Hero_img from '../../public/img/car-spare-parts.png';
-import Social from '../Social';
+import Social from '../../components/Social';
 
 export default async function Contact() {
   const partsposts = await getParts();

@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import HondaOfferButton from '../../../HondaOfferButton';
-import Footer from '../../../footer';
+import HondaOfferButton from '../../../../components/HondaOfferButton';
+import Footer from '../../../../components/footer';
 import ABS from '../../../../public/img/honda-eighth-gen/ABS.webp';
 import AirFilter from '../../../../public/img/honda-eighth-gen/Air_Filter.webp';
 import AirSuspension from '../../../../public/img/honda-eighth-gen/Air_Suspension_Module.webp';
@@ -28,12 +28,11 @@ import SteeringWheel from '../../../../public/img/honda-eighth-gen/Steering_Whee
 import Wheel from '../../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getFormModel, getParts } from '../../../page';
-import FormComponent from '../../../FormComponent';
-import Counter from '../../../service-countup';
+import FormComponent from '../../../../components/FormComponent';
+import Counter from '../../../../components/service-countup';
 
 export async function generateStaticParams() {
-  // Fetch data from the API
-  const posts = await fetch('https://rozy-api-two.vercel.app/api/palms').then(
+  const posts = await fetch('https://rozy-api-two.vercel.app/api/palms', { cache: 'no-store' }).then(
     res => res.json()
   );
   if (!posts) {
@@ -149,7 +148,7 @@ export async function generateMetadata({ params }) {
 }
 async function getMakeImage(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`, { cache: 'no-store' }
   );
   const reDat = await re.json();
   let uniqueMkeArray = [
@@ -163,7 +162,7 @@ async function getMakeImage(make, model) {
 
 async function getDescription(make, model) {
   const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`, { cache: 'no-store' }
   );
   const reDat = await re.json();
   let uniqueDescriptionArray = [
@@ -176,12 +175,12 @@ async function getDescription(make, model) {
 
 async function getModel(make) {
   const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`, { cache: 'no-store' }
   );
 
   if (!res.ok) {
     console.error('Error fetching model data:', res.statusText);
-    return []; // Return empty array on fetch error
+    return [];
   }
 
   const data = await res.json();

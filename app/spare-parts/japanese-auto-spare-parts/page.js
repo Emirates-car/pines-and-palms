@@ -1,18 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Japanese from '/public/img/icons/japan.png';
-import Footer from '../../footer';
-import Count from '../../service-countup';
-import Social from '../../Social';
-import FormComponent from '../../FormComponent';
+import Footer from '../../../components/footer';
+import FormComponent from '../../../components/FormComponent';
 import { getFormModel, getParts } from '../../page';
-import SearchPart from '../../SearchPart';
-import SearchMake from '../../SearchMake';
-import HeroCarousel from '../../HeroCarousel';
-import StaticParts from '../../StaticParts';
-import TenEntries from '../../tenentries';
-import Contents from '../../Contents';
+import SearchMake from '../../../components/SearchMake';
+import HeroCarousel from '../../../components/HeroCarousel';
+import StaticParts from '../../../components/StaticParts';
+import TenEntries from '../../../components/tenentries';
+import Contents from '../../../components/Contents';
 
 export default async function japanese() {
   const modelforms = await getFormModel();

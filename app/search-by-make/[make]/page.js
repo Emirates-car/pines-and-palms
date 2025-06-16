@@ -1,11 +1,11 @@
 import React from 'react';
-import SearchModel from '../../SearchModel';
-import FormComponent from '../../FormComponent';
+import SearchModel from '../../../components/SearchModel';
+import FormComponent from '../../../components/FormComponent';
 import Link from 'next/link';
-import HondaOfferButton from '../../HondaOfferButton';
+import HondaOfferButton from '../../../components/HondaOfferButton';
 import Image from 'next/image';
 import { getParts, getCity, getFormModel } from '../../page';
-import Footer from '../../footer';
+import Footer from '../../../components/footer';
 import ABS from '../../../public/img/honda-eighth-gen/Anti_Lock_Braking_System.webp';
 import AirFilter from '../../../public/img/honda-eighth-gen/Air_Filter.webp';
 import AirSuspension from '../../../public/img/honda-eighth-gen/Air_Suspension_Module.webp';
@@ -30,15 +30,15 @@ import SideMirror from '../../../public/img/honda-eighth-gen/Side_Mirror.webp';
 import SteeringWheel from '../../../public/img/honda-eighth-gen/Steering_Wheel.webp';
 import Wheel from '../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../public/img/honda-eighth-gen/Mud_Flap.webp';
-import Contents from '../../Contents';
+import Contents from '../../../components/Contents';
 import Hero_img from '../../../public/img/car-spare-parts.png';
-import SearchCity from '../../SearchCity';
-import TenEntries from '../../tenentries';
-import PartsAccordion from '../../Parts-Accordion';
+import SearchCity from '../../../components/SearchCity';
+import TenEntries from '../../../components/tenentries';
+import PartsAccordion from '../../../components/Parts-Accordion';
 
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`, { cache: 'no-store' }
   ).then(res => res.json());
 
   return posts.map(post => ({
@@ -48,12 +48,12 @@ export async function generateStaticParams({ make }) {
 
 async function getModel(make) {
   const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`, { cache: 'no-store' }
   );
 
   if (!res.ok) {
     console.error('Error fetching model data:', res.statusText);
-    return []; // Return empty array on fetch error
+    return [];
   }
 
   const data = await res.json();

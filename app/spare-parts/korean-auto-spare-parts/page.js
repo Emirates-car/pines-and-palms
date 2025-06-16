@@ -1,18 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Korea from '/public/img/icons/korea.png';
-import Footer from '../../footer';
-import Count from '../../service-countup';
-import Social from '../../Social';
-import FormComponent from '../../FormComponent';
+import Footer from '../../../components/footer';
+import FormComponent from '../../../components/FormComponent';
 import { getFormModel, getParts } from '../../page';
-import SearchPart from '../../SearchPart';
-import SearchMake from '../../SearchMake';
-import StaticParts from '../../StaticParts';
-import TenEntries from '../../tenentries';
-import Contents from '../../Contents';
-import HeroCarousel from '../../HeroCarousel';
+import SearchMake from '../../../components/SearchMake';
+import StaticParts from '../../../components/StaticParts';
+import TenEntries from '../../../components/tenentries';
+import Contents from '../../../components/Contents';
+import HeroCarousel from '../../../components/HeroCarousel';
 
 export default async function korean() {
   const modelforms = await getFormModel();

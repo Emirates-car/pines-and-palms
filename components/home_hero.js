@@ -14,7 +14,7 @@ import China from '../public/img/icons/china.png';
 import France from '../public/img/icons/france.png';
 import Link from 'next/link';
 import FormComponent from './FormComponent';
-import { getFormModel, getParts } from './page';
+import { getFormModel, getParts } from '../app/page';
 import StaticParts from './StaticParts';
 import HeroCarousel from './HeroCarousel';
 

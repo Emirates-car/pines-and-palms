@@ -1,14 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Footer from '../../footer';
-import Count from '../../service-countup';
-import FormComponent from '../../FormComponent';
+import Footer from '../../../components/footer';
+import FormComponent from '../../../components/FormComponent';
 import { getFormModel, getParts } from '../../page';
-import HeroCarousel from '../../HeroCarousel';
-import SearchMake from '../../SearchMake';
-import StaticCities from '../../StaticCities';
-import Contents from '../../Contents';
+import HeroCarousel from '../../../components/HeroCarousel';
+import SearchMake from '../../../components/SearchMake';
+import StaticCities from '../../../components/StaticCities';
+import Contents from '../../../components/Contents';
 
 export default async function France() {
   const modelforms = await getFormModel();

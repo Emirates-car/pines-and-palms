@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchModel from '../../SearchModel';
 import FormComponent from '../../FormComponent';
-import Social from '../../Social';
 import Link from 'next/link';
 import HondaOfferButton from '../../HondaOfferButton';
 import Image from 'next/image';
@@ -36,8 +35,6 @@ import Hero_img from '../../../public/img/car-spare-parts.png';
 import SearchCity from '../../SearchCity';
 import TenEntries from '../../tenentries';
 import PartsAccordion from '../../Parts-Accordion';
-import Volkswagen from '../../Volkswagen/page';
-import Counter from '../../service-countup';
 
 export async function generateStaticParams({ make }) {
   const posts = await fetch(
@@ -445,9 +442,6 @@ export default async function MakePage({ params }) {
         </div>
         <div className="text-center">
           {make === 'Honda' ? <HondaOfferButton /> : <></>}
-        </div>
-        <div className="text-center">
-          {make === 'Volkswagen' ? <Volkswagen /> : <></>}
         </div>
         <div>
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">

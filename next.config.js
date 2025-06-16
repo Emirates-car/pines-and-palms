@@ -61,6 +61,7 @@ module.exports = withPWA({
         destination: '/search-by-make/Honda',
         permanent: true,
       },
+
     ]
   },
   pwa: {

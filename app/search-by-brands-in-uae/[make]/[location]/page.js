@@ -1,4 +1,5 @@
-import { notFound } from 'next/navigation';
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 import React from 'react';
 import Hero_img from '../../../../public/img/car-spare-parts.png';
 import TenEntries from '../../../tenentries';

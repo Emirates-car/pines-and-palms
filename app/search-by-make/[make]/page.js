@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 import React from 'react';
 import SearchModel from '../../../components/SearchModel';
 import FormComponent from '../../../components/FormComponent';

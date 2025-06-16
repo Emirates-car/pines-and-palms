@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 import Image from 'next/image';
 import React from 'react';
 import { getCity, getFormModel, getMake, getParts } from '../../page';

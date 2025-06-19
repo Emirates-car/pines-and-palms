@@ -57,7 +57,12 @@ async function handler(req, res) {
 `;
     fetch(
       `https://api.telegram.org/bot${process.env.TELEGRAM_BOT
-      }/sendMessage?chat_id=${process.env.CHAT_ID}&text=${telegramMessage
+      }/sendMessage?chat_id=${process.env.CHAT_ID}&text=${messageURIOne +
+      '\n' +
+      'https://api.whatsapp.com/send?phone=' +
+      contact +
+      '&text=' +
+      telegramMessage
       }`,
     );
 

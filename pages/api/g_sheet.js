@@ -62,7 +62,7 @@ async function handler(req, res) {
       'https://api.whatsapp.com/send?phone=' +
       contact +
       '&text=' +
-      telegramMessage
+      messageURIOne
       }`,
     );
 

@@ -2,12 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import Footer from '../../components/footer';
 import Social from '../../components/Social';
-import { getFormModel, getParts } from '../page';
 import GetInTouchForm from './GetInTouchForm';
 
 export default async function Forms() {
-  const partspost = await getParts();
-  const modelsform = await getFormModel();
   return (
     <div>
       <div className="container place-content-center mx-auto py-6">

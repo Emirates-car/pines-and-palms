@@ -90,9 +90,8 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${
-            navbarOpen ? 'flex' : 'hidden'
-          } flex-col lg:flex-row xl:flex-row 2xl:flex-row lg:mx-auto xl:mx-auto 2xs:mx-auto lg:items-center w-full lg:w-auto mt-4 lg:mt-0 `}
+          className={`${navbarOpen ? 'flex' : 'hidden'
+            } flex-col lg:flex-row xl:flex-row 2xl:flex-row lg:mx-auto xl:mx-auto 2xs:mx-auto lg:items-center w-full lg:w-auto mt-4 lg:mt-0 `}
         >
           <ul className="flex flex-col lg:flex-row xl:flex-row 2xl:flex-row list-none lg:mx-auto xl:mx-auto 2xs:mx-auto space-y-2 lg:space-y-0 lg:space-x-4">
             <li className="nav-item">

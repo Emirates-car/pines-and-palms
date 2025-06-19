@@ -2,15 +2,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  fab,
-  faFacebook,
-  faInstagram,
-  faTumblr,
-  faTwitter,
-  faPinterest,
-  faLinkedin,
-} from '@fortawesome/free-brands-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { faCopyright } from '@fortawesome/free-solid-svg-icons';
 import Social from './Social';

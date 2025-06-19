@@ -108,7 +108,7 @@ export default function GetInTouchForm() {
         id="myForm"
         method="POST"
         onSubmit={handleSubmit}
-        className="w-full shadow-xl px-8 py-8 xs:px-4 xs:py-3 2xs:px-4 sm:px-4"
+        className="w-full shadow-xl px-8 py-8 xs:px-1 xs:py-2 sm:py-3 s:py-2 xxs:px-1 sm:px-3 md:px-3 lg:px-8 xxl:px-8 xl:px-8"
       >
         <div className="grid grid-cols-1 pt-3">
           <label
@@ -144,7 +144,6 @@ export default function GetInTouchForm() {
                 id="year"
                 type="text"
                 placeholder="Year"
-                name="entry.902626710"
                 onChange={handleYearChange}
                 value={Year}
                 autoComplete="off"
@@ -161,7 +160,6 @@ export default function GetInTouchForm() {
             </label>
             <input
               id="make"
-              name="entry.741646505"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
               type="text"
               onChange={handleMakeChange}
@@ -179,7 +177,6 @@ export default function GetInTouchForm() {
             </label>
             <input
               id="model"
-              name="entry.44547744"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
               type="text"
               placeholder="Your car Model"
@@ -189,7 +186,7 @@ export default function GetInTouchForm() {
             />
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 pt-3">
+        <div className="grid grid-cols-3 gap-3 xs:grid-cols-1 xxs:grid-cols-1 s:grid-cols-1 pt-3">
           <div className="flex flex-wrap -mx-3 mb-2">
             <div className="w-2/5 px-3 mb-6 xs:mb-0 md:mb-0">
               <label
@@ -200,7 +197,6 @@ export default function GetInTouchForm() {
               </label>
               <input
                 id="Code"
-                name="entry.44547744"
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-xs"
                 type="text"
                 placeholder="Eg. +971, +27 ..."
@@ -209,7 +205,7 @@ export default function GetInTouchForm() {
                 required
               />
             </div>
-            <div className="w-3/5 px-3 mb-6 xs:mb-0 md:mb-0">
+            <div className="w-3/5 pr-2 mb-6 xs:mb-0 md:mb-0">
               <label
                 htmlFor="whatsappno"
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 xs:mt-3"

@@ -15,8 +15,10 @@ module.exports = {
         heading: ['Squada One', 'sans-serif'],
         head: ['Bungee Tint', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
       },
       colors: {
+        gold: '#D4AF37',
         green: colors.emerald,
         yellow: colors.amber,
         purple: colors.violet,

@@ -18,7 +18,7 @@ export const metadata = {
       'Online France Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
     description:
       'Buy Online and Get delivered France Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
-    url: 'https://www.emirates-car.com/country-vehicles-spare-parts/french-auto-spare-parts',
+    url: 'https://www.emirates-car.com/spare-parts/french-auto-spare-parts',
     image: 'https://emirates-car.com/img/car-spare-parts.png',
     siteName: 'Emirates Auto Parts',
     images: [
@@ -41,7 +41,7 @@ export const metadata = {
     card: 'summary_large_image',
     title:
       'Online France Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
-    url: 'https://www.emirates-car.com/country-vehicles-spare-parts/french-auto-spare-parts',
+    url: 'https://www.emirates-car.com/spare-parts/french-auto-spare-parts',
     description:
       'Buy Online and Get delivered France Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
     images: ['https://emirates-car.com/favicon.png'],

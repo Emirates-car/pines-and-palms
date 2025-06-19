@@ -37,13 +37,71 @@ import Hero_img from '../../../public/img/car-spare-parts.png';
 import SearchCity from '../../../components/SearchCity';
 import TenEntries from '../../../components/tenentries';
 import PartsAccordion from '../../../components/Parts-Accordion';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams({ make }) {
+  const excludedMakes = [
+    'Acura',
+    'Buick',
+    'Eagle',
+    'Lotus',
+    'Plymouth',
+    'Pontiac',
+    'Saab',
+    'Subaru',
+    'Alpha Romeo',
+    'Geo',
+    'Oldsmobile',
+    'Isuzu',
+    'Saturn',
+    'Corbin',
+    'Holden',
+    'Spyker',
+    'Spyker Cars',
+    'Aston Martin',
+    'Panoz',
+    'Foose',
+    'Morgan',
+    'Aptera',
+    'Smart',
+    'SRT',
+    'Roush Performance',
+    'Pagani',
+    'Mobility Ventures LLC',
+    'RUF Automobile',
+    'Koenigsegg',
+    'Karma',
+    'Polestar',
+    'STI',
+    'Kandi',
+    'Abarth',
+    'Dorcen',
+    'Foton',
+    'W Motors',
+    'Opel',
+    'Skoda',
+    'Hillman',
+    'Austin',
+    'Fillmore',
+    'Maybach',
+    'Merkur',
+    'Rambler',
+    'RUF Automobile',
+    'Saturn',
+    'Shelby',
+    'Studebaker',
+  ];
+  if (excludedMakes.includes(make)) {
+    notFound()
+  }
+
   const posts = await fetch(
     `https://rozy-api-two.vercel.app/api/grooves/${make}`, { cache: 'no-store' }
   ).then(res => res.json());
 
-  return posts.map(post => ({
+  const allowed = posts.filter(item => !excludedMakes.includes(item.make));
+
+  return allowed.map(post => ({
     make: post.make,
   }));
 }
@@ -134,57 +192,20 @@ export default async function MakePage({ params }) {
   const cities = await getCity();
   const modelsform = await getFormModel();
   const excludedMakes = [
-    'Acura',
-    'Buick',
-    'Eagle',
-    'Lotus',
-    'Plymouth',
-    'Pontiac',
-    'Saab',
-    'Subaru',
-    'Alpha Romeo',
-    'Geo',
-    'Oldsmobile',
-    'Isuzu',
-    'Saturn',
-    'Corbin',
-    'Holden',
-    'Spyker',
-    'Spyker Cars',
-    'Aston Martin',
-    'Panoz',
-    'Foose',
-    'Morgan',
-    'Aptera',
-    'Smart',
-    'SRT',
-    'Roush Performance',
-    'Pagani',
-    'Mobility Ventures LLC',
-    'RUF Automobile',
-    'Koenigsegg',
-    'Karma',
-    'Polestar',
-    'STI',
-    'Kandi',
-    'Abarth',
-    'Dorcen',
-    'Foton',
-    'W Motors',
-    'Opel',
-    'Skoda',
-    'Hillman',
-    'Austin',
-    'Fillmore',
-    'Maybach',
-    'Merkur',
-    'Rambler',
-    'RUF Automobile',
-    'Saturn',
-    'Shelby',
-    'Studebaker',
+    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
+    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
+    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan',
+    'Aptera', 'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
+    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
+    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin',
+    'Fillmore', 'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker'
   ];
+
+  if (excludedMakes.includes(make)) {
+    notFound();
+  }
   const isExcludedMake = excludedMakes.includes(make);
+
 
   const images = [
     {
@@ -399,36 +420,40 @@ export default async function MakePage({ params }) {
           </div>
 
           <div className="bg-bglight">
-            <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
+            {!isExcludedMake && (
+              <>
+                <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
+                  Search <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
+                  Spare parts by Model
+                </h3>
 
-              Search <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
-              Spare parts by Model
+                <SearchModel make={make} car={carmodel} />
 
-            </h3>
-            <SearchModel make={make} car={carmodel} />
+                <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
+                  {carmodel.map((post, i) => {
+                    const linkHref = `/search-by-make/[make]/[model]`;
+                    const linkAs = `/search-by-make/${post.make}/${post.model}`;
 
-            <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
-              {carmodel.map((post, i) => {
-                const linkHref = isExcludedMake
-                  ? '/get-in-touch'
-                  : '/search-by-make/[make]/[model]';
-                const linkAs = isExcludedMake
-                  ? '/get-in-touch'
-                  : `/search-by-make/${post.make}/${post.model}`;
-
-                return (
-                  <div key={i}>
-                    <Link href={linkHref} as={linkAs} title={`${post.make} ${post.model} spare parts`}>
-                      <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
-                        <p className="text-center text-black text-sm font-medium hover:text-gray-800 p-2">
-                          {make + ' ' + post.model.replace('%2F', '/') + ' parts'}
-                        </p>
+                    return (
+                      <div key={i}>
+                        <Link
+                          href={linkHref}
+                          as={linkAs}
+                          title={`${post.make} ${post.model} spare parts`}
+                        >
+                          <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
+                            <p className="text-center text-black text-sm font-medium hover:text-gray-800 p-2">
+                              {make + ' ' + post.model.replace('%2F', '/') + ' parts'}
+                            </p>
+                          </div>
+                        </Link>
                       </div>
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+
 
           </div>
         </div>

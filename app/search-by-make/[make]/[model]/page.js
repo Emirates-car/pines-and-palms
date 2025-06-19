@@ -31,23 +31,43 @@ import Wheel from '../../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../../components/FormComponent';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-  const posts = await fetch('https://rozy-api-two.vercel.app/api/palms', { cache: 'no-store' }).then(
-    res => res.json()
-  );
-  if (!posts) {
-    return {
-      notFound: true,
-    };
+  const excludedMakes = [
+    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
+    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
+    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan', 'Aptera',
+    'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
+    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
+    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin', 'Fillmore',
+    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker'
+  ];
+
+  const allMakes = await fetch('https://rozy-api-two.vercel.app/api/grooves') // Adjust if needed
+    .then(res => res.json());
+
+  const params = [];
+
+  for (const makeData of allMakes) {
+    const make = makeData.make;
+
+    if (excludedMakes.includes(make)) continue;
+
+    const models = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`)
+      .then(res => res.json());
+
+    models.forEach(model => {
+      params.push({
+        make,
+        model: model.model,
+      });
+    });
   }
 
-  // Map over the data to return the required parameters for the dynamic route
-  return posts.map(post => ({
-    make: post.make, // Ensure your API returns `make`
-    model: post.model, // Ensure your API returns `model`
-  }));
+  return params;
 }
+
 
 export async function generateMetadata({ params }) {
   const { make, model } = params;
@@ -200,6 +220,7 @@ async function getMake() {
   return makeArray;
 }
 
+
 export default async function Model({ params }) {
   const { make, model } = params;
   const imageMake = await getMakeImage(make, model);
@@ -260,6 +281,16 @@ export default async function Model({ params }) {
     'Studebaker',
   ];
   const isExcludedMake = excludedMakes.includes(make);
+  if (excludedMakes.includes(make)) {
+    notFound();
+  }
+
+  const data = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`)
+    .then(res => res.json());
+
+  if (!data || data.length === 0) {
+    notFound();
+  }
 
   const images = [
     {

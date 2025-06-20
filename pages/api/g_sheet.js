@@ -47,10 +47,14 @@ async function handler(req, res) {
       encodeURI(description) +
       '%0AWe%20received%20your%20enquiry%20for%20car%20auto%20parts%20for%20above%20vehicle ';
 
+    const wap = `https://api.whatsapp.com/send?phone=${contact}&text=${encodeURI(
+      description,
+    )}`
+
     fetch(
       `https://api.telegram.org/bot${process.env.TELEGRAM_BOT
       }/sendMessage?chat_id=${process.env.CHAT_ID}&text=${messageURIOne +
-      '\n' +
+      '\n' + wap +
       'https://api.whatsapp.com/send?phone=' +
       contact +
       '&text=' +

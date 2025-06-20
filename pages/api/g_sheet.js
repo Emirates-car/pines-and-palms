@@ -46,15 +46,7 @@ async function handler(req, res) {
     let messageURIOne =
       encodeURI(description) +
       '%0AWe%20received%20your%20enquiry%20for%20car%20auto%20parts%20for%20above%20vehicle ';
-    const telegramMessage = `
-📥 *New Car Parts Inquiry*
-*Ref:* ${RefNo}
-*Name:* ${name}
-*Location:* ${location}
-*Vehicle:* ${year} ${brand} ${model}
-*Parts:* ${partList}
-📞 [WhatsApp Link](https://api.whatsapp.com/send?phone=${contact}&text=${encodeURIComponent(description)})
-`;
+
     fetch(
       `https://api.telegram.org/bot${process.env.TELEGRAM_BOT
       }/sendMessage?chat_id=${process.env.CHAT_ID}&text=${messageURIOne +

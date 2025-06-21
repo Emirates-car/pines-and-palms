@@ -13,13 +13,18 @@ import Link from 'next/link';
 
 export default function MainAccordion() {
   return (
-    <div className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
-      <h3 className="text-black text-4xl text-center md:text-lg lg:text-2xl font-extrabold xs:text-xl 2xs:text-xs pt-10">
-        <nobr className="text-red-600 animate-bounce">
+    <section
+      className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto"
+      aria-label="Frequently Asked Questions"
+    >
+      <h2 className="text-black text-4xl text-center md:text-lg lg:text-2xl font-extrabold xs:text-xl 2xs:text-xs pt-10">
+        <span className="text-red-600 animate-bounce inline-block">
           What? Where? How? Why?
-        </nobr>
-      </h3>
+        </span>
+      </h2>
+
       <Accordion className="my-10">
+        {/* FAQ Item 1 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -35,33 +40,33 @@ export default function MainAccordion() {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              To order spare parts with emirates-car.com, you just have to
-              submit an inquiry at{' '}
+              To order spare parts with Emirates-car.com, submit an inquiry via{' '}
               <Link
                 href="/#myForm"
                 className="text-blue-500 underline hover:no-underline"
               >
-                this form link
+                this form
               </Link>
-              , then you are good to go.
+              , and you’re good to go.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 2 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              What should I do if I'm unsure whether the part I want to buy will
-              fit my car?
+              What should I do if I'm unsure whether the part fits my car?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              The best thing you can do is leave it to the professionals. They
-              will provide expert advice and help you choose the right part for
-              your car&apos;s requirements.{' '}
+              Leave it to professionals. They will advise and help you choose the correct part for your car.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 3 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -76,10 +81,12 @@ export default function MainAccordion() {
               >
                 Emirates-car.com
               </Link>{' '}
-              sells genuine/OEM, used and aftermarket parts.
+              offers genuine/OEM, used, and aftermarket parts.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 4 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -87,31 +94,26 @@ export default function MainAccordion() {
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>You will typically receive a reply within 10 minutes.</p>
+            <p>Typically, you will receive a reply within 10 minutes.</p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 5 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              What is the difference between Genuine/OEM parts and aftermarket
-              parts?
+              Difference between Genuine/OEM and aftermarket parts?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              <h6 className="font-bold">Genuine/OEM Parts:</h6>
-              These are made by the car manufacturer or their authorized
-              suppliers and are identical to the original parts installed in
-              your vehicle. They ensure perfect fit, quality, and warranty
-              compliance but are usually more expensive.
-              <h6 className="font-bold">Aftermarket Parts:</h6>
-              These are made by third-party manufacturers and may not exactly
-              match the original specifications. They are often cheaper and
-              available in a wider variety but can vary in quality and
-              durability.
+              <strong>Genuine/OEM Parts:</strong> Made by the manufacturer or authorized supplier. Perfect fit and quality, but more expensive.<br />
+              <strong>Aftermarket Parts:</strong> Made by third-party manufacturers. More affordable and widely available, but quality may vary.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 6 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -119,52 +121,53 @@ export default function MainAccordion() {
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>Yes, we do provide.</p>
+            <p>Yes, we provide warranty for applicable parts.</p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 7 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              What if the part which I bought doesn&apos;t fit My car?
+              What if the part doesn’t fit my car?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              If the part doesn&apos;t fit your car, you can return or exchange
-              it within our policy timeframe, provided it&apos;s unused. For
-              accurate compatibility, we recommend consulting a professional
-              mechanic, and if needed, we can assist in sourcing the correct
-              part for your vehicle.
+              You can return or exchange it within our return policy window. We recommend consulting a mechanic before purchase.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 8 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              What should I do if the spare parts I received is damaged?
+              What should I do if the received part is damaged?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              You can contact us via WhatsApp, and we will assist you with the
-              replacement.
+              Contact us via WhatsApp, and we’ll assist with a replacement.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 9 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              Do you offer Installation services?
+              Do you offer installation services?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              We do not provide installation services directly, but we can
-              recommend trusted mechanics or service centers who can assist with
-              the installation of the parts.{' '}
+              No, but we can recommend trusted mechanics or service centers.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 10 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -172,34 +175,37 @@ export default function MainAccordion() {
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>It takes around 4 to 6 days.</p>
+            <p>Delivery typically takes 4 to 6 days.</p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 11 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              Do you provide International shipping?
+              Do you provide international shipping?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>Yes, we do provide.</p>
+            <p>Yes, we do provide international shipping.</p>
           </AccordionItemPanel>
         </AccordionItem>
+
+        {/* FAQ Item 12 */}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              What are all the courier services available?
+              What courier services do you use?
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <p>
-              We choose best courier services based on delivery speed, pricing,
-              real time tracking and good coverage such as NasEx, FedEx, Aramex,
-              DHL, Professional courier etc.
+              We choose the best based on speed, price, and tracking. Examples include NasEx, FedEx, Aramex, DHL, and more.
             </p>
           </AccordionItemPanel>
         </AccordionItem>
       </Accordion>
-    </div>
+    </section>
+
   );
 }

@@ -30,9 +30,9 @@ export default function FloodedCars() {
                 parts you need to check and its warning signs that your need to
                 replace for your flood-damaged car to get it back on Road
               </div>
-              <div className="text-lg font-bold text-blue-600 uppercase py-5">
+              <h6 className="text-lg font-bold text-blue-600 uppercase py-5">
                 Oxygen Sensor
-              </div>
+              </h6>
               <div className="text-base font-sans">
                 The sign that your oxygen sensor need to be changed is when you
                 feel your exhaust system emitting odor or smoke, your fuel
@@ -53,9 +53,9 @@ export default function FloodedCars() {
                   OXYGEN SENSOR
                 </Link>
               </div>
-              <div className="text-xl font-bold text-blue-600 font-sans uppercase py-5">
+              <h6 className="text-xl font-bold text-blue-600 font-sans uppercase py-5">
                 Starter
-              </div>
+              </h6>
               <div className="text-base font-sans">
                 The warning sign for the starter are quite clear. You just have
                 to check the clicking sound or whirring or grindig sound
@@ -72,9 +72,9 @@ export default function FloodedCars() {
                   STARTER MOTOR
                 </Link>
               </div>
-              <div className="text-xl font-bold text-blue-600 font-sans uppercase py-5">
+              <h6 className="text-xl font-bold text-blue-600 font-sans uppercase py-5">
                 ENGINE
-              </div>
+              </h6>
               <div className="text-base font-sans">
                 If you see oil leaks or coolant leaks. If your car is
                 overheated, then it can be that your internal engine parts such
@@ -97,9 +97,9 @@ export default function FloodedCars() {
                   ENGINE
                 </Link>
               </div>
-              <div className="text-lg font-bold text-blue-600 uppercase py-5">
+              <h6 className="text-lg font-bold text-blue-600 uppercase py-5">
                 Fuse Box
-              </div>
+              </h6>
               <div className="text-base font-sans">
                 Non-functioning lights, power windows or door locks not working
                 are mostly due to the fault in fusebox. If the fusebox has been
@@ -115,9 +115,9 @@ export default function FloodedCars() {
                   FUSE BOX
                 </Link>
               </div>
-              <div className="text-lg font-bold text-blue-600 uppercase py-5">
+              <h6 className="text-lg font-bold text-blue-600 uppercase py-5">
                 Battery
-              </div>
+              </h6>
               <div className="text-base font-sans">
                 Battery is the most important part of the car that need to be
                 checked regularly. If battery is dead, we may end up in the

@@ -465,7 +465,7 @@ export default async function Model({ params }) {
         </Link>
         <p className="text-xl font-sans text-gray-700 mx-auto xs:text-base xl:text-lg xxs:text-xs">
           Emirates-car.com is the online Dealers specialist in {make}{' '}
-          {decodeURIComponent(model)} and almost any car brands running on roads
+          {decodeURIComponent(model)} spare parts and almost any car brands running on roads
           of UAE. We find pleasure in finding the best used, genuine (otherwise
           called OEM parts) and aftermarket parts for any cars. We have
           experienced professional who can find the parts at affordable and
@@ -715,15 +715,15 @@ export default async function Model({ params }) {
           </div>
           <div>
             <p className="text-3xl font-extrabold mx-auto my-5">
-              5 ways you can find parts for your car.
+              5 ways you can {make} {model} find parts for your car.
             </p>
-            There are 5 ways you can try finding spare parts for your car.
+            There are 5 ways you can try finding {make} {model} spare parts for your car.
             <p className="text-xl font-sans text-gray-700 mx-auto my-5 font-bold">
               Traditional way its pros and cons
             </p>
-            You find a spare parts shop nearby and go and purchase and the work
+            You find a {make} {model} spare parts shop nearby and go and purchase and the work
             is done. In this case, the pros is that you find nearby shop to have
-            similar brands you have and thats it you purchase it with ease. But
+            similar brands you have and that's it! you purchase it with ease. But
             the cons is when you don't find the nearby shop to have the car
             brand which you are using. There are shop who only deal with certain
             parts like the shop A sells only in honda, Mazda, BMW and shop B
@@ -759,7 +759,7 @@ export default async function Model({ params }) {
             used spare parts, it will not be available on marketplace. In this
             case you have to contact the car brand company directly. If you
             search for very old model, it will not be available with most of the
-            car brands company itself. And also there are more spam issues
+            car brands company itself due to numerous new brands being manufactured yearly. And also there are more spam issues
             reported from those who purchase from small vendor marketplace and
             also the larger companies. In this case you should go for Online
             dealer website.
@@ -769,7 +769,7 @@ export default async function Model({ params }) {
             Online dealers website is the easiest way to order spare parts. You
             visit a bunch of site online and submit your inquiries therein and
             dealers will contact you back through the contact information you
-            submitted. If one website didnt reply you, then other website will
+            submitted. If one website didnt reply you or didn't have stock, then other website will
             do. So there is plenty of website and options. Emirates-car.com is
             one such website which accept online inquiries. It deals with parts
             and accessories for honda accord, Honda civic and{' '}
@@ -794,7 +794,7 @@ export default async function Model({ params }) {
                     Sale!
                   </sup>
                   <div className="h-50">
-                    <h1 className="text-xl font-bold font-sans">{i.name}</h1>
+                    <h6 className="text-xl font-bold font-sans">{i.name}</h6>
                   </div>
 
                   <hr className="py-1" />

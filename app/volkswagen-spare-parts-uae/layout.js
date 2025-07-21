@@ -10,15 +10,15 @@ export const viewport = {
 };
 
 export const metadata = {
-    title: 'Quick Car Auto Spare Part Online in UAE | Emirates-car.com',
+    title: 'Volkswagen spare parts in UAE | Emirates-car.com',
     description:
-        'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
+        'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket volkswagen spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
     openGraph: {
         images: '/favicon.png',
-        title: 'Quick Car Auto Spare Part Online in UAE | Emirates-car.com',
+        title: 'Volkswagen spare parts in UAE | Emirates-car.com',
         description:
-            'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
-        url: 'https://emirates-car.com/search-by-part-name',
+            'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket volkswagen spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
+        url: 'https://emirates-car.com/volkswagen-spare-parts-uae',
         image: 'https://emirates-car.com/img/car-spare-parts.png',
         siteName: 'Emirates Auto Parts',
         images: [
@@ -39,10 +39,10 @@ export const metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Quick Car Auto Spare Part Online in UAE | Emirates-car.com',
-        url: 'https://emirates-car.com/search-by-part-name',
+        title: 'Volkswagen spare parts in UAE | Emirates-car.com',
+        url: 'https://emirates-car.com/volkswagen-spare-parts-uae',
         description:
-            'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
+            'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket volkswagen spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
         images: ['https://emirates-car.com/favicon.png'],
     },
     icons: {
@@ -56,10 +56,10 @@ export const metadata = {
     },
     category: 'car parts',
     alternates: {
-        canonical: `https://emirates-car.com/search-by-part-name`,
+        canonical: `https://emirates-car.com/volkswagen-spare-parts-uae`,
     },
     keywords:
-        'car parts online, spare parts online,auto spare parts sharjah, auto spare parts dubai, brake pads, body parts, bumper parts, spare parts, 8th gen accord parts, performance parts, headlight, tailight, suspension parts',
+        'volkswagen spare parts in uae, volkswagen part dubai, volkswagen touareg parts, volkswagen tiguan parts uae, volkswagen passat parts, volkswagen jetta, volkswagen golf parts uae',
 };
 
 export default function RootLayout({ children }) {

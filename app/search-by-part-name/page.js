@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import FormComponent from '../../components/FormComponent';
-import { getCity, getFormModel, getMake, getParts } from '../page';
+import { getCity, getFormModel, getParts } from '../page';
 import Image from 'next/image';
 import Social from '../../components/Social';
 import Spare from '../../public/img/car-spare-parts.png';
@@ -12,7 +12,6 @@ export default async function PartPage() {
   const cities = await getCity();
   const partsposts = await getParts();
   const modelsform = await getFormModel();
-  const makeData = await getMake();
   return (
     <div>
       <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 2xs:grid 2xs:grid-cols-1 xs:mx-auto">

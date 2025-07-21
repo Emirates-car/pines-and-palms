@@ -17,7 +17,6 @@ async function handler(req, res) {
 
       const sheets = google.sheets({ version: 'v4', auth: jwt });
 
-      // Read existing data to calculate the next reference number
       const readData = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.EMIRATES_CAR_DATABASE_ID,
         range: 'vw-inquiry',
@@ -28,12 +27,11 @@ async function handler(req, res) {
       const rowCount = readData.data.values?.length || 0;
       const RefNo = thisYear.toString().substring(2) + '000' + (rowCount + 1);
 
-      // Extract data from the request body
       const { Timestamp, name, email, phone, address, partList } = req.body;
+      console.log(Timestamp, name, email, partList)
 
       const formattedDescription = `Ref: ${'VW' + '-' + RefNo}\n${name}`;
 
-      // Append data to the Google Sheet
       await sheets.spreadsheets.values.append({
         spreadsheetId: process.env.EMIRATES_CAR_DATABASE_ID,
         range: 'vw-inquiry',
@@ -43,7 +41,6 @@ async function handler(req, res) {
         },
       });
 
-      // Send Telegram notification (if applicable)
       if (process.env.TELEGRAM_BOT && process.env.CHAT_ID) {
         const message = `${formattedDescription}%0A We received your inquiry for car auto parts.`;
         const encodedMessage = encodeURIComponent(message);
@@ -56,7 +53,6 @@ async function handler(req, res) {
         }
       }
 
-      // Configure Nodemailer for email notifications
       const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -65,7 +61,6 @@ async function handler(req, res) {
         },
       });
 
-      // Send email to admin
       const mailOptions = {
         from: 'emiratesautomobileparts@gmail.com',
         to: 'haksinterlance@gmail.com',

@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+export const fetchCache = 'default-cache';
+export const revalidate = 1814400;
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -33,6 +34,7 @@ import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../../components/FormComponent';
 import { notFound } from 'next/navigation';
 
+
 export async function generateStaticParams() {
   const excludedMakes = [
     'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
@@ -44,7 +46,7 @@ export async function generateStaticParams() {
     'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker'
   ];
 
-  const allMakes = await fetch('https://rozy-api-two.vercel.app/api/grooves') // Adjust if needed
+  const allMakes = await fetch('https://rozy-api-two.vercel.app/api/grooves')
     .then(res => res.json());
 
   const params = [];

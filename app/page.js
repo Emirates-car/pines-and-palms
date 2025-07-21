@@ -9,9 +9,13 @@ import Contents from '../components/Contents';
 import Footer from '../components/footer';
 import StaticCities from '../components/StaticCities';
 import MainAccordion from '../components/Main-Accordion';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function getMake() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
+    next: { revalidate: 1814400 }
+  });
   const data = await resp.json();
   let uniqueMakeArray = [
     ...new Map(data.map(item => [item['make'], item])).values(),
@@ -20,7 +24,9 @@ export async function getMake() {
 }
 
 export async function getYear() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);
+  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
+    next: { revalidate: 1814400 }
+  });
   const data = await resp.json();
   let uniqueYearArray = [
     ...new Map(data.map(item => [item['year'], item])).values(),
@@ -29,23 +35,24 @@ export async function getYear() {
 }
 
 export async function getFormModel() {
-  //Pass it to forms to get appropriate model for make
-  const respo = await fetch(`https://rozy-api-two.vercel.app/api/palms`);
+  const respo = await fetch(`https://rozy-api-two.vercel.app/api/palms`, {
+    next: { revalidate: 1814400 }
+  });
   const forms = await respo.json();
   return forms;
 }
 
 export async function getCity() {
-  const cityresponse = await fetch(
-    `https://rozy-api-two.vercel.app/api/cities`,
-  );
-  const cities = await cityresponse.json();
+  const filePath = path.join(process.cwd(), 'public/lib/cities.json');
+  const data = await fs.readFile(filePath, 'utf8');
+  const cities = JSON.parse(data)
   return cities;
 }
 
 export async function getParts() {
-  const respnse = await fetch(`https://rozy-api-two.vercel.app/api/parts`);
-  const partsposts = await respnse.json();
+  const filePath = path.join(process.cwd(), 'public/lib/parts.json');
+  const data = await fs.readFile(filePath, 'utf8');
+  const partsposts = JSON.parse(data)
   return partsposts;
 }
 

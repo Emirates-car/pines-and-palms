@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+export const fetchCache = 'default-cache';
+export const revalidate = 1814400;
 import React from 'react';
 import SearchModel from '../../../components/SearchModel';
 import FormComponent from '../../../components/FormComponent';
@@ -96,7 +97,7 @@ export async function generateStaticParams({ make }) {
   }
 
   const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`, { cache: 'no-store' }
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`
   ).then(res => res.json());
 
   const allowed = posts.filter(item => !excludedMakes.includes(item.make));
@@ -108,7 +109,7 @@ export async function generateStaticParams({ make }) {
 
 async function getModel(make) {
   const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`, { cache: 'no-store' }
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`
   );
 
   if (!res.ok) {

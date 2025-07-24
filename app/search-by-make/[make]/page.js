@@ -109,7 +109,9 @@ export async function generateStaticParams({ make }) {
 
 async function getModel(make) {
   const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`
+    `https://rozy-api-two.vercel.app/api/grooves/${make}`, {
+    next: { revalidate: 1814400 }
+  }
   );
 
   if (!res.ok) {

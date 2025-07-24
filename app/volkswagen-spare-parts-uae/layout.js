@@ -1,5 +1,6 @@
 import '../../styles/globals.css';
 import Navbar from '../../components/nav';
+import Footer from "../../components/footer"
 
 export const viewport = {
     width: 'device-width',
@@ -59,7 +60,7 @@ export const metadata = {
         canonical: `https://emirates-car.com/volkswagen-spare-parts-uae`,
     },
     keywords:
-        'volkswagen spare parts in uae, volkswagen part dubai, volkswagen touareg parts, volkswagen tiguan parts uae, volkswagen passat parts, volkswagen jetta, volkswagen golf parts uae',
+        'volkswagen spare parts in uae, volkswagen part dubai,volkswagen spare parts al quoz, volkswagen touareg parts, volkswagen tiguan parts uae, volkswagen passat parts, volkswagen jetta, volkswagen golf parts uae',
 };
 
 export default function RootLayout({ children }) {
@@ -68,6 +69,7 @@ export default function RootLayout({ children }) {
             <body>
                 <Navbar />
                 {children}
+                <Footer />
             </body>
         </html>
     );

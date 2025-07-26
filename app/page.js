@@ -13,32 +13,33 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 export async function getMake() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
-    next: { revalidate: 1814400 }
-  });
-  const data = await resp.json();
-  let uniqueMakeArray = [
-    ...new Map(data.map(item => [item['make'], item])).values(),
+  const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+  const data = await fs.readFile(filePath, 'utf8');
+  const carList = JSON.parse(data);
+
+  const uniqueMakeArray = [
+    ...new Map(carList.map(item => [item.make.toLowerCase(), item])).values()
   ];
+
   return uniqueMakeArray;
 }
 
 export async function getYear() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`, {
-    next: { revalidate: 1814400 }
-  });
-  const data = await resp.json();
-  let uniqueYearArray = [
-    ...new Map(data.map(item => [item['year'], item])).values(),
+  const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+  const data = await fs.readFile(filePath, 'utf8');
+  const carList = JSON.parse(data);
+
+  const uniqueYearArray = [
+    ...new Map(carList.map(item => [item.year, item])).values()
   ];
+
   return uniqueYearArray;
 }
 
 export async function getFormModel() {
-  const respo = await fetch(`https://rozy-api-two.vercel.app/api/palms`, {
-    next: { revalidate: 1814400 }
-  });
-  const forms = await respo.json();
+  const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+  const data = await fs.readFile(filePath, 'utf8');
+  const forms = JSON.parse(data);
   return forms;
 }
 

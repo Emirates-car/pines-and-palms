@@ -67,14 +67,12 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// Function to get parts by partname (case-sensitive)
 async function getPartsByPartname(partname) {
   const data = await fetchDataFromPublicFolder();
   const decodedPartname = decodeURIComponent(partname);
   return data.filter(item => item.partname === decodedPartname);
 }
 
-// Main component for rendering part details
 export default async function Partname({ params }) {
   const { partname } = params;
   const parts = await getPartsByPartname(partname);

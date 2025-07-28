@@ -33,7 +33,8 @@ import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../../components/FormComponent';
 import { notFound } from 'next/navigation';
-
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function generateStaticParams() {
   const excludedMakes = [
@@ -46,29 +47,26 @@ export async function generateStaticParams() {
     'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker'
   ];
 
-  const allMakes = await fetch('https://rozy-api-two.vercel.app/api/grooves')
-    .then(res => res.json());
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf-8');
+    const allCars = JSON.parse(jsonData);
 
-  const params = [];
+    const filtered = allCars.filter(car => !excludedMakes.includes(car.make));
 
-  for (const makeData of allMakes) {
-    const make = makeData.make;
+    const uniquePairs = Array.from(
+      new Map(
+        filtered.map(item => [`${item.make}-${item.model}`, { make: item.make, model: item.model }])
+      ).values()
+    );
 
-    if (excludedMakes.includes(make)) continue;
-
-    const models = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}`)
-      .then(res => res.json());
-
-    models.forEach(model => {
-      params.push({
-        make,
-        model: model.model,
-      });
-    });
+    return uniquePairs;
+  } catch (error) {
+    console.error('Error reading static params from car.json:', error);
+    return [];
   }
-
-  return params;
 }
+
 
 
 export async function generateMetadata({ params }) {
@@ -170,56 +168,82 @@ export async function generateMetadata({ params }) {
   };
 }
 async function getMakeImage(make, model) {
-  const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`, { cache: 'no-store' }
-  );
-  const reDat = await re.json();
-  let uniqueMkeArray = [
-    ...new Map(reDat.map(item => [item['img'], item])).values(),
-  ];
-  const imageMake = uniqueMkeArray.map(function (i) {
-    return i.img;
-  });
-  return imageMake;
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(jsonData);
+
+    const filtered = data.filter(item => item.make === make && item.model === model);
+
+    const uniqueMkeArray = [
+      ...new Map(filtered.map(item => [item.img, item])).values(),
+    ];
+
+    const imageMake = uniqueMkeArray.map(item => item.img);
+
+    return imageMake;
+  } catch (error) {
+    console.error('Error reading make images:', error.message);
+    return [];
+  }
 }
 
 async function getDescription(make, model) {
-  const re = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`, { cache: 'no-store' }
-  );
-  const reDat = await re.json();
-  let uniqueDescriptionArray = [
-    ...new Map(reDat.map(item => [item['description'], item])).values(),
-  ];
-  const description = uniqueDescriptionArray.map(function (i) {
-    return i.description;
-  });
-}
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(jsonData);
 
-async function getModel(make) {
-  const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`, { cache: 'no-store' }
-  );
+    const filtered = data.filter(item => item.make === make && item.model === model);
 
-  if (!res.ok) {
-    console.error('Error fetching model data:', res.statusText);
+    const uniqueDescriptionArray = [
+      ...new Map(filtered.map(item => [item.description, item])).values(),
+    ];
+
+    const description = uniqueDescriptionArray.map(i => i.description);
+
+    return description;
+  } catch (error) {
+    console.error('Error reading descriptions:', error.message);
     return [];
   }
+}
 
-  const data = await res.json();
 
-  const uniqueObjectArray = [
-    ...new Map(data.map(item => [item['model'], item])).values(),
-  ];
+async function getModel(make) {
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(jsonData);
 
-  return uniqueObjectArray;
+    const filtered = data.filter(item => item.make === make);
+
+    const uniqueObjectArray = [
+      ...new Map(filtered.map(item => [item.model, item])).values(),
+    ];
+
+    return uniqueObjectArray;
+  } catch (error) {
+    console.error('Error reading model data:', error.message);
+    return [];
+  }
 }
 
 async function getMake() {
-  const resp = await fetch(`https://rozy-api-two.vercel.app/api/grooves`);
-  const data = await resp.json();
-  let makeArray = [...new Map(data.map(item => [item['make'], item])).values()];
-  return makeArray;
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(jsonData);
+
+    const makeArray = [
+      ...new Map(data.map(item => [item.make, item])).values(),
+    ];
+
+    return makeArray;
+  } catch (error) {
+    console.error('Error reading make data:', error.message);
+    return [];
+  }
 }
 
 
@@ -287,8 +311,11 @@ export default async function Model({ params }) {
     notFound();
   }
 
-  const data = await fetch(`https://rozy-api-two.vercel.app/api/grooves/${make}/${model}`)
-    .then(res => res.json());
+  const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const allData = JSON.parse(jsonData);
+
+  const data = allData.filter(item => item.make === make && item.model === model);
 
   if (!data || data.length === 0) {
     notFound();

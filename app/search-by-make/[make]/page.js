@@ -39,94 +39,62 @@ import SearchCity from '../../../components/SearchCity';
 import TenEntries from '../../../components/tenentries';
 import PartsAccordion from '../../../components/Parts-Accordion';
 import { notFound } from 'next/navigation';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function generateStaticParams({ make }) {
   const excludedMakes = [
-    'Acura',
-    'Buick',
-    'Eagle',
-    'Lotus',
-    'Plymouth',
-    'Pontiac',
-    'Saab',
-    'Subaru',
-    'Alpha Romeo',
-    'Geo',
-    'Oldsmobile',
-    'Isuzu',
-    'Saturn',
-    'Corbin',
-    'Holden',
-    'Spyker',
-    'Spyker Cars',
-    'Aston Martin',
-    'Panoz',
-    'Foose',
-    'Morgan',
-    'Aptera',
-    'Smart',
-    'SRT',
-    'Roush Performance',
-    'Pagani',
-    'Mobility Ventures LLC',
-    'RUF Automobile',
-    'Koenigsegg',
-    'Karma',
-    'Polestar',
-    'STI',
-    'Kandi',
-    'Abarth',
-    'Dorcen',
-    'Foton',
-    'W Motors',
-    'Opel',
-    'Skoda',
-    'Hillman',
-    'Austin',
-    'Fillmore',
-    'Maybach',
-    'Merkur',
-    'Rambler',
-    'RUF Automobile',
-    'Saturn',
-    'Shelby',
-    'Studebaker',
+    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
+    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
+    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan', 'Aptera',
+    'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
+    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
+    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin', 'Fillmore',
+    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker'
   ];
+
   if (excludedMakes.includes(make)) {
-    notFound()
+    notFound();
   }
 
-  const posts = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`
-  ).then(res => res.json());
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    const allCars = JSON.parse(fileContent);
 
-  const allowed = posts.filter(item => !excludedMakes.includes(item.make));
+    const allowed = allCars.filter(
+      car => car.make === make && !excludedMakes.includes(car.make)
+    );
 
-  return allowed.map(post => ({
-    make: post.make,
-  }));
-}
-
-async function getModel(make) {
-  const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`, {
-    next: { revalidate: 1814400 }
-  }
-  );
-
-  if (!res.ok) {
-    console.error('Error fetching model data:', res.statusText);
+    return allowed.map(post => ({
+      make: post.make,
+    }));
+  } catch (error) {
+    console.error('Error reading car.json:', error);
     return [];
   }
-
-  const data = await res.json();
-
-  const uniqueObjectArray = [
-    ...new Map(data.map(item => [item['model'], item])).values(),
-  ];
-
-  return uniqueObjectArray;
 }
+
+
+async function getModel(make) {
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(jsonData);
+
+    const filtered = data.filter(item => item.make === make);
+
+    const uniqueObjectArray = [
+      ...new Map(filtered.map(item => [item.model, item])).values(),
+    ];
+
+    return uniqueObjectArray;
+  } catch (error) {
+    console.error('Error reading model data:', error.message);
+    return [];
+  }
+}
+
 
 
 export async function generateMetadata({ params }) {

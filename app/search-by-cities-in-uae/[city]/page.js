@@ -16,20 +16,22 @@ import China from '../../../public/img/icons/china.png';
 import France from '../../../public/img/icons/france.png';
 import TenEntries from '../../../components/tenentries';
 import Contents from '../../../components/Contents';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function generateStaticParams() {
   try {
-    const response = await fetch('https://rozy-api-two.vercel.app/api/cities');
-    const data = await response.json();
+    const filePath = path.join(process.cwd(), 'public/lib/cities.json');
+    const fileContents = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(fileContents);
 
-    // Generate params dynamically
     const params = data.map(item => ({
-      city: item.city, // Format make for URL
+      city: item.city,
     }));
 
     return params;
   } catch (error) {
-    console.error('Error generating static params:', error);
+    console.error('Error generating static params from JSON:', error);
     return [];
   }
 }
@@ -98,9 +100,17 @@ export async function generateMetadata({ params }) {
 }
 
 async function getCityData(city) {
-  const res = await fetch(`https://rozy-api-two.vercel.app/api/cities/${city}`);
-  const data = await res.json();
-  return data;
+  const filePath = path.join(process.cwd(), 'public/lib/cities.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const cities = JSON.parse(jsonData);
+
+  const cityData = cities.find(c => c.city === city);
+
+  if (!cityData) {
+    throw new Error(`City '${city}' not found`);
+  }
+
+  return cityData;
 }
 
 export default async function City({ params }) {

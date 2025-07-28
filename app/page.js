@@ -18,7 +18,7 @@ export async function getMake() {
   const carList = JSON.parse(data);
 
   const uniqueMakeArray = [
-    ...new Map(carList.map(item => [item.make.toLowerCase(), item])).values()
+    ...new Map(carList.map(item => [item.make, item])).values()
   ];
 
   return uniqueMakeArray;

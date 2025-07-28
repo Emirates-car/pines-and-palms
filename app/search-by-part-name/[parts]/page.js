@@ -96,9 +96,13 @@ export async function generateMetadata({ params }) {
 }
 
 async function getPartsData(parts) {
-  const res = await fetch(`https://rozy-api-two.vercel.app/api/parts/${parts}`, { cache: 'no-store' });
-  const data = await res.json();
-  return data;
+  const filePath = path.join(process.cwd(), 'public/lib/parts.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const data = JSON.parse(jsonData);
+
+  const filtered = data.filter(item => item.parts === parts);
+
+  return filtered;
 }
 
 export default async function Parts({ params }) {

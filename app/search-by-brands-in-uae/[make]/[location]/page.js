@@ -37,33 +37,41 @@ import SearchCity from '../../../../components/SearchCity';
 import Footer from '../../../../components/footer';
 import HondaOfferButton from '../../../../components/HondaOfferButton';
 import PartsAccordion from '../../../../components/Parts-Accordion';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-export async function generateStaticParams() {
-  // Fetching make data
-  const makeResponse = await fetch('https://rozy-api-two.vercel.app/api/palms');
-  const makes = await makeResponse.json();
+export async function generateStaticParams({ params }) {
 
-  // Fetching location data
-  const locationResponse = await fetch(
-    'https://rozy-api-two.vercel.app/api/basecity',
-  );
-  const locations = await locationResponse.json();
+  try {
+    const carPath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const carData = await fs.readFile(carPath, 'utf8');
+    const cars = JSON.parse(carData);
 
-  // Generate paths dynamically
-  const paths = [];
-  makes.forEach(make => {
-    locations.forEach(location => {
-      paths.push({
-        params: {
-          make: make.make, // Replace 'name' with the actual key for the make value
-          location: location, // Replace 'name' with the actual key for the location value
-        },
+    const cityPath = path.join(process.cwd(), 'public/lib/basecity.json');
+    const cityData = await fs.readFile(cityPath, 'utf8');
+    const locations = JSON.parse(cityData);
+
+    const uniqueMakes = Array.from(
+      new Set(cars.map(car => car.make))
+    );
+
+    const paths = [];
+    uniqueMakes.forEach(make => {
+      locations.forEach(location => {
+        paths.push({
+          make,
+          location: location.city,
+        });
       });
     });
-  });
 
-  return paths;
+    return paths;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
+
 
 export async function generateMetadata({ params }) {
   const { make, location } = params;
@@ -150,25 +158,33 @@ export async function generateMetadata({ params }) {
   };
 }
 
-async function getModel(make) {
-  const res = await fetch(
-    `https://rozy-api-two.vercel.app/api/grooves/${make}`,
-  );
-  const data = await res.json();
 
-  let uniqueObjectArray = [
-    ...new Map(data.map(item => [item['model'], item])).values(),
+async function getModel(make) {
+  const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const data = JSON.parse(jsonData);
+
+  const filtered = data.filter(item => item.make === make);
+
+  const uniqueObjectArray = [
+    ...new Map(filtered.map(item => [item.model, item])).values(),
   ];
+
   return uniqueObjectArray;
 }
 
-async function getLocation(make) {
-  const res = await fetch(`https://rozy-api-two.vercel.app/api/desert/${make}`);
-  const data = await res.json();
 
-  let uniqueObjectArray = [
-    ...new Map(data.map(item => [item['location'], item])).values(),
+async function getLocation(make) {
+  const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+  const jsonData = await fs.readFile(filePath, 'utf8');
+  const data = JSON.parse(jsonData);
+
+  const filtered = data.filter(item => item.make === make);
+
+  const uniqueObjectArray = [
+    ...new Map(filtered.map(item => [item.location, item])).values(),
   ];
+
   return uniqueObjectArray;
 }
 
@@ -179,8 +195,6 @@ export default async function Cities({ params }) {
   const cities = await getCity();
   const posts = await getMake();
   const modelsform = await getFormModel();
-  const makeLocation = await getLocation(make);
-  const mapLocation = makeLocation.map(d => d.location);
 
   const images = [
     {

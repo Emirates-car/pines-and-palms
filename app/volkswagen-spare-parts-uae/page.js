@@ -2,16 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import HeroCarousel from '../../components/HeroCarousel';
-import Britain from '../../public/img/icons/united-kingdom.png';
-import Indian from '../../public/img/icons/india.png';
-import Japan from '../../public/img/icons/japan.png';
-import Korean from '../../public/img/icons/south-korea.png';
-import USA from '../../public/img/icons/usa.png';
-import Germany from '../../public/img/icons/germany.png';
-import China from '../../public/img/icons/china.png';
-import France from '../../public/img/icons/france.png';
-import Image from 'next/image';
 import GetInTouchForm from '../get-in-touch/GetInTouchForm';
 
 async function fetchDataFromPublicFolder() {
@@ -32,7 +22,7 @@ export default function VolkswagenParts() {
             try {
                 const fetchedData = await fetchDataFromPublicFolder();
                 setData(fetchedData);
-                setFilteredProducts(fetchedData); // Initialize filtered products with full data
+                setFilteredProducts(fetchedData);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

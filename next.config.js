@@ -6,6 +6,7 @@ const withPWA = require('next-pwa')({
 });
 
 module.exports = withPWA({
+  trailingSlash: false,
   reactStrictMode: true,
   swcMinify: true,
   eslint: {

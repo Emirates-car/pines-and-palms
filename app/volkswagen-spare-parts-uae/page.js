@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import GetInTouchForm from '../get-in-touch/GetInTouchForm';
+import HeroCarousel from '../../components/HeroCarousel';
 
 async function fetchDataFromPublicFolder() {
     const res = await fetch('/data.json');

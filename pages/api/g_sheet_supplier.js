@@ -26,7 +26,6 @@ export default async function handler(req, res) {
     const rowCount = readData.data.values?.length || 0;
     const year = new Date().getFullYear().toString().slice(2);
     const RefNo = `${year}SUP${String(rowCount + 1).padStart(4, '0')}`;
-    console.log("ref no", RefNo)
 
     const {
         Timestamp,

@@ -74,7 +74,6 @@ export default function SupplierForm() {
             locations,
             returnPolicy
         };
-        console.log(payload)
 
         fetch(`/api/g_sheet_supplier`, {
             method: 'POST',

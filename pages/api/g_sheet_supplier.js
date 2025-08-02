@@ -53,7 +53,7 @@ async function handler(req, res) {
         // Google Sheet Append
         const response = await sheets.spreadsheets.values.append({
             auth: jwt,
-            spreadsheetId: sheetId,
+            spreadsheetId: process.env.EMIRATES_CAR_DATABASE_ID,
             range: `emirates-car-supplier`,
             valueInputOption: 'USER_ENTERED',
             requestBody: {

@@ -83,6 +83,25 @@ export default function SupplierForm() {
             }
         });
         alert('Form submitted successfully.');
+        setGarageName('');
+        setTradeLicense(''),
+            setLicenseExpiry('');
+        setEstablishmentYear('');
+        setEmirate('');
+        setAddress('');
+        setWebsite('');
+        setContactName('');
+        setDesignation('');
+        setPhone('');
+        setWhatsapp('');
+        setEmail('');
+        setAltEmail('');
+        setParts('');
+        setBrands('');
+        setConditions('');
+        setDelivery('');
+        setLocations('');
+        setReturnPolicy('');
     }
 
     return (

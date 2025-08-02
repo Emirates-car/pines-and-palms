@@ -1,136 +1,229 @@
 "use client"
 import React, { useState } from 'react';
 
-const vehicleBrandsList = [
-    'Toyota', 'Nissan', 'Honda', 'Hyundai', 'Kia', 'Ford', 'Chevrolet', 'BMW', 'Mercedes-Benz', 'Volkswagen', 'Volvo', 'Mazda', 'Mitsubishi', 'Suzuki', 'Jeep', 'GMC'
-];
-
-export default function SupplierMultiStepForm() {
+export default function SupplierForm() {
     const [step, setStep] = useState(1);
-    const [formData, setFormData] = useState({
-        garageName: '',
-        tradeLicense: '',
-        licenseExpiry: '',
-        establishmentYear: '',
-        emirate: '',
-        address: '',
-        website: '',
-        contactName: '',
-        phone: '',
-        email: '',
-        parts: '',
-        brands: [],
-        condition: '',
-        delivery: '',
-        locations: '',
-        returnPolicy: '',
-    });
-    const [brandSearch, setBrandSearch] = useState('');
 
-    const handleChange = (e) => {
-        const { id, value } = e.target;
-        setFormData((prev) => ({ ...prev, [id]: value }));
+    // Step 1
+    const [garageName, setGarageName] = useState('');
+    const [tradeLicense, setTradeLicense] = useState('');
+    const [licenseExpiry, setLicenseExpiry] = useState('');
+    const [establishmentYear, setEstablishmentYear] = useState('');
+    const [emirate, setEmirate] = useState('');
+    const [address, setAddress] = useState('');
+    const [website, setWebsite] = useState('');
+
+    // Step 2
+    const [contactName, setContactName] = useState('');
+    const [designation, setDesignation] = useState('');
+    const [phone, setPhone] = useState('');
+    const [whatsapp, setWhatsapp] = useState('');
+    const [email, setEmail] = useState('');
+    const [altEmail, setAltEmail] = useState('');
+
+    // Step 3
+    const [parts, setParts] = useState('');
+    const [brandsSearch, setBrandsSearch] = useState('');
+    const [brands, setBrands] = useState([]);
+    const [conditions, setConditions] = useState([]);
+    const [delivery, setDelivery] = useState([]);
+    const [locations, setLocations] = useState([]);
+    const [returnPolicy, setReturnPolicy] = useState('');
+    const [catalog, setCatalog] = useState(null);
+
+    const allBrands = ['Toyota', 'Nissan', 'Ford', 'Chevrolet', 'BMW', 'Mercedes', 'Kia', 'Hyundai', 'Volkswagen', 'Volvo'];
+    const filteredBrands = allBrands.filter((brand) => brand.toLowerCase().includes(brandsSearch.toLowerCase()));
+
+    const toggleCheckbox = (value, list, setList) => {
+        setList((prev) => prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]);
     };
 
-    const handleCheckboxChange = (brand) => {
-        setFormData((prev) => {
-            const updatedBrands = prev.brands.includes(brand)
-                ? prev.brands.filter((b) => b !== brand)
-                : [...prev.brands, brand];
-            return { ...prev, brands: updatedBrands };
-        });
-    };
-
-    const nextStep = () => setStep((prev) => prev + 1);
-    const prevStep = () => setStep((prev) => prev - 1);
-    const handleSubmit = (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData);
-    };
 
-    const filteredBrands = vehicleBrandsList.filter((brand) =>
-        brand.toLowerCase().includes(brandSearch.toLowerCase())
-    );
+        console.log("submitting form...")
+        const today = new Date();
+        const date =
+            today.getFullYear() +
+            '-' +
+            (today.getMonth() + 1) +
+            '-' +
+            today.getDate();
+        const time =
+            today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+        const dateTime = date + ' ' + time;
+        const payload = {
+            Timestamp: dateTime,
+            garageName,
+            tradeLicense,
+            licenseExpiry,
+            establishmentYear,
+            emirate,
+            address,
+            website,
+            contactName,
+            designation,
+            phone,
+            whatsapp,
+            email,
+            altEmail,
+            parts,
+            brands,
+            conditions,
+            delivery,
+            locations,
+            returnPolicy
+        };
+        console.log(payload)
+
+        fetch(`/api/g_sheet_supplier`, {
+            method: 'POST',
+            body: JSON.stringify({
+                Timestamp: dateTime,
+                garageName: garageName,
+                tradeLicense: tradeLicense,
+                licenseExpiry: licenseExpiry,
+                establishmentYear: establishmentYear,
+                emirate: emirate,
+                address: address,
+                website: website,
+                contactName: contactName,
+                designation: designation,
+                phone: phone,
+                whatsapp: whatsapp,
+                email: email,
+                altEmail: altEmail,
+                parts: parts,
+                brands: brands,
+                conditions: conditions,
+                delivery: delivery,
+                locations: locations,
+                returnPolicy: returnPolicy
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        alert('Form submitted successfully.');
+
+    }
 
     return (
-        <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto p-4 shadow-lg">
+        <div
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' && step !== 3) {
+                    e.preventDefault();
+                }
+            }}
+            className="space-y-8 p-4 max-w-3xl mx-auto w-full"
+        >
             {step === 1 && (
                 <div>
-                    <h2 className="text-lg font-bold mb-4">Step 1: Garage Details</h2>
-                    <input id="garageName" value={formData.garageName} onChange={handleChange} placeholder="Garage Name" className="mb-3 block w-full p-2 border" required />
-                    <input id="tradeLicense" value={formData.tradeLicense} onChange={handleChange} placeholder="Trade License Number" className="mb-3 block w-full p-2 border" required />
-                    <input id="licenseExpiry" value={formData.licenseExpiry} onChange={handleChange} placeholder="License Expiry Date" type="date" className="mb-3 block w-full p-2 border" required />
-                    <input id="establishmentYear" value={formData.establishmentYear} onChange={handleChange} placeholder="Garage Establishment Year" type="number" className="mb-3 block w-full p-2 border" />
-                    <select id="emirate" value={formData.emirate} onChange={handleChange} className="mb-3 block w-full p-2 border" required>
-                        <option value="">Select Emirate</option>
-                        <option value="Abu Dhabi">Abu Dhabi</option>
-                        <option value="Dubai">Dubai</option>
-                        <option value="Sharjah">Sharjah</option>
-                        <option value="Ajman">Ajman</option>
-                        <option value="RAK">Ras Al Khaimah</option>
-                        <option value="Fujairah">Fujairah</option>
-                        <option value="Umm Al Quwain">Umm Al Quwain</option>
-                    </select>
-                    <input id="address" value={formData.address} onChange={handleChange} placeholder="Garage Address" className="mb-3 block w-full p-2 border" required />
-                    <input id="website" value={formData.website} onChange={handleChange} placeholder="Garage Website (optional)" className="mb-3 block w-full p-2 border" />
-                    <button type="button" onClick={nextStep} className="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+                    <h2 className="text-xl font-semibold mb-4">Garage Details</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <input className="input w-full" placeholder="Garage Name" value={garageName} onChange={(e) => setGarageName(e.target.value)} />
+                        <input className="input w-full" placeholder="Trade License No" value={tradeLicense} onChange={(e) => setTradeLicense(e.target.value)} />
+                        <input className="input w-full" type="date" placeholder="License Expiry" value={licenseExpiry} onChange={(e) => setLicenseExpiry(e.target.value)} />
+                        <input className="input w-full" placeholder="Establishment Year" value={establishmentYear} onChange={(e) => setEstablishmentYear(e.target.value)} />
+                        <select className="input w-full" value={emirate} onChange={(e) => setEmirate(e.target.value)}>
+                            <option value="">Select Emirate</option>
+                            {['Abu Dhabi', 'Dubai', 'Sharjah', 'Ajman', 'RAK', 'Umm Al Quwain', 'Fujairah'].map(e => <option key={e}>{e}</option>)}
+                        </select>
+                        <input className="input w-full" placeholder="Website (optional)" value={website} onChange={(e) => { console.log(e.target.value), setWebsite(e.target.value) }} />
+                    </div>
+                    <textarea className="input w-full mt-6" placeholder="Garage Address" value={address} onChange={(e) => setAddress(e.target.value)} />
                 </div>
             )}
 
             {step === 2 && (
                 <div>
-                    <h2 className="text-lg font-bold mb-4">Step 2: Contact Info</h2>
-                    <input id="contactName" value={formData.contactName} onChange={handleChange} placeholder="Contact Person Name" className="mb-3 block w-full p-2 border" required />
-                    <input id="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number (+971...)" className="mb-3 block w-full p-2 border" required />
-                    <input id="email" value={formData.email} onChange={handleChange} placeholder="Email Address" type="email" className="mb-3 block w-full p-2 border" />
-                    <div className="flex justify-between">
-                        <button type="button" onClick={prevStep} className="bg-gray-300 px-4 py-2 rounded">Back</button>
-                        <button type="button" onClick={nextStep} className="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+                    <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <input className="input w-full" placeholder="Contact Person Name" value={contactName} onChange={(e) => setContactName(e.target.value)} />
+                        <input className="input w-full" placeholder="Designation" value={designation} onChange={(e) => setDesignation(e.target.value)} />
+                        <input className="input w-full" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                        <input className="input w-full" placeholder="WhatsApp Number" value={whatsapp} onChange={(e) => setWhatsapp(e.target.value)} />
+                        <input className="input w-full" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input className="input w-full" type="email" placeholder="Alternate Email" value={altEmail} onChange={(e) => setAltEmail(e.target.value)} />
                     </div>
                 </div>
             )}
 
             {step === 3 && (
                 <div>
-                    <h2 className="text-lg font-bold mb-4">Step 3: Spare Parts Info</h2>
-                    <textarea id="parts" value={formData.parts} onChange={handleChange} placeholder="Types of Spare Parts" rows={3} className="mb-3 block w-full p-2 border"></textarea>
-                    <div className="mb-3">
-                        <input
-                            type="text"
-                            value={brandSearch}
-                            onChange={(e) => setBrandSearch(e.target.value)}
-                            placeholder="Search Vehicle Brands..."
-                            className="mb-2 block w-full p-2 border"
-                        />
-                        <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto border p-2">
-                            {filteredBrands.map((brand) => (
-                                <label key={brand} className="flex items-center space-x-2">
-                                    <input
-                                        type="checkbox"
-                                        checked={formData.brands.includes(brand)}
-                                        onChange={() => handleCheckboxChange(brand)}
-                                    />
-                                    <span>{brand}</span>
-                                </label>
-                            ))}
-                        </div>
+                    <h2 className="text-xl font-semibold mb-4">Spare Parts Details</h2>
+                    <textarea className="input w-full" placeholder="Parts Description" value={parts} onChange={(e) => setParts(e.target.value)} />
+
+                    <input className="input w-full mt-6" placeholder="Search Vehicle Brands..." value={brandsSearch} onChange={(e) => setBrandsSearch(e.target.value)} />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-2">
+                        {filteredBrands.map((brand) => (
+                            <label key={brand} className="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    checked={brands.includes(brand)}
+                                    onChange={() => toggleCheckbox(brand, brands, setBrands)}
+                                    className="mr-2"
+                                />
+                                {brand}
+                            </label>
+                        ))}
                     </div>
-                    <select id="condition" value={formData.condition} onChange={handleChange} className="mb-3 block w-full p-2 border">
-                        <option value="">Select Part Condition</option>
-                        <option value="New">New</option>
-                        <option value="Used">Used</option>
-                        <option value="OEM">OEM</option>
-                        <option value="Aftermarket">Aftermarket</option>
-                    </select>
-                    <input id="delivery" value={formData.delivery} onChange={handleChange} placeholder="Delivery Options (e.g. Pickup, Courier)" className="mb-3 block w-full p-2 border" />
-                    <input id="locations" value={formData.locations} onChange={handleChange} placeholder="Shipping Locations (e.g. UAE, GCC, etc.)" className="mb-3 block w-full p-2 border" />
-                    <textarea id="returnPolicy" value={formData.returnPolicy} onChange={handleChange} placeholder="Return Policy / Warranty Info" rows={3} className="mb-3 block w-full p-2 border"></textarea>
-                    <div className="flex justify-between">
-                        <button type="button" onClick={prevStep} className="bg-gray-300 px-4 py-2 rounded">Back</button>
-                        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">Submit</button>
+
+                    <p className="mt-6 font-semibold">Part Conditions</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {['New', 'Used', 'OEM', 'Aftermarket'].map((opt) => (
+                            <label key={opt} className="block">
+                                <input
+                                    type="checkbox"
+                                    checked={conditions.includes(opt)}
+                                    onChange={() => toggleCheckbox(opt, conditions, setConditions)}
+                                    className="mr-2"
+                                />{opt}
+                            </label>
+                        ))}
                     </div>
+
+                    <p className="mt-6 font-semibold">Delivery Options</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {['Pickup', 'Courier', 'Other'].map((opt) => (
+                            <label key={opt} className="block">
+                                <input
+                                    type="checkbox"
+                                    checked={delivery.includes(opt)}
+                                    onChange={() => toggleCheckbox(opt, delivery, setDelivery)}
+                                    className="mr-2"
+                                />{opt}
+                            </label>
+                        ))}
+                    </div>
+
+                    <p className="mt-6 font-semibold">Shipping Locations (UAE)</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {['Abu Dhabi', 'Dubai', 'Sharjah', 'Ajman', 'RAK', 'Umm Al Quwain', 'Fujairah'].map((city) => (
+                            <label key={city} className="block">
+                                <input
+                                    type="checkbox"
+                                    checked={locations.includes(city)}
+                                    onChange={() => toggleCheckbox(city, locations, setLocations)}
+                                    className="mr-2"
+                                />{city}
+                            </label>
+                        ))}
+                    </div>
+
+                    <textarea className="input w-full mt-6" placeholder="Return Policy" value={returnPolicy} onChange={(e) => setReturnPolicy(e.target.value)} />
+                    <input type="file" className="input mt-2 w-full" onChange={(e) => setCatalog(e.target.files[0])} />
                 </div>
             )}
-        </form>
+
+            <div className="flex justify-between mt-6">
+                {step > 1 && <button type="button" onClick={() => setStep(step - 1)} className="btn bg-gray-300">Back</button>}
+                {step < 3 ? (
+                    <button type="button" onClick={() => setStep(step + 1)} className="btn bg-green-600 text-white">Next</button>
+                ) : (
+                    <button type="button" onClick={handleSubmit} className="btn bg-green-600 text-white">Submit</button>
+                )}
+            </div>
+        </div>
     );
 }

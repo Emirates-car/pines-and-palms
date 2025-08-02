@@ -48,7 +48,7 @@ async function handler(req, res) {
         const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${encodeURIComponent(description)}`;
 
         // Telegram Notification
-        await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT}/sendMessage?chat_id=${process.env.TELEGRAM_SUP_ID}&text=${encodeURIComponent(description + '\n\n' + whatsappLink)}`);
+        await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_SUP_BOT}/sendMessage?chat_id=${process.env.TELEGRAM_SUP_ID}&text=${encodeURIComponent(description + '\n\n' + whatsappLink)}`);
 
         // Google Sheet Append
         const response = await sheets.spreadsheets.values.append({

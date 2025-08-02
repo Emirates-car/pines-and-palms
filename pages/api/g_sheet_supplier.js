@@ -103,7 +103,7 @@ async function handler(req, res) {
 
         res.status(201).json(data);
     } else {
-        res.status(200).json({ message: 'error' });
+        res.status(405).json({ message: 'Method not allowed' });
     }
 }
 export default handler;

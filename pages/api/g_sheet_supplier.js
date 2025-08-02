@@ -48,7 +48,7 @@ async function handler(req, res) {
         const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${encodeURIComponent(description)}`;
 
         // Telegram Notification
-        //await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT}/sendMessage?chat_id=${process.env.CHAT_ID}&text=${encodeURIComponent(description + '\n\n' + whatsappLink)}`);
+        await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT}/sendMessage?chat_id=${process.env.TELEGRAM_SUP_ID}&text=${encodeURIComponent(description + '\n\n' + whatsappLink)}`);
 
         // Google Sheet Append
         const response = await sheets.spreadsheets.values.append({
@@ -85,7 +85,6 @@ async function handler(req, res) {
             },
         });
         const data = JSON.stringify(response);
-        console.log(data)
 
         const transporter = nodemailer.createTransport({
             service: 'Gmail',
@@ -95,12 +94,12 @@ async function handler(req, res) {
             },
         });
 
-        //await transporter.sendMail({
-        //   from: 'emiratesautomobileparts@gmail.com',
-        //   to: 'haksinterlance@gmail.com',
-        //    subject: `New Supplier: ${garageName} (${emirate})`,
-        //    text: `${description}\n\nWhatsApp: ${whatsappLink}`,
-        //});
+        await transporter.sendMail({
+            from: 'emiratesautomobileparts@gmail.com',
+            to: 'haksinterlance@gmail.com',
+            subject: `New Supplier: ${garageName} (${emirate})`,
+            text: `${description}\n\nWhatsApp: ${whatsappLink}`,
+        });
 
         res.status(201).json(data);
     } else {

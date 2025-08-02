@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 const sheets = google.sheets('v4');
 
 async function handler(req, res) {
-    if (req.method !== 'POST') {
+    if (req.method === 'POST') {
         const scopes = ['https://www.googleapis.com/auth/spreadsheets'];
         const jwt = new google.auth.JWT(
             process.env.EMIRATES_CAR_CLIENT_EMAIL,
@@ -51,7 +51,7 @@ async function handler(req, res) {
         //await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT}/sendMessage?chat_id=${process.env.CHAT_ID}&text=${encodeURIComponent(description + '\n\n' + whatsappLink)}`);
 
         // Google Sheet Append
-        await sheets.spreadsheets.values.append({
+        const response = await sheets.spreadsheets.values.append({
             auth: jwt,
             spreadsheetId: sheetId,
             range: `emirates-car-supplier`,
@@ -84,6 +84,7 @@ async function handler(req, res) {
                 ],
             },
         });
+        const data = JSON.stringify(response);
 
         const transporter = nodemailer.createTransport({
             service: 'Gmail',

@@ -52,28 +52,7 @@ export default function SupplierForm() {
         const time =
             today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         const dateTime = date + ' ' + time;
-        const payload = {
-            Timestamp: dateTime,
-            garageName,
-            tradeLicense,
-            licenseExpiry,
-            establishmentYear,
-            emirate,
-            address,
-            website,
-            contactName,
-            designation,
-            phone,
-            whatsapp,
-            email,
-            altEmail,
-            parts,
-            brands,
-            conditions,
-            delivery,
-            locations,
-            returnPolicy
-        };
+
 
         fetch(`/api/g_sheet_supplier`, {
             method: 'POST',
@@ -104,7 +83,6 @@ export default function SupplierForm() {
             }
         });
         alert('Form submitted successfully.');
-
     }
 
     return (

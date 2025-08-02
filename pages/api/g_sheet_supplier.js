@@ -75,16 +75,17 @@ async function handler(req, res) {
                         email,
                         altEmail,
                         parts,
-                        brands,
-                        conditions,
-                        delivery,
-                        locations,
+                        brands.join(', '),
+                        conditions.join(', '),
+                        delivery.join(', '),
+                        locations.join(', '),
                         returnPolicy
                     ],
                 ],
             },
         });
         const data = JSON.stringify(response);
+        console.log(data)
 
         const transporter = nodemailer.createTransport({
             service: 'Gmail',

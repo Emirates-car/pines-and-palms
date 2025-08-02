@@ -23,29 +23,26 @@ async function handler(req, res) {
         const rowCount = readData.data.values?.length || 0;
         const year = new Date().getFullYear().toString().slice(2);
         const RefNo = `${year}SUP${String(rowCount + 1).padStart(4, '0')}`;
-
-        const {
-            Timestamp,
-            garageName,
-            tradeLicense,
-            licenseExpiry,
-            establishmentYear,
-            emirate,
-            address,
-            website,
-            contactName,
-            designation,
-            phone,
-            whatsapp,
-            email,
-            altEmail,
-            parts,
-            brands,
-            conditions,
-            delivery,
-            locations,
-            returnPolicy,
-        } = req.body;
+        const Timestamp = req.body.Timestamp;
+        const garageName = req.body.garageName;
+        const tradeLicense = req.body.tradeLicense;
+        const licenseExpiry = req.body.licenseExpiry;
+        const establishmentYear = req.body.establishmentYear;
+        const emirate = req.body.emirate;
+        const address = req.body.address;
+        const website = req.body.website;
+        const contactName = req.body.contactName;
+        const designation = req.body.designation;
+        const phone = req.body.phone;
+        const whatsapp = req.body.whatsapp;
+        const email = req.body.email;
+        const altEmail = req.body.altEmail;
+        const parts = req.body.parts;
+        const brands = req.body.brands;
+        const conditions = req.body.conditions;
+        const delivery = req.body.delivery;
+        const locations = req.body.locations;
+        const returnPolicy = req.body.returnPolicy;
 
         const description = `Ref: ${RefNo}\nGarage: ${garageName}\nParts: ${parts}\nBrands: ${brands.join(', ')}\nConditions: ${conditions.join(', ')}\nDelivery: ${delivery.join(', ')}\nLocations: ${locations.join(', ')}\nReturn Policy: ${returnPolicy}`;
         const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${encodeURIComponent(description)}`;
@@ -103,7 +100,7 @@ async function handler(req, res) {
         //    text: `${description}\n\nWhatsApp: ${whatsappLink}`,
         //});
 
-        return res.status(201).json({ message: 'Supplier submitted', ref: RefNo });
+        res.status(201).json(data);
     } else {
         res.status(200).json({ message: 'error' });
     }

@@ -1,8 +1,9 @@
-import React from 'react'
-import VolkswagenClient from './VolkswagenClient'
+import { Suspense } from 'react';
 
-export default function page() {
+export default function Page() {
     return (
-        <div><VolkswagenClient /></div>
-    )
+        <Suspense fallback={<div>Loading filters...</div>}>
+            <VolkswagenParts />
+        </Suspense>
+    );
 }

@@ -14,7 +14,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 
 export default function Social() {
   return (
-    <div className="bg-bglight xs:mx-2 xxs:mx-2">
+    <div className="bg-bglight ">
       <div className="grid grid-cols-5 place-items-center gap-4 text-center pt-5">
         <div>
           <a

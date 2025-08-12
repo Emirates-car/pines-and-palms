@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import GetInTouchForm from '../../components/GetInTouchForm';
 import HeroCarousel from '../../components/HeroCarousel';
 import Image from 'next/image';
+import Footer from '../../components/footer';
 
 async function fetchDataFromPublicFolder() {
     const res = await fetch('/data.json');
@@ -235,17 +236,17 @@ export default function VolkswagenParts() {
 
     return (
         <div>
-            <div className="container mx-auto px-4 py-8">
+            <div className="mx-auto px-4 xs:px-1 s:px-1 xxs:px-2 sm:px-2 md:px-3 lg:px-4 xl:px-4 xxl:px-4 py-8 xl:py-2 xxl:py-3 s:py-1 xs:py-1 xxs:py-1 sm:py-2 md:py-3">
                 <section className="py-5 max-w-7xl mx-auto" aria-label="Spare parts by country of origin">
-                    <div className="bg-backgroundlight rounded-sm grid grid-cols-2 xs:grid-cols-1">
-                        <div className="ml-8 mt-10">
-                            <h2 className="text-3xl font-medium text-gray-800">
+                    <div className="bg-backgroundlight rounded-sm grid grid-cols-2 xs:grid-cols-1 xxs:grid-cols-1">
+                        <div className="ml-8 lg:my-auto md:my-auto xl:my-auto xxl:my-auto s:mx-4 xs:mx-4 sm:mx-4 xxs:mx-4 mt-10">
+                            <h2 className="text-3xl s:text-lg md:text-xl sm:text-lg xs:text-lg xxs:text-lg font-medium text-gray-800">
                                 Expert Parts <span className="text-blue-600">Seamless Performance</span>
                             </h2>
-                            <p className="mt-3 text-5xl font-extrabold text-gray-900">
+                            <p className="mt-3 text-5xl xs:text-xl sm:text-xl md:text-2xl s:text-xl xxs:text-xl lg:text-3xl xl:text-4xl xxl:text-5xl font-extrabold text-gray-900">
                                 Your Partner in Automotive Excellence with Quality Auto Spare Parts.
                             </p>
-                            <div className="mt-5">
+                            <div className="my-5">
                                 <a href="/#myForm" className="py-2 text-xl rounded-sm text-white bg-blue-600 hover:bg-blue-700 inline-block px-4">
                                     Inquire Now
                                 </a>
@@ -305,7 +306,7 @@ export default function VolkswagenParts() {
 
                     {/* Product Grid */}
                     <main>
-                        <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xxl:grid-cols-5 xl:grid-cols-4 gap-6 mt-6">
+                        <div className="grid grid-cols-4 sm:grid-cols-2 xxs:grid-cols-2 s:grid-cols-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xxl:grid-cols-5 xl:grid-cols-4 gap-6 xs:gap-1 s:gap-1 xxs:gap-1 sm:gap-4 md:gap-4 mt-6">
                             {filteredProducts.length > 0 ? (
                                 filteredProducts.map(product => (
                                     <div key={product.id} className="flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
@@ -371,11 +372,13 @@ export default function VolkswagenParts() {
                         </div>
                     </div>
                 )}
-
-                <div className='py-4'>
-                    <GetInTouchForm />
+                <div>
+                    <div className='py-4'>
+                        <GetInTouchForm />
+                    </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

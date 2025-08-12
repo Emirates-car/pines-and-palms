@@ -25,7 +25,7 @@ export default function footer() {
         <div className="grid grid-cols-3 xs:grid xs:grid-cols-1 s:grid s:grid-cols-1 sm:grid sm:grid-cols-1 ">
           <div className="text-center">
             <h3 className="pt-5 text-white font-extrabold">
-              ABOUT Emirates-car
+              ABOUT Emirates-car.com
             </h3>
             <p className="text-sm xs:text-xs pt-5 m-1 text-center font-medium text-yellow-400">
               We are dealing with auto spare parts for car, heavy truck, van,
@@ -53,21 +53,21 @@ export default function footer() {
               href="https://emirates-car.com/search-by-part-name"
               className="text-base xs:text-sm 2xs:text-sm sm:text-base text-white underline"
             >
-              Search parts by part name in UAE
+              All Parts
             </Link>
             <br />
             <Link
               href="https://emirates-car.com/search-by-make"
               className="text-base xs:text-sm 2xs:text-sm sm:text-base text-white underline"
             >
-              Search parts by car brands in uae
+              Car Brands
             </Link>
             <br />
             <Link
               href="https://emirates-car.com/search-by-cities-in-uae"
               className="text-base xs:text-sm 2xs:text-sm sm:text-base text-white underline"
             >
-              Search parts by cities in UAE
+              UAE Location
             </Link>
           </div>
         </div>

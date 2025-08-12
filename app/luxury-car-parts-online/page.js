@@ -6,7 +6,7 @@ import {
     faHeadset,
 } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../components/footer"
-import GetInTouchForm from "../get-in-touch/GetInTouchForm";
+import GetInTouchForm from "../../components/GetInTouchForm";
 import Ferrari from "../../public/img/car-logos/ferrari.webp"
 import Porsche from "../../public/img/car-logos/porsche.webp"
 import Audi from "../../public/img/car-logos/audi.webp"

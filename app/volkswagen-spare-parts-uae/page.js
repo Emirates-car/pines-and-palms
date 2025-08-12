@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import GetInTouchForm from '../get-in-touch/GetInTouchForm';
+import { useRouter, useSearchParams } from 'next/navigation';
+import GetInTouchForm from '../../components/GetInTouchForm';
 import HeroCarousel from '../../components/HeroCarousel';
+import Image from 'next/image';
 
 async function fetchDataFromPublicFolder() {
     const res = await fetch('/data.json');
@@ -13,292 +15,367 @@ async function fetchDataFromPublicFolder() {
     return res.json();
 }
 
+const FilterContent = React.memo(function FilterContent(props) {
+    const {
+        categories,
+        engines,
+        compatibilities,
+        categorySearch,
+        setCategorySearch,
+        engineSearch,
+        setEngineSearch,
+        compatibilitySearch,
+        setCompatibilitySearch,
+        selectedCategories,
+        toggleCategory,
+        selectedEngines,
+        toggleEngine,
+        selectedCompatibility,
+        toggleCompatibility,
+    } = props;
+
+    const filteredCategories = categories.filter(c =>
+        c.toLowerCase().includes(categorySearch.toLowerCase())
+    );
+    const filteredEngines = engines.filter(e =>
+        e.toLowerCase().includes(engineSearch.toLowerCase())
+    );
+    const filteredCompatibilities = compatibilities.filter(c =>
+        c.toLowerCase().includes(compatibilitySearch.toLowerCase())
+    );
+
+    return (
+        <>
+            {/* Category Search */}
+            <input
+                type="text"
+                placeholder="Search categories..."
+                value={categorySearch}
+                onChange={(e) => setCategorySearch(e.target.value)}
+                className="w-full px-3 py-2 mb-3 border border-gray-300 rounded-md text-sm"
+            />
+            <h4 className="font-semibold mb-2">Filter by Category</h4>
+            <div className="space-y-1">
+                {filteredCategories.map(category => (
+                    <label key={category} className="block text-sm">
+                        <input
+                            type="checkbox"
+                            checked={selectedCategories.includes(category)}
+                            onChange={() => toggleCategory(category)}
+                            className="mr-2"
+                        />
+                        {category}
+                    </label>
+                ))}
+            </div>
+
+            {/* Engine Search */}
+            <input
+                type="text"
+                placeholder="Search engines..."
+                value={engineSearch}
+                onChange={(e) => setEngineSearch(e.target.value)}
+                className="w-full px-3 py-2 mt-4 mb-3 border border-gray-300 rounded-md text-sm"
+            />
+            <h4 className="font-semibold mb-2">Filter by Engine</h4>
+            <div className="space-y-1">
+                {filteredEngines.map(engine => (
+                    <label key={engine} className="block text-sm">
+                        <input
+                            type="checkbox"
+                            checked={selectedEngines.includes(engine)}
+                            onChange={() => toggleEngine(engine)}
+                            className="mr-2"
+                        />
+                        {engine}
+                    </label>
+                ))}
+            </div>
+
+            {/* Compatibility Search */}
+            <input
+                type="text"
+                placeholder="Search compatibility..."
+                value={compatibilitySearch}
+                onChange={(e) => setCompatibilitySearch(e.target.value)}
+                className="w-full px-3 py-2 mt-4 mb-3 border border-gray-300 rounded-md text-sm"
+            />
+            <h4 className="font-semibold mb-2">Filter by Compatibility</h4>
+            <div className="space-y-1">
+                {filteredCompatibilities.map(compat => (
+                    <label key={compat} className="block text-sm">
+                        <input
+                            type="checkbox"
+                            checked={selectedCompatibility.includes(compat)}
+                            onChange={() => toggleCompatibility(compat)}
+                            className="mr-2"
+                        />
+                        {compat}
+                    </label>
+                ))}
+            </div>
+        </>
+    );
+});
+
 export default function VolkswagenParts() {
     const [data, setData] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedEngines, setSelectedEngines] = useState([]);
+    const [selectedCompatibility, setSelectedCompatibility] = useState([]);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [categorySearch, setCategorySearch] = useState('');
+    const [engineSearch, setEngineSearch] = useState('');
+    const [compatibilitySearch, setCompatibilitySearch] = useState('');
+
+    const router = useRouter();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const fetchedData = await fetchDataFromPublicFolder();
                 setData(fetchedData);
-                setFilteredProducts(fetchedData);
+
+                const params = new URLSearchParams(searchParams?.toString());
+                const filters = params.getAll('filter_car_parts[]');
+                const engines = params.getAll('engine[]');
+                const compats = params.getAll('compatibility[]');
+                const query = params.get('search') || '';
+
+                setSelectedCategories(filters);
+                setSelectedEngines(engines);
+                setSelectedCompatibility(compats);
+                setSearchQuery(query);
+
+                const filtered = fetchedData.filter(product => {
+                    const matchesCategory = filters.length === 0 || filters.includes(product.category);
+                    const matchesSearch = product.partname.toLowerCase().includes(query.toLowerCase());
+                    const matchesEngine = engines.length === 0 || (Array.isArray(product.engine) && product.engine.some(e => engines.includes(e)));
+                    const matchesCompatibility = compats.length === 0 || (Array.isArray(product.compatibility) && product.compatibility.some(c => compats.includes(c)));
+                    return matchesCategory && matchesSearch && matchesEngine && matchesCompatibility;
+                });
+
+                setFilteredProducts(filtered);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
+
         fetchData();
     }, []);
 
-    // Handle search input changes
-    const handleSearch = e => {
+    const updateURLAndFilter = (categories, engines, compats, query) => {
+        const categoryQuery = categories.map(c => `filter_car_parts[]=${encodeURIComponent(c)}`).join('&');
+        const engineQuery = engines.map(e => `engine[]=${encodeURIComponent(e)}`).join('&');
+        const compatQuery = compats.map(c => `compatibility[]=${encodeURIComponent(c)}`).join('&');
+        const search = query ? `&search=${encodeURIComponent(query)}` : '';
+        const hash = '#filter';
+        const fullURL = `/volkswagen-spare-parts-uae?${categoryQuery}&${engineQuery}&${compatQuery}${search}${hash}`;
+        router.replace(fullURL, { scroll: false });
+
+        setFilteredProducts(() => {
+            return data.filter(product => {
+                const matchesQuery =
+                    product.partname.toLowerCase().includes(query.toLowerCase()) ||
+                    product.partnumber.toLowerCase().includes(query.toLowerCase()) ||
+                    (Array.isArray(product.compatibility) && product.compatibility.some(c => c.toLowerCase().includes(query.toLowerCase()))) ||
+                    (Array.isArray(product.engine) && product.engine.some(e => e.toLowerCase().includes(query.toLowerCase())));
+
+                const matchesCategory = categories.length === 0 || categories.includes(product.category);
+                const matchesEngine = engines.length === 0 || (Array.isArray(product.engine) && product.engine.some(e => engines.includes(e)));
+                const matchesCompatibility = compats.length === 0 || (Array.isArray(product.compatibility) && product.compatibility.some(c => compats.includes(c)));
+
+                return matchesQuery && matchesCategory && matchesEngine && matchesCompatibility;
+            });
+        });
+    };
+
+    const toggleCategory = (category) => {
+        setSelectedCategories(prev => {
+            const newCategories = prev.includes(category)
+                ? prev.filter(c => c !== category)
+                : [...prev, category];
+            updateURLAndFilter(newCategories, selectedEngines, selectedCompatibility, searchQuery);
+            return newCategories;
+        });
+    };
+
+    const toggleEngine = (engine) => {
+        setSelectedEngines(prev => {
+            const newEngines = prev.includes(engine)
+                ? prev.filter(e => e !== engine)
+                : [...prev, engine];
+            updateURLAndFilter(selectedCategories, newEngines, selectedCompatibility, searchQuery);
+            return newEngines;
+        });
+    };
+
+    const toggleCompatibility = (compat) => {
+        setSelectedCompatibility(prev => {
+            const newCompat = prev.includes(compat)
+                ? prev.filter(c => c !== compat)
+                : [...prev, compat];
+            updateURLAndFilter(selectedCategories, selectedEngines, newCompat, searchQuery);
+            return newCompat;
+        });
+    };
+
+    const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
-
-        const filtered = data.filter(
-            product =>
-                product.partname.toLowerCase().includes(query) ||
-                product.partnumber.toLowerCase().includes(query) ||
-                product.compatibility.toLowerCase().includes(query) ||
-                (product.engine && product.engine.toLowerCase().includes(query))
-        );
-
-        setFilteredProducts(filtered);
+        updateURLAndFilter(selectedCategories, selectedEngines, selectedCompatibility, query);
     };
+
+    const categories = useMemo(() => [...new Set(data.map(item => item.category))], [data]);
+    const engines = useMemo(() => [...new Set(data.flatMap(item => Array.isArray(item.engine) ? item.engine : []))], [data]);
+    const compatibilities = useMemo(() => [...new Set(data.flatMap(item => Array.isArray(item.compatibility) ? item.compatibility : []))], [data]);
 
     return (
         <div>
             <div className="container mx-auto px-4 py-8">
-                <section
-                    className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 s:mx-2 max-w-7xl mx-auto"
-                    aria-label="Spare parts by country of origin"
-                >
-                    <div className="bg-backgroundlight rounded-sm">
-                        <div className="grid grid-cols-2 xs:grid-cols-1 sm:grid-cols-2 xxs:grid-cols-1 xs:text-center xs:pt-5">
-                            <div>
-                                <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 mt-10 sm:mt-12 md:mt-10 lg:mt-20 xl:mt-28 xs:mt-2 xs:text-left">
-                                    <h2 className="block text-3xl md:text-lg lg:text-2xl font-medium text-gray-800 lg:leading-tight dark:text-white font-poppins">
-                                        Expert Parts <span className="text-blue-600">Seamless Performance</span>
-                                    </h2>
-
-                                    <p className="mt-3 text-5xl xl:text-4xl xxl:text-4xl lg:text-4xl md:text-xl xs:text-lg xxs:text-lg sm:text-lg s:text-lg font-extrabold font-head text-gray-900">
-                                        Your Partner in Automotive Excellence with Quality Auto Spare Parts.
-                                    </p>
-
-                                    <div className="mt-5">
-                                        <div className="py-3  w-1/2 lg:w-full xs:w-full xxs:w-3/4 mr-auto rounded-lg shadow-md">
-                                            <a
-                                                href="/#myForm"
-                                                title="Inquire about vehicle parts online"
-                                                className="flex items-center justify-center py-2 text-xl border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700"
-                                            >
-                                                Inquire Now
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <p className="mt-10 mb-3 hidden xl:block xxl:block lg:block md:block text-sm text-gray-700">
-                                        We deal with auto parts for German, Japanese, Chinese, French, British origin cars.
-                                    </p>
-
-                                </div>
+                <section className="py-5 max-w-7xl mx-auto" aria-label="Spare parts by country of origin">
+                    <div className="bg-backgroundlight rounded-sm grid grid-cols-2 xs:grid-cols-1">
+                        <div className="ml-8 mt-10">
+                            <h2 className="text-3xl font-medium text-gray-800">
+                                Expert Parts <span className="text-blue-600">Seamless Performance</span>
+                            </h2>
+                            <p className="mt-3 text-5xl font-extrabold text-gray-900">
+                                Your Partner in Automotive Excellence with Quality Auto Spare Parts.
+                            </p>
+                            <div className="mt-5">
+                                <a href="/#myForm" className="py-2 text-xl rounded-sm text-white bg-blue-600 hover:bg-blue-700 inline-block px-4">
+                                    Inquire Now
+                                </a>
                             </div>
-
-                            <div className="xxs:hidden xs:hidden">
-                                <HeroCarousel />
-                            </div>
+                        </div>
+                        <div className="xxs:hidden xs:hidden">
+                            <HeroCarousel />
                         </div>
                     </div>
                 </section>
-                <div className="sticky top-0 bg-white z-50 py-4 shadow-sm">
+
+                {/* Search Bar */}
+                <div id="filter" className="sticky top-0 bg-white z-50 py-4 shadow-sm">
                     <div className="flex justify-center items-center">
                         <input
                             type="text"
                             placeholder="Search by part name, part number, compatibility, or engine..."
                             value={searchQuery}
                             onChange={handleSearch}
-                            className="w-full max-w-3xl px-4 py-2 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                            className="w-full max-w-3xl px-4 py-2 border border-gray-300 rounded-full shadow-sm text-sm"
                         />
                     </div>
                 </div>
 
-                <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xs:grid-cols-1 xxs:grid-cols-1 gap-6 mt-6">
-                    {filteredProducts.length > 0 ? (
-                        filteredProducts.map(product => (
-                            <div
-                                key={product.id}
-                                className="card bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden"
-                            >
-                                <Link
-                                    href={`/search-by-make/parts/${product.partname}`}
-                                    as={'/search-by-make/parts/' + product.partname}
-                                    target="_blank"
-                                >
-                                    <img
-                                        src={product.image}
-                                        alt={product.partname}
-                                        className="w-full h-48 object-cover"
-                                    />
-
-                                    <div className="p-4">
-                                        <h2 className="text-lg font-semibold truncate">
-                                            {product.partname}
-                                        </h2>
-                                        <p className="text-sm text-gray-600">
-                                            Part Number: {product.partnumber}
-                                        </p>
-                                        <p className="text-sm text-gray-600 truncate">
-                                            Compatibility: {product.compatibility}
-                                        </p>
-                                        {product.engine && (
-                                            <p className="text-sm text-gray-600">
-                                                Engine: {product.engine}
-                                            </p>
-                                        )}
-                                    </div>
-
-                                    <button className="w-3/4 mb-3 bg-blue-500 text-white text-sm py-2 px-2 hover:bg-blue-600 transition">
-                                        Order Now
-                                    </button>
-                                </Link>
-                            </div>
-                        ))
-                    ) : (
-                        <div className="col-span-full text-center text-gray-600">
-                            No products found for "{searchQuery}"
-                        </div>
-                    )}
+                {/* Filter toggle for mobile */}
+                <div className="lg:hidden xl:hidden xxl:hidden flex justify-end mb-4">
+                    <button
+                        onClick={() => setIsFilterOpen(!isFilterOpen)}
+                        className="p-2 border border-gray-300 rounded-md"
+                    >
+                        ☰ Filters
+                    </button>
                 </div>
+
+                {/* Main Grid Layout */}
+                <div className="grid lg:grid-cols-[16rem_1fr] xl:grid-cols-[16rem_1fr] xxl:grid-cols-[16rem_1fr] gap-6">
+                    {/* Sidebar */}
+                    <aside className="hidden lg:block xl:block xxl:block lg:w-64 xl:w-64 xxl:w-64 lg:sticky xl:sticky xxl:sticky lg:top-20 xl:top-20 xxl:top-20 lg:h-screen xl:h-screen xxl:h-screen lg:overflow-y-auto xl:overflow-y-auto xxl:overflow-y-auto p-4 border-r border-gray-200">
+                        <FilterContent
+                            categories={categories}
+                            engines={engines}
+                            compatibilities={compatibilities}
+                            categorySearch={categorySearch}
+                            setCategorySearch={setCategorySearch}
+                            engineSearch={engineSearch}
+                            setEngineSearch={setEngineSearch}
+                            compatibilitySearch={compatibilitySearch}
+                            setCompatibilitySearch={setCompatibilitySearch}
+                            selectedCategories={selectedCategories}
+                            toggleCategory={toggleCategory}
+                            selectedEngines={selectedEngines}
+                            toggleEngine={toggleEngine}
+                            selectedCompatibility={selectedCompatibility}
+                            toggleCompatibility={toggleCompatibility}
+                        />
+                    </aside>
+
+                    {/* Product Grid */}
+                    <main>
+                        <div className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xxl:grid-cols-5 xl:grid-cols-4 gap-6 mt-6">
+                            {filteredProducts.length > 0 ? (
+                                filteredProducts.map(product => (
+                                    <div key={product.id} className="flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+                                        <Link href={`/search-by-make/parts/${product.partname}`} target="_blank" className="flex flex-col h-full">
+                                            <div className="relative w-full aspect-square">
+                                                <Image src={product.image} alt={product.partname} fill className="object-cover" />
+                                            </div>
+                                            <div className="flex-1 p-4 flex flex-col justify-between">
+                                                <div>
+                                                    <h2 className="text-lg font-semibold line-clamp-1">{product.partname}</h2>
+                                                    <p className="text-sm text-gray-600">Part Number: {product.partnumber}</p>
+                                                    <p className="text-sm text-gray-600 line-clamp-1">Compatibility: {Array.isArray(product.compatibility) ? product.compatibility.join(', ') : ''}</p>
+                                                    {Array.isArray(product.engine) && <p className="text-sm text-gray-600 line-clamp-1">Engine: {product.engine.join(', ')}</p>}
+                                                </div>
+                                                <div className="mt-4">
+                                                    <button className="w-full bg-blue-500 text-white text-sm py-2 px-2 hover:bg-blue-600 transition">
+                                                        Order Now
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="col-span-full text-center text-gray-600">
+                                    No products found for "{searchQuery}"
+                                </div>
+                            )}
+                        </div>
+                    </main>
+                </div>
+
+                {/* Mobile Filter Drawer */}
+                {isFilterOpen && (
+                    <div className="lg:hidden xl:hidden xxl:hidden fixed inset-0 bg-black bg-opacity-50 z-50" onClick={() => setIsFilterOpen(false)}>
+                        <div
+                            className="absolute left-0 top-0 w-64 bg-white h-full p-4 overflow-y-auto"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                className="mb-4 p-2 border border-gray-300 rounded-md"
+                                onClick={() => setIsFilterOpen(false)}
+                            >
+                                ✕ Close
+                            </button>
+                            <FilterContent
+                                categories={categories}
+                                engines={engines}
+                                compatibilities={compatibilities}
+                                categorySearch={categorySearch}
+                                setCategorySearch={setCategorySearch}
+                                engineSearch={engineSearch}
+                                setEngineSearch={setEngineSearch}
+                                compatibilitySearch={compatibilitySearch}
+                                setCompatibilitySearch={setCompatibilitySearch}
+                                selectedCategories={selectedCategories}
+                                toggleCategory={toggleCategory}
+                                selectedEngines={selectedEngines}
+                                toggleEngine={toggleEngine}
+                                selectedCompatibility={selectedCompatibility}
+                                toggleCompatibility={toggleCompatibility}
+                            />
+                        </div>
+                    </div>
+                )}
+
                 <div className='py-4'>
                     <GetInTouchForm />
                 </div>
-                <article className="font-poppins bg-bglight xs:px-3 xxs:px-3 md:px-5 py-10">
-                    <section className="p-6 bg-bglight text-gray-800" aria-labelledby="car-parts-methods-heading">
-                        <h1 id="car-parts-methods-heading" className="text-2xl font-bold mb-4">
-                            Volkswagen spare parts in Dubai, Sharjah, Ajman, Al Ain, Abu Dhabi
-                        </h1>
-
-                        <p className="mb-4">
-                            <strong className="text-black">Emirates-car.com</strong> specializes in spare parts for Japanese, Korean, German, French, and American cars. The main brands we deal with include Honda, Volkswagen, Audi, Porsche, Infiniti, Volvo, Toyota, Nissan, Lexus, Mini, BMW, Mercedes-Benz, Renault, Peugeot, Kia, Hyundai, Genesis, Jaguar, Ford, Hummer, Dodge, Cadillac, GMC, Jeep, and Lincoln.
-                        </p>
-
-                        <div className="mb-4 text-black">
-                            <strong>Tags: </strong>
-                            <span className="text-blue-600 underline">
-                                #volkswagen_parts, #volkswagen_spare_parts, #autoparts, #volkswagen_spare_parts_online, #volkswagen_car_spare_parts_dubai, #volkswagen_parts_in_uae, #volkswagen_parts_dubai, #volkswagen_parts_sharjah, #dubai_auto_parts_online
-                            </span>
-                        </div>
-
-                        <p className="mb-4">
-                            At{' '}
-                            <a href="/" className="text-blue-500 underline">
-                                Emirates-car.com
-                            </a>, you can buy premium, high-quality used, genuine, OEM, and aftermarket volkswagen parts in Dubai, Sharjah, Ajman, Ras Al Khaimah, Abu Dhabi, and worldwide. Click{' '}
-                            <a href="/get-in-touch" className="text-blue-500 underline">
-                                Get Free Quote
-                            </a>{' '}
-                            to get the best prices now!
-                        </p>
-
-                        {/* Method 1 */}
-                        <section aria-labelledby="method-1-heading" className="mb-6">
-                            <h3 id="method-1-heading" className="text-xl font-semibold mb-3">
-                                1. The Traditional Way: Pros and Cons
-                            </h3>
-                            <p className="mb-2">
-                                You can visit a nearby spare parts shop and purchase what you need. This approach is simple and effective if the shop stocks the brands and models you are looking for.
-                            </p>
-                            <div className="mb-2">
-                                <strong>Pros:</strong>
-                                <ul className="list-disc ml-6">
-                                    <li>Easy and direct access to spare parts.</li>
-                                    <li>Immediate availability if the store has your required part.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <strong>Cons:</strong>
-                                <ul className="list-disc ml-6">
-                                    <li>Limited stock or brand availability.</li>
-                                    <li>Some shops specialize in only a few brands.</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Method 2 */}
-                        <section aria-labelledby="method-2-heading" className="mb-6">
-                            <h3 id="method-2-heading" className="text-xl font-semibold mb-3">
-                                2. Giant E-Commerce Companies: Pros and Cons
-                            </h3>
-                            <p className="mb-2">Online marketplaces like Amazon, Flipkart, and eBay are alternatives when local shops lack inventory.</p>
-                            <div className="mb-2">
-                                <strong>Pros:</strong>
-                                <ul className="list-disc ml-6">
-                                    <li>Wide variety of products.</li>
-                                    <li>Convenient ordering from home.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <strong>Cons:</strong>
-                                <ul className="list-disc ml-6">
-                                    <li>Risk of damaged parts due to logistics.</li>
-                                    <li>Possibility of loss during transit.</li>
-                                    <li>Unreliable for specific car models.</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Method 3 */}
-                        <section aria-labelledby="method-3-heading" className="mb-6">
-                            <h3 id="method-3-heading" className="text-xl font-semibold mb-3">
-                                3. Local Dealers: Pros and Cons
-                            </h3>
-                            <p className="mb-2">
-                                Local dealers often come recommended and provide tailored services.
-                            </p>
-                            <div className="mb-2">
-                                <strong>Pros:</strong>
-                                <ul className="list-disc ml-6">
-                                    <li>Trustworthy and reliable.</li>
-                                    <li>Specialized by brand.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <strong>Cons:</strong>
-                                <ul className="list-disc ml-6">
-                                    <li>Fewer due to digital shift.</li>
-                                    <li>Accessibility may be limited by location.</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        {/* Method 4 */}
-                        <section aria-labelledby="method-4-heading" className="mb-6">
-                            <h3 id="method-4-heading" className="text-xl font-semibold mb-3">
-                                4. Online Marketplaces: Mostly Cons
-                            </h3>
-                            <p className="mb-2">
-                                Marketplaces simplify browsing but present serious limitations:
-                            </p>
-                            <ul className="list-disc ml-6">
-                                <li>Limited availability for rare models.</li>
-                                <li>Old models often not stocked.</li>
-                                <li>High risk of spam or fraud.</li>
-                            </ul>
-                        </section>
-
-                        {/* Method 5 */}
-                        <section aria-labelledby="method-5-heading">
-                            <h3 id="method-5-heading" className="text-xl font-semibold mb-3">
-                                5. Online Dealer Websites: Only Pros!
-                            </h3>
-                            <p className="mb-2">
-                                Dealer websites like{' '}
-                                <a href="/" className="text-blue-500 underline">
-                                    Emirates-car.com
-                                </a>{' '}
-                                offer the most reliable experience.
-                            </p>
-                            <div>
-                                <strong>Pros:</strong>
-                                <ul className="list-disc ml-6">
-                                    <li>Multiple trusted options online.</li>
-                                    <li>Quick inquiry process.</li>
-                                    <li>Reliable communication.</li>
-                                </ul>
-                            </div>
-                            <p className="mt-4">
-                                Visit{' '}
-                                <a href="/" className="text-blue-500 underline">
-                                    Emirates-car.com
-                                </a>{' '}
-                                to easily find spare parts for Honda Accord, Civic, Infiniti, BMW, Audi, and more.
-                            </p>
-                        </section>
-                    </section>
-                </article>
             </div>
         </div>
-
     );
 }

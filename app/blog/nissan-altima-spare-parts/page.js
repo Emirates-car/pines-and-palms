@@ -2,7 +2,7 @@ import React from 'react';
 import RelatedPosts from '../relatedpost/page';
 import Footer from '../../../components/footer';
 import Image from 'next/image';
-import GetInTouchForm from '../../get-in-touch/GetInTouchForm';
+import GetInTouchForm from '../../../components/GetInTouchForm';
 import Link from 'next/link';
 
 export default function NissanSpareParts() {

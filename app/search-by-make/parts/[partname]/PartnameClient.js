@@ -197,7 +197,7 @@ export default function PartnameClient({ part }) {
           <div className="mt-4">
             <h2 className="text-lg font-bold mb-2">Compatibility:</h2>
             <ul className="list-disc list-inside text-gray-700">
-              {part.compatibility?.split(',').map((item, index) => (
+              {part.compatibility?.map((item, index) => (
                 <li key={index}>{item.trim()}</li>
               ))}
             </ul>

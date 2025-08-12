@@ -4,10 +4,18 @@
       "$oid": "6773ecc5fad1704d50998898"
     },
     "id": 1,
+    "category": "Starter",
     "partname": "Complete Starter",
     "partnumber": "VW 012911023E KLG",
-    "compatibility": "Volkswagen Touareg(2004-2006), Audi Q7(2007), Porsche Cayenne (2004-2010)",
-    "engine": "3.2/ 3.6 L",
+    "compatibility": [
+      "Volkswagen Touareg(2004-2006)",
+      "Audi Q7(2007)",
+      "Porsche Cayenne (2004-2010)"
+    ],
+    "engine": [
+      "3.2",
+      "3.6"
+    ],
     "image": "/img/volkswagen/vw-1.png",
     "credit": "machter.com.au"
   },
@@ -16,10 +24,24 @@
       "$oid": "6773ecc5fad1704d50998899"
     },
     "id": 2,
+    "category": "Transmission Assembly",
     "partname": "Automatic Gear Filter",
     "partnumber": "VW 01L325429B FEBI",
-    "compatibility": "Audi A6 Quattro (2000-2004), Audi S6 (2001 - 2003), Audi RS6 (2003 - 2004), Audi A8 Quattro (2000 - 2003), Audi S8 (2001-2003), Volkswagen Phaeton (2004-2006), Porsche Cayenne (2003-2006)",
-    "engine": "2.7/ 4.0/ 4.2/ 6.0 L",
+    "compatibility": [
+      "Audi A6 Quattro (2000-2004)",
+      "Audi S6 (2001 - 2003)",
+      "Audi RS6 (2003 - 2004)",
+      "Audi A8 Quattro (2000 - 2003)",
+      "Audi S8 (2001-2003)",
+      "Volkswagen Phaeton (2004-2006)",
+      "Porsche Cayenne (2003-2006)"
+    ],
+    "engine": [
+      "2.7",
+      "4.0",
+      "4.2",
+      "6.0"
+    ],
     "image": "/img/volkswagen/vw-2.png"
   },
   {
@@ -27,10 +49,22 @@
       "$oid": "6773ecc5fad1704d5099889a"
     },
     "id": 3,
+    "category": "Transmission Control Module",
     "partname": "RPM AUTOMATIC GEAR SENSOR WITH WIRE",
     "partnumber": "VW 01M927321 TB",
-    "compatibility": "Volkswagen Beetle (1998-2004), Volkswagen Golf Mk4 (1999-2005),Volkswagen Jetta Mk4 Bora (1999-2005),Audi A3 8L (2000),Seat Leon (2000),Skoda Octavia (2000)",
-    "engine": "",
+    "compatibility": [
+      "Volkswagen Beetle (1998-2004)",
+      "Volkswagen Golf Mk4 (1999-2005)",
+      "Volkswagen Jetta Mk4 Bora (1999-2005)",
+      "Audi A3 8L (2000)",
+      "Seat Leon (2000)",
+      "Skoda Octavia (2000)"
+    ],
+    "engine": [
+      "1.8",
+      "1.9",
+      "2.0"
+    ],
     "image": "/img/volkswagen/vw-3.png"
   },
   {
@@ -38,10 +72,20 @@
       "$oid": "6773ecc5fad1704d5099889b"
     },
     "id": 4,
+    "category": "Transmission Assembly",
     "partname": "Automatic Gear Filter",
     "partnumber": "VW 01V325429D",
-    "compatibility": "Audi A4 (B5) 1996 to 2001, Audi A6 (C5) 1998 to 2004, Audi Allroad Quattro (C5) 2001 to 2015, Volkswagen Passat (B5) 1998 to 2005, Audi S4 (B5) 1997 to 2002",
-    "engine": "V6/TDI",
+    "compatibility": [
+      "Audi A4 (B5) 1996 to 2001",
+      "Audi A6 (C5) 1998 to 2004",
+      "Audi Allroad Quattro (C5) 2001 to 2015",
+      "Volkswagen Passat (B5) 1998 to 2005",
+      "Audi S4 (B5) 1997 to 2002"
+    ],
+    "engine": [
+      "V6",
+      "TDI"
+    ],
     "image": "/img/volkswagen/vw-4.png"
   },
   {
@@ -49,10 +93,25 @@
       "$oid": "6773ecc5fad1704d5099889c"
     },
     "id": 5,
+    "category": "Master Cylinder (Clutch)",
     "partname": "Clutch release bearing",
     "partnumber": "VW 020141165H",
-    "compatibility": "Golf Mk1 (1974–1983), Golf Mk2 (1983–1992), Jetta Mk1 (1979–1984), Jetta Mk2 (1984–1992), Rabbit Mk1 (1975–1984), Scirocco Mk1 (1974–1981), Scirocco Mk2 (1981–1992), Cabriolet (1980–1993), Caddy Mk1 (1979–199",
-    "engine": "",
+    "compatibility": [
+      "Golf Mk1 (1974–1983)",
+      "Golf Mk2 (1983–1992)",
+      "Jetta Mk1 (1979–1984)",
+      "Jetta Mk2 (1984–1992)",
+      "Rabbit Mk1 (1975–1984)",
+      "Scirocco Mk1 (1974–1981)",
+      "Scirocco Mk2 (1981–1992)",
+      "Cabriolet (1980–1993)",
+      "Caddy Mk1 (1979–199"
+    ],
+    "engine": [
+      "1.6",
+      "1.8",
+      "2.0"
+    ],
     "image": "/img/volkswagen/vw-5.png"
   },
   {
@@ -60,9 +119,16 @@
       "$oid": "6773ecc5fad1704d5099889d"
     },
     "id": 6,
+    "category": "Transmission Assembly",
     "partname": "Clutch Shaft - 5",
     "partnumber": "VW 020141741B",
-    "compatibility": "Cabrio (1999–2002),  Golf Mk3 (1993–1999)\n, Jetta Mk3 (1993–1999), Passat B3 (1990–1993), Passat B4 (1993–1997)",
+    "compatibility": [
+      "Cabrio (1999–2002)",
+      "Golf Mk3 (1993–1999)",
+      "Jetta Mk3 (1993–1999)",
+      "Passat B3 (1990–1993)",
+      "Passat B4 (1993–1997)"
+    ],
     "engine": "2.0L 4-cylinder SOHC engine/ 2.0L 16V DOHC engine/ 2.0L 8V SOHC/ ",
     "image": "/img/volkswagen/vw-6.png"
   },
@@ -71,10 +137,15 @@
       "$oid": "6773ecc5fad1704d5099889e"
     },
     "id": 7,
+    "category": "Valve Cover",
     "partname": "BREATHER VALVE",
     "partnumber": "VW 022103765A FEBI",
-    "compatibility": "VW TOUAREG (2003 - 2006)",
-    "engine": "3.2L V6",
+    "compatibility": [
+      "VW TOUAREG (2003 - 2006)"
+    ],
+    "engine": [
+      "3.2 V6"
+    ],
     "image": "/img/volkswagen/vw-7.png"
   },
   {
@@ -82,10 +153,24 @@
       "$oid": "6773ecc5fad1704d5099889f"
     },
     "id": 8,
+    "category": "Water Pump",
     "partname": "WATER PUMP",
     "partnumber": "VW 022121011",
-    "compatibility": "Eos (2007–2009), Golf Mk4 R32 (2004–2005), Jetta Mk4 GLI (2004–2005), Passat B5.5 (2004–2005), Audi A3 8P (2004–2008), Audi TT Mk1 (2000–2006), Audi TT Mk2 (2006–2014), Audi TT (2000–2006), Porsche Caynne (2004 - 2006)",
-    "engine": " 3.2/3.6 V6",
+    "compatibility": [
+      "Eos (2007–2009)",
+      "Golf Mk4 R32 (2004–2005)",
+      "Jetta Mk4 GLI (2004–2005)",
+      "Passat B5.5 (2004–2005)",
+      "Audi A3 8P (2004–2008)",
+      "Audi TT Mk1 (2000–2006)",
+      "Audi TT Mk2 (2006–2014)",
+      "Audi TT (2000–2006)",
+      "Porsche Caynne (2004 - 2006)"
+    ],
+    "engine": [
+      "3.2",
+      "3.6 V6"
+    ],
     "image": "/img/volkswagen/vw-8.png"
   },
   {
@@ -93,10 +178,28 @@
       "$oid": "6773ecc5fad1704d509988a0"
     },
     "id": 9,
+    "category": "Water Pump",
     "partname": "WATER PUMP",
     "partnumber": "VW 022121011 GEBA",
-    "compatibility": " Audi A3 8P (2004–2008),Audi TT Mk1 (2000–2006), Audi TT Mk2 (2006–2014), Volkswagen Eos (2007–2009), Volkswagen EuroVan T4 (1992–2003), Volkswagen Golf Mk4 R32 (2004–2005), Volkswagen Jetta Mk4 GLI (2004–2005), Volkswagen Passat B5.5 (2004–2005), Volkswagen Touareg (2004–2010), Audi Q7 (2007 - 2010), Audi A3 8P (2004 - 2008), Porsche Cayenne (2004 - 2010)",
-    "engine": "2.8, 3.2, 3.6 L",
+    "compatibility": [
+      "Audi A3 8P (2004–2008)",
+      "Audi TT Mk1 (2000–2006)",
+      "Audi TT Mk2 (2006–2014)",
+      "Volkswagen Eos (2007–2009)",
+      "Volkswagen EuroVan T4 (1992–2003)",
+      "Volkswagen Golf Mk4 R32 (2004–2005)",
+      "Volkswagen Jetta Mk4 GLI (2004–2005)",
+      "Volkswagen Passat B5.5 (2004–2005)",
+      "Volkswagen Touareg (2004–2010)",
+      "Audi Q7 (2007 - 2010)",
+      "Audi A3 8P (2004 - 2008)",
+      "Porsche Cayenne (2004 - 2010)"
+    ],
+    "engine": [
+      "2.8",
+      "3.2",
+      "3.6"
+    ],
     "image": "/img/volkswagen/vw-9.png"
   },
   {
@@ -104,10 +207,21 @@
       "$oid": "6773ecc5fad1704d509988a1"
     },
     "id": 10,
+    "category": "Radiator ",
     "partname": "WATER TUBE",
     "partnumber": "VW 022121050A",
-    "compatibility": "Audi A3 8P (2004–2008), Audi TT Mk1 (2000–2006), Volkswagen Touareg (2004–2006), Volkswagen Phaeton, Volkswagen Sharan, Volkswagen Transporter, Audi Q7 (2007–2010)",
-    "engine": "3.2 V6",
+    "compatibility": [
+      "Audi A3 8P (2004–2008)",
+      "Audi TT Mk1 (2000–2006)",
+      "Volkswagen Touareg (2004–2006)",
+      "Volkswagen Phaeton",
+      "Volkswagen Sharan",
+      "Volkswagen Transporter",
+      "Audi Q7 (2007–2010)"
+    ],
+    "engine": [
+      "3.2 V6"
+    ],
     "image": "/img/volkswagen/vw-10.png"
   },
   {
@@ -115,10 +229,23 @@
       "$oid": "6773ecc5fad1704d509988a2"
     },
     "id": 11,
+    "category": "Coolant Reservoir",
     "partname": "THERMOSTAT HOUSING",
     "partnumber": "VW 022121117C",
-    "compatibility": " Audi A3 8P (2006–2009), Audi TT Mk1 (2000–2006), Audi TT Mk2 (2006–2014), Volkswagen Eos (2007–2009), Volkswagen Golf Mk4 R32 (2004–2005), Volkswagen Jetta Mk4 GLI (2004–2005), Volkswagen Passat B5.5 (2004–2005), Volkswagen R32 (2008), Porsche Cayenne (2004)",
-    "engine": "V6 3.2",
+    "compatibility": [
+      "Audi A3 8P (2006–2009)",
+      "Audi TT Mk1 (2000–2006)",
+      "Audi TT Mk2 (2006–2014)",
+      "Volkswagen Eos (2007–2009)",
+      "Volkswagen Golf Mk4 R32 (2004–2005)",
+      "Volkswagen Jetta Mk4 GLI (2004–2005)",
+      "Volkswagen Passat B5.5 (2004–2005)",
+      "Volkswagen R32 (2008)",
+      "Porsche Cayenne (2004)"
+    ],
+    "engine": [
+      "3.2"
+    ],
     "image": "/img/volkswagen/vw-11.png"
   },
   {
@@ -126,10 +253,23 @@
       "$oid": "6773ecc5fad1704d509988a3"
     },
     "id": 12,
+    "category": "Coolant Reservoir",
     "partname": "COOLANT FLANGE",
     "partnumber": "VW 022121117C S1 FEBI",
-    "compatibility": "Volkswagen Golf Mk4 (1999–2005), Volkswagen Jetta Mk4 (1999–2005), Volkswagen EuroVan (2001–2003), Audi TT Mk1 (2000–2006), Volkswagen R32 (2004–2005), Audi A3 Quattro (2006–2009), Volkswagen Eos (2007–2009), Volkswagen Sharan (7M) (1996 -2010), Volkswagen Transporter (T4, 7H/7J) (1995 - 2003)",
-    "engine": "VR6",
+    "compatibility": [
+      "Volkswagen Golf Mk4 (1999–2005)",
+      "Volkswagen Jetta Mk4 (1999–2005)",
+      "Volkswagen EuroVan (2001–2003)",
+      "Audi TT Mk1 (2000–2006)",
+      "Volkswagen R32 (2004–2005)",
+      "Audi A3 Quattro (2006–2009)",
+      "Volkswagen Eos (2007–2009)",
+      "Volkswagen Sharan (7M) (1996 -2010)",
+      "Volkswagen Transporter (T4, 7H/7J) (1995 - 2003)"
+    ],
+    "engine": [
+      "VR6"
+    ],
     "image": "/img/volkswagen/vw-12.png"
   },
   {
@@ -137,20 +277,42 @@
       "$oid": "6773ecc5fad1704d509988a4"
     },
     "id": 13,
+    "category": "Belt Tensioner",
     "partname": "BELT TENSIONER",
     "partnumber": "VW 022145299L KLG",
-    "compatibility": "Audi A3 Quattro (2006–2009), Volkswagen Passat (2006–2008)\n, Audi TT Quattro (2008–2009)\n, Volkswagen R32 (2008)\n, Volkswagen CC (2009–2016)\n, Volkswagen Atlas (2018),\nAudi TT (Mk2) (2008–2014)",
-    "engine": "3.2/ 3.6 L",
-    "image": "/img/volkswagen/vw-13.webp"
+    "compatibility": [
+      "Audi A3 Quattro (2006–2009)",
+      "Volkswagen Passat (2006–2008)",
+      "Audi TT Quattro (2008–2009)",
+      "Volkswagen R32 (2008)",
+      "Volkswagen CC (2009–2016)",
+      "Volkswagen Atlas (2018)",
+      "Audi TT (Mk2) (2008–2014)"
+    ],
+    "engine": [
+      "3.2",
+      "3.6"
+    ],
+    "image": "/img/volkswagen/vw-13.png"
   },
   {
     "_id": {
       "$oid": "6773ecc5fad1704d509988a5"
     },
     "id": 14,
+    "category": "Fan Blade",
     "partname": "Fan or Serpentine Belt",
-    "compatibility": "Volkswagen Touareg (2003 - 2007), Volkswagen Passat(2006 - 2010), Volkswagen CC(2009 - 2016), Audi Q7 (2007 - 2015), Porsche Cayenne(2003 - 2006)",
-    "engine": "3.2/ 3.6 l",
+    "compatibility": [
+      "Volkswagen Touareg (2003 - 2007)",
+      "Volkswagen Passat(2006 - 2010)",
+      "Volkswagen CC(2009 - 2016)",
+      "Audi Q7 (2007 - 2015)",
+      "Porsche Cayenne(2003 - 2006)"
+    ],
+    "engine": [
+      "3.2",
+      "3.6"
+    ],
     "image": "/img/volkswagen/vw-14.png",
     "partnumber": "VW 022145933P"
   },
@@ -159,10 +321,23 @@
       "$oid": "6773ecc5fad1704d509988a6"
     },
     "id": 15,
+    "category": "Crankshaft",
     "partname": "Crankshaft Position Sensor",
     "partnumber": "VW 022957147A KLG",
-    "compatibility": "Volkswagen EuroVan(1997 - 2003), Volkswagen R32 (2004), Volkswagen Touareg (2004–2007), Audi Q7 (2007–2010), Audi A3 (2006–2009), Audi TT (2004–2009), Porsche Cayenne (2004–2006)",
-    "engine": "2.8/ 3.2/ 3.8 L",
+    "compatibility": [
+      "Volkswagen EuroVan(1997 - 2003)",
+      "Volkswagen R32 (2004)",
+      "Volkswagen Touareg (2004–2007)",
+      "Audi Q7 (2007–2010)",
+      "Audi A3 (2006–2009)",
+      "Audi TT (2004–2009)",
+      "Porsche Cayenne (2004–2006)"
+    ],
+    "engine": [
+      "2.8",
+      "3.2",
+      "3.8"
+    ],
     "image": "/img/volkswagen/vw-15.png"
   },
   {
@@ -170,10 +345,15 @@
       "$oid": "6773ecc5fad1704d509988a7"
     },
     "id": 16,
+    "category": "Spark Plug",
     "partname": "SPARK PLUG SET 4 PIN or FR78X",
     "partnumber": "VW 0242 232 802 SET BOSCH",
-    "compatibility": "Volkswagen Golf",
-    "engine": "V6",
+    "compatibility": [
+      "Volkswagen Golf"
+    ],
+    "engine": [
+      "V6"
+    ],
     "image": "/img/volkswagen/vw-16.png"
   },
   {
@@ -181,10 +361,26 @@
       "$oid": "6773ecc5fad1704d509988aa"
     },
     "id": 17,
+    "category": "Cylinder Head",
     "partname": "GASKET CYLINDER HEAD",
     "partnumber": "VW 026103383Q",
-    "compatibility": "Volkswagen Golf Mk2 (1985–1992), Golf Mk3 (1991–1997), Jetta Mk2 (1985–1992), Passat B3/B4 (1988–1996), Corrado (1988–1995), Caddy Mk1 (1982–1992), Audi 80 B3/B4 (1986–1996), Audi Coupe (1988–1996), Audi 100 C3/C4 (1982–1994), SEAT Toledo Mk1 (1991–1999)",
-    "engine": "1.6/1.8/2.0",
+    "compatibility": [
+      "Volkswagen Golf Mk2 (1985–1992)",
+      "Golf Mk3 (1991–1997)",
+      "Jetta Mk2 (1985–1992)",
+      "Passat B3/B4 (1988–1996)",
+      "Corrado (1988–1995)",
+      "Caddy Mk1 (1982–1992)",
+      "Audi 80 B3/B4 (1986–1996)",
+      "Audi Coupe (1988–1996)",
+      "Audi 100 C3/C4 (1982–1994)",
+      "SEAT Toledo Mk1 (1991–1999)"
+    ],
+    "engine": [
+      "1.6",
+      "1.8",
+      "2.0"
+    ],
     "image": "/img/volkswagen/vw-17.png"
   },
   {
@@ -192,10 +388,23 @@
       "$oid": "6773ecc5fad1704d509988ab"
     },
     "id": 18,
+    "category": "Timing Cover",
     "partname": "TIMMINB BELT BEARING",
     "partnumber": "VW 026109243F",
-    "compatibility": "Volkswagen Golf Mk2 (1983–1992), Golf Mk3 (1991–1999), Jetta Mk2 (1984–1992), Jetta Mk3 (1992–1999), Passat B3/B4 (1988–1996), Corrado (1988–1995), Transporter T4 (1990–2003), Audi 80 B3/B4 (1986–1996), Audi 100 C3/C4 (1982–1994), SEAT Toledo Mk1 (1991–1999), Škoda Felicia (1994–2001)",
-    "engine": "1.6/ 1.8/ 2.0 L",
+    "compatibility": [
+      "Volkswagen Golf Mk2 (1983–1992)",
+      "Golf Mk3 (1991–1999), Jetta Mk2 (1984–1992), Jetta Mk3 (1992–1999), Passat B3/B4 (1988–1996), Corrado (1988–1995)",
+      "Transporter T4 (1990–2003)",
+      "Audi 80 B3/B4 (1986–1996)",
+      "Audi 100 C3/C4 (1982–1994)",
+      "SEAT Toledo Mk1 (1991–1999)",
+      "Škoda Felicia (1994–2001)"
+    ],
+    "engine": [
+      "1.6",
+      "1.8",
+      "2.0"
+    ],
     "image": "/img/volkswagen/vw-18.png"
   },
   {
@@ -203,21 +412,66 @@
       "$oid": "6773ecc5fad1704d509988ad"
     },
     "id": 22,
+    "category": "Valve Cover",
     "partname": "VALVE SEAL 8MM ",
     "partnumber": "VW 012911023E KLG",
-    "compatibility": "Volkswagen EuroVan (1995–1996), Volkswagen Passat (1996), Volkswagen Vanagon (1982–1984), Volkswagen Cabrio (1996), Audi 90 (1993–1994), Audi 100 (1994), Audi Cabriolet (1994), BMW 320i (1980–1983), BMW 318i (1984), BMW 318i (1984–1985), BMW 318i (1985–1991), BMW 318is (1991–1992), BMW 318i (1992–1995), BMW 318i (1995–1999), BMW 318is (1995–1999)",
-    "engine": "1.8/ 1.9/ 2.5/ 2.8/ 3.2/ 3.6",
-    "image": "/img/volkswagen/vw-22.webp"
+    "compatibility": [
+      "Volkswagen EuroVan (1995–1996)",
+      "Volkswagen Passat (1996)",
+      "Volkswagen Vanagon (1982–1984)",
+      "Volkswagen Cabrio (1996)",
+      "Audi 90 (1993–1994)",
+      "Audi 100 (1994)",
+      "Audi Cabriolet (1994)",
+      "BMW 320i (1980–1983)",
+      "BMW 318i (1984)",
+      "BMW 318i (1984–1985)",
+      "BMW 318i (1985–1991)",
+      "BMW 318is (1991–1992)",
+      "BMW 318i (1992–1995)",
+      "BMW 318i (1995–1999)",
+      "BMW 318is (1995–1999)"
+    ],
+    "engine": [
+      "1.8",
+      "1.9",
+      "2.5",
+      "2.8",
+      "3.2",
+      "3.6"
+    ],
+    "image": "/img/volkswagen/vw-22.png"
   },
   {
     "_id": {
       "$oid": "6773ecc5fad1704d509988ae"
     },
     "id": 23,
+    "category": "Coolant Reservoir",
     "partname": "COOLANT FLANGE ",
     "partnumber": "VW 026121144F",
-    "compatibility": " Audi 80 (FWD, 4-cylinder) (1990-1996), Volkswagen Corrado G60 (1988 - 1995), Volkswagen Golf III TDI (1991-1999), Volkswagen Jetta III (1992-1999), Volkswagen Passat B4(1994-1997), Volkswagen Vento (1992 - 1999), Seat Alhambra(1996-2010), Seat Toledo (1991-2004), Skoda Octavia (1996 - 2004), Skoda Felicia(1994-2001), Skoda Superb (2001 - 2008), Skoda Yeti (2009 - 2017), Skoda Octavia Combi (2001 - 2006), Skoda Superb Combi (2009 - 2015), Skoda Citigo, Scala, Kamiq, and Karoq (2010 - present)",
-    "engine": "1.6/1.8/1.9 L",
+    "compatibility": [
+      "Audi 80 (FWD, 4-cylinder) (1990-1996)",
+      "Volkswagen Corrado G60 (1988 - 1995)",
+      "Volkswagen Golf III TDI (1991-1999)",
+      "Volkswagen Jetta III (1992-1999)",
+      "Volkswagen Passat B4(1994-1997)",
+      "Volkswagen Vento (1992 - 1999)",
+      "Seat Alhambra(1996-2010)",
+      "Seat Toledo (1991-2004)",
+      "Skoda Octavia (1996 - 2004)",
+      "Skoda Felicia(1994-2001)",
+      "Skoda Superb (2001 - 2008)",
+      "Skoda Yeti (2009 - 2017)",
+      "Skoda Octavia Combi (2001 - 2006)",
+      "Skoda Superb Combi (2009 - 2015)",
+      "Skoda Citigo - Scala - Kamiq - Karoq (2010 - present)"
+    ],
+    "engine": [
+      "1.6",
+      "1.8",
+      "1.9"
+    ],
     "image": "/img/volkswagen/vw-23.png"
   },
   {
@@ -225,10 +479,36 @@
       "$oid": "6773ecc5fad1704d509988b0"
     },
     "id": 25,
+    "category": "Coolant Reservoir",
     "partname": "FLANGE WATER COOLANT",
     "partnumber": "VW 026121145E",
-    "compatibility": "Volkswagen Golf III (1991-1999), Volkswagen Passat B4 (1994-1997)\n, Volkswagen Vento (1992-1999), Volkswagen Jetta III (1993-1999), Volkswagen Corrado (1988-1995), Volkswagen Scirocco (1981-1992), Volkswagen Polo (1994-2002), Audi 80 (1990-1996), Audi A4 (1994-2001), Audi 90 (1986-1991), Seat Toledo (1991-2004), Seat Alhambra (1996-2010), Skoda Octavia (1996-2004), Skoda Felicia (1994-2001), Skoda Superb (2001-2008), Skoda Yeti (2009-2017), Skoda Octavia Combi (2001-2006), Seat Ibiza (1990-2000), Skoda Rapid (2012-2021)",
-    "engine": "1.4, 1.6, 1.8, 2.0, ",
+    "compatibility": [
+      "Volkswagen Golf III (1991-1999)",
+      "Volkswagen Passat B4 (1994-1997)",
+      "Volkswagen Vento (1992-1999)",
+      "Volkswagen Jetta III (1993-1999)",
+      "Volkswagen Corrado (1988-1995)",
+      "Volkswagen Scirocco (1981-1992)",
+      "Volkswagen Polo (1994-2002)",
+      "Audi 80 (1990-1996)",
+      "Audi A4 (1994-2001)",
+      "Audi 90 (1986-1991)",
+      "Seat Toledo (1991-2004)",
+      "Seat Alhambra (1996-2010)",
+      "Skoda Octavia (1996-2004)",
+      "Skoda Felicia (1994-2001)",
+      "Skoda Superb (2001-2008)",
+      "Skoda Yeti (2009-2017)",
+      "Skoda Octavia Combi (2001-2006)",
+      "Seat Ibiza (1990-2000)",
+      "Skoda Rapid (2012-2021)"
+    ],
+    "engine": [
+      "1.4",
+      "1.6",
+      "1.8",
+      "2.0"
+    ],
     "image": "/img/volkswagen/vw-25.png"
   },
   {
@@ -236,10 +516,26 @@
       "$oid": "6773ecc5fad1704d509988b1"
     },
     "id": 26,
+    "category": "Valve Cover",
     "partname": "VALVE COVER GASKET WITH SEAL",
     "partnumber": "VW 026198025A",
-    "compatibility": " Volkswagen Golf I (1974-1983), Volkswagen Golf II (1983-1992), Volkswagen Jetta I (1980-1984), Volkswagen Jetta II (1984-1992), Volkswagen Cabriolet (1979-1993), Volkswagen Scirocco I (1974-1981), Volkswagen Scirocco II (1981-1992), Volkswagen Polo (1994-2002)",
-    "engine": "1.4, 1.5, 1.6, 1.8, 1.9 L",
+    "compatibility": [
+      "Volkswagen Golf I (1974-1983)",
+      "Volkswagen Golf II (1983-1992)",
+      "Volkswagen Jetta I (1980-1984)",
+      "Volkswagen Jetta II (1984-1992)",
+      "Volkswagen Cabriolet (1979-1993)",
+      "Volkswagen Scirocco I (1974-1981)",
+      "Volkswagen Scirocco II (1981-1992)",
+      "Volkswagen Polo (1994-2002)"
+    ],
+    "engine": [
+      "1.4",
+      "1.5",
+      "1.6",
+      "1.8",
+      "1.9"
+    ],
     "image": "/img/volkswagen/vw-26.png"
   },
   {
@@ -247,10 +543,23 @@
       "$oid": "6773ecc5fad1704d509988b2"
     },
     "id": 27,
+    "category": "Piston",
     "partname": "PISTON RING SET GU",
     "partnumber": "VW 026198151A KLG",
-    "compatibility": "Audi 200 (1990-1991), Audi 200 Quattro (1990-1991), Audi S4 (1992-1994), Audi S6 (1995-1996), Volkswagen Golf II (1983-1992), Volkswagen Jetta II (1984-1992), Volkswagen Jetta III (1992-1999), Volkswagen Cabriolet (1980-1993)",
-    "engine": "1.8, 2.2 L",
+    "compatibility": [
+      "Audi 200 (1990-1991)",
+      "Audi 200 Quattro (1990-1991)",
+      "Audi S4 (1992-1994)",
+      "Audi S6 (1995-1996)",
+      "Volkswagen Golf II (1983-1992)",
+      "Volkswagen Jetta II (1984-1992)",
+      "Volkswagen Jetta III (1992-1999)",
+      "Volkswagen Cabriolet (1980-1993)"
+    ],
+    "engine": [
+      "1.8",
+      "2.2"
+    ],
     "image": "/img/volkswagen/vw-27.webp"
   },
   {
@@ -258,10 +567,29 @@
       "$oid": "6773ecc5fad1704d509988b3"
     },
     "id": 28,
+    "category": "Valve Cover",
     "partname": "VALVE COVER غطاء صبابات",
     "partnumber": "VW 0271034693",
-    "compatibility": "Volkswagen Golf III (1991-1999), Volkswagen Passat B4 (1994-1997), Volkswagen Vento (1992-1999), Volkswagen Jetta III (1993-1999), Audi 80 (1990-1996), Audi A4 (1994-2001), Seat Toledo (1991-2004), Seat Alhambra (1996-2010), Skoda Octavia (1996-2004), Skoda Felicia (1994-2001), Skoda Superb (2001-2008), Skoda Yeti (2009-2017), Skoda Octavia Combi (2001-2006)",
-    "engine": "1.6, 1.8, 1.9 L",
+    "compatibility": [
+      "Volkswagen Golf III (1991-1999)",
+      "Volkswagen Passat B4 (1994-1997)",
+      "Volkswagen Vento (1992-1999)",
+      "Volkswagen Jetta III (1993-1999)",
+      "Audi 80 (1990-1996)",
+      "Audi A4 (1994-2001)",
+      "Seat Toledo (1991-2004)",
+      "Seat Alhambra (1996-2010)",
+      "Skoda Octavia (1996-2004)",
+      "Skoda Felicia (1994-2001)",
+      "Skoda Superb (2001-2008)",
+      "Skoda Yeti (2009-2017)",
+      "Skoda Octavia Combi (2001-2006)"
+    ],
+    "engine": [
+      "1.6",
+      "1.8",
+      "1.9"
+    ],
     "image": "/img/volkswagen/vw-28.png"
   },
   {
@@ -269,10 +597,25 @@
       "$oid": "6773ecc5fad1704d509988b4"
     },
     "id": 29,
+    "category": "Water Pump",
     "partname": "WATER PUMP",
     "partnumber": "VW 030121005N FEBI",
-    "compatibility": "Audi A3 (1996-2003), Audi A4 (1995-2001), Audi A6 (1995-2001), Volkswagen Golf III (1991-1999), Volkswagen Passat B4 (1994-1997), Volkswagen Vento (1992-1999), Volkswagen Jetta III (1993-1999), Seat Toledo (1991-2004), Skoda Octavia (1996-2004)",
-    "engine": "1.6, 1.4, 1.0",
+    "compatibility": [
+      "Audi A3 (1996-2003)",
+      "Audi A4 (1995-2001)",
+      "Audi A6 (1995-2001)",
+      "Volkswagen Golf III (1991-1999)",
+      "Volkswagen Passat B4 (1994-1997)",
+      "Volkswagen Vento (1992-1999)",
+      "Volkswagen Jetta III (1993-1999)",
+      "Seat Toledo (1991-2004)",
+      "Skoda Octavia (1996-2004)"
+    ],
+    "engine": [
+      "1.6",
+      "1.4",
+      "1.0"
+    ],
     "image": "/img/volkswagen/vw-29.png"
   }
 ]

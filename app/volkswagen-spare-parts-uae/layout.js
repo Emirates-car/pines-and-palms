@@ -15,7 +15,6 @@ export const metadata = {
     description:
         'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket volkswagen spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
     openGraph: {
-        images: '/favicon.png',
         title: 'Volkswagen spare parts in UAE | Emirates-car.com',
         description:
             'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket volkswagen spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
@@ -65,12 +64,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body>
-                <Navbar />
-                {children}
-                <Footer />
-            </body>
-        </html>
+        <>
+            {children}
+        </>
     );
 }

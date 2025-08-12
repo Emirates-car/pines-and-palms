@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Footer from '../../components/footer';
 import Social from '../../components/Social';
-import GetInTouchForm from './GetInTouchForm';
+import GetInTouchForm from '../../components/GetInTouchForm';
 
 export default async function Forms() {
   return (

@@ -247,7 +247,7 @@ export default function VolkswagenClient() {
                                 Your Partner in Automotive Excellence with Quality Auto Spare Parts.
                             </p>
                             <div className="my-5">
-                                <a href="/#myForm" className="py-2 text-xl rounded-sm text-white bg-blue-600 hover:bg-blue-700 inline-block px-4">
+                                <a href="/volkswagen-spare-parts-uae#myForm" className="py-2 text-xl rounded-sm text-white bg-blue-600 hover:bg-blue-700 inline-block px-4">
                                     Inquire Now
                                 </a>
                             </div>

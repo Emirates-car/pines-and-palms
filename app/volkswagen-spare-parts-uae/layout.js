@@ -1,6 +1,7 @@
 import '../../styles/globals.css';
 import Navbar from '../../components/nav';
 import Footer from "../../components/footer"
+import { Suspense } from 'react';
 
 export const viewport = {
     width: 'device-width',
@@ -64,8 +65,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <>
-            {children}
+        <><Suspense>{children}</Suspense>
+
         </>
     );
 }

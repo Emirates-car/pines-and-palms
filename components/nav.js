@@ -17,7 +17,7 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="flex relative flex-wrap items-center justify-between px-1 py-2 bg-darkblue">
+    <nav className="flex relative flex-wrap items-center justify-between px-1 py-1 xs:py-0 xxs:py-0 s:py-0 bg-darkblue">
       <div className="container px-4 xs:px-1 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full flex justify-between">
           <div className="flex items-center">

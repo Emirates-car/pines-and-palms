@@ -236,18 +236,18 @@ export default function VolkswagenClient() {
 
     return (
         <div>
-            <div className="mx-auto px-4 xs:px-1 s:px-1 xxs:px-2 sm:px-2 md:px-3 lg:px-4 xl:px-4 xxl:px-4 py-8 xl:py-2 xxl:py-3 s:py-1 xs:py-1 xxs:py-1 sm:py-2 md:py-3">
-                <section className="py-5 max-w-7xl mx-auto" aria-label="Spare parts by country of origin">
-                    <div className="bg-backgroundlight rounded-sm grid grid-cols-2 xs:grid-cols-1 xxs:grid-cols-1">
-                        <div className="ml-8 lg:my-auto md:my-auto xl:my-auto xxl:my-auto s:mx-4 xs:mx-4 sm:mx-4 xxs:mx-4 mt-10">
-                            <h2 className="text-3xl s:text-lg md:text-xl sm:text-lg xs:text-lg xxs:text-lg font-medium text-gray-800">
+            <div className="mx-auto px-4 xs:px-0 s:px-0 xxs:px-0 sm:px-2 md:px-3 lg:px-4 xl:px-4 xxl:px-4 py-8 xl:py-2 xxl:py-3 s:py-0 xs:py-0 xxs:py-0 sm:py-2 md:py-2">
+                <section className="py-5 xs:py-0 s:py-0 xxs:py-0 max-w-7xl mx-auto" aria-label="volkswagen spare parts in uae">
+                    <div className="bg-backgroundlight rounded-sm grid grid-cols-2 xs:grid-cols-1 xxs:grid-cols-1 s:grid-cols-1">
+                        <div className="ml-8 lg:my-auto md:my-auto xl:my-auto xxl:my-auto s:mx-4 xs:mx-3 xxs:mx-3 xs:text-center xxs:text-center s:text-center s:x-2 sm:mx-4 mt-10 ">
+                            <h2 className="text-3xl s:text-lg md:text-xl sm:text-lg xs:text-sm xxs:text-lg font-medium text-gray-800">
                                 Expert Parts <span className="text-blue-600">Seamless Performance</span>
                             </h2>
-                            <p className="mt-3 text-5xl xs:text-xl sm:text-xl md:text-2xl s:text-xl xxs:text-xl lg:text-3xl xl:text-4xl xxl:text-5xl font-extrabold text-gray-900">
+                            <p className="mt-3 xs:mt-1 xxs:mt-1 s:mt-1 text-5xl xs:text-xl sm:text-xl md:text-2xl s:text-xl xxs:text-xl lg:text-3xl xl:text-4xl xxl:text-5xl font-extrabold text-gray-900">
                                 Your Partner in Automotive Excellence with Quality Auto Spare Parts.
                             </p>
                             <div className="my-5">
-                                <a href="/volkswagen-spare-parts-uae#myForm" className="py-2 text-xl rounded-sm text-white bg-blue-600 hover:bg-blue-700 inline-block px-4">
+                                <a href="/volkswagen-spare-parts-uae#myForm" className="py-2 xs:py-1 s:py-1 xxs:py-1 text-xl xs:text-base xxs:text-base s:text-base rounded-sm text-white bg-blue-600 hover:bg-blue-700 inline-block px-4">
                                     Inquire Now
                                 </a>
                             </div>

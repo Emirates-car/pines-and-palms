@@ -60,7 +60,10 @@ export async function generateStaticParams() {
       ).values()
     );
 
-    return uniquePairs;
+    return uniquePairs.map(({ make, model }) => ({
+      make,
+      model: model
+    }));
   } catch (error) {
     console.error('Error reading static params from car.json:', error);
     return [];
@@ -215,7 +218,6 @@ async function getModel(make) {
     const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
     const jsonData = await fs.readFile(filePath, 'utf8');
     const data = JSON.parse(jsonData);
-
     const filtered = data.filter(item => item.make === make);
 
     const uniqueObjectArray = [
@@ -543,7 +545,7 @@ export default async function Model({ params }) {
                         : '/search-by-make/[make]/[model]';
                       const linkAs = isExcludedMake
                         ? '/get-in-touch'
-                        : `/search-by-make/${post.make}/${post.model}`;
+                        : `/search-by-make/${post.make}/${encodeURIComponent(post.model)}`;
 
                       return (
                         <div key={i}>

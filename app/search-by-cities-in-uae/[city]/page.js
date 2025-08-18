@@ -109,7 +109,7 @@ async function getCityData(city) {
   const cityData = cities.find(c => c.city === decodedCity);
 
   if (!cityData) {
-    return null; // return null instead of throwing error
+    return null;
   }
 
   return cityData;

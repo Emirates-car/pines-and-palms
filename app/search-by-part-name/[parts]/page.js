@@ -9,26 +9,36 @@ import Footer from '../../../components/footer';
 import TenEntries from '../../../components/tenentries';
 import CarParts from '../../../public/img/car-spare-parts.png';
 import Counter from '../../../components/service-countup';
+import path from 'path';
+import { promises as fs } from 'fs';
+
+export async function generateStaticParams() {
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/parts.json');
+    const fileContents = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(fileContents);
+
+    const params = data.map(item => ({
+      parts: item.parts,
+    }));
+
+    return params;
+  } catch (error) {
+    console.error('Error generating static params from JSON:', error);
+    return [];
+  }
+}
 
 export async function generateMetadata({ params }) {
   const { parts } = params;
+  const decodedParts = decodeURIComponent(parts);
   return {
-    title: `${decodeURIComponent(
-      parts,
-    )} Car Auto Spare Parts Order Online in UAE |
-          Emirates-car.com`,
-    description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(
-      parts,
-    )}  uae`,
+    title: `${decodedParts} Car Auto Spare Parts Order Online in UAE | Emirates-car.com`,
+    description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
     openGraph: {
       images: '/favicon.png',
-      title: `${decodeURIComponent(
-        parts,
-      )} Car Auto Spare Parts Order Online in UAE |
-          Emirates-car.com`,
-      description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(
-        parts,
-      )}  uae`,
+      title: `${decodedParts} Car Auto Spare Parts Order Online in UAE | Emirates-car.com`,
+      description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
       url: 'https://emirates-car.com/search-by-part-name/' + parts,
       image: 'https://emirates-car.com/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
@@ -50,14 +60,9 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${decodeURIComponent(
-        parts,
-      )} Car Auto Spare Parts Order Online in UAE |
-          Emirates-car.com`,
-      url: 'https://emirates-car.com/search-by-part-name/' + parts,
-      description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(
-        parts,
-      )}  uae`,
+      title: `${decodedParts} Car Auto Spare Parts Order Online in UAE | Emirates-car.com`,
+      url: 'https://www.emirates-car.com/search-by-part-name/' + parts,
+      description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
       images: ['https://emirates-car.com/favicon.png'],
     },
     icons: {
@@ -69,47 +74,34 @@ export async function generateMetadata({ params }) {
         url: '/icons/icon-152x152.png',
       },
     },
-    category: `${parts}`,
+    category: `${decodedParts}`,
     alternates: {
       canonical: `https://emirates-car.com/search-by-part-name/${encodeURIComponent(parts)}`,
     },
-    keywords: `${decodeURIComponent(parts)} for honda, ${decodeURIComponent(
-      parts,
-    )} in  dubai, ${decodeURIComponent(
-      parts,
-    )} for porsche, ${decodeURIComponent(
-      parts,
-    )} for volkswagen, ${decodeURIComponent(
-      parts,
-    )} for volvo, ${decodeURIComponent(parts)} online, ${decodeURIComponent(
-      parts,
-    )} for ford, ${decodeURIComponent(
-      parts,
-    )} spare parts uae, ${decodeURIComponent(
-      parts,
-    )} spare parts online, ${decodeURIComponent(
-      parts,
-    )} used spare parts dubai, ${decodeURIComponent(
-      parts,
-    )} spare parts near me`,
+    keywords: `${decodedParts} for honda, ${decodedParts} in dubai, ${decodedParts} for porsche, ${decodedParts} for volkswagen, ${decodedParts} for volvo, ${decodedParts} online, ${decodedParts} for ford, ${decodedParts} spare parts uae, ${decodedParts} spare parts online, ${decodedParts} used spare parts dubai, ${decodedParts} spare parts near me`,
   };
 }
-
 async function getPartsData(parts) {
   const filePath = path.join(process.cwd(), 'public/lib/parts.json');
   const jsonData = await fs.readFile(filePath, 'utf8');
   const data = JSON.parse(jsonData);
 
-  const filtered = data.filter(item => item.parts === parts);
+  const decodedParts = decodeURIComponent(parts);
+  const filtered = data.find(item => item.parts === decodedParts);
 
   return filtered;
 }
-
 export default async function Parts({ params }) {
   const { parts } = params;
+  const partsData = await getPartsData(parts);
+  console.log(partsData)
+
+  if (!partsData || partsData.length === 0) {
+    notFound();
+  }
+
   const cities = await getCity();
   const makedatas = await getMake();
-  const partsData = await getPartsData(parts);
   const partsposts = await getParts();
   const modelsform = await getFormModel();
   return (

@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
 import React from 'react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { getFormModel, getMake, getParts } from '../../page';
 import FormComponent from '../../../components/FormComponent';
 import Footer from '../../../components/footer';
@@ -104,18 +105,23 @@ async function getCityData(city) {
   const jsonData = await fs.readFile(filePath, 'utf8');
   const cities = JSON.parse(jsonData);
 
-  const cityData = cities.find(c => c.city === city);
+  const decodedCity = decodeURIComponent(city);
+  const cityData = cities.find(c => c.city === decodedCity);
 
   if (!cityData) {
-    throw new Error(`City '${city}' not found`);
+    return null; // return null instead of throwing error
   }
 
   return cityData;
 }
 
 export default async function City({ params }) {
-  const { city } = params;
-  const cityData = await getCityData(city);
+  const cityData = await getCityData(params.city);
+
+  if (!cityData) {
+    notFound(); // cleanly render 404 page if city not found
+  }
+
   const makedatas = await getMake();
   const partsposts = await getParts();
   const modelsform = await getFormModel();
@@ -129,16 +135,16 @@ export default async function City({ params }) {
               <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 xxs:mt-8 xs:px-5 sm:ml-6 lg:ml-1 xl:ml-20 sm:mx-auto mt-10 sm:mt-12 md:mt-10 lg:mt-20 lg:px-8 xl:mt-28 xs:mt-2 xs:text-left s:mt-2">
                 <div className="lg:text-left">
                   <h2 className="block text-3xl sm:text-sm xs:text-base xxs:text-base md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight dark:text-white">
-                    <span class="block">
+                    <span className="block">
                       Expert Parts&nbsp;
-                      <span class="block text-blue-600 xl:inline">
+                      <span className="block text-blue-600 xl:inline">
                         Seamless Performance
                       </span>
                     </span>
                   </h2>
                   <h1 className="mt-3 text-5xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
                     Search Used / Genuine / Aftermarket Auto parts in{' '}
-                    <span class="block text-darkblue xl:inline">
+                    <span className="block text-darkblue xl:inline">
                       {cityData.city}
                     </span>
                   </h1>
@@ -159,142 +165,7 @@ export default async function City({ params }) {
                   british origin cars.
                 </div>
                 <div className="grid grid-cols-8 xs:hidden xxs:hidden md:grid-cols-4 lg:grid-cols-4 gap-2 place-content-center mb-10">
-                  <div className="flex justify-center text-center">
-                    <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
-                        <Image
-                          src={Germany}
-                          alt="british car auto spare parts"
-                          className="my-1 px-2 py-1"
-                          height={50}
-                          width={50}
-                        />
-
-                        <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                          Germany
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex justify-center text-center ">
-                    <Link href="/spare-parts/british-auto-spare-parts">
-                      <Image
-                        src={Britain}
-                        alt="british car auto spare parts"
-                        className="my-1 px-2 py-1"
-                        height={50}
-                        width={50}
-                      />
-
-                      <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                        Britain
-                      </div>
-                    </Link>
-                  </div>
-
-                  <div className="flex justify-center text-center ">
-                    <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
-                        <Image
-                          src={Japan}
-                          alt="british car auto spare parts"
-                          className="my-1 px-2 py-1"
-                          height={50}
-                          width={50}
-                        />
-
-                        <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                          Japan
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex justify-center text-center">
-                    <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
-                        <Image
-                          src={Korean}
-                          alt="british car auto spare parts"
-                          className="my-1 px-2 py-1"
-                          height={50}
-                          width={50}
-                        />
-
-                        <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                          Korean
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex justify-center text-center ">
-                    <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
-                        <Image
-                          src={USA}
-                          alt="british car auto spare parts"
-                          className="my-1 px-2 py-1"
-                          height={50}
-                          width={50}
-                        />
-
-                        <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                          USA
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex justify-center text-center ">
-                    <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
-                        <Image
-                          src={Indian}
-                          alt="british car auto spare parts"
-                          className="my-1 px-2 py-1"
-                          height={50}
-                          width={50}
-                        />
-
-                        <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                          Indian
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center text-center">
-                    <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
-                        <Image
-                          src={China}
-                          alt="british car auto spare parts"
-                          className="my-1 px-2 py-1"
-                          height={50}
-                          width={50}
-                        />
-
-                        <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                          China
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex justify-center text-center">
-                    <div className="flex justify-center text-center ">
-                      <Link href="/spare-parts/british-auto-spare-parts">
-                        <Image
-                          src={France}
-                          alt="british car auto spare parts"
-                          className="my-1 px-2 py-1"
-                          height={50}
-                          width={50}
-                        />
-
-                        <div className="text-sm rounded-2xl border border-blue-500 hover:bg-blue-500 px-2 py-1">
-                          French
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
+                  {/* icons here */}
                 </div>
               </div>
             </div>
@@ -323,18 +194,17 @@ export default async function City({ params }) {
               <Link
                 href="/search-by-make/[make]"
                 as={'/search-by-make/' + post.make}
-                title={post.make + ' spare parts ' + city}
+                title={post.make + ' spare parts ' + cityData.city}
               >
                 <main className="border h-full  hover:border-blue-600 py-3 bg-gray-100">
                   <div className="flex justify-center">
                     <Image
-                      alt={post.make + ' spare parts ' + city}
+                      alt={post.make + ' spare parts ' + cityData.city}
                       src={'/img/car-logos/' + post.img}
                       className="object-scale-down shadow-xl"
                       height={50}
                       width={50}
                     />
-                    <br />
                   </div>
                   <p className="text-center m-1 bg-darkblue hover:bg-blue-400  font-bold text-white text-sm hover:text-gray-800 rounded-sm">
                     {post.make.toUpperCase()}
@@ -365,7 +235,7 @@ export default async function City({ params }) {
               <Link
                 href="/search-by-part-name/[parts]"
                 as={'/search-by-part-name/' + post.parts}
-                title={post.parts + ' in ' + city}
+                title={post.parts + ' in ' + cityData.city}
               >
                 <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
                   <p className="text-center text-black font-medium text-sm hover:text-gray-800 p-2">
@@ -379,7 +249,6 @@ export default async function City({ params }) {
       </div>
       <TenEntries />
       <Contents />
-
       <Footer />
     </div>
   );

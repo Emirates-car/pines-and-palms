@@ -61,7 +61,7 @@ export async function generateStaticParams() {
     );
 
     return uniquePairs.map(({ make, model }) => ({
-      make,
+      make: make,
       model: model
     }));
   } catch (error) {
@@ -257,6 +257,7 @@ export default async function Model({ params }) {
   const makeArray = await getMake();
   const partspost = await getParts();
   const modelsform = await getFormModel();
+
   const excludedMakes = [
     'Acura',
     'Buick',
@@ -310,7 +311,7 @@ export default async function Model({ params }) {
   ];
   const isExcludedMake = excludedMakes.includes(make);
   if (excludedMakes.includes(make)) {
-    notFound();
+    redirect('/get-in-touch');
   }
 
   const filePath = path.join(process.cwd(), 'public/lib/car-data.json');

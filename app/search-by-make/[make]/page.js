@@ -67,7 +67,7 @@ export async function generateStaticParams({ make }) {
     );
 
     return allowed.map(post => ({
-      make: post.make,
+      make: encodeURIComponent(post.make),
     }));
   } catch (error) {
     console.error('Error reading car.json:', error);
@@ -81,8 +81,9 @@ async function getModel(make) {
     const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
     const jsonData = await fs.readFile(filePath, 'utf8');
     const data = JSON.parse(jsonData);
+    const decodedMake = decodeURIComponent(make);
 
-    const filtered = data.filter(item => item.make === make);
+    const filtered = data.filter(item => item.make === decodedMake);
 
     const uniqueObjectArray = [
       ...new Map(filtered.map(item => [item.model, item])).values(),
@@ -98,20 +99,20 @@ async function getModel(make) {
 
 
 export async function generateMetadata({ params }) {
-  const { make } = params;
+  const make = decodeURIComponent(params.make);
   return {
     title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
     description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
     metadataBase: new URL(
-      `https://www.emirates-car.com/search-by-make/${make}`
+      `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}`
     ),
     openGraph: {
       images: '/favicon.png',
       title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
       description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
-      url: 'https://emirates-car.com/search-by-make/' + make,
+      url: 'https://emirates-car.com/search-by-make/' + encodeURIComponent(make),
       image: 'https://www.emirates-car.com/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
@@ -134,7 +135,7 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
-      url: 'https://emirates-car.com/search-by-make/' + make,
+      url: 'https://emirates-car.com/search-by-make/' + encodeURIComponent(make),
       description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
       images: ['https://emirates-car.com/favicon.png'],
@@ -150,14 +151,14 @@ export async function generateMetadata({ params }) {
     },
     category: `${make} auto spare parts`,
     alternates: {
-      canonical: `https://emirates-car.com/search-by-make/${make}`,
+      canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}`,
     },
     keywords: `${make} parts, ${make} spare parts sharjah, ${make} spare parts dubai, ${make} spare parts ras al khaimah, ${make} spare parts ajman, ${make} spare parts deira, ${make} spare parts ras al khor, ${make} spare parts al quoz, ${make} spare parts uae, ${make} spare parts online, ${make} used spare parts dubai, ${make} spare parts near me, ${make} oem, ${make} oem parts, ${make} car parts, ${make} spares `,
   };
 }
 
 export default async function MakePage({ params }) {
-  const { make } = params;
+  const make = decodeURIComponent(params.make);
   const carmodel = await getModel(make);
   const partspost = await getParts();
   const cities = await getCity();
@@ -344,7 +345,7 @@ export default async function MakePage({ params }) {
                     </h2>
                     <h1 className="mt-3 text-3xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
                       <span className="block text-blue-600 xl:inline">
-                        {encodeURIComponent(make)} spare parts&nbsp;
+                        {decodeURIComponent(make)} spare parts&nbsp;
                       </span>
                       Used, Genuine, Aftermarket&nbsp; in Dubai, Abu dhabi,
                       Sharjah, Ras Al Khaimah, Ajman - UAE
@@ -394,7 +395,7 @@ export default async function MakePage({ params }) {
             {!isExcludedMake && (
               <>
                 <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-                  Search <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
+                  Search <span className="text-blue-500">{decodeURIComponent(make)}</span>{' '}
                   Spare parts by Model
                 </h3>
 
@@ -445,7 +446,7 @@ export default async function MakePage({ params }) {
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
             Popular{' '}
             <span className="text-blue-500">
-              Searched {encodeURIComponent(make)} Parts
+              Searched {decodeURIComponent(make)} Parts
             </span>{' '}
             in UAE
           </div>
@@ -484,7 +485,7 @@ export default async function MakePage({ params }) {
         <div className="bg-bglight ">
           <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
             Search{' '}
-            <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
+            <span className="text-blue-500">{make}</span>{' '}
             Spare parts Anywhere in UAE
           </h3>
           <SearchCity cities={cities} />

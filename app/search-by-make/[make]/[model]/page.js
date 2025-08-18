@@ -73,7 +73,8 @@ export async function generateStaticParams() {
 
 
 export async function generateMetadata({ params }) {
-  const { make, model } = params;
+  const make = decodeURIComponent(params.make);
+  const model = decodeURIComponent(params.model);
   return {
     title: `${make} - ${decodeURIComponent(
       model
@@ -134,7 +135,7 @@ export async function generateMetadata({ params }) {
       },
     },
     alternates: {
-      canonical: `https://emirates-car.com/search-by-make/${make}/${model}`,
+      canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}`,
     },
     robots: {
       index: true,
@@ -196,8 +197,10 @@ async function getDescription(make, model) {
     const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
     const jsonData = await fs.readFile(filePath, 'utf8');
     const data = JSON.parse(jsonData);
+    const decodedMake = decodeURIComponent(make);
+    const decodedModel = decodeURIComponent(model);
 
-    const filtered = data.filter(item => item.make === make && item.model === model);
+    const filtered = data.filter(item => item.make === decodedMake && item.model === decodedModel);
 
     const uniqueDescriptionArray = [
       ...new Map(filtered.map(item => [item.description, item])).values(),
@@ -218,7 +221,8 @@ async function getModel(make) {
     const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
     const jsonData = await fs.readFile(filePath, 'utf8');
     const data = JSON.parse(jsonData);
-    const filtered = data.filter(item => item.make === make);
+    const decodedMake = decodeURIComponent(make);
+    const filtered = data.filter(item => item.make === decodedMake);
 
     const uniqueObjectArray = [
       ...new Map(filtered.map(item => [item.model, item])).values(),
@@ -250,7 +254,8 @@ async function getMake() {
 
 
 export default async function Model({ params }) {
-  const { make, model } = params;
+  const make = decodeURIComponent(params.make);
+  const model = decodeURIComponent(params.model);
   const imageMake = await getMakeImage(make, model);
   const description = await getDescription(make, model);
   const uniqueMakeArray = await getModel(make, model);

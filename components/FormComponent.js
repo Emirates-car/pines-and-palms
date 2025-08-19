@@ -241,7 +241,7 @@ export default function FormComponent({ formsData, postFilter }) {
       body: JSON.stringify({
         Timestamp: dateTime,
         brand: Make,
-        contact: Code + Whatsappno,
+        contact: Code + Whatsappno.replace(replace(/\s+/g, '')),
         name: Name,
         description:
           'Customer Name: ' +

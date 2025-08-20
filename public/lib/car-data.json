@@ -7768,6 +7768,7 @@
     "make": "Dodge",
     "img": "dodge.webp",
     "model": "Ram",
+    "img": "ram.webp",
     "description": ".",
     "keyword": "."
   },
@@ -28873,6 +28874,7 @@
     "make": "Dodge",
     "img": "dodge.webp",
     "model": "Ram",
+    "img": "ram.webp",
     "description": ".",
     "keyword": "."
   },
@@ -40479,6 +40481,7 @@
     "make": "Dodge",
     "img": "dodge.webp",
     "model": "Ram",
+    "img": "ram.webp",
     "description": ".",
     "keyword": "."
   },
@@ -43565,6 +43568,7 @@
     "make": "Dodge",
     "img": "dodge.webp",
     "model": "Ram",
+    "img": "ram.webp",
     "description": ".",
     "keyword": "."
   },
@@ -46795,6 +46799,7 @@
     "make": "Dodge",
     "img": "dodge.webp",
     "model": "Ram",
+    "img": "ram.webp",
     "description": ".",
     "keyword": "."
   },
@@ -47388,6 +47393,7 @@
     "make": "Hyundai",
     "img": "hyundai.webp",
     "model": "Genesis",
+    "img": "genesis.webp",
     "description": ".",
     "keyword": "."
   },
@@ -49989,6 +49995,7 @@
     "make": "Dodge",
     "img": "dodge.webp",
     "model": "Ram",
+    "img": "ram.webp",
     "description": ".",
     "keyword": "."
   },
@@ -50545,6 +50552,7 @@
     "make": "Hyundai",
     "img": "hyundai.webp",
     "model": "Genesis",
+    "img": "genesis.webp",
     "description": ".",
     "keyword": "."
   },
@@ -53020,6 +53028,7 @@
     "make": "Dodge",
     "img": "dodge.webp",
     "model": "Ram",
+    "img": "ram.webp",
     "description": ".",
     "keyword": "."
   },
@@ -53513,6 +53522,7 @@
     "make": "Hyundai",
     "img": "hyundai.webp",
     "model": "Genesis",
+    "img": "genesis.webp",
     "description": ".",
     "keyword": "."
   },
@@ -56455,6 +56465,7 @@
     "make": "Hyundai",
     "img": "hyundai.webp",
     "model": "Genesis",
+    "img": "genesis.webp",
     "description": ".",
     "keyword": "."
   },
@@ -61575,6 +61586,7 @@
     "make": "Hyundai",
     "img": "hyundai.webp",
     "model": "Genesis",
+    "img": "genesis.webp",
     "description": ".",
     "keyword": "."
   },
@@ -120419,6 +120431,15 @@
     "make": "Nissan",
     "img": "nissan.webp",
     "model": "X-trail",
+    "description": ".",
+    "keyword": "."
+  },
+  {
+    "id": 14129,
+    "year": 2024,
+    "make": "Ford",
+    "img": "ford.webp",
+    "model": "Courier",
     "description": ".",
     "keyword": "."
   }

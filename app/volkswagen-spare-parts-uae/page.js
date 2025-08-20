@@ -7,6 +7,7 @@ import GetInTouchForm from '../../components/GetInTouchForm';
 import HeroCarousel from '../../components/HeroCarousel';
 import Image from 'next/image';
 import Footer from '../../components/footer';
+import VWFilters from './VWFilters';
 
 async function fetchDataFromPublicFolder() {
     const res = await fetch('/data.json');
@@ -257,126 +258,15 @@ export default function VolkswagenClient() {
                         </div>
                     </div>
                 </section>
+                <VWFilters />
 
-                {/* Search Bar */}
-                <div id="filter" className="sticky top-0 bg-white z-50 py-4 shadow-sm">
-                    <div className="flex justify-center items-center">
-                        <input
-                            type="text"
-                            placeholder="Search by part name, part number, compatibility, or engine..."
-                            value={searchQuery}
-                            onChange={handleSearch}
-                            className="w-full max-w-3xl px-4 py-2 border border-gray-300 rounded-full shadow-sm text-sm"
-                        />
-                    </div>
-                </div>
-
-                {/* Filter toggle for mobile */}
-                <div className="lg:hidden xl:hidden xxl:hidden flex justify-end mb-4">
-                    <button
-                        onClick={() => setIsFilterOpen(!isFilterOpen)}
-                        className="p-2 border border-gray-300 rounded-md"
-                    >
-                        ☰ Filters
-                    </button>
-                </div>
-
-                {/* Main Grid Layout */}
-                <div className="grid lg:grid-cols-[16rem_1fr] xl:grid-cols-[16rem_1fr] xxl:grid-cols-[16rem_1fr] gap-6">
-                    {/* Sidebar */}
-                    <aside className="hidden lg:block xl:block xxl:block lg:w-64 xl:w-64 xxl:w-64 lg:sticky xl:sticky xxl:sticky lg:top-20 xl:top-20 xxl:top-20 lg:h-screen xl:h-screen xxl:h-screen lg:overflow-y-auto xl:overflow-y-auto xxl:overflow-y-auto p-4 border-r border-gray-200">
-                        <FilterContent
-                            categories={categories}
-                            engines={engines}
-                            compatibilities={compatibilities}
-                            categorySearch={categorySearch}
-                            setCategorySearch={setCategorySearch}
-                            engineSearch={engineSearch}
-                            setEngineSearch={setEngineSearch}
-                            compatibilitySearch={compatibilitySearch}
-                            setCompatibilitySearch={setCompatibilitySearch}
-                            selectedCategories={selectedCategories}
-                            toggleCategory={toggleCategory}
-                            selectedEngines={selectedEngines}
-                            toggleEngine={toggleEngine}
-                            selectedCompatibility={selectedCompatibility}
-                            toggleCompatibility={toggleCompatibility}
-                        />
-                    </aside>
-
-                    {/* Product Grid */}
-                    <main>
-                        <div className="grid grid-cols-4 sm:grid-cols-2 xxs:grid-cols-2 s:grid-cols-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xxl:grid-cols-5 xl:grid-cols-4 gap-6 xs:gap-1 s:gap-1 xxs:gap-1 sm:gap-4 md:gap-4 mt-6">
-                            {filteredProducts.length > 0 ? (
-                                filteredProducts.map(product => (
-                                    <div key={product.id} className="flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
-                                        <Link href={`/search-by-make/parts/${product.partname}`} target="_blank" className="flex flex-col h-full">
-                                            <div className="relative w-full aspect-square">
-                                                <Image src={product.image} alt={product.partname} fill className="object-cover" />
-                                            </div>
-                                            <div className="flex-1 p-4 flex flex-col justify-between">
-                                                <div>
-                                                    <h2 className="text-lg font-semibold line-clamp-1">{product.partname}</h2>
-                                                    <p className="text-sm text-gray-600">Part Number: {product.partnumber}</p>
-                                                    <p className="text-sm text-gray-600 line-clamp-1">Compatibility: {Array.isArray(product.compatibility) ? product.compatibility.join(', ') : ''}</p>
-                                                    {Array.isArray(product.engine) && <p className="text-sm text-gray-600 line-clamp-1">Engine: {product.engine.join(', ')}</p>}
-                                                </div>
-                                                <div className="mt-4">
-                                                    <button className="w-full bg-blue-500 text-white text-sm py-2 px-2 hover:bg-blue-600 transition">
-                                                        Order Now
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                ))
-                            ) : (
-                                <div className="col-span-full text-center text-gray-600">
-                                    No products found for "{searchQuery}"
-                                </div>
-                            )}
-                        </div>
-                    </main>
-                </div>
-
-                {/* Mobile Filter Drawer */}
-                {isFilterOpen && (
-                    <div className="lg:hidden xl:hidden xxl:hidden fixed inset-0 bg-black bg-opacity-50 z-50" onClick={() => setIsFilterOpen(false)}>
-                        <div
-                            className="absolute left-0 top-0 w-64 bg-white h-full p-4 overflow-y-auto"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <button
-                                className="mb-4 p-2 border border-gray-300 rounded-md"
-                                onClick={() => setIsFilterOpen(false)}
-                            >
-                                ✕ Close
-                            </button>
-                            <FilterContent
-                                categories={categories}
-                                engines={engines}
-                                compatibilities={compatibilities}
-                                categorySearch={categorySearch}
-                                setCategorySearch={setCategorySearch}
-                                engineSearch={engineSearch}
-                                setEngineSearch={setEngineSearch}
-                                compatibilitySearch={compatibilitySearch}
-                                setCompatibilitySearch={setCompatibilitySearch}
-                                selectedCategories={selectedCategories}
-                                toggleCategory={toggleCategory}
-                                selectedEngines={selectedEngines}
-                                toggleEngine={toggleEngine}
-                                selectedCompatibility={selectedCompatibility}
-                                toggleCompatibility={toggleCompatibility}
-                            />
-                        </div>
-                    </div>
-                )}
                 <div>
                     <div className='py-4'>
                         <GetInTouchForm />
                     </div>
                 </div>
+
+
             </div>
             <Footer />
         </div>

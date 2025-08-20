@@ -41,6 +41,7 @@ import PartsAccordion from '../../../components/Parts-Accordion';
 import { notFound } from 'next/navigation';
 import { promises as fs } from 'fs';
 import path from 'path';
+import VWFilters from '../../volkswagen-spare-parts-uae/VWFilters';
 
 export async function generateStaticParams({ make }) {
   const excludedMakes = [
@@ -428,20 +429,31 @@ export default async function MakePage({ params }) {
 
 
           </div>
-        </div>
 
-        <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
-          **Model not found above?
-          <Link href="/get-in-touch">
-            <nobr className="text-blue-500 text-sm underline">
-              {' '}
-              Get in touch with us {'>>'}**
-            </nobr>
-          </Link>{' '}
-        </div>
+
+          <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
+            **Model not found above?
+            <Link href="/get-in-touch">
+              <nobr className="text-blue-500 text-sm underline">
+                {' '}
+                Get in touch with us {'>>'}**
+              </nobr>
+            </Link>{' '}
+          </div></div>
         <div className="text-center">
           {make === 'Honda' ? <HondaOfferButton /> : <></>}
         </div>
+        {make === 'Volkswagen' ? <div>
+          <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
+            Popular{' '}
+            <span className="text-blue-500">
+              Searched {decodeURIComponent(make)} Parts
+            </span>{' '}
+            in UAE
+          </div>
+          <VWFilters />
+        </div> : <></>}
+
         <div>
           <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
             Popular{' '}

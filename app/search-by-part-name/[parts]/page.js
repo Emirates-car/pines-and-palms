@@ -11,6 +11,8 @@ import CarParts from '../../../public/img/car-spare-parts.png';
 import Counter from '../../../components/service-countup';
 import path from 'path';
 import { promises as fs } from 'fs';
+import { notFound } from 'next/navigation';
+
 
 export async function generateStaticParams() {
   try {
@@ -94,7 +96,6 @@ async function getPartsData(parts) {
 export default async function Parts({ params }) {
   const { parts } = params;
   const partsData = await getPartsData(parts);
-  console.log(partsData)
 
   if (!partsData || partsData.length === 0) {
     notFound();

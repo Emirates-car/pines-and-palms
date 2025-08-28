@@ -12,8 +12,54 @@ export const viewport = {
   userScalable: false,
   themeColor: '#2563eb',
 };
-
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `Do you sell genuine spare parts in UAE?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Yes, we supply genuine OEM parts, as well as used and aftermarket options to suit your budget.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Can I buy used or aftermarket parts to save costs?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Yes, we offer used and aftermarket spare parts that are tested for quality and performance.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Do you deliver parts across UAE?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Yes, we deliver spare parts to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How do I know if a part fits my Car?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `You can share your car's VIN or model details with us, and we will confirm compatibility before shipping.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Do your spare parts come with warranty?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Yes, all new and OEM spare parts come with a standard warranty. Used parts are tested but carry limited warranty.`
+      }
+    }
+  ]
+};
 export const metadata = {
+
   title:
     'Auto Spare Parts Order Online in UAE from Dubai dealers | Emirates-car.com',
   description:
@@ -85,6 +131,9 @@ export const metadata = {
   category: 'car parts',
   keywords:
     'spare parts dealers in dubai, spare parts online, auto spare parts online, best auto parts, auto spare parts in dubai, auto spare parts uae, honda accord parts, used engine parts, headlight parts, genuine parts, aftermarket spare parts, bumper parts, sensors, camera',
+  other: {
+    "script:ld+json": JSON.stringify(faqSchema),
+  },
 };
 
 export default function RootLayout({ children }) {

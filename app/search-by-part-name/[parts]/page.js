@@ -105,6 +105,8 @@ export default async function Parts({ params }) {
   const makedatas = await getMake();
   const partsposts = await getParts();
   const modelsform = await getFormModel();
+
+
   return (
     <div>
       <div className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">

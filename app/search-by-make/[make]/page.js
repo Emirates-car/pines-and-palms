@@ -101,6 +101,52 @@ async function getModel(make) {
 
 export async function generateMetadata({ params }) {
   const make = decodeURIComponent(params.make);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Do you sell genuine ${make} spare parts in UAE?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, we supply genuine OEM ${make} parts, as well as used and aftermarket options to suit your budget.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Can I buy used or aftermarket ${make} parts to save costs?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, we offer used and aftermarket ${make} spare parts that are tested for quality and performance.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Do you deliver ${make} parts across UAE?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, we deliver ${make} spare parts to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `How do I know if a part fits my ${make}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `You can share your car's VIN or model details with us, and we will confirm compatibility before shipping.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Do your ${make} spare parts come with warranty?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, all new and OEM ${make} spare parts come with a standard warranty. Used parts are tested but carry limited warranty.`
+        }
+      }
+    ]
+  };
   return {
     title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
     description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
@@ -155,6 +201,9 @@ export async function generateMetadata({ params }) {
       canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}`,
     },
     keywords: `${make} parts, ${make} spare parts sharjah, ${make} spare parts dubai, ${make} spare parts ras al khaimah, ${make} spare parts ajman, ${make} spare parts deira, ${make} spare parts ras al khor, ${make} spare parts al quoz, ${make} spare parts uae, ${make} spare parts online, ${make} used spare parts dubai, ${make} spare parts near me, ${make} oem, ${make} oem parts, ${make} car parts, ${make} spares `,
+    other: {
+      "script:ld+json": JSON.stringify(faqSchema),
+    },
   };
 }
 
@@ -326,6 +375,8 @@ export default async function MakePage({ params }) {
       link: '/search-by-part-name/Wheel',
     },
   ];
+
+
 
   return (
     <div>

@@ -22,7 +22,7 @@ export default async function Make() {
               <i className="fas fa-car-garage py-5"></i> AUTO SPARE PARTS ONLINE
               IN UAE
             </h1>
-            <SearchMake posts={modelforms} />
+            <SearchMake posts={posts} />
             <p className="text-gray-600 text-base md:text-lg lg:text-2xl font-normal font-sans xs:text-xs 2xs:text-xs mx-10 xs:ml-3 underline">
               <nobr className="text-blue-400 no-underline">
                 <i className="fal fa-car-garage"></i> Current path:&nbsp;&nbsp;

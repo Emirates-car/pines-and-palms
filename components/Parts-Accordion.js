@@ -16,7 +16,7 @@ export default function PartsAccordion({ make, location }) {
   return (
     <div className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
       <h3 className="text-black text-4xl text-center md:text-lg lg:text-2xl font-extrabold xs:text-xl 2xs:text-xs pt-10">
-        <nobr className="text-red-600 animate-bounce">What? Where? How? Why? </nobr>
+        <nobr className="text-red-600 animate-bounce">Frequently asked Questions</nobr>
       </h3>
       <Accordion className="my-10">
         <AccordionItem>

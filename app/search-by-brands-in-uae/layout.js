@@ -1,5 +1,4 @@
 import '../../styles/globals.css';
-import Navbar from "../../components/nav";
 
 export const viewport = {
   width: 'device-width',
@@ -59,7 +58,7 @@ export const metadata = {
   },
   category: 'car parts',
   alternates: {
-    canonical: `https://emirates-car.com/search-by-make`
+    canonical: `https://emirates-car.com/search-by-brands-in-uae`
   },
   keywords:
     'how to buy auto spare parts in uae, how to search for auto spare parts in dubai sharjah, how to search for auto spare parts in dubai online, dubai spare parts market, dubai spare parts market online, auto spare parts sharjah, auto spare parts wholesalers dubai, Whats the best online auto parts store, parts market uae'

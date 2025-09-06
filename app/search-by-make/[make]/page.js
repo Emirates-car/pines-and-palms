@@ -213,6 +213,7 @@ export default async function MakePage({ params }) {
   const partspost = await getParts();
   const cities = await getCity();
   const modelsform = await getFormModel();
+  console.log(modelsform)
   const excludedMakes = [
     'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
     'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',

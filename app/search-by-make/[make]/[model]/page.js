@@ -70,8 +70,6 @@ export async function generateStaticParams() {
   }
 }
 
-
-
 export async function generateMetadata({ params }) {
   const make = decodeURIComponent(params.make);
   const model = decodeURIComponent(params.model);
@@ -124,7 +122,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${make} - ${decodeURIComponent(
       model
-    )} Car Auto Spare Parts Order Online in UAE from Dubai -
+    )} Auto Spare Parts Order Online in UAE from Dubai -
     Best Prices`,
     description: `Buy ${make} - ${decodeURIComponent(
       model
@@ -363,6 +361,7 @@ export default async function Model({ params }) {
     'Shelby',
     'Studebaker',
   ];
+  const haksMakes = ['Honda', 'Audi', 'Porsche', 'Volvo', 'Mini', 'Mercedes-Benz', 'Renault', 'Peugeot', 'Jaguar', 'Ford', 'Hummer', 'Dodge', 'GMC', 'Jeep', 'Lincoln']
   const isExcludedMake = excludedMakes.includes(make);
   if (excludedMakes.includes(make)) {
     redirect('/get-in-touch');
@@ -526,6 +525,7 @@ export default async function Model({ params }) {
       link: '/search-by-part-name/Wheel',
     },
   ];
+
   return (
     <div>
       <div className="d-flex justify-center pt-10 xs:pt-5 mx-8 xs:mx-2 s:mx-2 xxs:mx-2 sm:mx-3 md:mx-5">

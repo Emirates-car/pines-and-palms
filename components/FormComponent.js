@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getCity } from '../app/page';
 
 export default function FormComponent({ formsData, postFilter }) {
   const [Year, setYear] = useState('');

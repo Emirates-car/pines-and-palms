@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-export default function SearchCity() {
+export default function SearchCity({ cities }) {
   const [searchCity, setSearchCity] = useState('');
   const [recommendcities, setRecommendCity] = useState('');
   const [formCityChange, setFormCityChange] = useState('');

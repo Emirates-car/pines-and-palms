@@ -95,8 +95,8 @@ export async function generateMetadata({ params }) {
                 "offers": {
                     "@type": "Offer",
                     "url": `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
-                    "price": product.pricing?.price,
-                    "priceCurrency": product.pricing?.currency || "USD",
+                    "price": product.item_specifics.price,
+                    "priceCurrency": product.item_specifics.currency || "USD",
                     "availability":
                         product.availability === "In Stock"
                             ? "http://schema.org/InStock"
@@ -319,7 +319,7 @@ export default function ProductPage({ params }) {
                                     className="line-through text-gray-400"
                                     style={{ filter: "blur(4px)", userSelect: "none" }}
                                 >
-                                    {product.pricing.price} <span itemProp="priceCurrency">{product.pricing.currency}</span>
+                                    {product.item_specifics.price} <span itemProp="priceCurrency">{product.item_specifics.currency}</span>
                                 </span>{" "}
                                 <span
                                     className="text-red-600 font-bold"
@@ -333,12 +333,12 @@ export default function ProductPage({ params }) {
                                     <PartInquiryForm
                                         product={product}
                                         dealerPrice={product.pricing.discounted_price}
-                                        dealerPriceCurrency={product.pricing.currency}
+                                        dealerPriceCurrency={product.item_specifics.currency}
                                     />
                                 </span>
                             </p>
-                            <meta itemProp="price" content={`${product.pricing.price}`} />
-                            <meta itemProp="priceCurrency" content={`${product.pricing.currency}`} />
+                            <meta itemProp="price" content={`${product.item_specifics.price}`} />
+                            <meta itemProp="priceCurrency" content={`${product.item_specifics.currency}`} />
                             <link itemProp="url" href={`https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`} />
                             <meta itemProp="availability" content="http://schema.org/InStock" />
 

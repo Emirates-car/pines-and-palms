@@ -147,7 +147,7 @@ export async function generateMetadata({ params }) {
         twitter: {
             card: 'summary_large_image',
             title: `${product.partnumber} ${product.item_specifics.Condition} ${product.partname} for ${make} ${decodeURIComponent(model)}`,
-            url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model,
+            url: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             description: `Buy ${make} - ${decodeURIComponent(
                 model
             )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,

@@ -176,7 +176,7 @@ export async function generateMetadata({ params }) {
 
         openGraph: {
             images: 'https://www.emirates-car.com/favicon.png',
-            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.partname} for ${make} ${decodeURIComponent(model)}`,
+            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
             description: `Buy ${product.partname} fits ${compat.make + compat.model + compat.years}`,
             url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             image: `https://www.emirates-car.com/img/honda/${product.image}`,
@@ -200,7 +200,7 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.partname} for ${make} ${decodeURIComponent(model)}`,
+            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
             url: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             description: `Buy ${make} - ${decodeURIComponent(
                 model

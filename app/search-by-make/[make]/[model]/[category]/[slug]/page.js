@@ -171,7 +171,7 @@ export async function generateMetadata({ params }) {
 
 
     return {
-        title: `${product.partnumber} ${product.item_specifics.Condition} ${product.partname} for ${make} ${decodeURIComponent(model)}`,
+        title: `${product.partnumber} ${product.item_specifics.Condition} ${product["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
         description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.partname}, Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
 
         openGraph: {
@@ -287,7 +287,7 @@ export default function ProductPage({ params }) {
                             itemProp="image"
                         />
                         <figcaption className="text-sm text-gray-500 text-center mt-2">
-                            Image of <span itemProp="name">{product.partname}</span>
+                            Image of <span>{product.partname}</span>
                         </figcaption>
                     </figure>
                 )}

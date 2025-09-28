@@ -332,13 +332,13 @@ export default function ProductPage({ params }) {
                                 <span>
                                     <PartInquiryForm
                                         product={product}
-                                        dealerPrice={product.pricing.discounted_price}
+                                        dealerPrice={product.pricing.price}
                                         dealerPriceCurrency={product.pricing?.currency}
                                     />
                                 </span>
                             </p>
                             <meta itemProp="price" content={`${product.pricing.price}`} />
-                            <meta itemProp="priceCurrency" content={`${product.item_specifics.currency}`} />
+                            <meta itemProp="priceCurrency" content={`${product.pricing.currency}`} />
                             <link itemProp="url" href={`https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`} />
                             <meta itemProp="availability" content="http://schema.org/InStock" />
 

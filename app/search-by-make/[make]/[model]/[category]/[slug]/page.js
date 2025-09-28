@@ -171,7 +171,7 @@ export async function generateMetadata({ params }) {
 
 
     return {
-        title: `${product.partnumber} ${product.item_specifics.Condition} ${product["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
+        title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
         description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.partname}, Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
 
         openGraph: {

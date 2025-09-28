@@ -43,8 +43,8 @@
             "UPC": "4027816012345"
         },
         "pricing": {
-            "price": 120.0,
-            "currency": "USD",
+            "price": 170,
+            "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
         },
@@ -143,10 +143,7 @@
             "currency": "USD",
             "Brand": "Honda",
             "Manufacturer Part Number": "60260-TE0-A91ZZ",
-            "Other Part Number": [
-                "01L-325-429-B",
-                "01L 325 429B"
-            ],
+            "Other Part Number": [],
             "Interchange Part Number": [
                 "60260-TE0-A00ZZ",
                 "60260-TE0-A01ZZ",

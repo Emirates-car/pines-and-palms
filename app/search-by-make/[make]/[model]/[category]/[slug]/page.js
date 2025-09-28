@@ -337,8 +337,13 @@ export default function ProductPage({ params }) {
                                     />
                                 </span>
                             </p>
+                            <meta itemProp="price" content={`${product.pricing.price}`} />
+                            <meta itemProp="priceCurrency" content={`${product.pricing.currency}`} />
+                            <link itemProp="url" href={`https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`} />
+                            <meta itemProp="availability" content="http://schema.org/InStock" />
+
                             {/* Hidden structured data for availability */}
-                            <link itemProp="availability" href="https://schema.org/InStock" />
+                            <meta itemProp="availability" href="https://schema.org/InStock" />
                         </div>
                     </div>
                 </section>

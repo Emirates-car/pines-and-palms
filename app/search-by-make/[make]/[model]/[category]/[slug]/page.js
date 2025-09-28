@@ -80,6 +80,11 @@ export async function generateMetadata({ params }) {
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "offers": {
+            "@type": "Offer",
+            "price": 0,
+            "priceCurrency": "AED"
+        },
         "mainEntity": [
             {
                 "@type": "Question",
@@ -113,6 +118,7 @@ export async function generateMetadata({ params }) {
                     "text": `Yes, all new and OEM ${make} ${decodeURIComponent(model)} ${product.partname} (${product.partnumber}) come with a standard warranty. Used parts are tested but carry limited warranty.`
                 }
             }
+
         ]
     };
 

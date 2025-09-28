@@ -21,8 +21,6 @@
         "image": "/img/honda/Grille.webp",
         "item_specifics": {
             "sku": "HON0002",
-            "price": "170",
-            "currency": "AED",
             "Brand": "Honda",
             "Manufacturer Part Number": "71120-TA5-A000",
             "Other Part Number": [],
@@ -79,8 +77,6 @@
         "image": "/img/honda/rightfender.png",
         "item_specifics": {
             "sku": "HON0003",
-            "price": "18.30",
-            "currency": "USD",
             "Brand": "Honda",
             "Manufacturer Part Number": "60210-TE0-A91ZZ",
             "Other Part Number": [],
@@ -139,8 +135,6 @@
         "image": "/img/honda/leftfender.webp",
         "item_specifics": {
             "sku": "HON0004",
-            "price": "18.30",
-            "currency": "USD",
             "Brand": "Honda",
             "Manufacturer Part Number": "60260-TE0-A91ZZ",
             "Other Part Number": [],
@@ -223,8 +217,6 @@
         "image": "/img/renault/ren-1.png",
         "item_specifics": {
             "sku": "REN990004",
-            "price": "10.30",
-            "currency": "EURO",
             "Brand": "Renault",
             "Manufacturer Part Number": "243800196R",
             "Other Part Number": [],

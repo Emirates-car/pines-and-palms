@@ -21,8 +21,8 @@
         "image": "/img/honda/Grille.webp",
         "item_specifics": {
             "sku": "HON0002",
-            "price": "12.30",
-            "currency": "USD",
+            "price": "170",
+            "currency": "AED",
             "Brand": "Honda",
             "Manufacturer Part Number": "71120-TA5-A000",
             "Other Part Number": [],
@@ -79,7 +79,7 @@
         "image": "/img/honda/rightfender.png",
         "item_specifics": {
             "sku": "HON0003",
-            "price": "12.30",
+            "price": "18.30",
             "currency": "USD",
             "Brand": "Honda",
             "Manufacturer Part Number": "60210-TE0-A91ZZ",
@@ -103,7 +103,7 @@
             "UPC": "4027816012345"
         },
         "pricing": {
-            "price": 120.0,
+            "price": 18.50,
             "currency": "USD",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -139,7 +139,7 @@
         "image": "/img/honda/leftfender.webp",
         "item_specifics": {
             "sku": "HON0004",
-            "price": "12.30",
+            "price": "18.30",
             "currency": "USD",
             "Brand": "Honda",
             "Manufacturer Part Number": "60260-TE0-A91ZZ",
@@ -166,7 +166,7 @@
             "UPC": "4027816012345"
         },
         "pricing": {
-            "price": 120.0,
+            "price": 18.30,
             "currency": "USD",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -226,7 +226,7 @@
         "image": "/img/renault/ren-1.png",
         "item_specifics": {
             "sku": "REN990004",
-            "price": "3.47",
+            "price": "10.30",
             "currency": "EURO",
             "Brand": "Renault",
             "Manufacturer Part Number": "243800196R",
@@ -256,8 +256,8 @@
             "UPC": "4027816012345"
         },
         "pricing": {
-            "price": 120.0,
-            "currency": "USD",
+            "price": 10.30,
+            "currency": "EURO",
             "discounted_price": 95.0,
             "offer": "20% OFF"
         },

@@ -246,7 +246,7 @@
         },
         "pricing": {
             "price": 10.30,
-            "currency": "EURO",
+            "currency": "EUR",
             "discounted_price": 95.0,
             "offer": "20% OFF"
         },

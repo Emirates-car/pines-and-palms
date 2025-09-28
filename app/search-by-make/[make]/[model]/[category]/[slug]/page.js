@@ -179,7 +179,7 @@ export async function generateMetadata({ params }) {
             title: `${product.partnumber} ${product.item_specifics.Condition} ${product.partname} for ${make} ${decodeURIComponent(model)}`,
             description: `Buy ${product.partname} fits ${compat.make + compat.model + compat.years}`,
             url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
-            image: 'https://www.emirates-car.com/img/car-spare-parts.png',
+            image: `https://www.emirates-car.com/img/honda/${product.image}`,
             siteName: 'Emirates Auto Parts',
             images: [
                 'https://www.emirates-car.com/favicon.png',

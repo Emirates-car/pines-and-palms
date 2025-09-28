@@ -49,20 +49,18 @@ export const metadata = {
     images: ['https://emirates-car.com/favicon.png']
   },
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/icons/icon-96x96.png',
-    apple: '/icons/icon-192x192.png',
+    icon: 'https://emirates-car.com/favicon.png',
+    shortcut: 'https://emirates-car.com/icons/icon-96x96.png',
+    apple: 'https://emirates-car.com/icons/icon-192x192.png',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/icons/icon-152x152.png'
+      url: 'https://emirates-car.com/icons/icon-152x152.png'
     }
   },
   category: 'car parts',
   alternates: {
     canonical: `https://emirates-car.com/search-by-make`
   },
-  keywords:
-    'how to buy auto spare parts in uae, how to search for auto spare parts in dubai sharjah, how to search for auto spare parts in dubai online, dubai spare parts market, dubai spare parts market online, auto spare parts sharjah, auto spare parts wholesalers dubai, Whats the best online auto parts store, parts market uae'
 };
 
 export default function RootLayout({ children }) {

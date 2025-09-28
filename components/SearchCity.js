@@ -16,7 +16,7 @@ export default function SearchCity({ cities }) {
       setFormCityChange(part);
     };
     loadPart();
-  });
+  }, [cities]);
 
   const onCityFormChange = text => {
     let matches = [];
@@ -35,42 +35,41 @@ export default function SearchCity({ cities }) {
     setRecommendCity([]);
   };
   return (
-    <div>
-      <div className="flex justify-center">
-        <div className="pt-3">
-          <input
-            className="border-2 border-gray-300 w-96 xs:w-full sm:mx-2 2xs:w-auto 2xs:mx-2 bg-white h-10 xs:h-6 2xs:h-6 rounded-lg text-sm focus:outline-none px-2"
-            type="search"
-            placeholder="Eg. Abu dhabi, Dubai, Ajman..."
-            onChange={e => onCityFormChange(e.target.value)}
-            value={searchCity}
-            autoComplete="off"
-            required
-          />
-          <div className="overflow-y-hidden grid grid-cols-5 xs:grid xs:grid-cols-1 2xs:grid 2xs:grid-cols-1 xs:w-auto xs:mx-2 sm:w-auto sm:mx-2 2xs:w-auto 2xs:mx-2 ">
-            {recommendcities &&
-              recommendcities.map((recommendcities, i) => (
-                <div
-                  key={i}
-                  className="cursor-pointer  text-base p-1 bg-white"
-                  onClick={() => onCitySuggestionHandler(recommendcities)}
-                  width="100%"
+    <form role="search" className="flex justify-center">
+      <div className="pt-3 w-full max-w-md">
+        <label htmlFor="city-search" className="sr-only">
+          Search city
+        </label>
+        <input
+          id="city-search"
+          type="search"
+          className="border-2 border-gray-300 w-full bg-white h-10 xs:h-6 2xs:h-6 rounded-lg text-sm focus:outline-none px-2"
+          placeholder="Eg. Abu Dhabi, Dubai, Ajman..."
+          onChange={e => onCityFormChange(e.target.value)}
+          value={searchCity}
+          autoComplete="off"
+          required
+        />
+
+        {recommendcities && recommendcities.length > 0 && (
+          <ul className="mt-2 overflow-y-hidden grid grid-cols-5 xs:grid-cols-1 2xs:grid-cols-1 gap-1">
+            {recommendcities.map((city, i) => (
+              <li key={i} className="cursor-pointer text-base bg-white">
+                <Link
+                  href={`https://emirates-car.com/search-by-part-name/${city}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Spare parts online in ${city}`}
+                  className="block p-1 hover:underline"
+                  onClick={() => onCitySuggestionHandler(city)}
                 >
-                  <Link
-                    href={
-                      'https://emirates-car.com/search-by-part-name/' +
-                      recommendcities
-                    }
-                    target="_newtab"
-                    title={'spare parts online in ' + recommendcities}
-                  >
-                    <div>{recommendcities}</div>
-                  </Link>
-                </div>
-              ))}
-          </div>
-        </div>
+                  {city}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </div>
+    </form>
   );
 }

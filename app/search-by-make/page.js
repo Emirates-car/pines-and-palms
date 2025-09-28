@@ -6,7 +6,6 @@ import Link from 'next/link';
 import SearchMake from '../../components/SearchMake';
 import HondaOfferButton from '../../components/HondaOfferButton';
 import Social from '../../components/Social';
-import Footer from '../../components/footer';
 
 export default async function Make() {
   const posts = await getMake();
@@ -145,7 +144,6 @@ export default async function Make() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

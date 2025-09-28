@@ -6,7 +6,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import GetInTouchForm from '../../components/GetInTouchForm';
 import HeroCarousel from '../../components/HeroCarousel';
 import Image from 'next/image';
-import Footer from '../../components/footer';
 import VWFilters from './VWFilters';
 
 async function fetchDataFromPublicFolder() {
@@ -268,7 +267,6 @@ export default function VolkswagenClient() {
 
 
             </div>
-            <Footer />
         </div>
     );
 }

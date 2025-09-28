@@ -1,0 +1,57 @@
+[
+    {
+        "type": "payment",
+        "labels": [
+            "Credit Card",
+            "Debit Card",
+            "Cash on Delivery",
+            "PayPal",
+            "Bank Transfer",
+            "EMI",
+            "Installments",
+            "Prepaid",
+            "Pay Later",
+            "Wallet",
+            "Financing Options"
+        ]
+    },
+    {
+        "type": "delivery",
+        "labels": [
+            "Standard Delivery",
+            "Express Delivery",
+            "Next-Day Delivery",
+            "Same-Day Delivery",
+            "Scheduled Delivery",
+            "Pickup Point",
+            "Curbside Pickup"
+        ]
+    },
+    {
+        "type": "shipping",
+        "labels": [
+            "Free Shipping",
+            "Flat Rate Shipping",
+            "International Shipping",
+            "Local Shipping",
+            "Shipping Charges",
+            "Tracking Available",
+            "Fast Shipping",
+            "Courier"
+        ]
+    },
+    {
+        "type": "returns",
+        "labels": [
+            "Return Policy",
+            "30-Day Return",
+            "Exchange",
+            "Refund",
+            "Replacement",
+            "No Questions Asked",
+            "Warranty",
+            "Defective Product Return",
+            "Return Shipping Charges"
+        ]
+    }
+]

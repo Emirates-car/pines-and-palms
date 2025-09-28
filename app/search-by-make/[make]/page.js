@@ -8,7 +8,6 @@ import Link from 'next/link';
 import HondaOfferButton from '../../../components/HondaOfferButton';
 import Image from 'next/image';
 import { getParts, getCity, getFormModel } from '../../page';
-import Footer from '../../../components/footer';
 import ABS from '../../../public/img/honda-eighth-gen/Anti_Lock_Braking_System.webp';
 import AirFilter from '../../../public/img/honda-eighth-gen/Air_Filter.webp';
 import AirSuspension from '../../../public/img/honda-eighth-gen/Air_Suspension_Module.webp';
@@ -42,6 +41,22 @@ import { notFound } from 'next/navigation';
 import { promises as fs } from 'fs';
 import path from 'path';
 import VWFilters from '../../volkswagen-spare-parts-uae/VWFilters';
+import products from "../../../public/products.json"
+import ProductFilter from './ProductFilter';
+import { Fira_Sans, Playfair_Display } from 'next/font/google';
+
+const playfair_display = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair-display',
+});
+
+const firaSans = Fira_Sans({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-fira-sans',
+});
 
 export async function generateStaticParams({ make }) {
   const excludedMakes = [
@@ -76,6 +91,13 @@ export async function generateStaticParams({ make }) {
   }
 }
 
+async function fetchDataFromPublicFolder() {
+  const res = await fetch('/products.json');
+  if (!res.ok) {
+    throw new Error(`Failed to fetch JSON: ${res.status}`);
+  }
+  return res.json();
+}
 
 async function getModel(make) {
   try {
@@ -104,7 +126,7 @@ export async function generateMetadata({ params }) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
+    "divEntity": [
       {
         "@type": "Question",
         "name": `Do you sell genuine ${make} spare parts in UAE?`,
@@ -155,7 +177,7 @@ export async function generateMetadata({ params }) {
       `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}`
     ),
     openGraph: {
-      images: '/favicon.png',
+      images: 'https://emirates-car.com/favicon.png',
       title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
       description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
     ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
@@ -188,32 +210,117 @@ export async function generateMetadata({ params }) {
       images: ['https://emirates-car.com/favicon.png'],
     },
     icons: {
-      icon: '/favicon.png',
-      shortcut: '/icons/icon-96x96.png',
-      apple: '/icons/icon-192x192.png',
+      icon: 'https://emirates-car.com/favicon.png',
+      shortcut: 'https://emirates-car.com/icons/icon-96x96.png',
+      apple: 'https://emirates-car.com/icons/icon-192x192.png',
       other: {
         rel: 'apple-touch-icon-precomposed',
-        url: '/icons/icon-152x152.png',
+        url: 'https://emirates-car.com/icons/icon-152x152.png',
       },
     },
     category: `${make} auto spare parts`,
     alternates: {
       canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}`,
     },
-    keywords: `${make} parts, ${make} spare parts sharjah, ${make} spare parts dubai, ${make} spare parts ras al khaimah, ${make} spare parts ajman, ${make} spare parts deira, ${make} spare parts ras al khor, ${make} spare parts al quoz, ${make} spare parts uae, ${make} spare parts online, ${make} used spare parts dubai, ${make} spare parts near me, ${make} oem, ${make} oem parts, ${make} car parts, ${make} spares `,
     other: {
       "script:ld+json": JSON.stringify(faqSchema),
     },
   };
 }
 
-export default async function MakePage({ params }) {
+async function getMakeImage(make) {
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(jsonData);
+
+    const filtered = data.filter(item => item.make === make);
+
+    const uniqueMkeArray = [
+      ...new Map(filtered.map(item => [item.img, item])).values(),
+    ];
+
+    const imageMake = uniqueMkeArray.map(item => item.img);
+
+    return imageMake;
+  } catch (error) {
+    console.error('Error reading make images:', error.message);
+    return [];
+  }
+}
+async function getDescription(make) {
+  try {
+    const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(jsonData);
+    const decodedMake = decodeURIComponent(make);
+
+    const filtered = data.filter(item => item.make === decodedMake);
+
+    const uniqueDescriptionArray = [
+      ...new Map(filtered.map(item => [item.description, item])).values(),
+    ];
+
+    const description = uniqueDescriptionArray.map(i => i.description);
+
+    return description;
+  } catch (error) {
+    console.error('Error reading descriptions:', error.message);
+    return [];
+  }
+}
+
+export default async function MakePage({ params, searchParams }) {
   const make = decodeURIComponent(params.make);
   const carmodel = await getModel(make);
   const partspost = await getParts();
   const cities = await getCity();
   const modelsform = await getFormModel();
-  console.log(modelsform)
+  const imageMake = await getMakeImage(make)
+  const description = await getDescription(make)
+
+  //search filte
+  const {
+    "filter_car_parts[]": categories = [],
+    "engine[]": engines = [],
+    "compatibility[]": compats = [],
+    search = ""
+  } = searchParams;
+
+
+  const selectedCategories = Array.isArray(categories) ? categories : [categories].filter(Boolean);
+  const selectedEngines = Array.isArray(engines) ? engines : [engines].filter(Boolean);
+  const selectedCompats = Array.isArray(compats) ? compats : [compats].filter(Boolean);
+  const query = search?.toLowerCase() || "";
+
+
+  const makeFiltered = products.filter(product =>
+    product.compatibility?.some(c =>
+      c.make.toLowerCase() === make.toLowerCase()
+    )
+  )
+
+  const filtered = makeFiltered.filter(product => {
+    const matchesCategory =
+      selectedCategories.length === 0 || selectedCategories.includes(product.category);
+
+    const matchesSearch =
+      product.partname.toLowerCase().includes(query) ||
+      product.partnumber.toLowerCase().includes(query) ||
+      product.engine?.some(e => e.toLowerCase().includes(query)) ||
+      product.compatibility?.some(c =>
+        `${c.make} ${c.model} ${c.years ?? ""}`.toLowerCase().includes(query))
+
+    const matchesEngine =
+      selectedEngines.length === 0 || product.engine?.some(e => selectedEngines.includes(e));
+
+    const matchesCompatibility =
+      selectedCompats.length === 0 ||
+      product.compatibility?.some(c => selectedCompats.includes(`${c.make} ${c.model} ${c.years ? `(${c.years})` : ""}`));
+    return matchesCategory && matchesSearch && matchesEngine && matchesCompatibility;
+  });
+
+
   const excludedMakes = [
     'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
     'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
@@ -380,345 +487,364 @@ export default async function MakePage({ params }) {
 
 
   return (
-    <div>
-      <main className="d-flex justify-center pt-10 xs:pt-5 mx-2 font-sans">
-        <div className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
-          <div className="bg-backgroundlight rounded-sm">
-            <div className="grid grid-cols-2 xs:grid xs:grid-cols-1 s:grid s:grid-cols-1 xs:text-center sm:grid sm:grid-cols-2 xxs:grid xxs:grid-cols-1 xs:pt-5 s:pt-5">
-              <div>
-                <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 xxs:mt-8 xs:px-5 sm:ml-6 lg:ml-1 xl:ml-20 sm:mx-auto mt-10 sm:mt-12 md:mt-10 lg:mt-20 lg:px-8 xl:mt-28 xs:mt-2 xs:text-left s:mt-2">
-                  <div className="lg:text-left">
-                    <h2 className="block text-3xl sm:text-sm xs:text-base xxs:text-base md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight dark:text-white">
-                      <span class="block">
-                        Expert Parts&nbsp;
-                        <span class="block text-blue-600 xl:inline">
-                          Seamless Performance
-                        </span>
-                      </span>
-                    </h2>
-                    <h1 className="mt-3 text-3xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
-                      <span className="block text-blue-600 xl:inline">
-                        {decodeURIComponent(make)} spare parts&nbsp;
-                      </span>
-                      Used, Genuine, Aftermarket&nbsp; in Dubai, Abu dhabi,
-                      Sharjah, Ras Al Khaimah, Ajman - UAE
-                    </h1>
-                    <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
-                      <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
-                        <a
-                          href={'/search-by-make/' + make + '#myForm'}
-                          title="vehicle parts online"
-                          className="flex items-center justify-center py-2 xs:py-2 xxs:py-1 sm:py-0 text-xl sm:text-base xl:text-xl border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md md:text-lg md:px-5 xs:text-sm xxs:text-sm xxs:my-2 lg:my-2 s:text-sm s:my-2 focus:filter brightness-125"
-                        >
-                          Inquire Now
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+    <div className='max-w-7xl mx-auto md:px-0 lg:px-0 xs:px-0 xxs:px-0 sm:px-2'>
+      <header
+        className="xxs:py-0 sm:px-7  xl:py-10 xxl:py-10 s:py-0 xs:py-0 lg:py-0 md:mx-0 md:py-0"
+        aria-label="Spare parts by country of origin"
+      >
+        <div className="bg-backgroundlight rounded-sm">
+          <div className="grid grid-cols-2 xs:grid-cols-1 sm:grid-cols-2 xxs:grid-cols-1 xs:text-center">
+            <div>
+              <div className="xs:px-3 ml-8 md:ml-8 xs:ml-1 xxs:ml-0 mt-10 xs:my-5 xl:my-5 xxl:my-5 sm:mt-12 md:mt-10 lg:mt-20 xl:mt-20 xs:text-left">
+                <h6 className="block text-lg xl:text-xl sm:text-sm xs:text-base xxs:text-base xxs:text-center md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight ">
+                  <span className="block">
+                    Expert Parts&nbsp;
+                    <span className="text-blue-600">
+                      Seamless Performance
+                    </span>
+                  </span>
+                </h6>
+                <h1 className={`text-3xl xl:text-4xl xxl:text-4xl font-extrabold mx-auto my-5 xs:my-3 xs:text-xl xxs:text-2xl md:text-xl md:my-3 sm:text-xl xxs:text-center ${playfair_display.className}`}>
+                  <span className="text-blue-600 xl:inline">{make} spare parts</span> - Buy Premium High
+                  Quality Used, Genuine, OEM and Aftermarket from Dubai to all over UAE
+                  and World
+                </h1>
+                <div className="mt-2 lg:pb-5 py-3 w-1/2 lg:w-2/4 xs:w-full xxs:w-2/4 xxs:mx-auto mr-auto rounded-lg shadow-md">
+                  <a
+                    href="#myForm"
+                    title="Inquire about vehicle parts online"
+                    className="flex items-center justify-center py-2 border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700"
+                  >
+                    Inquire Now
+                  </a>
                 </div>
               </div>
-              <div className="xxs:hidden xs:hidden hero_section_blob s:hidden">
-                <Image src={Hero_img} alt="car spare parts online" priority />
-              </div>
+            </div>
+
+            <div className="xxs:hidden xs:hidden s:hidden hero_section_blob">
+              <Image
+                src={'/img/car-logos/' + imageMake}
+                alt={make + ' spare parts'}
+                className="ml-20 md:ml-5 lg:ml-8 lg:mt-10 xl:mt-10 xxl:mt-10 xl:ml-16 xxl:ml-16"
+                priority
+                width={300}
+                height={300}
+              />
             </div>
           </div>
         </div>
-        <div>
-          <p className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
-            Searching for reliable {make} parts in the UAE? Whether you're
-            looking for genuine, used, or aftermarket parts, Emirates Auto Parts
-            has you covered. We deal in wide range of parts for popular {make}{' '}
-            models, including the{' '}
-            {carmodel
-              .slice(0, 5)
-              .map(c => c.make + ' ' + c.model)
-              .join(', ')}
-            , and many more. With fast shipping to Dubai, Sharjah, and across
-            the UAE, and a commitment to quality, we ensure your {make} remains
-            road-ready. Explore our inventory and enjoy quality parts backed by
-            expert support
-          </p>
+      </header>
+      <section className='xs:px-3 xxs:px-3 md:px-3 lg:max-w-4xl lg:mx-auto'>
+        <h3 className={`text-3xl xs:text-2xl font-semibold mx-auto my-5 xs:my-3 xxs:my-3 sm:my-3 md:my-4 ${playfair_display.className}`}>Why Emirates-car.com?</h3>
+        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+          Emirates-car.com is the online dealer in <span className='text-blue-600'>{make}{' '}
+          </span> spare parts and for any car brands running on roads
+          of UAE. We find the correct used, genuine (otherwise
+          called OEM parts) and aftermarket parts that matches your fitment. We have
+          experienced professional who can find the parts at affordable and
+          reasonable price. We deal in Used, Genuine {make} {' '} parts and Aftermarket {make} {' '}
+          parts such as Engine parts, Mechanical parts, Electrical and
+          Electronic parts, Body parts and Lights, AC parts and Service and
+          Maintenance parts.
+        </p>
+        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
+          You can inquire {make} {' '} spare parts by simply
+          submitting the online inquiry form{' '}
+          <Link
+            href="/"
+            target="_newtab"
+            className="text-blue-500 underline hover:text-blue-900"
+            title={make + ' parts'}
+          >
+            here
+          </Link>
+          . You can get callback or whatsapp chat or email after submitting your
+          form inquiry.
+        </p>
+        {description.length > 0 ? <p
+          className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}
+          dangerouslySetInnerHTML={{ __html: description || '' }}
+        ></p> : <></>}
+
+        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
+          We deal with any country auto spare parts including{' '}
+          <a href='/spare-parts/japanese-auto-spare-parts' className='text-blue-600'>Japanese</a>,
+          {' '}<a href='/spare-parts/american-auto-spare-parts' className='text-blue-600'>American</a>,
+          {' '}<a href='/spare-parts/german-auto-spare-parts' className='text-blue-600'>German</a>,
+          {' '}<a href='/spare-parts/chinese-auto-spare-parts' className='text-blue-600'>Chinese</a>,
+          {' '}<a href='/spare-parts/german-auto-spare-parts' className='text-blue-600'>German</a>,
+          {' '}<a href='/spare-parts/korean-auto-spare-parts' className='text-blue-600'>Korean</a>,
+          {' '}<a href='/spare-parts/french-auto-spare-parts' className='text-blue-600'>French</a>,
+          {' '}<a href='/spare-parts/british-auto-spare-parts' className='text-blue-600'>Britain</a>,
+          in UAE. We also operate in main cities such as
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Dubai`} className='text-blue-600'>Dubai</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Sharjah`} className='text-blue-600'>Sharjah</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Abu Dhabi`} className='text-blue-600'>Abu Dhabi</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Ajman`} className='text-blue-600'>Ajman</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Al Quoz`} className='text-blue-600'>Al Quoz</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Palm Jumeirah`} className='text-blue-600'>Palm Jumeirah</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Deira`} className='text-blue-600'>Deira</a>,
+          etc. You can check our catalogue at{' '}
+          <Link
+            href="/search-by-part-name"
+            className="text-blue-400 underline"
+            title={make}
+          >
+            /search-by-part-name
+          </Link>
+          . We provide auto spare parts for any vehicles including :
+        </p>
+        <ul className={`list-disc text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
+          <li>New auto spare parts in uae</li>
+          <li>Used auto spare parts in uae</li>
+          <li>Genuine auto spare parts in uae</li>
+          <li>Aftermarket auto spare parts in uae</li>
+        </ul>
+      </section>
+      <section className='#myForm'>
+        <FormComponent formsData={modelsform} postFilter={partspost} />
+      </section>
+      <section className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
+        <div className="container py-6">
+          <h2 className={`font-bold text-3xl xs:text-2xl my-3 ${playfair_display.className}`}>
+            Search <span className='text-blue-600'>{make}</span> spare parts by Model
+          </h2>
+          <SearchModel make={make} car={carmodel} />
+
+          <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
+            {carmodel.map((post, i) => {
+              const linkHref = isExcludedMake
+                ? '/get-in-touch'
+                : '/search-by-make/[make]/[model]';
+              const linkAs = isExcludedMake
+                ? '/get-in-touch'
+                : `/search-by-make/${post.make}/${encodeURIComponent(post.model)}`;
+
+              return (
+                <li key={i} className="h-full">
+                  <Link
+                    href={linkHref}
+                    as={linkAs}
+                    title={`${post.make} ${post.model} spare parts`}
+                    className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
+                  >
+                    <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline ">
+                      {make} {post.model.replace('%2F', '/')} parts
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-        <div>
-          <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 md:grid md:grid-cols-1 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
-            <FormComponent formsData={modelsform} postFilter={partspost} />
-          </div>
-
-          <div className="bg-bglight">
-            {!isExcludedMake && (
-              <>
-                <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-                  Search <span className="text-blue-500">{decodeURIComponent(make)}</span>{' '}
-                  Spare parts by Model
-                </h3>
-
-                <SearchModel make={make} car={carmodel} />
-
-                <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
-                  {carmodel.map((post, i) => {
-                    const linkHref = `/search-by-make/[make]/[model]`;
-                    const linkAs = `/search-by-make/${post.make}/${post.model}`;
-
-                    return (
-                      <div key={i}>
-                        <Link
-                          href={linkHref}
-                          as={linkAs}
-                          title={`${post.make} ${post.model} spare parts`}
-                        >
-                          <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
-                            <p className="text-center text-black text-sm font-medium hover:text-gray-800 p-2">
-                              {make + ' ' + post.model.replace('%2F', '/') + ' parts'}
-                            </p>
-                          </div>
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            )}
+      </section>
+      <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
+        **Model not found above?
+        <Link href="/get-in-touch">
+          <nobr className="text-blue-500 text-sm underline">
+            {' '}
+            Get in touch with us {'>>'}**
+          </nobr>
+        </Link>{' '}
+      </div>
+      <div className="text-center">
+        {make === 'Honda' ? <HondaOfferButton /> : <></>}
+      </div>
+      {makeFiltered.length > 0 ?
+        <ProductFilter
+          make={make}
+          products={filtered}
+          allProducts={makeFiltered}
+          searchParams={searchParams}
+        /> : <></>}
 
 
-          </div>
 
-
-          <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
-            **Model not found above?
-            <Link href="/get-in-touch">
-              <nobr className="text-blue-500 text-sm underline">
-                {' '}
-                Get in touch with us {'>>'}**
-              </nobr>
-            </Link>{' '}
-          </div></div>
-        <div className="text-center">
-          {make === 'Honda' ? <HondaOfferButton /> : <></>}
+      {make === 'Volkswagen' ? <div>
+        <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
+          Popular{' '}
+          <span className="text-blue-500">
+            Searched {decodeURIComponent(make)} Parts
+          </span>{' '}
+          in UAE
         </div>
-        {make === 'Volkswagen' ? <div>
-          <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Popular{' '}
-            <span className="text-blue-500">
-              Searched {decodeURIComponent(make)} Parts
-            </span>{' '}
-            in UAE
-          </div>
-          <VWFilters />
-        </div> : <></>}
+        <VWFilters />
+      </div> : <></>}
 
-        <div>
-          <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Popular{' '}
-            <span className="text-blue-500">
-              Searched {decodeURIComponent(make)} Parts
-            </span>{' '}
-            in UAE
-          </div>
-          <div className="grid grid-cols-5 sm:gril-cols-2 xxs:grid-cols-2 gap-2 s:grid-cols-2 xs:grid-cols-1 px-5 xs:px-2 xxs:px-2 md:grid-cols-3 lg:grid-cols-3 max-w-7xl mx-auto">
-            {images.map((i, k) => (
-              <div key={k} className="border-2 p-5 relative bg-gray-200">
-                <sup className="absolute top-0 right-0 text-xs font-bold text-white bg-red-600 rounded-sm p-1">
-                  Sale!
-                </sup>
-                <div className="h-50 flex justify-center">
-                  <div className="text-lg font-bold font-sans xs:text-base">
-                    {i.name}
-                  </div>
-                </div>
+      <section aria-labelledby="featured-deals" className="mt-10 xxs:mx-3 xs:mx-3 md:mx-5 lg:max-w-4xl lg:mx-auto">
+        <h2
+          id="featured-deals"
+          className={`text-4xl md:text-3xl lg:text-3xl font-bold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}
+        >
+          Featured Deals on{" "}
+          <span className="text-blue-600">
+            {make}
+          </span>
+        </h2>
 
-                <Image
-                  src={i.images}
-                  alt={i.alt}
-                  height={250}
-                  width={250}
-                  className="object-none object-center p-1"
-                  priority
-                />
-
-                <Link
-                  href={i.link}
-                  className="flex items-center justify-center px-8 py-2 my-5 text-lg border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 xxs:text-sm xxs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
-                  title={i.name}
-                >
-                  Inquire Now
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bg-bglight ">
-          <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Search{' '}
-            <span className="text-blue-500">{make}</span>{' '}
-            Spare parts Anywhere in UAE
-          </h3>
-          <SearchCity cities={cities} />
-          <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
-            {cities.map((post, i) => (
-              <div key={i}>
-                <Link
-                  href="/search-by-cities-in-uae/[city]"
-                  as={'/search-by-cities-in-uae/' + post.city}
-                  title={make + ' spare parts ' + post.city}
-                >
-                  <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
-                    <p className="text-center text-black font-medium text-sm hover:text-gray-800 p-2">
-                      {post.city}
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-        <TenEntries />
-        <PartsAccordion make={make} />
-        <article className="font-sans bg-bglight px-10 xs:px-3 xxs:px-3 md:px-5 py-10">
-          <section className="p-6 bg-bglight text-gray-800" aria-labelledby="car-parts-methods-heading">
-            <h2 id="car-parts-methods-heading" className="text-2xl font-bold mb-4">
-              5 Ways You Can Find Parts for Your {make} car
-            </h2>
-
-            <p className="mb-4">
-              <strong className="text-black">Emirates-car.com</strong> specializes in spare parts for Japanese, Korean, German, French, and American cars. The main brands we deal with include Honda, Volkswagen, Audi, Porsche, Infiniti, Volvo, Toyota, Nissan, Lexus, Mini, BMW, Mercedes-Benz, Renault, Peugeot, Kia, Hyundai, Genesis, Jaguar, Ford, Hummer, Dodge, Cadillac, GMC, Jeep, and Lincoln.
-            </p>
-
-            <div className="mb-4 text-black">
-              <strong>Tags: </strong>
-              <span className="text-blue-600 underline">
-                #{make}_parts, #{make}_spare_parts, #autoparts, #spare_parts_online, #{make}_spare_parts_dubai, #{make}_parts_in_uae, #{make}_parts_dubai, #{make}_parts_sharjah, #dubai_{make}_parts_online
+        <ul className="grid grid-cols-5 xxs:grid-cols-2 gap-2 s:grid-cols-1 xs:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+          {images.map((item, index) => (
+            <li key={index} className="list-none border-2 p-5 relative">
+              {/* Sale badge */}
+              <span className="absolute top-0 right-0 text-sm font-bold text-white bg-red-600 rounded-l-xl rounded-r-xl p-1">
+                Sale!
               </span>
-            </div>
 
-            <p className="mb-4">
-              At{' '}
-              <a href="/" className="text-blue-500 underline">
-                Emirates-car.com
-              </a>, you can buy premium, high-quality used, genuine, OEM, and aftermarket parts in Dubai, Sharjah, Ajman, Ras Al Khaimah, Abu Dhabi, and worldwide. Click{' '}
-              <a href="/" className="text-blue-500 underline">
-                Get Free Quote
-              </a>{' '}
-              to get the best prices now!
-            </p>
+              <h3 className={`text-xl xl:text-2xl xxl:text-2xl font-bold font-sans ${playfair_display.className}`}>{item.name}</h3>
 
-            {/* Method 1 */}
-            <section aria-labelledby="method-1-heading" className="mb-6">
-              <h3 id="method-1-heading" className="text-xl font-semibold mb-3">
-                1. The Traditional Way: Pros and Cons
-              </h3>
-              <p className="mb-2">
-                You can visit a nearby {make} spare parts shop and purchase what you need. This approach is simple and effective if the shop stocks the brands and models you are looking for.
-              </p>
-              <div className="mb-2">
-                <strong>Pros:</strong>
-                <ul className="list-disc ml-6">
-                  <li>Easy and direct access to spare parts.</li>
-                  <li>Immediate availability if the store has your required part.</li>
-                </ul>
-              </div>
-              <div>
-                <strong>Cons:</strong>
-                <ul className="list-disc ml-6">
-                  <li>Limited stock or brand availability.</li>
-                  <li>Some shops specialize in only a few brands.</li>
-                </ul>
-              </div>
-            </section>
+              <hr className="py-1" />
 
-            {/* Method 2 */}
-            <section aria-labelledby="method-2-heading" className="mb-6">
-              <h3 id="method-2-heading" className="text-xl font-semibold mb-3">
-                2. Giant E-Commerce Companies: Pros and Cons
-              </h3>
-              <p className="mb-2">Online marketplaces like Amazon, Flipkart, and eBay are alternatives when local shops lack inventory.</p>
-              <div className="mb-2">
-                <strong>Pros:</strong>
-                <ul className="list-disc ml-6">
-                  <li>Wide variety of products.</li>
-                  <li>Convenient ordering from home.</li>
-                </ul>
-              </div>
-              <div>
-                <strong>Cons:</strong>
-                <ul className="list-disc ml-6">
-                  <li>Risk of damaged parts due to logistics.</li>
-                  <li>Possibility of loss during transit.</li>
-                  <li>Unreliable for specific car models.</li>
-                </ul>
-              </div>
-            </section>
+              {/* Product image */}
+              <Image
+                src={item.images}
+                alt={item.alt}
+                height={250}
+                width={250}
+                className="object-none object-center p-1"
+                priority
+              />
 
-            {/* Method 3 */}
-            <section aria-labelledby="method-3-heading" className="mb-6">
-              <h3 id="method-3-heading" className="text-xl font-semibold mb-3">
-                3. Local Dealers: Pros and Cons
-              </h3>
-              <p className="mb-2">
-                Local dealers often come recommended and provide tailored services.
-              </p>
-              <div className="mb-2">
-                <strong>Pros:</strong>
-                <ul className="list-disc ml-6">
-                  <li>Trustworthy and reliable.</li>
-                  <li>Specialized by brand.</li>
-                </ul>
-              </div>
-              <div>
-                <strong>Cons:</strong>
-                <ul className="list-disc ml-6">
-                  <li>Fewer due to digital shift.</li>
-                  <li>Accessibility may be limited by location.</li>
-                </ul>
-              </div>
-            </section>
+              {/* CTA */}
+              <Link
+                href={item.link}
+                title={`${make} ${item.name}`}
+                className="items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md md:px-5 xs:py-2 xs:text-xs xs:my-2 xxs:text-sm xxs:my-2 s:text-sm s:my-2 focus:filter brightness-125 mt-3 block text-center"
+              >
+                Inquire Now
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-            {/* Method 4 */}
-            <section aria-labelledby="method-4-heading" className="mb-6">
-              <h3 id="method-4-heading" className="text-xl font-semibold mb-3">
-                4. Online Marketplaces: Mostly Cons
-              </h3>
-              <p className="mb-2">
-                Marketplaces simplify browsing but present serious limitations:
-              </p>
-              <ul className="list-disc ml-6">
-                <li>Limited availability for rare models.</li>
-                <li>Old models often not stocked.</li>
-                <li>High risk of spam or fraud.</li>
-              </ul>
-            </section>
+      <section className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
+        <h5 className={`text-4xl md:text-3xl xs:text-2xl xxs:text-xl sm:text-2xl font-bold mx-auto my-10 ${playfair_display.className}`}>
+          Availability of <span className='text-blue-600'>{make} spare parts</span> in UAE
+        </h5>
 
-            {/* Method 5 */}
-            <section aria-labelledby="method-5-heading">
-              <h3 id="method-5-heading" className="text-xl font-semibold mb-3">
-                5. Online Dealer Websites: Only Pros!
-              </h3>
-              <p className="mb-2">
-                Dealer websites like{' '}
-                <a href="/" className="text-blue-500 underline">
-                  Emirates-car.com
-                </a>{' '}
-                offer the most reliable experience.
-              </p>
-              <div>
-                <strong>Pros:</strong>
-                <ul className="list-disc ml-6">
-                  <li>Multiple trusted options online.</li>
-                  <li>Quick inquiry process.</li>
-                  <li>Reliable communication.</li>
-                </ul>
-              </div>
-              <p className="mt-4">
-                Visit{' '}
-                <a href="/" className="text-blue-500 underline">
-                  Emirates-car.com
-                </a>{' '}
-                to easily find {make} spare parts for your {make} car.
-              </p>
-            </section>
-          </section>
-        </article>
-      </main>
-      <Footer />
+        <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
+          {cities.map((post, i) => (
+            <li key={i}>
+              <Link
+                href="/search-by-cities-in-uae/[city]"
+                as={'/search-by-cities-in-uae/' + post.city}
+                title={make + ' spare parts ' + post.city}
+                className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
+              >
+                <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline ">
+                  {post.city}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <TenEntries />
+      <PartsAccordion make={make} />
+
+      <section className='mx-3' aria-labelledby={`How to buy ${make} parts`}>
+        <h6 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>
+          5 ways you can {make} find parts for your car.
+        </h6>
+        There are 5 ways you can try finding {make} spare parts for your car.
+        <h5 className="text-xl xl:text-2xl xxl:text-2xl font-sans mx-auto my-5 font-bold">
+          Traditional way its pros and cons
+        </h5>
+        <p className={`text-xl xl:text-2xl xxl:text-2xl font-sans text-gray-700 mx-auto my-5 ${firaSans.className}`}>
+          You find a {make} spare parts shop nearby and go and purchase and the work
+          is done. In this case, the pros is that you find nearby shop to have
+          similar brands you have and that's it! you purchase it with ease. But
+          the cons is when you don't find the nearby shop to have the car
+          brand which you are using. There are shop who only deal with certain
+          parts like the shop A sells only in honda, Mazda, BMW and shop B
+          sells only Audi, Lincoln and Ferrari. So to see for next option, you
+          can opt for shopping from Giant E-commerce company like Amazon,
+          EBay, Flipkart etc.
+        </p>
+        <h5 className="text-xl xl:text-2xl xxl:text-2xl font-sans mx-auto my-5 font-bold">
+          Giant E-commerce Company its pros and cons:
+        </h5>
+        <p className={`text-xl xl:text-2xl xxl:text-2xl font-sans text-gray-700 mx-auto my-5 ${firaSans.className}`}>
+          If you don't find spare parts nearby your house location, generally
+          we move on to search on internet. You search for top companies
+          selling spare parts online and you end up in giant e-commerce
+          company like Amazon, Flipkart,Ebay etc. Now you see the review of
+          person who has already ordered spare parts. Most of the reviews says
+          the parts were broken. These giant company has a very big logistics
+          that they are vulnerable to be broken during or even get lost during
+          the check-in process. So it is not always safe to buy spare parts
+          from giant e-commerce company. Hence we see for other option which
+          is the Local dealers.
+        </p>
+        <h5 className="text-xl xl:text-2xl xxl:text-2xl font-sans mx-auto my-5 font-bold">
+          Local Dealers
+        </h5>
+        <p className={`text-xl xl:text-2xl xxl:text-2xl font-sans text-gray-700 mx-auto my-5 ${firaSans.className}`}>
+          Local dealers are known through other person like through friends
+          and family. Or he gives you his business card and he explains you
+          directly the car brands he deals with. However with the current
+          digital advancement, the local dealers are decreasing gradually. So
+          we move to the next option to search on online marketplace.
+        </p>
+
+        <h5 className="text-xl xl:text-2xl xxl:text-2xl font-sans mx-auto my-5 font-bold">
+          Online Marketplace (Only CONS!)
+        </h5>
+        <p className={`text-xl xl:text-2xl xxl:text-2xl font-sans text-gray-700 mx-auto my-5 ${firaSans.className}`}>
+          Through Online marketplace we find spare parts for our car easily.
+          But it also has lots of cons. If you search for very latest model
+          used spare parts, it will not be available on marketplace. In this
+          case you have to contact the car brand company directly. If you
+          search for very old model, it will not be available with most of the
+          car brands company itself due to numerous new brands being manufactured yearly. And also there are more spam issues
+          reported from those who purchase from small vendor marketplace and
+          also the larger companies. In this case you should go for Online
+          dealer website.
+        </p>
+
+        <h5 className="text-xl xl:text-2xl xxl:text-2xl font-sans  mx-auto my-5 font-bold">
+          Online Dealer Website ONLY PROS!
+        </h5>
+        <p className={`text-xl xl:text-2xl xxl:text-2xl font-sans text-gray-700 mx-auto my-5 ${firaSans.className}`}>
+          Online dealers website is the easiest way to order spare parts. You
+          visit a bunch of site online and submit your inquiries therein and
+          dealers will contact you back through the contact information you
+          submitted. If one website didnt reply you or didn't have stock, then other website will
+          do. So there is plenty of website and options. Emirates-car.com is
+          one such website which accept online inquiries. It deals with parts
+          and accessories for honda accord, Honda civic and{' '}
+          <a
+            href={'/search-by-make/' + make}
+            className="text-blue-500 underline hover:text-blue-900"
+          >
+            other honda models
+          </a>
+          , Infiniti models, BMW models, Audi models and many other brands.
+          Visit to search parts you need.
+        </p>
+      </section>
+      <section className="grid grid-cols-1  mt-10 mx-3">
+        {/* Section heading */}
+        <h3 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+          List of Genuine & Aftermarket <span className='text-blue-600'>{make} spare parts</span>in UAE
+        </h3>
+
+        {/* Parts list */}
+        <ul className="xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 gap-2 md:w-full lg:mx-2 px-3">
+          {partspost.map((post, i) => (
+            <li key={i}>
+              <Link
+                href="/search-by-part-name/[parts]"
+                as={'/search-by-part-name/' + encodeURIComponent(post.parts)}
+                title={`${make} ${post.parts}`}
+                className={`text-gray-700 hover:text-blue-700 focus:text-blue-700 text-xl xs:text-lg xl:text-2xl xxl:text-2xl font-sans flex items-center ${firaSans.className}`}
+              >
+                {make} {post.parts} price list
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }

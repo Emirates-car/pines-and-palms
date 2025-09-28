@@ -13,7 +13,7 @@ export const metadata = {
   description:
     'Buy Online and Get delivered Japan Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
   openGraph: {
-    images: '/favicon.png',
+    images: 'https://emirates-car.com/favicon.png',
     title:
       'Online Japan Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
     description:
@@ -31,7 +31,7 @@ export const metadata = {
         url: 'https://emirates-car.com/icons/icon-512x512.png',
         width: 512,
         height: 512,
-        alt: 'car parts',
+        alt: 'japanese car parts',
       },
     ],
     locale: 'en_US',
@@ -47,20 +47,18 @@ export const metadata = {
     images: ['https://emirates-car.com/favicon.png'],
   },
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/icons/icon-96x96.png',
-    apple: '/icons/icon-192x192.png',
+    icon: 'https://emirates-car.com/favicon.png',
+    shortcut: 'https://emirates-car.com/icons/icon-96x96.png',
+    apple: 'https://emirates-car.com/icons/icon-192x192.png',
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/icons/icon-152x152.png',
+      url: 'https://emirates-car.com/icons/icon-152x152.png',
     },
   },
   alternates: {
     canonical: `https://emirates-car.com/spare-parts/japanese-auto-spare-parts}`,
   },
-  category: 'car parts',
-  keyword:
-    'car parts online, spare parts online,auto spare parts sharjah, auto spare parts dubai, brake pads, body parts, bumper parts, spare parts, 8th gen accord parts, performance parts, headlight, tailight, suspension parts',
+  category: 'japanese origin spare parts',
 };
 export default function RootLayout({ children }) {
   return (

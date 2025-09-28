@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import TenEntries from '../components/tenentries';
 import Contents from '../components/Contents';
-import Footer from '../components/footer';
 import StaticCities from '../components/StaticCities';
 import MainAccordion from '../components/Main-Accordion';
 import { promises as fs } from 'fs';
@@ -385,8 +384,6 @@ export default async function Home() {
 
       <Featured />
       <Contents />
-
-      <Footer />
     </div>
   );
 }

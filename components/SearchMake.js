@@ -16,7 +16,7 @@ export default function SearchMake({ posts }) {
       setFormMakeChange(part);
     };
     loadPart();
-  });
+  }, [posts]);
 
   const onMakeSuggestionHandler = searchMake => {
     setSearchMake(searchMake);
@@ -34,41 +34,40 @@ export default function SearchMake({ posts }) {
     setSearchMake(searchMake);
   };
   return (
-    <div>
-      {/*Search by make input box */}
-      <div className="flex justify-center">
-        <div className="pt-3">
-          <input
-            className="border-2 border-gray-300 w-96 xs:w-full sm:mx-2 2xs:w-auto 2xs:mx-2 bg-white h-10 xs:h-6 2xs:h-6 rounded-lg text-sm focus:outline-none px-2"
-            type="search"
-            placeholder="Eg. Toyota, Ford, BMW, Audi..."
-            onChange={e => onMakeFormChange(e.target.value)}
-            value={searchMake}
-            autoComplete="off"
-            required
-          />
-          <div className="overflow-y-hidden grid grid-cols-5 xs:grid xs:grid-cols-1 2xs:grid 2xs:grid-cols-1 xs:w-auto xs:mx-2 sm:w-auto sm:mx-2 2xs:w-auto 2xs:mx-2 ">
-            {recommendmake &&
-              recommendmake.map((recommendmake, i) => (
-                <div
-                  key={i}
-                  className="cursor-pointer  text-base p-1 bg-white"
-                  onClick={() => onMakeSuggestionHandler(recommendmake)}
-                  width="100%"
+    <form role="search" className="flex justify-center">
+      <div className="pt-3 w-full max-w-md">
+        <label htmlFor="make-search" className="sr-only">
+          Search car make
+        </label>
+        <input
+          id="make-search"
+          type="search"
+          className="border-2 border-gray-300 w-full bg-white h-10 xs:h-6 2xs:h-6 rounded-lg text-sm focus:outline-none px-2"
+          placeholder="Eg. Toyota, Ford, BMW, Audi..."
+          onChange={e => onMakeFormChange(e.target.value)}
+          value={searchMake}
+          autoComplete="off"
+          required
+        />
+
+        {recommendmake && recommendmake.length > 0 && (
+          <ul className="mt-2 overflow-y-hidden grid grid-cols-5 xs:grid-cols-1 2xs:grid-cols-1 gap-1">
+            {recommendmake.map((make, i) => (
+              <li key={i} className="cursor-pointer text-base bg-white">
+                <Link
+                  href={`https://emirates-car.com/search-by-make/${make}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block p-1 hover:underline"
+                  onClick={() => onMakeSuggestionHandler(make)}
                 >
-                  <Link
-                    href={
-                      'https://emirates-car.com/search-by-make/' + recommendmake
-                    }
-                    target="_newtab"
-                  >
-                    {recommendmake}
-                  </Link>
-                </div>
-              ))}
-          </div>
-        </div>
+                  {make}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </div>
+    </form>
   );
 }

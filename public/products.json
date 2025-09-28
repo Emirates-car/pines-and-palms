@@ -1,0 +1,273 @@
+[
+    {
+        "id": 5,
+        "category": "Body Kits",
+        "partname": "Grille",
+        "partnumber": "71120-TA5-A000",
+        "availability": "In Stock",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2012",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/Grille.webp",
+        "item_specifics": {
+            "sku": "HON0002",
+            "price": "12.30",
+            "currency": "USD",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "71120-TA5-A000",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71121-TA0-A00",
+                "71121-TE0-A01"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "Used",
+            "Material": "Aluminum / Synthetic Filter Media",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "OEM",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": "4027816012345"
+        },
+        "pricing": {
+            "price": 120.0,
+            "currency": "USD",
+            "discounted_price": 95.0,
+            "offer": "20% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Estimated between Sep 20 - Sep 25",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "category": "Body Kits",
+        "partname": "Fender Assembly Right Front",
+        "partnumber": "60210-TE0-A91ZZ",
+        "availability": "In Stock",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2012",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/rightfender.png",
+        "item_specifics": {
+            "sku": "HON0003",
+            "price": "12.30",
+            "currency": "USD",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "60210-TE0-A91ZZ",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "60260-TE0-A00ZZ",
+                "60260-TE0-A01ZZ",
+                "60260-TE0-A90ZZ"
+            ],
+            "Placement on Vehicle": [
+                "Front",
+                "Right"
+            ],
+            "Condition": "Used",
+            "Material": "Aluminum / Synthetic Filter Media",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "OEM",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": "4027816012345"
+        },
+        "pricing": {
+            "price": 120.0,
+            "currency": "USD",
+            "discounted_price": 95.0,
+            "offer": "20% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Estimated between Sep 20 - Sep 25",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "category": "Body Kits",
+        "partname": "Fender Assembly Left Front",
+        "partnumber": "60260-TE0-A91ZZ",
+        "availability": "In Stock",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2012",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/leftfender.webp",
+        "item_specifics": {
+            "sku": "HON0004",
+            "price": "12.30",
+            "currency": "USD",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "60260-TE0-A91ZZ",
+            "Other Part Number": [
+                "01L-325-429-B",
+                "01L 325 429B"
+            ],
+            "Interchange Part Number": [
+                "60260-TE0-A00ZZ",
+                "60260-TE0-A01ZZ",
+                "60260-TE0-A90ZZ"
+            ],
+            "Placement on Vehicle": [
+                "Front",
+                "Left"
+            ],
+            "Condition": "Used",
+            "Material": "Aluminum / Synthetic Filter Media",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "OEM",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": "4027816012345"
+        },
+        "pricing": {
+            "price": 120.0,
+            "currency": "USD",
+            "discounted_price": 95.0,
+            "offer": "20% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Estimated between Sep 20 - Sep 25",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "category": "Wiring & Harness",
+        "partname": "Fuse Box set",
+        "partnumber": "243800196R",
+        "availability": "In Stock",
+        "compatibility": [
+            {
+                "make": "Renault",
+                "model": "Duster",
+                "years": "2010-2015",
+                "engine": "K9K, F4R, K4M, K9K 612, K9K 667, F4R 414"
+            },
+            {
+                "make": "Dacia",
+                "model": "Duster",
+                "years": "2008-2012",
+                "engine": "K9K(1.5dCI), K4M(1.6 pertrol)"
+            },
+            {
+                "make": "Renault",
+                "model": "Logan",
+                "years": "2008-2012",
+                "engine": "D4D, D4F, K4M, K7M, K9K, F4R"
+            },
+            {
+                "make": "Dacia",
+                "model": "Logan",
+                "years": "2008-2012",
+                "engine": "1.4, 1.5, 1.6 - D4D, D4F, K4M, K7M, K9K, F4R"
+            },
+            {
+                "make": "Nissan",
+                "model": "Almera G15",
+                "years": "2014",
+                "engine": "1.2 HR12DE"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/renault/ren-1.png",
+        "item_specifics": {
+            "sku": "REN990004",
+            "price": "3.47",
+            "currency": "EURO",
+            "Brand": "Renault",
+            "Manufacturer Part Number": "243800196R",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "243822641R",
+                "RN21515",
+                "FCR220042",
+                "ST8200738816",
+                "FCR220046",
+                "RNL57902828"
+            ],
+            "Placement on Vehicle": [
+                "Front",
+                "Front Left",
+                "Front Right",
+                "Rear Right",
+                "Rear Left"
+            ],
+            "Condition": "New",
+            "Material": "Aluminum / Synthetic Filter Media",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "France",
+            "OEM or Aftermarket": "OEM",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": "4027816012345"
+        },
+        "pricing": {
+            "price": 120.0,
+            "currency": "USD",
+            "discounted_price": 95.0,
+            "offer": "20% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Estimated between Sep 20 - Sep 25",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    }
+]

@@ -47,20 +47,18 @@ export const metadata = {
         images: ['https://emirates-car.com/favicon.png'],
     },
     icons: {
-        icon: '/favicon.png',
-        shortcut: '/icons/icon-96x96.png',
-        apple: '/icons/icon-192x192.png',
+        icon: 'https://emirates-car.com/favicon.png',
+        shortcut: 'https://emirates-car.com/icons/icon-96x96.png',
+        apple: 'https://emirates-car.com/icons/icon-192x192.png',
         other: {
             rel: 'apple-touch-icon-precomposed',
-            url: '/icons/icon-152x152.png',
+            url: 'https://emirates-car.com/icons/icon-152x152.png',
         },
     },
     category: 'car parts',
     alternates: {
         canonical: `https://emirates-car.com/volkswagen-spare-parts-uae`,
     },
-    keywords:
-        'volkswagen spare parts in uae, volkswagen part dubai,volkswagen spare parts al quoz, volkswagen touareg parts, volkswagen tiguan parts uae, volkswagen passat parts, volkswagen jetta, volkswagen golf parts uae',
 };
 
 export default function RootLayout({ children }) {

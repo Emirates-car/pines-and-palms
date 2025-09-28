@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Footer from '../../../components/footer';
 import FormComponent from '../../../components/FormComponent';
 import { getFormModel, getParts } from '../../page';
 import SearchMake from '../../../components/SearchMake';
@@ -277,8 +276,6 @@ export default async function japanese() {
       <StaticParts />
       <TenEntries />
       <Contents />
-
-      <Footer />
     </div>
   );
 }

@@ -49,18 +49,6 @@ export default function FormComponent({ formsData, postFilter }) {
     setText(text);
   };
 
-  useEffect(() => {
-    const loadPart = async () => {
-      var part = [];
-      for (var i in cities) {
-        var filtered = cities[i].city;
-        part.push(filtered);
-      }
-      setFormMakeChange(part);
-    };
-    loadPart();
-  });
-
   const onMakeSuggestionHandler = searchMake => {
     setSearchMake(searchMake);
     setRecommend([]);
@@ -282,274 +270,232 @@ export default function FormComponent({ formsData, postFilter }) {
     setWhatsappno('');
   }
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className=" bg-blue-400 xs:py-0 xs:mx-2 xxs:mx-2 s:mx-2 my-5 md:mx-10">
-        <h3 className="text-4xl xxs:text-lg  xs:text-lg xs:px-5 md:text-2xl font-bold font-sans text-center py-5 text-white bg-gray-800">
-          AUTO SPARE PARTS INQUIRY FORM
-        </h3>
-        <form
-          id="myForm"
-          method="POST"
-          onSubmit={handleSubmit}
-          className="w-full px-8 py-8 xs:px-2 s:px-2 xxs:py-4 xs:py-3 xxs:px-4 sm:px-4"
-        >
-          <div className="grid grid-cols-2 gap-3 pt-3">
-            <div>
-              <label
-                className="block  tracking-wide text-sm  font-bold mb-2 xs:mt-3"
-                htmlFor="model"
-              >
-                Name
-              </label>
-              <div className="relative">
-                <input
-                  className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                  id="name"
-                  type="text"
-                  placeholder="Name"
-                  onChange={handleNameChange}
-                  value={Name}
-                  autoComplete="off"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <div>
-                <label
-                  className="block  tracking-wide  text-sm  font-bold mb-2 xs:mt-3"
-                  htmlFor="email"
-                >
-                  Email(Optional)
-                </label>
-                <input
-                  className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                  id="email"
-                  type="text"
-                  placeholder="Mail ID"
-                  onChange={handleEmailChange}
-                  value={Email}
-                  autoComplete="off"
-                  name="entry.113755516"
-                />
-              </div>
-            </div>
+    <div className="max-w-4xl mx-auto my-5 xs:mx-3 xxs:mx-3 md:mx-4">
+      <h2 className="bg-gray-800 text-white text-center py-5 text-2xl md:text-4xl font-bold font-sans">
+        AUTO SPARE PARTS INQUIRY FORM
+      </h2>
+      <form
+        id="inquiry-form"
+        method="POST"
+        onSubmit={handleSubmit}
+        className="bg-blue-400 w-full px-8 py-8 xs:px-3 xxs:px-4 sm:px-4"
+      >
+        {/* Personal Info */}
+        <fieldset className="grid grid-cols-2 gap-3 pt-3">
+          <legend className="sr-only">Personal Information</legend>
+
+          <div>
+            <label htmlFor="name" className="block text-sm font-bold mb-2">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Name"
+              className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+              onChange={handleNameChange}
+              value={Name}
+              autoComplete="off"
+              required
+            />
           </div>
-          <div className="grid grid-cols-3 gap-3 xs:grid-cols-1 sm:grid sm:grid-cols-1 xs:grid xxs:grid xxs:grid-cols-1 s:grid s:grid-cols-1 pt-3">
-            <div>
-              <label
-                className="block  tracking-wide  text-sm  font-bold mb-2 xs:mt-3"
-                htmlFor="year"
-              >
-                Year
-              </label>
-              <div className="relative">
-                <input
-                  className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                  id="year"
-                  type="text"
-                  placeholder="Year"
-                  name="entry.902626710"
-                  onChange={handleYearChange}
-                  value={Year}
-                  autoComplete="off"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                className="block  tracking-wide  text-sm  font-bold mb-2 xs:mt-3"
-                htmlFor="make"
-              >
-                Make
-              </label>
-              <div className="relative">
-                <select
-                  className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                  id="make"
-                  name="entry.741646505"
-                  required="required"
-                  onChange={handleMakeChange}
-                  value={Make}
-                >
-                  <option value="" disabled>
-                    Select your Make
-                  </option>
-                  {make.map((m, i) => (
-                    <option key={i}>{m}</option>
-                  ))}{' '}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 ">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label
-                className="block  tracking-wide  text-sm  font-bold mb-2 xs:mt-3"
-                htmlFor="model"
-              >
-                Model
-              </label>
-              <div className="relative">
-                <select
-                  className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                  id="model"
-                  name="entry.402947466"
-                  required
-                  onChange={handleModelChange}
-                  value={Model}
-                >
-                  <option value="" disabled>
-                    Select your Model
-                  </option>
-                  {formsData
-                    .filter(s => s.make === Make)
-                    .map((s, i) => (
-                      <option key={i} value={s.model}>
-                        {s.model}{' '}
-                      </option>
-                    ))}{' '}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 ">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-bold mb-2">
+              Email <span className="text-gray-600">(optional)</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Mail ID"
+              className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+              onChange={handleEmailChange}
+              value={Email}
+              autoComplete="off"
+            />
           </div>
-          <div className="grid grid-cols-2 gap-3 xs:grid-cols-1 sm:grid sm:grid-cols-1 xs:grid xxs:grid xxs:grid-cols-1 s:grid s:grid-cols-1 pt-3">
-            <div className="flex flex-wrap -mx-3 mb-2">
-              <div className="w-2/6 px-3 mb-6 xs:mb-0 md:mb-0">
-                <label
-                  htmlFor="Code"
-                  className="block tracking-wide text-sm font-bold mb-2 xs:mt-3"
-                >
-                  CODE
-                </label>
-                <input
-                  id="Code"
-                  name="entry.44547744"
-                  className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                  type="text"
-                  placeholder="+971, +27 ..."
-                  onChange={handleCodeChange}
-                  value={Code}
-                  required
-                />
-              </div>
-              <div className="w-4/6 pr-3 mb-6 xs:mb-0 md:mb-0">
-                <label
-                  htmlFor="whatsappno"
-                  className="block  tracking-wide  text-sm  font-bold mb-2 xs:mt-3"
-                >
-                  WhatsApp no
-                </label>
-                <input
-                  id="whatsappno"
-                  name="entry.902626710"
-                  className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                  type="text"
-                  placeholder="WhatsApp No"
-                  onChange={handleWhatsAppNoChange}
-                  value={Whatsappno}
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                className="block  tracking-wide  text-sm  font-bold mb-2 xs:mt-3"
-                htmlFor="city"
-              >
-                Location
+        </fieldset>
+
+        {/* Vehicle Info */}
+        <fieldset className="grid grid-cols-3 xs:grid-cols-1 xxs:grid-cols-1 gap-3 pt-3">
+          <legend className="sr-only">Vehicle Information</legend>
+
+          {/* Year */}
+          <div>
+            <label htmlFor="year" className="block text-sm font-bold mb-2">
+              Year
+            </label>
+            <input
+              id="year"
+              type="text"
+              placeholder="Year"
+              className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+              onChange={handleYearChange}
+              value={Year}
+              required
+            />
+          </div>
+
+          {/* Make */}
+          <div>
+            <label htmlFor="make" className="block text-sm font-bold mb-2">
+              Make
+            </label>
+            <select
+              id="make"
+              required
+              onChange={handleMakeChange}
+              value={Make}
+              className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+            >
+              <option value="" disabled>
+                Select your Make
+              </option>
+              {make.map((m, i) => (
+                <option key={i}>{m}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Model */}
+          <div>
+            <label htmlFor="model" className="block text-sm font-bold mb-2">
+              Model
+            </label>
+            <select
+              id="model"
+              required
+              onChange={handleModelChange}
+              value={Model}
+              className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+            >
+              <option value="" disabled>
+                Select your Model
+              </option>
+              {[...new Set(formsData
+                .filter(s => s.make === Make)
+                .map(s => s.model)
+              )].map((model, i) => (
+                <option key={i} value={model}>
+                  {model}
+                </option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+
+        {/* Contact Info */}
+        <fieldset className="grid grid-cols-2 xs:grid-cols-1 xxs:grid-cols-1 sm:grid-cols-1 gap-3 pt-3">
+          <legend className="sr-only">Contact Information</legend>
+
+          <div className="flex gap-3">
+            <div className="w-2/6">
+              <label htmlFor="code" className="block text-sm font-bold mb-2">
+                Code
               </label>
               <input
-                className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                id="city"
+                id="code"
                 type="text"
-                placeholder="(Area, Emirates) or (City, Country)"
-                onChange={handleAddressChange}
-                value={Address}
-                autoComplete="off"
+                placeholder="+971, +27 ..."
+                className="w-full border border-gray-300 rounded-sm py-2 px-2 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+                onChange={handleCodeChange}
+                value={Code}
+                required
+              />
+            </div>
+            <div className="w-4/6">
+              <label htmlFor="whatsappno" className="block text-sm font-bold mb-2">
+                WhatsApp No
+              </label>
+              <input
+                id="whatsappno"
+                type="text"
+                placeholder="WhatsApp No"
+                className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+                onChange={handleWhatsAppNoChange}
+                value={Whatsappno}
+                required
               />
             </div>
           </div>
-          <div className="grid grid-cols-1">
-            <div>
-              <label
-                className="block  tracking-wide  text-sm  font-bold mb-2 xs:mt-3"
-                htmlFor="partname"
+
+          <div>
+            <label htmlFor="city" className="block text-sm font-bold mb-2">
+              Location
+            </label>
+            <input
+              id="city"
+              type="text"
+              placeholder="(Area, Emirates) or (City, Country)"
+              className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+              onChange={handleAddressChange}
+              value={Address}
+              autoComplete="off"
+            />
+          </div>
+        </fieldset>
+
+        {/* Part Name */}
+        <fieldset className="pt-3">
+          <legend className="sr-only">Part Information</legend>
+
+          <label htmlFor="partname" className="block text-sm font-bold mb-2">
+            Part Name
+          </label>
+          <textarea
+            id="partname"
+            rows={5}
+            placeholder="Eg. AC Compressor, Radiator, Gearbox, Antenna..."
+            className="w-full border border-gray-300 rounded-sm py-2 px-4 text-xs text-gray-500 focus:outline-none focus:border-gray-400"
+            onChange={e => onPartFormChange(e.target.value)}
+            value={text}
+            required
+          />
+          {suggestion &&
+            suggestion.map((s, i) => (
+              <div
+                key={i}
+                className="cursor-pointer border-gray-400 p-2"
+                onClick={() => onSuggestionHandler(s)}
               >
-                PART NAME
-              </label>
-              <textarea
-                className="appearance-none text-xs block w-full  text-gray-500 border border-gray-300 rounded-sm py-2 xs:py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-300 xs:text-sm"
-                id="partname"
-                type="text"
-                placeholder="Eg. AC Compressor, Radiator, Gearbox, Antenna, Door glass, Driving light..."
-                rows={5}
-                name="entry.1660104041"
-                onChange={e => onPartFormChange(e.target.value)}
-                value={text}
-                autoComplete="off"
-                required
-              />{' '}
-              {suggestion &&
-                suggestion.map((suggestion, i) => (
-                  <div
-                    key={i}
-                    className="cursor-pointer border-gray-400 p-4"
-                    onClick={() => onSuggestionHandler(suggestion)}
-                  >
-                    {suggestion}{' '}
-                  </div>
-                ))}{' '}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 pt-3">
-            <button
-              type="submit"
-              className="bg-darkblue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm xs:text-sm"
-            >
-              Find Now
-            </button>
-          </div>
-          <div className="flex float-left text-xs">
+                {s}
+              </div>
+            ))}
+        </fieldset>
+
+        {/* Submit & Footer */}
+        <div className="pt-3">
+          <button
+            type="submit"
+            className="bg-darkblue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm xs:text-sm"
+          >
+            Find Now
+          </button>
+        </div>
+
+        <footer className="flex justify-between text-xs pt-3">
+          <div>
             <Link
               href="https://emirates-car.com/privacy-policy"
-              target="_newtab"
-              className="underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline mr-2"
             >
-              Privacy policy
+              Privacy Policy
             </Link>
-            &nbsp;
             <Link
               href="https://emirates-car.com/terms-and-condition"
-              target="_newtab"
+              target="_blank"
+              rel="noopener noreferrer"
               className="underline"
             >
-              Terms and conditions
+              Terms & Conditions
             </Link>
           </div>
-
-          <div className="flex float-right text-xs pt-2">
-            100% secure and trusted
-          </div>
-        </form>
-      </div>
+          <div>100% secure and trusted</div>
+        </footer>
+      </form>
     </div>
+
   );
 }

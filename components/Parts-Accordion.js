@@ -10,13 +10,27 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 import Link from 'next/link';
+import { Fira_Sans, Playfair_Display } from 'next/font/google';
+
+const playfair_display = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair-display',
+});
+
+const firaSans = Fira_Sans({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-fira-sans',
+});
 
 export default function PartsAccordion({ make, location }) {
 
   return (
-    <div className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
-      <h3 className="text-black text-4xl text-center md:text-lg lg:text-2xl font-extrabold xs:text-xl 2xs:text-xs pt-10">
-        <nobr className="text-red-600 animate-bounce">Frequently asked Questions</nobr>
+    <section className={`py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto ${firaSans.className}`}>
+      <h3 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+        <nobr className={`animate-bounce`}>Frequently asked Questions</nobr>
       </h3>
       <Accordion className="my-10">
         <AccordionItem>
@@ -241,6 +255,6 @@ export default function PartsAccordion({ make, location }) {
           </AccordionItemPanel>
         </AccordionItem>
       </Accordion>
-    </div>
+    </section>
   );
 }

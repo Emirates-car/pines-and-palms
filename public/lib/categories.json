@@ -1,0 +1,173 @@
+[
+    {
+        "id": 1,
+        "category": "Engine & Components",
+        "subcategories": [
+            "Engine Assembly",
+            "Cylinder Head",
+            "Camshaft / Crankshaft",
+            "Pistons / Rings",
+            "Timing Belt / Chain",
+            "Oil Pump",
+            "Gaskets & Seals"
+        ]
+    },
+    {
+        "id": 2,
+        "category": "Transmission & Drivetrain",
+        "subcategories": [
+            "Manual Transmission",
+            "Automatic Transmission",
+            "Transmission Control Module",
+            "Gear / Transmission Lubricant",
+            "Differential / LSD Components",
+            "Clutch Assembly",
+            "Drive Shafts / CV Joints"
+        ]
+    },
+    {
+        "id": 3,
+        "category": "Suspension & Steering",
+        "subcategories": [
+            "Shock Absorbers / Struts",
+            "Springs",
+            "Control Arms / Bushings",
+            "Steering Rack / Column",
+            "Ball Joints / Tie Rods",
+            "Stabilizer / Sway Bars"
+        ]
+    },
+    {
+        "id": 4,
+        "category": "Brakes",
+        "subcategories": [
+            "Brake Pads",
+            "Brake Discs / Rotors",
+            "Brake Calipers",
+            "Brake Master Cylinder",
+            "Brake Lines / Hoses",
+            "Brake Fluid"
+        ]
+    },
+    {
+        "id": 5,
+        "category": "Electrical & Electronics",
+        "subcategories": [
+            "Batteries",
+            "Alternator / Starter Motor",
+            "Sensors (O2, MAF, TPS, etc.)",
+            "ECU / Engine Control Module",
+            "Transmission Control Module",
+            "Lights / Bulbs",
+            "Switches & Relays",
+            "Fuses & Wiring Harness"
+        ]
+    },
+    {
+        "id": 6,
+        "category": "Exhaust & Emission",
+        "subcategories": [
+            "Exhaust Manifold",
+            "Catalytic Converter",
+            "Muffler / Silencer",
+            "EGR Valve / Cooler",
+            "Oxygen Sensors",
+            "Exhaust Pipes / Clamps"
+        ]
+    },
+    {
+        "id": 7,
+        "category": "Cooling & Heating",
+        "subcategories": [
+            "Radiator / Condenser",
+            "Water Pump",
+            "Thermostat",
+            "Cooling Fans",
+            "Heater Core",
+            "Hoses / Clamps",
+            "Coolant / Antifreeze"
+        ]
+    },
+    {
+        "id": 8,
+        "category": "Fuel & Air",
+        "subcategories": [
+            "Fuel Pump / Injector",
+            "Fuel Filter",
+            "Air Filter",
+            "Throttle Body / Intake",
+            "Turbocharger / Intercooler",
+            "Fuel Lines / Hoses"
+        ]
+    },
+    {
+        "id": 9,
+        "category": "Body & Exterior",
+        "subcategories": [
+            "Bumpers / Fenders / Panels",
+            "Doors / Hood / Trunk",
+            "Mirrors / Glass",
+            "Grilles / Emblems",
+            "Weatherstripping / Seals",
+            "Wipers / Washers"
+        ]
+    },
+    {
+        "id": 10,
+        "category": "Interior & Comfort",
+        "subcategories": [
+            "Seats / Covers / Belts",
+            "Dashboard / Instruments",
+            "Air Conditioning / HVAC",
+            "Carpet / Mats",
+            "Steering Wheel / Controls",
+            "Door Panels / Handles"
+        ]
+    },
+    {
+        "id": 11,
+        "category": "Fluids & Lubricants",
+        "subcategories": [
+            "Engine Oil",
+            "Gear / Transmission Oil",
+            "Brake Fluid",
+            "Coolant / Antifreeze",
+            "Power Steering Fluid",
+            "AdBlue / DEF"
+        ]
+    },
+    {
+        "id": 12,
+        "category": "Filters",
+        "subcategories": [
+            "Oil Filter",
+            "Air Filter",
+            "Cabin / AC Filter",
+            "Fuel Filter",
+            "Transmission Filter"
+        ]
+    },
+    {
+        "id": 13,
+        "category": "Wheels & Tires",
+        "subcategories": [
+            "Rims / Alloy Wheels",
+            "Tires",
+            "Wheel Bearings",
+            "Wheel Hubs",
+            "Lug Nuts / Bolts",
+            "TPMS Sensors"
+        ]
+    },
+    {
+        "id": 14,
+        "category": "Accessories & Miscellaneous",
+        "subcategories": [
+            "Tow Hooks / Roof Racks",
+            "Floor Mats / Covers",
+            "Car Care / Detailing",
+            "Tools / Kits",
+            "Fasteners / Clips"
+        ]
+    }
+]

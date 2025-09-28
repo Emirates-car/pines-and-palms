@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Footer from '../../../components/footer';
 import FormComponent from '../../../components/FormComponent';
 import { getFormModel, getParts } from '../../page';
 import HeroCarousel from '../../../components/HeroCarousel';
@@ -160,7 +159,6 @@ export default async function France() {
       <StaticCities />
 
       <Contents />
-      <Footer />
     </div>
   );
 }

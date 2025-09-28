@@ -18,7 +18,7 @@ export default function SearchModel({ car, make }) {
       setFormModelChange(part);
     };
     loadPart();
-  });
+  }, [car, make]);
 
   const onModelFormChange = searchModel => {
     let matches = [];
@@ -88,45 +88,49 @@ export default function SearchModel({ car, make }) {
   ];
   const isExcludedMake = excludedMakes.includes(make);
   return (
-    <div>
-      <div className="flex justify-center">
-        <div className="pt-3">
-          <input
-            className="border-2 border-gray-300 w-96 xs:w-full sm:mx-2 2xs:w-auto 2xs:mx-2 bg-white h-10 xs:h-6 2xs:h-6 rounded-lg text-sm focus:outline-none px-2"
-            id="partname"
-            type="search"
-            placeholder={'Search Your ' + make + ' Model'}
-            onChange={e => onModelFormChange(e.target.value)}
-            value={searchModel}
-            autoComplete="off"
-            required
-          />
-          <div className="overflow-y-hidden grid grid-cols-5 xs:grid xs:grid-cols-1 2xs:grid 2xs:grid-cols-1 xs:w-auto xs:mx-2 sm:w-auto sm:mx-2 2xs:w-auto 2xs:mx-2 ">
-            {recommend &&
-              recommend.map((recommend, i) => (
-                <div
-                  key={i}
-                  className="cursor-pointer text-base p-1 bg-white"
-                  onClick={() => onModelSuggestionHandler(recommend)}
-                >
-                  <Link
-                    href={
-                      isExcludedMake
-                        ? 'https://emirates-car.com/get-in-touch'
-                        : `https://emirates-car.com/search-by-make/${make}/${recommend}`
-                    }
-                    rel="noopener noreferrer"
-                    target="_newtab"
-                    title={recommend}
-                  >
-                    {recommend}
-                  </Link>
-                </div>
+    <form role="search" className="flex justify-center" onSubmit={e => e.preventDefault()}>
+      <div className="pt-3 w-full max-w-md">
+        {/* Accessible input with label */}
+        <label htmlFor="partname" className="sr-only">
+          Search {make} Model
+        </label>
+        <input
+          className="w-full px-4 py-2 border border-gray-300 rounded-full shadow-sm text-sm"
+          id="partname"
+          type="search"
+          placeholder={`Search Your ${make} Model`}
+          onChange={e => onModelFormChange(e.target.value)}
+          value={searchModel}
+          autoComplete="off"
+          required
+        />
 
-              ))}
-          </div>
-        </div>
+        {/* Suggestions list */}
+        {recommend?.length > 0 && (
+          <ul className="mt-2 max-h-60 overflow-y-auto grid grid-cols-1 bg-white border border-gray-200 rounded-md shadow-sm">
+            {recommend.map((item, i) => (
+              <li
+                key={i}
+                className="cursor-pointer text-base p-2 hover:bg-gray-100"
+                onClick={() => onModelSuggestionHandler(item)}
+              >
+                <Link
+                  href={
+                    isExcludedMake
+                      ? '/get-in-touch'
+                      : `/search-by-make/${make}/${encodeURIComponent(item)}`
+                  }
+                  title={`${item} model`}
+                  className="block"
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </div>
+    </form>
+
   );
 }

@@ -5,7 +5,6 @@ import React from 'react';
 import { getCity, getFormModel, getMake, getParts } from '../../page';
 import Link from 'next/link';
 import FormComponent from '../../../components/FormComponent';
-import Footer from '../../../components/footer';
 import TenEntries from '../../../components/tenentries';
 import CarParts from '../../../public/img/car-spare-parts.png';
 import Counter from '../../../components/service-countup';
@@ -35,11 +34,11 @@ export async function generateMetadata({ params }) {
   const { parts } = params;
   const decodedParts = decodeURIComponent(parts);
   return {
-    title: `${decodedParts} Car Auto Spare Parts Order Online in UAE | Emirates-car.com`,
+    title: `${decodedParts} Auto Spare Parts Order Online in UAE | Emirates-car.com`,
     description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
     openGraph: {
-      images: '/favicon.png',
-      title: `${decodedParts} Car Auto Spare Parts Order Online in UAE | Emirates-car.com`,
+      images: 'https://emirates-car.com/favicon.png',
+      title: `${decodedParts} Auto Spare Parts Order Online in UAE | Emirates-car.com`,
       description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
       url: 'https://emirates-car.com/search-by-part-name/' + parts,
       image: 'https://emirates-car.com/img/car-spare-parts.png',
@@ -62,23 +61,23 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${decodedParts} Car Auto Spare Parts Order Online in UAE | Emirates-car.com`,
+      title: `${decodedParts} Auto Spare Parts Order Online in UAE - Used, Genuine, Aftermarket | Emirates-car.com`,
       url: 'https://www.emirates-car.com/search-by-part-name/' + parts,
       description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
       images: ['https://emirates-car.com/favicon.png'],
     },
     icons: {
-      icon: '/favicon.png',
-      shortcut: '/icons/icon-96x96.png',
-      apple: '/icons/icon-192x192.png',
+      icon: 'https://emirates-car.com/favicon.png',
+      shortcut: 'https://emirates-car.com/icons/icon-96x96.png',
+      apple: 'https://emirates-car.com/icons/icon-192x192.png',
       other: {
         rel: 'apple-touch-icon-precomposed',
-        url: '/icons/icon-152x152.png',
+        url: 'https://emirates-car.com/icons/icon-152x152.png',
       },
     },
     category: `${decodedParts}`,
     alternates: {
-      canonical: `https://emirates-car.com/search-by-part-name/${encodeURIComponent(parts)}`,
+      canonical: `https://emirates-car.com/search-by-part-name/${parts}`,
     },
     keywords: `${decodedParts} for honda, ${decodedParts} in dubai, ${decodedParts} for porsche, ${decodedParts} for volkswagen, ${decodedParts} for volvo, ${decodedParts} online, ${decodedParts} for ford, ${decodedParts} spare parts uae, ${decodedParts} spare parts online, ${decodedParts} used spare parts dubai, ${decodedParts} spare parts near me`,
   };
@@ -225,7 +224,6 @@ export default async function Parts({ params }) {
           </div>
         </main>
       </div>
-      <Footer />
     </div>
   );
 }

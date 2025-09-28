@@ -4,6 +4,7 @@ import Script from 'next/script';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Footer from "../components/footer"
 
 export const viewport = {
   width: 'device-width',
@@ -129,8 +130,6 @@ export const metadata = {
     },
   },
   category: 'car parts',
-  keywords:
-    'spare parts dealers in dubai, spare parts online, auto spare parts online, best auto parts, auto spare parts in dubai, auto spare parts uae, honda accord parts, used engine parts, headlight parts, genuine parts, aftermarket spare parts, bumper parts, sensors, camera',
   other: {
     "script:ld+json": JSON.stringify(faqSchema),
   },
@@ -202,6 +201,7 @@ export default function RootLayout({ children }) {
       <body className="font-sans">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -79,48 +79,95 @@ export async function generateMetadata({ params }) {
 
     const faqSchema = {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "offers": {
-            "@type": "Offer",
-            "price": 0,
-            "priceCurrency": "AED"
-        },
-        "mainEntity": [
+        "@graph": [
             {
-                "@type": "Question",
-                "name": `Can I buy used or aftermarket ${make} ${decodeURIComponent(model)} ${product.partname} (${product.partnumber}) to save costs?`,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `Yes, we offer used and aftermarket ${make} ${decodeURIComponent(model)} ${product.partname} (${product.partnumber}) that are tested for quality and performance. You can cross check with item specifics tabs for other aftermarket part number.`
-                }
+                "@type": "Product",
+                "name": `${product.item_specifics?.Brand || ""} ${product.partname}`,
+                "category": product.category,
+                "mpn": product.partnumber,
+                "sku": product.item_specifics?.sku,
+                "brand": {
+                    "@type": "Brand",
+                    "name": product.item_specifics?.Brand || "Generic"
+                },
+                "image": product.image,
+                "description": `${product.item_specifics?.Condition || ""} ${product.partname} compatible with multiple vehicles.`,
+                "offers": {
+                    "@type": "Offer",
+                    "price": 0,
+                    "priceCurrency": product.pricing?.currency || "USD",
+                    "availability":
+                        product.availability === "In Stock"
+                            ? "http://schema.org/InStock"
+                            : "http://schema.org/OutOfStock"
+                },
+                "additionalProperty": Object.entries({
+                    Condition: product.item_specifics?.Condition,
+                    Warranty: product.item_specifics?.Warranty,
+                    "OEM or Aftermarket": product.item_specifics?.["OEM or Aftermarket"],
+                    "Fitment Type": product.item_specifics?.["Fitment Type"],
+                    "Country/Region of Manufacture":
+                        product.item_specifics?.["Country/Region of Manufacture"]
+                })
+                    .filter(([_, v]) => v) // remove empty ones
+                    .map(([k, v]) => ({
+                        "@type": "PropertyValue",
+                        "name": k,
+                        "value": v
+                    })),
+                "isRelatedTo": product.compatibility?.map((c) => ({
+                    "@type": "Product",
+                    "name": `${c.make} ${c.model} (${c.years})`,
+                    "additionalProperty": [
+                        {
+                            "@type": "PropertyValue",
+                            "name": "Engine",
+                            "value": c.engine
+                        }
+                    ]
+                }))
             },
             {
-                "@type": "Question",
-                "name": `Do you deliver ${make} ${decodeURIComponent(model)} ${product.partname} (${product.partnumber}) across UAE?`,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `Yes, we deliver ${make} ${decodeURIComponent(model)} ${product.partname} (${product.partnumber}) to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
-                }
-            },
-            {
-                "@type": "Question",
-                "name": `How do I know if ${product.partname} (${product.partnumber}) fits my ${make} ${decodeURIComponent(model)}?`,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `You can share your car's VIN or model details with us, and we will confirm if ${product.partname} (${product.partnumber}) is compatible with your ${make} ${decodeURIComponent(model)} before shipping.`
-                }
-            },
-            {
-                "@type": "Question",
-                "name": `Do your ${make} ${decodeURIComponent(model)} ${product.partname} (${product.partnumber}) come with warranty?`,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `Yes, all new and OEM ${make} ${decodeURIComponent(model)} ${product.partname} (${product.partnumber}) come with a standard warranty. Used parts are tested but carry limited warranty.`
-                }
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": `Can I buy used or aftermarket ${product.partname} (${product.partnumber}) to save costs?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `Yes, we offer used and aftermarket ${product.partname} (${product.partnumber}) that are tested for quality and performance. You can cross check with item specifics tabs for other aftermarket part numbers.`
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": `Do you deliver ${product.partname} (${product.partnumber}) across UAE?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `Yes, we deliver ${product.partname} (${product.partnumber}) to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": `How do I know if ${product.partname} (${product.partnumber}) fits my car?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `You can share your car's VIN or model details with us, and we will confirm if ${product.partname} (${product.partnumber}) is compatible before shipping.`
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": `Does the ${product.partname} (${product.partnumber}) come with warranty?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": product.item_specifics?.Warranty ||
+                                "This product is sold as-is without manufacturer or seller warranty."
+                        }
+                    }
+                ]
             }
-
         ]
     };
+
 
     return {
         title: `${product.partnumber} ${product.item_specifics.Condition} ${product.partname} for ${make} ${decodeURIComponent(model)}`,

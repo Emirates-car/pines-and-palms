@@ -252,6 +252,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                         </form>
                     </aside>
 
+
                     {/* Results Grid */}
                     <section className="lg:ml-0">
                         <h2 className="text-2xl font-bold mb-4">{make} Spare Parts</h2>
@@ -291,7 +292,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                                 <div className="p-3">
                                                     <h2 className="font-semibold line-clamp-1" itemProp="name">{product.partname}</h2>
                                                     <p className="text-sm text-gray-600">Part #: <span itemProp="mpn">{product.partnumber}</span></p>
-                                                    <meta itemProp="brand" content="Hyundai MOBIS" />
+                                                    <meta itemProp="brand" content={product.brand} />
                                                     <meta itemProp="category" content={product.category} />
                                                     <meta itemProp="description" content={`${product.partname} compatible with ${make} ${compat?.model || ""} ${compat?.years || ""}`} />
 
@@ -299,7 +300,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                             </Link>
                                             {product.price && (
                                                 <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
-                                                    <meta itemProp="priceCurrency" content="AED" />
+                                                    <meta itemProp="priceCurrency" content={product.currency} />
                                                     <meta itemProp="price" content={product.price} />
                                                     <link itemProp="availability" href="https://schema.org/InStock" />
                                                 </div>

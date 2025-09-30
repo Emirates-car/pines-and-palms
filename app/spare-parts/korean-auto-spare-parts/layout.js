@@ -9,6 +9,18 @@ export const viewport = {
   themeColor: '#2563eb',
 };
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Korean Spare Parts",
+  "about": {
+    "@type": "Country",
+    "name": "Korean"
+  },
+  "url": "https://www.emirates-car.com/spare-parts/korean-auto-spare-parts",
+  "description": "A comprehensive collection of Used, New, Genuine, OEM, Aftermarket spare parts for korean car makes including Hyundai, Kia and Daewoo. "
+};
+
 export const metadata = {
   title:
     'Online Korean Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',

@@ -37,8 +37,31 @@ export async function generateStaticParams() {
   }
 }
 
+
+
 export async function generateMetadata({ params }) {
   const { city } = params;
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Auto Spare Parts Sales",
+        "name": `Online Auto Spare Parts in ${city}`,
+        "url": `https://www.emirates-car.com/search-by-cities-in-uae/${encodeURIComponent(city)}`,
+        "areaServed": {
+          "@type": "City",
+          "name": `${city}`,
+          "url": `https://www.emirates-car.com/search-by-cities-in-uae/${encodeURIComponent(city)}`
+        },
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Emirates Car"
+        }
+      }
+    ]
+  }
   return {
     title: `Auto spare parts in ${decodeURIComponent(city)}, Order Online from Dubai Dealers UAE - Best Prices`,
     description: `Used, New, Genuine / Original / OEM, Aftermarket car Online in ${decodeURIComponent(city)} UAE`,

@@ -13,11 +13,14 @@ export const metadata = {
     'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE',
 };
 
+
+
 export default async function Cities() {
   const cities = await getCity();
   const partsposts = await getParts();
   const modelsform = await getFormModel();
   const makeData = await getMake();
+
   return (
     <div>
       <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 2xs:grid 2xs:grid-cols-1  xs:mx-auto">
@@ -40,23 +43,23 @@ export default async function Cities() {
                 index{'>>>'}
               </p>
 
-              <div className="grid grid-cols-4 xs:ml-4 md:mx-4 sm:ml-0 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-3 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 2xs:mx-4 md:ml-11 mr-3 my-10 ">
+              <ul className="grid grid-cols-4 xs:ml-4 md:mx-4 sm:ml-0 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-3 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 2xs:mx-4 md:ml-11 mr-3 my-10 ">
                 {cities.map((post, i) => (
-                  <div key={i}>
+                  <li key={i}>
                     <Link
                       href="/search-by-cities-in-uae/[city]"
-                      as={'/search-by-cities-in-uae/' + post.city}
+                      as={'/search-by-cities-in-uae/' + encodeURIComponent(post.city)}
                       title={'car spare parts ' + post.city}
                     >
-                      <main className="border border-blue-800 h-full p-3 ">
+                      <main className="border border-blue-800 h-full p-3">
                         <p className="text-center text-lg xs:text-2xl xs:text-center font-mono text-blue-500 underline hover:text-blue-700 focus:text-blue-700 ">
                           {post.city}
                         </p>
                       </main>
                     </Link>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
                 <FormComponent formsData={modelsform} postFilter={partsposts} />

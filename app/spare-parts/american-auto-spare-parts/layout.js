@@ -8,6 +8,19 @@ export const viewport = {
   userScalable: false,
   themeColor: '#2563eb',
 };
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "American Spare Parts",
+  "about": {
+    "@type": "Country",
+    "name": "American"
+  },
+  "url": "https://www.emirates-car.com/spare-parts/american-auto-spare-parts",
+  "description": "A comprehensive collection of Used, New, Genuine, OEM, Aftermarket spare parts for american car makes including ford, Chevrolet, GMC, Jeep, Hummer, Cadillac, Dodge, Chrysler, Buick, Ram"
+};
+
 export const metadata = {
   title:
     'Online American Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
@@ -60,6 +73,9 @@ export const metadata = {
     canonical: `https://emirates-car.com/spare-parts/american-auto-spare-parts}`,
   },
   category: 'American spare parts',
+  other: {
+    "script:ld+json": JSON.stringify(schema),
+  },
 };
 
 export default function RootLayout({ children }) {

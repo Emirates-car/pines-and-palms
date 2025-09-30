@@ -28,6 +28,7 @@ export default async function Make() {
               </nobr>
               index{'>>>'}
             </p>
+
             <article>
               <div className="grid grid-cols-4 xs:ml-4 md:mx-4 sm:ml-0 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-3 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 2xs:mx-4 md:ml-11 mr-3 my-10 font-sans">
                 {posts.map((post, i) => (

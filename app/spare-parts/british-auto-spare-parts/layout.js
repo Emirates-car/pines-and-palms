@@ -1,5 +1,17 @@
 import '../../../styles/globals.css';
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "British Spare Parts",
+  "about": {
+    "@type": "Country",
+    "name": "British"
+  },
+  "url": "https://www.emirates-car.com/spare-parts/british-auto-spare-parts",
+  "description": "A comprehensive collection of Used, New, Genuine, OEM, Aftermarket spare parts for korean car makes including Aston martin, Bentley, Jaguar, Land rover, Lotus, McLaren, Mini and Rolls Royce."
+};
+
 export const metadata = {
   title:
     'Online British Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
@@ -52,6 +64,9 @@ export const metadata = {
     canonical: `https://emirates-car.com/spare-parts/british-auto-spare-parts}`,
   },
   category: 'Britain auto spare parts',
+  other: {
+    "script:ld+json": JSON.stringify(schema),
+  },
 };
 
 export default function RootLayout({ children }) {

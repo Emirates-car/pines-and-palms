@@ -125,46 +125,193 @@ export async function generateMetadata({ params }) {
   const make = decodeURIComponent(params.make);
   const faqSchema = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "divEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": `Do you sell genuine ${make} spare parts in UAE?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, we supply genuine OEM ${make} parts, as well as used and aftermarket options to suit your budget.`
+        "@type": "FAQPage",
+        "divEntity": [
+          {
+            "@type": "Question",
+            "name": `Do you sell genuine ${make} spare parts in UAE?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, we supply genuine OEM ${make} parts, as well as used and aftermarket options to suit your budget.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Can I buy used or aftermarket ${make} parts to save costs?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, we offer used and aftermarket ${make} spare parts that are tested for quality and performance.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Do you deliver ${make} parts across UAE?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, we deliver ${make} spare parts to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `How do I know if a part fits my ${make}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `You can share your car's VIN or model details with us, and we will confirm compatibility before shipping.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Do your ${make} spare parts come with warranty?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, all new and OEM ${make} spare parts come with a standard warranty. Used parts are tested but carry limited warranty.`
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": `${make} Spare Parts | Emirates Car`,
+        "url": `https://www.emirates-car.com/search-by-make/${make}`,
+        "description": `Find genuine, OEM, and aftermarket spare parts for all ${make} models.`,
+        "about": {
+          "@type": "Brand",
+          "name": `${make}`
+        },
+        "mainEntity": {
+          "@type": "AutoPartsStore",
+          "name": "Emirates Car"
         }
       },
       {
-        "@type": "Question",
-        "name": `Can I buy used or aftermarket ${make} parts to save costs?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, we offer used and aftermarket ${make} spare parts that are tested for quality and performance.`
+        "@type": "Product",
+        "@id": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5#product",
+        "name": "Grille 71120-TA5-A000 Honda Accord",
+        "url": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
+        "image": "https://www.emirates-car.com/img/honda//img/honda/Grille.webp",
+        "description": "Genuine Honda front brake pads for all Accord models, offering reliable performance and safety.",
+        "brand":
+          { "@type": "Brand", "name": "Honda" },
+        "mpn": "71120-TA5-A000",
+        "offers":
+        {
+          "@type": "Offer",
+          "url": "https://www.emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
+          "priceCurrency": "AED",
+          "price": "170",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        },
+        "isAccessoryOrSparePartFor":
+        {
+          "@type": "Car",
+          "make":
+          {
+            "@type": "Brand",
+            "name": "Honda"
+          },
+          "model": "Accord"
         }
       },
       {
-        "@type": "Question",
-        "name": `Do you deliver ${make} parts across UAE?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, we deliver ${make} spare parts to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
+        "@type": "Product",
+        "@id": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Right%20Front-Honda-Accord-2008-2012-60210-TE0-A91ZZ-6#product",
+        "name": "Fender Assembly Right Front 60210-TE0-A91ZZ Honda Accord",
+        "url": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Right%20Front-Honda-Accord-2008-2012-60210-TE0-A91ZZ-6",
+        "image": "https://www.emirates-car.com/img/honda//img/honda/rightfender.png",
+        "description": "Genuine Honda front brake pads for all Accord models, offering reliable performance and safety.",
+        "brand":
+        {
+          "@type": "Brand",
+          "name": "Honda"
+        },
+        "mpn": "60210-TE0-A91ZZ",
+        "offers":
+        {
+          "@type": "Offer",
+          "url": "https://www.emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Right%20Front-Honda-Accord-2008-2012-60210-TE0-A91ZZ-6",
+          "priceCurrency": "USD",
+          "price": "18.5",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        },
+        "isAccessoryOrSparePartFor":
+        {
+          "@type": "Car",
+          "make":
+          {
+            "@type": "Brand",
+            "name": "Honda"
+          },
+          "model": "Accord"
         }
       },
       {
-        "@type": "Question",
-        "name": `How do I know if a part fits my ${make}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `You can share your car's VIN or model details with us, and we will confirm compatibility before shipping.`
+        "@type": "Product",
+        "@id": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Left%20Front-Honda-Accord-2008-2012-60260-TE0-A91ZZ-7#product",
+        "name": "Fender Assembly Left Front 60260-TE0-A91ZZ Honda Accord",
+        "url": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Left%20Front-Honda-Accord-2008-2012-60260-TE0-A91ZZ-7",
+        "image": "https://www.emirates-car.com/img/honda//img/honda/leftfender.webp",
+        "description": "Genuine Honda front brake pads for all Accord models, offering reliable performance and safety.",
+        "brand":
+        {
+          "@type": "Brand",
+          "name": "Honda"
+        },
+        "mpn": "60260-TE0-A91ZZ",
+        "offers":
+        {
+          "@type": "Offer",
+          "url": "https://www.emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Left%20Front-Honda-Accord-2008-2012-60260-TE0-A91ZZ-7",
+          "priceCurrency": "USD",
+          "price": "18.3",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        },
+        "isAccessoryOrSparePartFor":
+        {
+          "@type": "Car",
+          "make":
+          {
+            "@type": "Brand",
+            "name": "Honda"
+          },
+          "model": "Accord"
         }
       },
       {
-        "@type": "Question",
-        "name": `Do your ${make} spare parts come with warranty?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, all new and OEM ${make} spare parts come with a standard warranty. Used parts are tested but carry limited warranty.`
+        "@type": "Product",
+        "@id": "https://emirates-car.com/search-by-make/Renault/Duster/Wiring%20%26%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8#product",
+        "name": "Fuse Box set 243800196R Renault Duster",
+        "url": "https://emirates-car.com/search-by-make/Renault/Duster/Wiring%20%26%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
+        "image": "https://www.emirates-car.com/img/renault//img/renault/ren-1.png",
+        "description": "Genuine Honda front brake pads for all Duster models, offering reliable performance and safety.",
+        "brand":
+        {
+          "@type": "Brand",
+          "name": "Renault"
+        }, "mpn": "243800196R",
+        "offers":
+        {
+          "@type": "Offer",
+          "url": "https://www.emirates-car.com/search-by-make/Renault/Duster/Wiring%20%26%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
+          "priceCurrency": "EUR",
+          "price": "10.3",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        },
+        "isAccessoryOrSparePartFor":
+        {
+          "@type": "Car",
+          "make":
+          {
+            "@type": "Brand",
+            "name": "Renault"
+          },
+          "model": "Duster"
         }
       }
     ]

@@ -92,49 +92,116 @@ export async function generateMetadata({ params }) {
   const model = decodeURIComponent(params.model);
   const faqSchema = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": `Do you sell genuine ${make} ${model} spare parts in UAE?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, we supply genuine OEM ${make} ${model} parts, as well as used and aftermarket options to suit your budget.`
+        "@type": "CollectionPage",
+        "@id": `https://www.emirates-car.com/search-by-make/${make}/${model}#page`,
+        "name": `${make} ${model} Spare Parts | Emirates Car`,
+        "url": `https://www.emirates-car.com/search-by-make/${make}/${model}`,
+        "description": "Browse our complete collection of genuine, OEM, and aftermarket spare parts specifically for the Honda Accord. Find high-quality brake pads, filters, engine components, and more.",
+        "mainEntity": {
+          "@id": "https://www.emirates-car.com/#organization"
+        },
+        "about": {
+          "@id": `https://www.emirates-car.com/search-by-make/${make}/${model}#model`
         }
       },
       {
-        "@type": "Question",
-        "name": `Can I buy used or aftermarket ${make} ${model} parts to save costs?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, we offer used and aftermarket ${make} ${model} spare parts that are tested for quality and performance.`
+        "@type": "ProductModel",
+        "@id": `https://www.emirates-car.com/search-by-make/${make}/${model}#model`,
+        "name": `${make} ${model}`,
+        "brand": {
+          "@type": "Brand",
+          "name": `${make}`
+        },
+        "isAccessoryOrSparePartFor": {
+          "@type": "Car",
+          "make": {
+            "@type": "Brand",
+            "name": `${make}`
+          },
+          "model": `${model}`
         }
       },
       {
-        "@type": "Question",
-        "name": `Do you deliver ${make} ${model} parts across UAE?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, we deliver ${make} ${model} spare parts to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `Do you sell genuine ${make} ${model} spare parts in UAE?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, we supply genuine OEM ${make} ${model} parts, as well as used and aftermarket options to suit your budget.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Can I buy used or aftermarket ${make} ${model} parts to save costs?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, we offer used and aftermarket ${make} ${model} spare parts that are tested for quality and performance.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Do you deliver ${make} ${model} parts across UAE?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, we deliver ${make} ${model} spare parts to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `How do I know if a part fits my ${make} ${model}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `You can share your car's VIN or model details with us, and we will confirm compatibility before shipping.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Do your ${make} ${model} spare parts come with warranty?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, all new and OEM ${make} ${model} spare parts come with a standard warranty. Used parts are tested but carry limited warranty.`
+            }
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": `How do I know if a part fits my ${make} ${model}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `You can share your car's VIN or model details with us, and we will confirm compatibility before shipping.`
-        }
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.emirates-car.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Car Makes",
+            "item": `https://www.emirates-car.com/search-by-makes/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": `${make} Spare Parts`,
+            "item": `https://www.emirates-car.com/search-by-make/${make}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": `${make} ${model} Spare Parts`,
+            "item": `https://www.emirates-car.com/search-by-make/${make}/${model}`
+          }
+        ]
       },
-      {
-        "@type": "Question",
-        "name": `Do your ${make} ${model} spare parts come with warranty?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes, all new and OEM ${make} ${model} spare parts come with a standard warranty. Used parts are tested but carry limited warranty.`
-        }
-      }
+
     ]
+
+
   };
   return {
     title: `${make} - ${decodeURIComponent(
@@ -462,7 +529,7 @@ export default async function Model({ params, searchParams }) {
     {
       images: Distributor,
       name: 'Distributor',
-      alt: 'honda accord distributor',
+      alt: `${make} ${model} distributor`,
       link: '/search-by-part-name/Distributor',
     },
     {
@@ -504,7 +571,7 @@ export default async function Model({ params, searchParams }) {
     {
       images: MudFlap,
       name: 'Mud Flap',
-      alt: `${make} ${model} " mud flaps"`,
+      alt: `${make} ${model} mud flaps`,
       link: '/get-in-touch',
     },
     {

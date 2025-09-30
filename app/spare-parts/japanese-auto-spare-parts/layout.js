@@ -7,11 +7,24 @@ export const viewport = {
   userScalable: false,
   themeColor: '#2563eb',
 };
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Japanese Spare Parts",
+  "about": {
+    "@type": "Country",
+    "name": "Japan"
+  },
+  "url": "https://www.emirates-car.com/spare-parts/japanese-auto-spare-parts",
+  "description": "A comprehensive collection of Used, New, Genuine, OEM, Aftermarket spare parts for Japanese car makes including Toyota, Honda, and Nissan."
+};
+
 export const metadata = {
   title:
-    'Online Japan Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
+    'Online Japanese Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
   description:
-    'Buy Online and Get delivered Japan Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
+    'Buy Online and Get delivered Japanese Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
   openGraph: {
     images: 'https://emirates-car.com/favicon.png',
     title:
@@ -59,6 +72,9 @@ export const metadata = {
     canonical: `https://emirates-car.com/spare-parts/japanese-auto-spare-parts}`,
   },
   category: 'japanese origin spare parts',
+  other: {
+    "script:ld+json": JSON.stringify(schema),
+  },
 };
 export default function RootLayout({ children }) {
   return (

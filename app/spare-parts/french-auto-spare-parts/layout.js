@@ -7,6 +7,19 @@ export const viewport = {
   userScalable: false,
   themeColor: '#2563eb',
 };
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "France Spare Parts",
+  "about": {
+    "@type": "Country",
+    "name": "France"
+  },
+  "url": "https://www.emirates-car.com/spare-parts/french-auto-spare-parts",
+  "description": "A comprehensive collection of Used, New, Genuine, OEM, Aftermarket spare parts for France car makes including Renault, Peugeot, Citroen and Bugatti"
+};
+
 export const metadata = {
   title:
     'Online France Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
@@ -59,6 +72,9 @@ export const metadata = {
     canonical: `https://emirates-car.com/spare-parts/french-auto-spare-parts}`,
   },
   category: 'french origin car parts',
+  other: {
+    "script:ld+json": JSON.stringify(schema),
+  },
 };
 export default function RootLayout({ children }) {
   return (

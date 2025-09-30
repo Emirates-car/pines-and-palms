@@ -7,6 +7,18 @@ export const viewport = {
   userScalable: false,
   themeColor: '#2563eb',
 };
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "German Spare Parts",
+  "about": {
+    "@type": "Country",
+    "name": "German"
+  },
+  "url": "https://www.emirates-car.com/spare-parts/german-auto-spare-parts",
+  "description": "A comprehensive collection of Used, New, Genuine, OEM, Aftermarket spare parts for German car makes including Mercedes benz, BMW, Jaguar, Land Rover, Porche."
+};
+
 export const metadata = {
   title:
     'Online German Auto Spare Parts in UAE - New | Used | Genuine | Aftermarket | OEM',
@@ -59,6 +71,9 @@ export const metadata = {
     canonical: `https://emirates-car.com/spare-parts/german-auto-spare-parts}`,
   },
   category: 'german origin spare parts',
+  other: {
+    "script:ld+json": JSON.stringify(schema),
+  },
 };
 
 export default function RootLayout({ children }) {

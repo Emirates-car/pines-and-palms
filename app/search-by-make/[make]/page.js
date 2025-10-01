@@ -91,14 +91,6 @@ export async function generateStaticParams({ make }) {
   }
 }
 
-async function fetchDataFromPublicFolder() {
-  const res = await fetch('/products.json');
-  if (!res.ok) {
-    throw new Error(`Failed to fetch JSON: ${res.status}`);
-  }
-  return res.json();
-}
-
 async function getModel(make) {
   try {
     const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
@@ -119,10 +111,41 @@ async function getModel(make) {
   }
 }
 
-
-
 export async function generateMetadata({ params }) {
   const make = decodeURIComponent(params.make);
+  const productsForMake = products.filter(p =>
+    p.compatibility?.some(c => c.make.toLowerCase() === make.toLowerCase())
+  );
+
+  const productListItems = productsForMake.map((product, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
+      "@id": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}#product`,
+      "name": `${product.partname} ${product.partnumber} ${make}`,
+      "url": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+      "image": `https://www.emirates-car.com${product.image}`,
+      "description": `${product.partname} compatible with ${make} ${product.compatibility?.map(c => c.model).join(", ")}`,
+      "brand": { "@type": "Brand", "name": product.compatibility[0]?.make || make },
+      "mpn": product.partnumber,
+      "offers": {
+        "@type": "Offer",
+        "url": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+        "priceCurrency": product.pricing.currency,
+        "price": product.pricing.price,
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      },
+      "isAccessoryOrSparePartFor": {
+        "@type": "Car",
+        "make": { "@type": "Brand", "name": product.compatibility[0]?.make || make },
+        "model": product.compatibility[0]?.model
+      }
+    }
+  }));
+
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -172,146 +195,14 @@ export async function generateMetadata({ params }) {
         ]
       },
       {
-        "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": `${make} Spare Parts | Emirates Car`,
         "url": `https://www.emirates-car.com/search-by-make/${make}`,
         "description": `Find genuine, OEM, and aftermarket spare parts for all ${make} models.`,
-        "about": {
-          "@type": "Brand",
-          "name": `${make}`
-        },
+        "about": { "@type": "Brand", "name": make },
         "mainEntity": {
-          "@type": "AutoPartsStore",
-          "name": "Emirates Car"
-        }
-      },
-      {
-        "@type": "Product",
-        "@id": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5#product",
-        "name": "Grille 71120-TA5-A000 Honda Accord",
-        "url": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
-        "image": "https://www.emirates-car.com/img/honda//img/honda/Grille.webp",
-        "description": "Genuine Honda front brake pads for all Accord models, offering reliable performance and safety.",
-        "brand":
-          { "@type": "Brand", "name": "Honda" },
-        "mpn": "71120-TA5-A000",
-        "offers":
-        {
-          "@type": "Offer",
-          "url": "https://www.emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
-          "priceCurrency": "AED",
-          "price": "170",
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        },
-        "isAccessoryOrSparePartFor":
-        {
-          "@type": "Car",
-          "make":
-          {
-            "@type": "Brand",
-            "name": "Honda"
-          },
-          "model": "Accord"
-        }
-      },
-      {
-        "@type": "Product",
-        "@id": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Right%20Front-Honda-Accord-2008-2012-60210-TE0-A91ZZ-6#product",
-        "name": "Fender Assembly Right Front 60210-TE0-A91ZZ Honda Accord",
-        "url": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Right%20Front-Honda-Accord-2008-2012-60210-TE0-A91ZZ-6",
-        "image": "https://www.emirates-car.com/img/honda//img/honda/rightfender.png",
-        "description": "Genuine Honda front brake pads for all Accord models, offering reliable performance and safety.",
-        "brand":
-        {
-          "@type": "Brand",
-          "name": "Honda"
-        },
-        "mpn": "60210-TE0-A91ZZ",
-        "offers":
-        {
-          "@type": "Offer",
-          "url": "https://www.emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Right%20Front-Honda-Accord-2008-2012-60210-TE0-A91ZZ-6",
-          "priceCurrency": "USD",
-          "price": "18.5",
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        },
-        "isAccessoryOrSparePartFor":
-        {
-          "@type": "Car",
-          "make":
-          {
-            "@type": "Brand",
-            "name": "Honda"
-          },
-          "model": "Accord"
-        }
-      },
-      {
-        "@type": "Product",
-        "@id": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Left%20Front-Honda-Accord-2008-2012-60260-TE0-A91ZZ-7#product",
-        "name": "Fender Assembly Left Front 60260-TE0-A91ZZ Honda Accord",
-        "url": "https://emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Left%20Front-Honda-Accord-2008-2012-60260-TE0-A91ZZ-7",
-        "image": "https://www.emirates-car.com/img/honda//img/honda/leftfender.webp",
-        "description": "Genuine Honda front brake pads for all Accord models, offering reliable performance and safety.",
-        "brand":
-        {
-          "@type": "Brand",
-          "name": "Honda"
-        },
-        "mpn": "60260-TE0-A91ZZ",
-        "offers":
-        {
-          "@type": "Offer",
-          "url": "https://www.emirates-car.com/search-by-make/Honda/Accord/Body%20Kits/Fender%20Assembly%20Left%20Front-Honda-Accord-2008-2012-60260-TE0-A91ZZ-7",
-          "priceCurrency": "USD",
-          "price": "18.3",
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        },
-        "isAccessoryOrSparePartFor":
-        {
-          "@type": "Car",
-          "make":
-          {
-            "@type": "Brand",
-            "name": "Honda"
-          },
-          "model": "Accord"
-        }
-      },
-      {
-        "@type": "Product",
-        "@id": "https://emirates-car.com/search-by-make/Renault/Duster/Wiring%20%26%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8#product",
-        "name": "Fuse Box set 243800196R Renault Duster",
-        "url": "https://emirates-car.com/search-by-make/Renault/Duster/Wiring%20%26%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
-        "image": "https://www.emirates-car.com/img/renault//img/renault/ren-1.png",
-        "description": "Genuine Honda front brake pads for all Duster models, offering reliable performance and safety.",
-        "brand":
-        {
-          "@type": "Brand",
-          "name": "Renault"
-        }, "mpn": "243800196R",
-        "offers":
-        {
-          "@type": "Offer",
-          "url": "https://www.emirates-car.com/search-by-make/Renault/Duster/Wiring%20%26%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
-          "priceCurrency": "EUR",
-          "price": "10.3",
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        },
-        "isAccessoryOrSparePartFor":
-        {
-          "@type": "Car",
-          "make":
-          {
-            "@type": "Brand",
-            "name": "Renault"
-          },
-          "model": "Duster"
+          "@type": "ItemList",
+          "itemListElement": productListItems
         }
       },
       {

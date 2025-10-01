@@ -313,7 +313,31 @@ export async function generateMetadata({ params }) {
           },
           "model": "Duster"
         }
-      }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.emirates-car.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Car Makes",
+            "item": `https://www.emirates-car.com/search-by-makes/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": `${make} Spare Parts`,
+            "item": `https://www.emirates-car.com/search-by-make/${make}`
+          }
+        ]
+      },
     ]
   };
   return {

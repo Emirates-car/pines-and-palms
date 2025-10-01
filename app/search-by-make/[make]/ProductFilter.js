@@ -303,6 +303,8 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                                     <meta itemProp="priceCurrency" content={product.currency} />
                                                     <meta itemProp="price" content={product.price} />
                                                     <link itemProp="availability" href="https://schema.org/InStock" />
+                                                    <meta itemProp="url" content={`https://emirates-car.com/search-by-make/${make}/${compat?.model ? `${compat.model}` : ""}/${product.category}/${encodeURIComponent(slug)}`} />
+                                                    <meta itemProp="sku" content={product.sku || product.partnumber} />
                                                 </div>
                                             )}
                                         </div>

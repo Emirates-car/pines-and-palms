@@ -298,10 +298,10 @@ export default function ProductFilter({ make, products, allProducts, searchParam
 
                                                 </div>
                                             </Link>
-                                            {product.price && (
+                                            {product.pricing?.price && (
                                                 <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
-                                                    <meta itemProp="priceCurrency" content={product.currency} />
-                                                    <meta itemProp="price" content={product.price} />
+                                                    <meta itemProp="priceCurrency" content={product.pricing?.currency} />
+                                                    <meta itemProp="price" content={product.pricing?.price} />
                                                     <link itemProp="availability" href="https://schema.org/InStock" />
                                                     <meta itemProp="url" content={`https://emirates-car.com/search-by-make/${make}/${compat?.model ? `${compat.model}` : ""}/${product.category}/${encodeURIComponent(slug)}`} />
                                                     <meta itemProp="sku" content={product.sku || product.partnumber} />

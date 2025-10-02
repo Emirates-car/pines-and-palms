@@ -11,15 +11,15 @@ export const viewport = {
 
 export const metadata = {
   title:
-    'Honda Car Parts in Sharjah from Dubai dealers Online | Emirates-car.com',
+    'Honda spare Parts in Sharjah from Dubai dealers Online | Emirates-car.com',
   description:
     'Buy Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket Honda spare parts from Dubai Dealer to Sharjah',
   openGraph: {
     images: '/favicon.png',
     title:
-      'Honda Car Parts in Sharjah from Dubai dealers Online |Emirates-car.com',
+      'Honda spare Parts in Sharjah from Dubai dealers Online |Emirates-car.com',
     description:
-      'Buy Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket Honda spare parts from Dubai Dealer to Sharjah',
+      'Buy Car spare Parts - Used, Genuine, OEM (Original parts) and Aftermarket Honda spare parts from Dubai Dealer to Sharjah',
     url: 'https://www.emirates-car.com/honda-parts/sharjah',
     image: 'https://emirates-car.com/img/car-spare-parts.png',
     siteName: 'Emirates Auto Parts',
@@ -42,7 +42,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title:
-      'Honda Car Parts in Sharjah from Dubai dealers Online |Emirates-car.com',
+      'Honda spare Parts in Sharjah from Dubai dealers Online |Emirates-car.com',
     url: 'https://emirates-car.com/honda-parts/sharjah',
     description:
       'Buy Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket Honda spare parts from Dubai Dealer to Sharjah',

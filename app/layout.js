@@ -398,19 +398,6 @@ export default function RootLayout({ children }) {
         src={`https://www.exactseek.com/remote-submit.js`}
       />
 
-
-      <script
-        type="text/javascript"
-        dangerouslySetInnerHTML={{
-          __html:
-            `window.dataLayer = window.dataLayer || [];
-           window.dataLayer.push({
-          'event': 'form_submitted_success'
-          });
-          alert('Your form has been successfully submitted!');
-              `,
-        }}
-      ></script>
       <script
         type="text/javascript"
         dangerouslySetInnerHTML={{

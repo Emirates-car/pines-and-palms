@@ -449,19 +449,6 @@ export default function RootLayout({ children }) {
         }}
       />
       <script
-        id="myscript2"
-        dangerouslySetInnerHTML={{
-          __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'GTM-TDJHQSZ', {
-                  page_path: window.location.pathname,
-                });
-              `,
-        }}
-      />
-      <script
         id="myscript3"
         async
         src={`https://www.googletagmanager.com/gtag/js?id=G-3E8C09YD12`}

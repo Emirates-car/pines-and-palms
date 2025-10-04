@@ -302,7 +302,6 @@ const homepageSchema = {
 };
 
 export const metadata = {
-
   title:
     'Auto Spare Parts Order Online in UAE from Dubai dealers | Emirates-car.com',
   description:
@@ -398,6 +397,20 @@ export default function RootLayout({ children }) {
         language="javascript"
         src={`https://www.exactseek.com/remote-submit.js`}
       />
+
+
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html:
+            `window.dataLayer = window.dataLayer || [];
+           window.dataLayer.push({
+          'event': 'form_submitted_success'
+          });
+          alert('Your form has been successfully submitted!');
+              `,
+        }}
+      ></script>
       <script
         type="text/javascript"
         dangerouslySetInnerHTML={{

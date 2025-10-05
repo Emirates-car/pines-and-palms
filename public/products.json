@@ -48,7 +48,7 @@
         },
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
-            "delivery": "Estimated between Sep 20 - Sep 25",
+            "delivery": "Delivery available in UAE",
             "returns": "",
             "payment_methods": [
                 "Cash on Delivery"
@@ -106,7 +106,7 @@
         },
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
-            "delivery": "Estimated between Sep 20 - Sep 25",
+            "delivery": "Delivery available in UAE",
             "returns": "",
             "payment_methods": [
                 "Cash on Delivery"
@@ -164,7 +164,7 @@
         },
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
-            "delivery": "Estimated between Sep 20 - Sep 25",
+            "delivery": "Delivery available in UAE",
             "returns": "3 Days Returns Accepted",
             "payment_methods": [
                 "Cash on Delivery"
@@ -252,7 +252,7 @@
         },
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
-            "delivery": "Estimated between Sep 20 - Sep 25",
+            "delivery": "",
             "returns": "3 Days Returns Accepted",
             "payment_methods": [
                 "Cash on Delivery"

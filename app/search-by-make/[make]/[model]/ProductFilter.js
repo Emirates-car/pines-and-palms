@@ -246,51 +246,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                     <section className="lg:ml-0">
                         <h2 className={`text-4xl md:text-3xl lg:text-3xl xs:text-2xl xxs:text-2xl font-bold mb-4 ${playfair_display.className}`}>All <span className='text-blue-600'>{make} {model}</span> items</h2>
                         <p>{allProducts.length} Results</p>
-                        <div >
 
-                            {products.length > 0 ? (
-                                products.map(product => {
-                                    const compat = product.compatibility.find(
-                                        c =>
-                                            c.make.toLowerCase() === make.toLowerCase() &&
-                                            c.model.toLowerCase() === model.toLowerCase()
-                                    );
-
-                                    const slug = `${product.partname}-${make}-${model}${compat?.years ? `-${compat.years}` : ""
-                                        }-${product.partnumber}-${product.id}`;
-
-                                    return (
-                                        <div
-                                            key={product.id}
-                                            className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
-                                        >
-
-                                            <Link
-                                                href={`/search-by-make/${make}/${model}/${product.category}/${encodeURIComponent(slug)}`}
-                                                className="flex flex-col h-full" target='_blank' rel='noopener noreferrer'
-                                            >
-                                                <div className="relative w-full aspect-square">
-                                                    <Image
-                                                        src={product.image}
-                                                        alt={product.partname}
-                                                        fill
-                                                        className="object-contain"
-                                                    />
-                                                </div>
-                                                <div className="p-3">
-                                                    <h2 className={`line-clamp-2 ${firaSans.className}`}>{product.partname} {compatibilities.slice(0, 2)}</h2>
-                                                    <p className="text-sm text-gray-600">Part #: {product.partnumber}</p>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <p className="col-span-full text-center text-gray-600">
-                                    No {make} products found for "{localQuery}"
-                                </p>
-                            )}
-                        </div>
                         <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 xxs:grid-cols-1 s:grid-cols-1 gap-6">
                             {products.length > 0 ? (
                                 products.map(product => {

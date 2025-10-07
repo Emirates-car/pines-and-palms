@@ -42,6 +42,7 @@ export default function ProductTabs({ product }) {
                     onClick={() => setActiveTab('compatibility')}
                     className={`px-4 xs:px-1 xxs:px-2 s:px-2 py-2 rounded-t-lg whitespace-nowrap font-semibold ${activeTab === 'compatibility' ? 'bg-blue-600 text-white' : 'bg-gray-200 hover:bg-gray-300 '
                         }`}
+                    id='#compat'
                 >
                     Compatibility
                 </button>

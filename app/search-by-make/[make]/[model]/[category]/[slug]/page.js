@@ -1,7 +1,7 @@
 import products from "../../../../../../public/products.json";
 import PartInquiryForm from "./PartInquiryForm";
 import ProductTabs from "./ProductTabs";
-import { Fira_Sans, Playfair_Display, Poppins, Roboto } from 'next/font/google';
+import { Copse, Fira_Sans, Playfair_Display, Poppins, Roboto } from 'next/font/google';
 
 const playfair_display = Playfair_Display({
     subsets: ['latin'],
@@ -38,20 +38,13 @@ export async function generateStaticParams() {
         if (Array.isArray(product.compatibility)) {
             product.compatibility.forEach((compat) => {
                 const slug = `${product.partname}-${compat.make}-${compat.model}-${compat.years}-${product.partnumber}-${product.id}`;
+
                 params.push({
-                    make: compat.make,
-                    model: compat.model,
-                    category: product.category,
-                    slug,
+                    make: encodeURIComponent(compat.make),
+                    model: encodeURIComponent(compat.model),
+                    category: encodeURIComponent(product.category),
+                    slug: encodeURIComponent(slug),
                 });
-            });
-        } else {
-            const slug = `${product.partname}-${product.partnumber}-${product.id}`;
-            params.push({
-                make: "unknown",
-                model: "unknown",
-                category: product.category,
-                slug,
             });
         }
     });
@@ -59,11 +52,11 @@ export async function generateStaticParams() {
     return params;
 }
 
+
 export async function generateMetadata({ params }) {
 
 
     const { make, model, category, slug } = params;
-
     const id = Number(slug.split("-").pop());
 
     // Find product by ID
@@ -74,8 +67,11 @@ export async function generateMetadata({ params }) {
     }
 
     const compat = product.compatibility?.find(
-        (c) => c.make === make && c.model === model
+        (c) =>
+            c?.make?.trim().toLowerCase() === decodeURIComponent(params.make).trim().toLowerCase() &&
+            c?.model?.trim().toLowerCase() === decodeURIComponent(params.model).trim().toLowerCase()
     );
+
 
     const faqSchema = {
         "@context": "https://schema.org",
@@ -171,13 +167,13 @@ export async function generateMetadata({ params }) {
 
 
     return {
-        title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
+        title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat?.years || ""}`,
         description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.partname}, Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
 
         openGraph: {
             images: 'https://www.emirates-car.com/favicon.png',
-            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
-            description: `Buy ${product.partname} fits ${compat.make + compat.model + compat.years}`,
+            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat?.years || ""}`,
+            description: `Buy ${product.partname} fits ${compat?.make || "" + compat?.model || "" + compat?.years || ""}`,
             url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             image: `https://www.emirates-car.com/img/honda/${product.image}`,
             siteName: 'Emirates Auto Parts',
@@ -200,7 +196,7 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat.years}`,
+            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat?.years || ""}`,
             url: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             description: `Buy ${make} - ${decodeURIComponent(
                 model
@@ -246,6 +242,7 @@ export default function ProductPage({ params }) {
 
     // Extract the ID from the slug
     const id = Number(slug.split("-").pop());
+    console.log(id)
 
     // Find product by ID
     const product = products.find((p) => p.id === id);
@@ -256,7 +253,9 @@ export default function ProductPage({ params }) {
 
     // Filter compatibility for the selected make and model
     const compat = product.compatibility?.find(
-        (c) => c.make === make && c.model === model
+        (c) =>
+            c?.make?.trim().toLowerCase() === decodeURIComponent(params.make).trim().toLowerCase() &&
+            c?.model?.trim().toLowerCase() === decodeURIComponent(params.model).trim().toLowerCase()
     );
 
     if (!compat) {
@@ -295,10 +294,9 @@ export default function ProductPage({ params }) {
                 {/* Product Info */}
                 <section className="space-y-4">
                     {/* Category & Engine */}
-                    <h1 className={`text-3xl xl:text-4xl xxl:text-4xl font-extrabold mx-auto my-5 xs:my-3 xs:text-xl xxs:text-2xl md:text-xl md:my-3 sm:text-xl xxs:text-center  ${poppins.className}`} itemProp="name">
+                    <h1 className={`text-3xl xl:text-4xl xxl:text-4xl font-extrabold mx-auto my-5 xs:my-3 xs:text-xl xxs:text-2xl md:text-xl md:my-3 sm:text-xl xxs:text-center line-clamp-6  ${poppins.className}`} itemProp="name">
                         {product.partname} (<span itemProp="mpn">{product.partnumber}</span> ) for {product.compatibility.map(c => c.make + " " + c.model + " " + c.years + " ")}
-                    </h1>
-                    <div className={`space-y-1 ${roboto.className}`}>
+                    </h1>                   <div className={`space-y-1 ${roboto.className}`}>
                         <p className="text-gray-700"><strong>Category:</strong><span itemProp="category">{product.category}</span> </p>
                         <p className="text-gray-700"><strong>Brand:</strong> {product.item_specifics.Brand}</p>
                         <p className="text-gray-700"><strong>Condition:</strong> {product.item_specifics.Condition}</p>
@@ -360,7 +358,7 @@ export default function ProductPage({ params }) {
                             return (
                                 <li key={p.id} className="border p-3 rounded-lg hover:shadow-md">
                                     <a
-                                        href={`/search-by-make/${make}/${compatForMake.model}/${p.category}/${otherSlug}`}
+                                        href={`/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(compatForMake.model)}/${encodeURIComponent(p.category)}/${encodeURIComponent(otherSlug)}`}
                                         className="block"
                                     >
                                         <img

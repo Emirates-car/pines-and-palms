@@ -691,7 +691,7 @@
                 "Cylinder Head"
             ],
             "Condition": "New",
-            "Material": "Aluminum / Synthetic Filter Media",
+            "Material": "Iridium center electrode",
             "Warranty": "No manufacturer or seller warranty is offered on this item.",
             "Country/Region of Manufacture": "France",
             "OEM or Aftermarket": "OEM/Genuine",
@@ -709,6 +709,103 @@
             "shipping": "Free Standard Shipping (3-5 Business Days)",
             "delivery": "",
             "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "subcategory": "",
+        "category": "Ignition & Electrical",
+        "partname": "Spark Plug",
+        "partnumber": "8201001947",
+        "availability": "In Stock",
+        "compatibility": [
+            {
+                "make": "Renault",
+                "model": "Megane 3 Coupe",
+                "years": "2014-2016",
+                "engine": "2.0"
+            },
+            {
+                "make": "Renault",
+                "model": "Megane 3 Coupe",
+                "years": "2008-2016",
+                "engine": "2.0"
+            },
+            {
+                "make": "Renault",
+                "model": "Megane 3 Coupe",
+                "years": "2009-2015",
+                "engine": "2.0"
+            },
+            {
+                "make": "Renault",
+                "model": "Megane 3 Coupe",
+                "years": "2013-2015",
+                "engine": "2.0"
+            },
+            {
+                "make": "Renault",
+                "model": "Megane 3 Grandtour",
+                "years": "2012-2016",
+                "engine": "2.0"
+            },
+            {
+                "make": "Renault",
+                "model": "Megane 3 Grandtour",
+                "years": "2012-2016",
+                "engine": "2.0"
+            },
+            {
+                "make": "Renault",
+                "model": "Megane 3 Hatchback",
+                "years": "2013-2016",
+                "engine": "2.0"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/renault/ren-2.jpg",
+        "item_specifics": {
+            "sku": "REN0002",
+            "Brand": "Renault",
+            "Manufacturer Part Number": "8201001947",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "820100194710",
+                "MP1003090014948",
+                "11634685",
+                "95820",
+                "IFR7X8G"
+            ],
+            "Placement on Vehicle": [
+                "Engine",
+                "Cylinder Head"
+            ],
+            "Condition": "New",
+            "Material": "Iridium center electrode",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "France",
+            "OEM or Aftermarket": "OEM/Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 62,
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": ""
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
             "payment_methods": [
                 "Cash on Delivery"
             ]

@@ -90,6 +90,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const make = decodeURIComponent(params.make);
   const model = decodeURIComponent(params.model);
+  const imageMake = await getMakeImage(make, model);
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -204,35 +206,25 @@ export async function generateMetadata({ params }) {
 
   };
   return {
-    title: `${make} - ${decodeURIComponent(
-      model
-    )} Auto Spare Parts Order Online in UAE from Dubai -
-    Best Prices`,
-    description: `Buy ${make} - ${decodeURIComponent(
-      model
-    )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
+    title: `${make} ${model} Spare Parts in Dubai, UAE | Genuine, OEM & Aftermarket – Best Prices`,
+    description: `Find and buy all new, used, and genuine ${make} ${decodeURIComponent(model)} spare parts online in the UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
 
     openGraph: {
-      images: '/favicon.png',
-      title: `${make} - ${decodeURIComponent(
-        model
-      )} Car Auto Spare Parts Order Online in UAE from Dubai -
-    Best Prices`,
-      description: `Buy ${make} - ${decodeURIComponent(
-        model
-      )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
+      images: 'https://www.emirates-car.com/favicon.png',
+      title: `${make} ${model} Spare Parts in Dubai, UAE | Genuine, OEM & Aftermarket – Best Prices`,
+      description: `Find and buy all new, used, and genuine ${make} ${decodeURIComponent(model)} spare parts online in the UAE. Get fast delivery and expert support from reliable dealers. Shop now! `,
       url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model,
-      image: '/img/car-spare-parts.png',
+      image: `https://www.emirates-car.com/img/car-logos/${imageMake}`,
       siteName: 'Emirates Auto Parts',
       images: [
-        '/favicon.png',
+        'https://www.emirates-car.com/favicon.png',
         {
-          url: '/icon-192x192.png',
+          url: 'https://www.emirates-car.com/icon-192x192.png',
           width: 192,
           height: 192,
         },
         {
-          url: '/icons/icon-512x512.png',
+          url: 'https://www.emirates-car.com/icons/icon-512x512.png',
           width: 512,
           height: 512,
           alt: 'car parts',
@@ -243,23 +235,18 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${make} - ${decodeURIComponent(
-        model
-      )} Car Auto Spare Parts Order Online in UAE from Dubai -
-    Best Prices`,
+      title: `${make} ${model} Spare Parts in Dubai, UAE | Genuine, OEM & Aftermarket – Best Prices`,
       url: '/search-by-make/' + make + '/' + model,
-      description: `Buy ${make} - ${decodeURIComponent(
-        model
-      )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
-      images: ['/favicon.png'],
+      description: `Find and buy all new, used, and genuine ${make} ${decodeURIComponent(model)} spare parts online in the UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
+      images: ['https://www.emirates-car.com/favicon.png'],
     },
     icons: {
-      icon: '/favicon.png',
-      shortcut: '/icons/icon-96x96.png',
-      apple: '/icons/icon-192x192.png',
+      icon: 'https://www.emirates-car.com/favicon.png',
+      shortcut: 'https://www.emirates-car.com/icons/icon-96x96.png',
+      apple: 'https://www.emirates-car.com/icons/icon-192x192.png',
       other: {
         rel: 'apple-touch-icon-precomposed',
-        url: '/icons/icon-152x152.png',
+        url: 'https://www.emirates-car.com/icons/icon-152x152.png',
       },
     },
     alternates: {

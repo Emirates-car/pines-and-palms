@@ -232,17 +232,15 @@ export async function generateMetadata({ params }) {
     ]
   };
   return {
-    title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
-    description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
-    ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
+    title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
+    description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
     metadataBase: new URL(
       `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}`
     ),
     openGraph: {
       images: 'https://emirates-car.com/favicon.png',
-      title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
-      description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
-    ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
+      title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
+      description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
       url: 'https://emirates-car.com/search-by-make/' + encodeURIComponent(make),
       image: 'https://www.emirates-car.com/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
@@ -265,10 +263,9 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${make} - Car Auto Spare Parts Order Online from Dubai Dealers in UAE - Best Prices`,
+      title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
       url: 'https://emirates-car.com/search-by-make/' + encodeURIComponent(make),
-      description: `Buy ${make} Car Parts - Used, Genuine, OEM (Original parts) and Aftermarket
-    ${make} spare parts from Dubai Dealer to all over UAE and world Online`,
+      description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
       images: ['https://emirates-car.com/favicon.png'],
     },
     icons: {

@@ -812,6 +812,199 @@
         }
     },
     {
+        "id": 3,
+        "subcategory": "",
+        "category": "Ignition & Electrical",
+        "partname": "Spark Plug 8 PCS",
+        "partnumber": "7700500155",
+        "availability": "In Stock",
+        "compatibility": [
+            {
+                "make": "Renault",
+                "model": "Clio Grandtour",
+                "years": "2010",
+                "engine": "1.4 16V K4J 780"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio Grandtour",
+                "years": "2008",
+                "engine": "1.6 16V K4M 800,K4M 801"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio Grandtour",
+                "years": "2008",
+                "engine": "1.6 16V K4M 862"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "2000-2001",
+                "engine": "1.0 D7D 760"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "1998",
+                "engine": "1.2 D7F 710,D7F 720,D7F 722,D7F 726,D7F 746,D7F 764,D7F 766"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "1998-2009",
+                "engine": "1.2 LPG D7F 764, D7F 766"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "1999-2001",
+                "engine": "1.2 LPG - D7F 722"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "1998-2005",
+                "engine": "1.4 E7J 634, E7J 780,K7J 700"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "1999-2004",
+                "engine": "1.4 16V K4J 712, K4J 713"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "2000",
+                "engine": "1.4 16V K4J 710, K4J 711, K4J 712, K4J 713,K4J 715"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "1998-2005",
+                "engine": "1.6 16V K4M 708, K4M 740, K4M 742, K4M 743, K4M 744, K4M 745, K4M 748"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 2",
+                "years": "2004",
+                "engine": "2.0 16V F4R 738"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 3",
+                "years": "2005",
+                "engine": "1.4 16V K4J 780"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 3",
+                "years": "2005",
+                "engine": "1.6 16V K4M 800, K4M 801"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 3",
+                "years": "2005",
+                "engine": "1.6 16V K4M 804"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 3",
+                "years": "2009",
+                "engine": "1.6 16V K4M 862"
+            },
+            {
+                "make": "Renault",
+                "model": "Clio 3",
+                "years": "2008",
+                "engine": "1.6 16V F4R 830"
+            },
+            {
+                "make": "Renault",
+                "model": "Duster",
+                "years": "2015",
+                "engine": "1.6 16V F4R 830"
+            },
+            {
+                "make": "Renault",
+                "model": "Duster",
+                "years": "2015",
+                "engine": "1.6 16V K4M 616"
+            },
+            {
+                "make": "Renault",
+                "model": "Duster",
+                "years": "2015",
+                "engine": "1.6 16V 4x4 K4M 690"
+            },
+            {
+                "make": "Renault",
+                "model": "Duster",
+                "years": "2015",
+                "engine": "1.6 16V K4M 616"
+            },
+            {
+                "make": "Renault",
+                "model": "Duster",
+                "years": "2012",
+                "engine": "2.0 F4R 403, F4R 405"
+            },
+            {
+                "make": "Renault",
+                "model": "Duster",
+                "years": "2010-2015",
+                "engine": "2.0 4x4 F4R"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/renault/ren-4.jpg",
+        "item_specifics": {
+            "sku": "REN0003",
+            "Brand": "Renault",
+            "Manufacturer Part Number": "7700500155",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "8200020796",
+                "8200307688",
+                "7700856910",
+                "7701042816",
+                "7701414139"
+            ],
+            "Placement on Vehicle": [
+                "Engine",
+                "Cylinder Head"
+            ],
+            "Condition": "New",
+            "Material": "Nickel",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "France",
+            "OEM or Aftermarket": "OEM/Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 105,
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": ""
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
         "id": 5,
         "subcategory": "Body & Exterior",
         "category": "Body Kits",

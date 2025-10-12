@@ -636,9 +636,10 @@ export default async function Model({ params, searchParams }) {
                   </span>
                 </h6>
                 <h1 className={`text-3xl xl:text-4xl xxl:text-4xl font-extrabold mx-auto my-5 xs:my-3 xs:text-xl xxs:text-2xl md:text-xl md:my-3 sm:text-xl xxs:text-center ${playfair_display.className}`}>
-                  <span className="text-blue-600 xl:inline">{make} {decodeURIComponent(model)} spare parts</span> - Buy Premium High
-                  Quality Used, Genuine, OEM and Aftermarket from Dubai to all over UAE
-                  and World
+                  <span className="text-blue-600 xl:inline">
+                    {make} {decodeURIComponent(model)} Spare Parts
+                  </span>{" "}
+                  – Genuine, OEM & Used Auto Parts from Dubai with Delivery Across UAE
                 </h1>
                 <div className="mt-2 lg:pb-5 py-3 w-1/2 lg:w-2/4 xs:w-full xxs:w-2/4 xxs:mx-auto mr-auto rounded-lg shadow-md">
                   <a

@@ -275,7 +275,7 @@ export default function FormComponent({ formsData, postFilter }) {
         AUTO SPARE PARTS INQUIRY FORM
       </h2>
       <form
-        id="inquiry-form"
+        id="myForm"
         method="POST"
         onSubmit={handleSubmit}
         className="bg-blue-400 w-full px-8 py-8 xs:px-3 xxs:px-4 sm:px-4"

@@ -1106,8 +1106,8 @@
             "UPC": "4027816012345"
         },
         "pricing": {
-            "price": 18.50,
-            "currency": "USD",
+            "price": 68,
+            "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
         },
@@ -1165,8 +1165,8 @@
             "UPC": "4027816012345"
         },
         "pricing": {
-            "price": 18.30,
-            "currency": "USD",
+            "price": 68,
+            "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
         },

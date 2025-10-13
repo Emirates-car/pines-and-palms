@@ -29,7 +29,7 @@ export default async function British() {
                     </span>
                   </h2>
                   <h1 className="mt-3 text-5xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
-                    Used / Genuine / Aftermarket German auto spare parts in UAE
+                    Used / Genuine / Aftermarket <span className='text-blue-500'>British</span> auto spare parts in UAE
                   </h1>
                   <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
                     <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">

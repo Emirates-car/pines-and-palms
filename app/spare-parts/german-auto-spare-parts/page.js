@@ -29,7 +29,7 @@ export default async function German() {
                     </span>
                   </h2>
                   <h1 className="mt-3 text-5xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
-                    Used / Genuine / Aftermarket American auto spare parts in
+                    Used / Genuine / Aftermarket <span className='text-blue-500'>German</span> auto spare parts in
                     UAE
                   </h1>
                   <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">

@@ -153,7 +153,7 @@ const PartInquiryModal = ({ isOpen, onClose, product }) => {
     );
 };
 
-export default function PartInquiryForm({ product }) {
+export default function PartInquiryForm({ product, make, model, oemoraftermarket, partname }) {
     const [isModalOpen, setModalOpen] = useState(false);
 
     return (
@@ -164,7 +164,7 @@ export default function PartInquiryForm({ product }) {
             >
                 Inquire Now
             </button>
-            <span className={`text-red-500 text-xs ${roboto.className}`}><br />**Inquiring is important for fitment check</span>
+            <span className={`text-red-500 text-sm ${roboto.className}`}><br />*Prices reflects the latest average online market values for {oemoraftermarket} {make} {model} {partname}. Inquiry is recommended to confirm compatibility and final pricing.</span>
 
             <PartInquiryModal
                 isOpen={isModalOpen}

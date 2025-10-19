@@ -4,8 +4,71 @@ import Footer from '../../components/footer';
 import OtherHondaModels from '../../components/OtherHondaModels';
 import Link from 'next/link';
 import Image from 'next/image';
+import ProductFilter from './ProductFilter';
+import products from "../../public/products.json"
 
-export default function HondaAccord() {
+export default function HondaAccord({ searchParams }) {
+  const make = "Honda";
+  const model = "Accord";
+
+  // Get filters from search params
+  const {
+    "filter_car_parts[]": categories = [],
+    "engine[]": engines = [],
+    "compatibility[]": compats = [],
+    search = ""
+  } = searchParams;
+
+  const selectedCategories = Array.isArray(categories) ? categories : [categories].filter(Boolean);
+  const selectedEngines = Array.isArray(engines) ? engines : [engines].filter(Boolean);
+  const selectedCompats = Array.isArray(compats) ? compats : [compats].filter(Boolean);
+  const query = search?.toLowerCase() || "";
+
+  const makeModelFiltered = products.filter(product =>
+    product.compatibility.some(c => {
+      const years = c.years ? c.years.split("-").map(y => parseInt(y.trim())) : [];
+      const isInYearRange =
+        years.length === 2 && years[0] <= 2012 && years[1] >= 2008;
+      return (
+        c.make.toLowerCase() === make.toLowerCase() &&
+        c.model.toLowerCase() === model.toLowerCase() &&
+        isInYearRange
+      );
+    })
+  );
+
+  const categoryFiltered = makeModelFiltered.filter(
+    product => product.category.toLowerCase() === "body kits"
+  );
+  const filtered = categoryFiltered.filter(product => {
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(product.category);
+
+    const matchesSearch =
+      product.partname.toLowerCase().includes(query) ||
+      product.partnumber.toLowerCase().includes(query) ||
+      product.engine?.some(e => e.toLowerCase().includes(query)) ||
+      product.compatibility?.some(c =>
+        `${c.make} ${c.model} ${c.years ?? ""}`.toLowerCase().includes(query)
+      );
+
+    const matchesEngine =
+      selectedEngines.length === 0 ||
+      product.engine?.some(e => selectedEngines.includes(e));
+
+    const matchesCompatibility =
+      selectedCompats.length === 0 ||
+      product.compatibility?.some(
+        c =>
+          selectedCompats.includes(
+            `${c.make} ${c.model} ${c.years ? `(${c.years})` : ""}`
+          )
+      );
+
+    return matchesCategory && matchesSearch && matchesEngine && matchesCompatibility;
+  });
+
   return (
     <div>
       <div className="d-flex justify-center  pt-10 xs:pt-5 mx-8">
@@ -65,7 +128,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="Honda accord bonnet"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -84,7 +147,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Bumper%20Assembly%20(Front)"
+                  href="https://www.emirates-car.com/search-by-part-name/Bumper%20Assembly%20(Front)"
                   title="Honda accord front bumper"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -103,7 +166,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Bumper%20Assembly%20(Rear)"
+                  href="https://www.emirates-car.com/search-by-part-name/Bumper%20Assembly%20(Rear)"
                   title="Honda accord rear bumper"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -122,7 +185,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Spoiler%20(Front)"
+                  href="https://www.emirates-car.com/search-by-part-name/Spoiler%20(Front)"
                   title="Honda spoiler"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -143,7 +206,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="Honda accord front bumper"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -164,7 +227,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="Honda accord rear bumper lips"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -183,7 +246,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="Honda accord side skirts"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -207,7 +270,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Ring%20Gear%20and%20Pinion"
+                  href="https://www.emirates-car.com/search-by-part-name/Ring%20Gear%20and%20Pinion"
                   title="Honda accord cam gear"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -228,7 +291,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Intake%20Manifold"
+                  href="https://www.emirates-car.com/search-by-part-name/Intake%20Manifold"
                   title="Honda accord cold air intakes"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -247,7 +310,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-make/Intake%20Manifold"
+                  href="https://www.emirates-car.com/search-by-make/Intake%20Manifold"
                   title="Honda intake manifold"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -266,7 +329,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-make/Honda/CR-V"
+                  href="https://www.emirates-car.com/search-by-make/Honda/CR-V"
                   title="Honda crv parts"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -285,7 +348,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Radiator"
+                  href="https://www.emirates-car.com/search-by-part-name/Radiator"
                   title="Honda radiator caps"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -304,7 +367,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="honda oxygen sensors"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -323,7 +386,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Throttle%20Body%20Assembly"
+                  href="https://www.emirates-car.com/search-by-part-name/Throttle%20Body%20Assembly"
                   title="throttle body"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -349,7 +412,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Suspension%20Control%20Module"
+                  href="https://www.emirates-car.com/search-by-part-name/Suspension%20Control%20Module"
                   title="Honda accord air suspension"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -368,7 +431,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="8th gen accord cambers"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -387,7 +450,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="Honda coilovers"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -406,7 +469,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="Honda accord 8th gen control arms"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -427,7 +490,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/get-in-touch"
+                  href="https://www.emirates-car.com/get-in-touch"
                   title="Honda accord lowering springs"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -446,7 +509,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Strut%20Assembly%20(Front)"
+                  href="https://www.emirates-car.com/search-by-part-name/Strut%20Assembly%20(Front)"
                   title="Honda strut bars"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -465,7 +528,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Toe%20Arms"
+                  href="https://www.emirates-car.com/search-by-part-name/Toe%20Arms"
                   title="Honda accord toe arms"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -484,7 +547,7 @@ export default function HondaAccord() {
                   width={250}
                 />
                 <Link
-                  href="https://emirates-car.com/search-by-part-name/Traction%20Control%20Module"
+                  href="https://www.emirates-car.com/search-by-part-name/Traction%20Control%20Module"
                   title="traction rod honda accord price"
                   className="flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                 >
@@ -501,7 +564,7 @@ export default function HondaAccord() {
           Genuine vs Aftermarket? Hard to decide? Read the following small guide
         </p>
         <Link
-          href="https://emirates-car.com/honda-parts#oemvsaftermarket"
+          href="https://www.emirates-car.com/honda-parts#oemvsaftermarket"
           className="text-white text-4xl xs:text-xl font-mono italic"
         >
           <div className="h-60 xs:h-14 grid grid-cols-1 content-center bg-gradient-to-r from-yellow-500 to-red-800 text-center font-extrabold rounded-3xl underline">
@@ -551,7 +614,7 @@ export default function HondaAccord() {
               <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Engine%20Assembly"
+                    href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Engine Assembly
@@ -559,7 +622,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Engine%20Block"
+                    href="https://www.emirates-car.com/search-by-part-name/Engine%20Block"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Engine Block
@@ -567,7 +630,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Engine%20Mount"
+                    href="https://www.emirates-car.com/search-by-part-name/Engine%20Mount"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Engine Mount
@@ -575,7 +638,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Engine%20Block"
+                    href="https://www.emirates-car.com/search-by-part-name/Engine%20Block"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Engine Block
@@ -583,7 +646,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Cylinder%20Head"
+                    href="https://www.emirates-car.com/search-by-part-name/Cylinder%20Head"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Cylinder Head
@@ -591,7 +654,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Cylinder%20Block"
+                    href="https://www.emirates-car.com/search-by-part-name/Cylinder%20Block"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Cylinder Block
@@ -599,7 +662,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Crankshaft"
+                    href="https://www.emirates-car.com/search-by-part-name/Crankshaft"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Crankshaft
@@ -607,7 +670,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Camshaft"
+                    href="https://www.emirates-car.com/search-by-part-name/Camshaft"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Camshaft
@@ -615,7 +678,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Piston"
+                    href="https://www.emirates-car.com/search-by-part-name/Piston"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Piston
@@ -623,7 +686,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Exhaust%20Manifold"
+                    href="https://www.emirates-car.com/search-by-part-name/Exhaust%20Manifold"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Exhaust Manifold
@@ -631,7 +694,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Intake%20Manifold"
+                    href="https://www.emirates-car.com/search-by-part-name/Intake%20Manifold"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Intake Manifold
@@ -639,7 +702,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Ignition%20Switch"
+                    href="https://www.emirates-car.com/search-by-part-name/Ignition%20Switch"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Ignition Switch
@@ -647,7 +710,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Ignition%20Control%20Module"
+                    href="https://www.emirates-car.com/search-by-part-name/Ignition%20Control%20Module"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Ignition Control Module
@@ -655,7 +718,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Transmission%20Control%20Module"
+                    href="https://www.emirates-car.com/search-by-part-name/Transmission%20Control%20Module"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     TCM
@@ -671,7 +734,7 @@ export default function HondaAccord() {
               <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Engine%20Assembly"
+                    href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Engine
@@ -679,7 +742,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Engine%20Assembly"
+                    href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Battery
@@ -687,7 +750,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Engine%20Assembly"
+                    href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Alternator
@@ -695,7 +758,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Brake%20Pads"
+                    href="https://www.emirates-car.com/search-by-part-name/Brake%20Pads"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Brake Pads
@@ -703,7 +766,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Radiator"
+                    href="https://www.emirates-car.com/search-by-part-name/Radiator"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Radiator
@@ -711,7 +774,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Transmission%20Control%20Module"
+                    href="https://www.emirates-car.com/search-by-part-name/Transmission%20Control%20Module"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Transmission
@@ -719,7 +782,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Shock%20Absorber"
+                    href="https://www.emirates-car.com/search-by-part-name/Shock%20Absorber"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Shock Absorber
@@ -727,7 +790,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Convertible%20Top%20Motor"
+                    href="https://www.emirates-car.com/search-by-part-name/Convertible%20Top%20Motor"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Catalytic Converter
@@ -735,7 +798,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Power%20Steering%20Box"
+                    href="https://www.emirates-car.com/search-by-part-name/Power%20Steering%20Box"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Power Steering
@@ -743,7 +806,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/get-in-touch"
+                    href="https://www.emirates-car.com/get-in-touch"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Pump
@@ -759,7 +822,7 @@ export default function HondaAccord() {
               <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Bonnet"
+                    href="https://www.emirates-car.com/search-by-part-name/Bonnet"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Bonnet
@@ -767,7 +830,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Fender%20(Front)"
+                    href="https://www.emirates-car.com/search-by-part-name/Fender%20(Front)"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Fender
@@ -775,7 +838,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Decklid"
+                    href="https://www.emirates-car.com/search-by-part-name/Decklid"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Decklid
@@ -783,7 +846,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Grille"
+                    href="https://www.emirates-car.com/search-by-part-name/Grille"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Grille
@@ -791,7 +854,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Wheel"
+                    href="https://www.emirates-car.com/search-by-part-name/Wheel"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Wheel
@@ -807,7 +870,7 @@ export default function HondaAccord() {
               <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Spark%20Plug"
+                    href="https://www.emirates-car.com/search-by-part-name/Spark%20Plug"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Spark Plug
@@ -815,7 +878,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Alternator"
+                    href="https://www.emirates-car.com/search-by-part-name/Alternator"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Alternator
@@ -823,7 +886,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Battery"
+                    href="https://www.emirates-car.com/search-by-part-name/Battery"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Battery
@@ -831,7 +894,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/Ignition%20Switch"
+                    href="https://www.emirates-car.com/search-by-part-name/Ignition%20Switch"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Ignition Swith
@@ -839,7 +902,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/get-in-touch"
+                    href="https://www.emirates-car.com/get-in-touch"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     Many more...
@@ -855,7 +918,7 @@ export default function HondaAccord() {
               <ol className="list-disc text-xl font-mono text-gray-700 mx-auto">
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/AC%20Compressor"
+                    href="https://www.emirates-car.com/search-by-part-name/AC%20Compressor"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     AC Compressor
@@ -863,7 +926,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/AC%20Condenser"
+                    href="https://www.emirates-car.com/search-by-part-name/AC%20Condenser"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     AC Condenser
@@ -871,7 +934,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/AC%20Selector"
+                    href="https://www.emirates-car.com/search-by-part-name/AC%20Selector"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     AC Selector
@@ -879,7 +942,7 @@ export default function HondaAccord() {
                 </li>
                 <li>
                   <Link
-                    href="https://emirates-car.com/search-by-part-name/AC%20Controls"
+                    href="https://www.emirates-car.com/search-by-part-name/AC%20Controls"
                     className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                   >
                     AC Controls
@@ -905,6 +968,21 @@ export default function HondaAccord() {
       <div className="d-flex justify-center text-center pt-10 xs:pt-5 mx-8">
         <OtherHondaModels />
       </div>
+      <section className="d-flex justify-center text-center pt-10 xs:pt-5 mx-8">
+        {categoryFiltered.length > 0 ? (
+          <ProductFilter
+            make={make}
+            model={model}
+            products={filtered}
+            allProducts={categoryFiltered}
+            searchParams={searchParams}
+          />
+        ) : (
+          <p className="text-center text-gray-600">
+            No Honda Accord (2008–2012) Body Kits found.
+          </p>
+        )}
+      </section>
       <div className="d-flex justify-center text-center py-10 xs:pt-5 mx-8">
         <div>
           <p className="text-xl font-mono text-gray-700 mx-auto font-extrabold xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10">
@@ -913,7 +991,7 @@ export default function HondaAccord() {
           <div className="grid grid-cols-4 xs:grid-cols-1 gap-3 p-5 border-2 border-gray-500 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-10 mx-10">
             <div>
               <Link
-                href="https://emirates-car.com/search-by-cities-in-uae/Dubai"
+                href="https://www.emirates-car.com/search-by-cities-in-uae/Dubai"
                 className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                 title={'honda spare parts dubai'}
               >
@@ -924,7 +1002,7 @@ export default function HondaAccord() {
             <div>
               {' '}
               <Link
-                href="https://emirates-car.com/search-by-cities-in-uae/Sharjah"
+                href="https://www.emirates-car.com/search-by-cities-in-uae/Sharjah"
                 className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                 title={'Honda Accord spare parts dubai'}
               >
@@ -935,7 +1013,7 @@ export default function HondaAccord() {
             <div>
               {' '}
               <Link
-                href="https://emirates-car.com/search-by-cities-in-uae/Ajman"
+                href="https://www.emirates-car.com/search-by-cities-in-uae/Ajman"
                 className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                 title={'honda Accord spare parts ajman'}
               >
@@ -946,7 +1024,7 @@ export default function HondaAccord() {
             <div>
               {' '}
               <Link
-                href="https://emirates-car.com/search-by-cities-in-uae/Ras%20al%20Khaimah"
+                href="https://www.emirates-car.com/search-by-cities-in-uae/Ras%20al%20Khaimah"
                 className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                 title={'Honda Accord spare parts ras al khaimah'}
               >
@@ -956,7 +1034,7 @@ export default function HondaAccord() {
             </div>
             <div>
               <Link
-                href="https://emirates-car.com/search-by-cities-in-uae/Al%20Quoz%20(Dubai)"
+                href="https://www.emirates-car.com/search-by-cities-in-uae/Al%20Quoz%20(Dubai)"
                 className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                 title={'Honda Accord spare parts al quoz'}
               >
@@ -966,7 +1044,7 @@ export default function HondaAccord() {
             </div>
             <div>
               <Link
-                href="https://emirates-car.com/search-by-cities-in-uae/Sheikh%20Zayed%20Road%20(Dubai)"
+                href="https://www.emirates-car.com/search-by-cities-in-uae/Sheikh%20Zayed%20Road%20(Dubai)"
                 className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                 title={'Honda Accord spare parts sheikh zayed road'}
               >
@@ -976,7 +1054,7 @@ export default function HondaAccord() {
             </div>
             <div>
               <Link
-                href="https://emirates-car.com/search-by-cities-in-uae/Deira%20(Dubai)"
+                href="https://www.emirates-car.com/search-by-cities-in-uae/Deira%20(Dubai)"
                 className="font-mono font-semibold text-blue-600 underline hover:text-blue-900"
                 title={'honda Accord spare parts deira'}
               >

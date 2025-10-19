@@ -100,7 +100,7 @@ export async function generateMetadata({ params }) {
         "@id": `https://www.emirates-car.com/search-by-make/${make}/${model}#page`,
         "name": `${make} ${model} Spare Parts | Emirates Car`,
         "url": `https://www.emirates-car.com/search-by-make/${make}/${model}`,
-        "description": "Browse our complete collection of genuine, OEM, and aftermarket spare parts specifically for the Honda Accord. Find high-quality brake pads, filters, engine components, and more.",
+        "description": `Browse our complete collection of genuine, OEM, and aftermarket spare parts specifically for the ${make} ${model}. Find high-quality brake pads, filters, engine components, and more.`,
         "mainEntity": {
           "@id": "https://www.emirates-car.com/#organization"
         },
@@ -987,6 +987,370 @@ export default async function Model({ params, searchParams }) {
         </ul>
       </section>
 
+      <section>
+        <div className="d-flex  pt-10 xs:pt-5 mx-8">
+          <div>
+            <h6 className="text-3xl font-extrabold mx-auto my-5 justify-center text-center">
+              List of different Genuine and Aftermarket {make} {model} spare parts in UAE
+            </h6>
+            <div className="grid grid-cols-3 xs:grid-cols-1 place-content-center">
+              <div>
+                <h5 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>
+                  {make} {model} Engine parts
+                </h5>
+                <ol className={`list-disc text-xl text-gray-700 xl:text-2xl xxl:text-2xl mx-auto my-5 ${firaSans.className}`} >
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
+                      className='hover:underline'
+                    >
+                      Engine Assembly
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Engine%20Block"
+                      className='hover:underline'
+                    >
+                      Engine Block
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Engine%20Mount"
+                      className='hover:underline'
+                    >
+                      Engine Mount
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Engine%20Block"
+                      className='hover:underline'
+                    >
+                      Engine Block
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Cylinder%20Head"
+                      className='hover:underline'
+                    >
+                      Cylinder Head
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Cylinder%20Block"
+                      className='hover:underline'
+                    >
+                      Cylinder Block
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Crankshaft"
+                      className='hover:underline'
+                    >
+                      Crankshaft
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Camshaft"
+                      className='hover:underline'
+                    >
+                      Camshaft
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Piston"
+                      className='hover:underline'
+                    >
+                      Piston
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Exhaust%20Manifold"
+                      className='hover:underline'
+                    >
+                      Exhaust Manifold
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Intake%20Manifold"
+                      className='hover:underline'
+                    >
+                      Intake Manifold
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Ignition%20Switch"
+                      className='hover:underline'
+                    >
+                      Ignition Switch
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Ignition%20Control%20Module"
+                      className='hover:underline'
+                    >
+                      Ignition Control Module
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Transmission%20Control%20Module"
+                      className='hover:underline'
+                    >
+                      TCM
+                    </Link>
+                  </li>
+                </ol>
+              </div>
+
+              <div>
+                <h5 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>
+                  {make} {model} Mechanical parts
+                </h5>
+                <ol className={`list-disc text-xl text-gray-700 xl:text-2xl xxl:text-2xl mx-auto my-5 ${firaSans.className}`} >
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
+                      className='hover:underline'
+                    >
+                      Engine
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
+                      className='hover:underline'
+                    >
+                      Battery
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Engine%20Assembly"
+                      className='hover:underline'
+                    >
+                      Alternator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Brake%20Pads"
+                      className='hover:underline'
+                    >
+                      Brake Pads
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Radiator"
+                      className='hover:underline'
+                    >
+                      Radiator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Transmission%20Control%20Module"
+                      className='hover:underline'
+                    >
+                      Transmission
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Shock%20Absorber"
+                      className='hover:underline'
+                    >
+                      Shock Absorber
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Convertible%20Top%20Motor"
+                      className='hover:underline'
+                    >
+                      Catalytic Converter
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Power%20Steering%20Box"
+                      className='hover:underline'
+                    >
+                      Power Steering
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/get-in-touch"
+                      className='hover:underline'
+                    >
+                      Pump
+                    </Link>
+                  </li>
+                </ol>
+              </div>
+
+              <div>
+                <h5 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>
+                  {make} {model} Body Parts
+                </h5>
+                <ol className={`list-disc text-xl text-gray-700 xl:text-2xl xxl:text-2xl mx-auto my-5 ${firaSans.className}`} >
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Bonnet"
+                      className='hover:underline'
+                    >
+                      Bonnet
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Fender%20(Front)"
+                      className='hover:underline'
+                    >
+                      Fender
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Decklid"
+                      className='hover:underline'
+                    >
+                      Decklid
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Grille"
+                      className='hover:underline'
+                    >
+                      Grille
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Wheel"
+                      className='hover:underline'
+                    >
+                      Wheel
+                    </Link>
+                  </li>
+                </ol>
+              </div>
+
+              <div>
+                <h5 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>
+                  {make} {model} Electrical Parts
+                </h5>
+                <ol className={`list-disc text-xl text-gray-700 xl:text-2xl xxl:text-2xl mx-auto my-5 ${firaSans.className}`} >
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Spark%20Plug"
+                      className='hover:underline'
+                    >
+                      Spark Plug
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Alternator"
+                      className='hover:underline'
+                    >
+                      Alternator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Battery"
+                      className='hover:underline'
+                    >
+                      Battery
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/Ignition%20Switch"
+                      className='hover:underline'
+                    >
+                      Ignition Swith
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/get-in-touch"
+                      className='hover:underline'
+                    >
+                      Many more...
+                    </Link>
+                  </li>
+                </ol>
+              </div>
+
+              <div>
+                <h5 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>
+                  {make} {model} AC Parts
+                </h5>
+                <ol className={`list-disc text-xl text-gray-700 xl:text-2xl xxl:text-2xl mx-auto my-5 ${firaSans.className}`} >
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/AC%20Compressor"
+                      className='hover:underline'
+                    >
+                      AC Compressor
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/AC%20Condenser"
+                      className='hover:underline'
+                    >
+                      AC Condenser
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/AC%20Selector"
+                      className='hover:underline'
+
+                    >
+                      AC Selector
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.emirates-car.com/search-by-part-name/AC%20Controls"
+                      className='hover:underline'
+
+                    >
+                      AC Controls
+                    </Link>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <Link
+              href={`/get-in-touch`}
+              target="_newtab"
+              className="w-1/4 mx-auto flex items-center justify-center px-8 py-2 xl:text-xl border border-transparent font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md mg:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 2xs:text-sm 2xs:my-2 s:text-sm s:my-2 focus:filter brightness-125 my-5"
+            >
+              View All Parts
+            </Link>
+          </div>
+        </div>
+      </section >
+
       <section className='mx-3' aria-labelledby={`How to buy ${make} ${decodeURIComponent(model)} parts`}>
         <h6 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>
           5 ways you can {make} {model} find parts for your car.
@@ -1097,6 +1461,6 @@ export default async function Model({ params, searchParams }) {
         </ul>
       </section>
 
-    </div>
+    </div >
   );
 }

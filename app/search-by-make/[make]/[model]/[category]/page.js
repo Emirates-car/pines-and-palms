@@ -57,7 +57,7 @@ export default function CategoryPage({ params }) {
                     return (
                         <Link
                             key={product.id + (compat?.model || "")}
-                            href={`/search-by-make/${make}/${model}/${category}/${slug}`}
+                            href={`https://www.emirates-car.com/search-by-make/${make}/${model}/${category}/${slug}`}
                         >
                             <div className="border p-4 rounded-lg shadow hover:shadow-lg transition">
                                 <img
@@ -87,7 +87,7 @@ export default function CategoryPage({ params }) {
                             return (
                                 <Link
                                     key={p.id}
-                                    href={`/search-by-make/${make}/${compat?.model || "unknown"}/${p.category}/${relatedSlug}`}
+                                    href={`https://www.emirates-car.com/search-by-make/${make}/${compat?.model || "unknown"}/${p.category}/${relatedSlug}`}
                                 >
                                     <div className="border p-4 rounded hover:shadow">
                                         {p.image && (

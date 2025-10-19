@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "subcategory": "",
+        "subcategory": "Spark Plug",
         "category": "Ignition & Electrical",
         "partname": "Spark Plug",
         "partnumber": "7700500168",
@@ -701,6 +701,7 @@
         },
         "pricing": {
             "price": 59.14,
+            "price_info": "Prices are indicative and derived from average online market values.",
             "currency": "AED",
             "discounted_price": 0.0,
             "offer": ""
@@ -716,7 +717,7 @@
     },
     {
         "id": 2,
-        "subcategory": "",
+        "subcategory": "Spark Plug",
         "category": "Ignition & Electrical",
         "partname": "Spark Plug",
         "partnumber": "8201001947",
@@ -798,6 +799,7 @@
         },
         "pricing": {
             "price": 62,
+            "price_info": "Prices are indicative and derived from average online market values.",
             "currency": "AED",
             "discounted_price": 0.0,
             "offer": ""
@@ -813,7 +815,7 @@
     },
     {
         "id": 3,
-        "subcategory": "",
+        "subcategory": "Spark Plug",
         "category": "Ignition & Electrical",
         "partname": "Spark Plug 8 PCS",
         "partnumber": "7700500155",
@@ -991,6 +993,7 @@
         },
         "pricing": {
             "price": 105,
+            "price_info": "Prices are indicative and derived from average online market values.",
             "currency": "AED",
             "discounted_price": 0.0,
             "offer": ""
@@ -1006,7 +1009,7 @@
     },
     {
         "id": 5,
-        "subcategory": "Body & Exterior",
+        "subcategory": "Grille",
         "category": "Body Kits",
         "partname": "Grille",
         "partnumber": "71120-TA5-A000",
@@ -1048,6 +1051,7 @@
         },
         "pricing": {
             "price": 170,
+            "price_info": "Prices are indicative and derived from average online market values.",
             "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -1063,7 +1067,7 @@
     },
     {
         "id": 6,
-        "subcategory": "Body & Exterior",
+        "subcategory": "Fender (Front)",
         "category": "Body Kits",
         "partname": "Fender Assembly Right Front",
         "partnumber": "60210-TE0-A91ZZ",
@@ -1107,6 +1111,7 @@
         },
         "pricing": {
             "price": 68,
+            "price_info": "Prices are indicative and derived from average online market values.",
             "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -1122,7 +1127,7 @@
     },
     {
         "id": 7,
-        "subcategory": "Body & Exterior",
+        "subcategory": "Fender (Front)",
         "category": "Body Kits",
         "partname": "Fender Assembly Left Front",
         "partnumber": "60260-TE0-A91ZZ",
@@ -1166,6 +1171,7 @@
         },
         "pricing": {
             "price": 68,
+            "price_info": "Prices are indicative and derived from average online market values.",
             "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -1181,7 +1187,7 @@
     },
     {
         "id": 8,
-        "subcategory": "Fuse Box with Harness",
+        "subcategory": "Fuse Box",
         "category": "Wiring & Harness",
         "partname": "Fuse Box set",
         "partnumber": "243800196R",
@@ -1255,6 +1261,7 @@
         },
         "pricing": {
             "price": 10.30,
+            "price_info": "Prices are indicative and derived from average online market values.",
             "currency": "EUR",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -1262,6 +1269,123 @@
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
             "delivery": "",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "subcategory": "Fender Liner",
+        "category": "Body Kits",
+        "partname": "Left Fender Liner Splash Guard",
+        "partnumber": "74151-S84-A00",
+        "availability": "Out of Stock",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "1998-2002",
+                "engine": "2.3L VTEC, 3.0L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/leftfenderliner.jpg",
+        "item_specifics": {
+            "sku": "HON0005",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "74151S84A00",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "74151-S84-A00",
+                "HO1248106",
+                "378-20208-11"
+            ],
+            "Placement on Vehicle": [
+                "Front Left Side"
+            ],
+            "Condition": "New",
+            "Material": "Plastic",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "China",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": "639114847425"
+        },
+        "pricing": {
+            "price": 209.66,
+            "price_info": "Prices are indicative and derived from average online market values.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "subcategory": "Fender Liner",
+        "category": "Body Kits",
+        "partname": "Right Fender Liner Splash Guard",
+        "partnumber": "74101-S84-A0",
+        "availability": "Out of Stock",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "1998-2002",
+                "engine": "2.3L VTEC, 3.0L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/rightfenderliner.jpg",
+        "item_specifics": {
+            "sku": "HON0006",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "74101S84A0",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "74101-S84-A0",
+                "HO1249106"
+            ],
+            "Placement on Vehicle": [
+                "Front Right Side"
+            ],
+            "Condition": "New",
+            "Material": "Plastic",
+            "Warranty": "No manufacturer or seller warranty is offered on this item.",
+            "Country/Region of Manufacture": "China",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": "639114847425"
+        },
+        "pricing": {
+            "price": 209.66,
+            "price_info": "Prices are indicative and derived from average online market values.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
             "returns": "3 Days Returns Accepted",
             "payment_methods": [
                 "Cash on Delivery"

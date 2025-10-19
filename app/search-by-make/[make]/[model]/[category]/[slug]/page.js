@@ -315,17 +315,10 @@ export default function ProductPage({ params }) {
                             <p className="text-xl font-semibold text-gray-800">
                                 Price:{" "}
                                 <span
-                                    className="line-through text-gray-400"
-                                    style={{ filter: "blur(4px)", userSelect: "none" }}
+                                    className=" text-black"
+
                                 >
                                     {product.pricing?.price} <span itemProp="priceCurrency">{product.pricing.currency}</span>
-                                </span>{" "}
-                                <span
-                                    className="text-red-600 font-bold"
-                                    style={{ filter: "blur(4px)", userSelect: "none" }}
-                                    itemProp="price"
-                                >
-                                    {product.pricing.discounted_price}
                                 </span>{" "}
 
                                 <span>
@@ -333,6 +326,10 @@ export default function ProductPage({ params }) {
                                         product={product}
                                         dealerPrice={product.pricing.price}
                                         dealerPriceCurrency={product.pricing?.currency}
+                                        make={make}
+                                        model={model}
+                                        oemoraftermarket={product.item_specifics["OEM or Aftermarket"]}
+                                        partname={product.partname}
                                     />
                                 </span>
                             </p>

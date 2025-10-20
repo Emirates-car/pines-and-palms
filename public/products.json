@@ -1518,7 +1518,7 @@
         "id": 13,
         "subcategory": "Front Bumper",
         "category": "Body Kits",
-        "partname": "Front Bumper Face",
+        "partname": "Matte Black Front Bumper Face",
         "partnumber": "04711-TA6-A90ZZ",
         "availability": "Inquire Now",
         "compatibility": [
@@ -1534,7 +1534,7 @@
             "1.9",
             "2.0"
         ],
-        "image": "/img/honda/hondaaccordbumper.webp",
+        "image": "/img/honda/hondaaccordfrontbumper.webp",
         "item_specifics": {
             "sku": "HON0013",
             "Brand": "Honda",
@@ -1575,7 +1575,7 @@
         }
     },
     {
-        "id": 13,
+        "id": 14,
         "subcategory": "Front Bumper",
         "category": "Body Kits",
         "partname": "Front Bumper Face",
@@ -1594,7 +1594,7 @@
             "1.9",
             "2.0"
         ],
-        "image": "/img/honda/hondaaccordbumper.webp",
+        "image": "/img/honda/hondaaccordfrontbumper.webp",
         "item_specifics": {
             "sku": "HON0014",
             "Brand": "Honda",
@@ -1635,7 +1635,7 @@
         }
     },
     {
-        "id": 14,
+        "id": 15,
         "subcategory": "Rear Bumper",
         "category": "Body Kits",
         "partname": "Rear Bumper Cover",
@@ -1654,7 +1654,7 @@
             "1.9",
             "2.0"
         ],
-        "image": "/img/honda/hondaaccordbumper.webp",
+        "image": "/img/honda/hondaaccordrearbumper.jpg",
         "item_specifics": {
             "sku": "HON0011",
             "Brand": "Honda",
@@ -1695,7 +1695,7 @@
         }
     },
     {
-        "id": 15,
+        "id": 16,
         "subcategory": "Rear Bumper",
         "category": "Body Kits",
         "partname": "Rear Bumper Cover (DOT)",

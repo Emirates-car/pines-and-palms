@@ -277,7 +277,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                                     />
                                                 </div>
                                                 <div className="p-3">
-                                                    <h2 className={`line-clamp-2 ${firaSans.className}`}>{product.partname} {compatibilities.slice(0, 2)}</h2>
+                                                    <h2 className={`line-clamp-3 ${firaSans.className}`}>{product.item_specifics['OEM or Aftermarket']}{' '}{product.partname} {compatibilities.slice(0, 2)}</h2>
                                                     <p className="text-sm text-gray-600">Part #: {product.partnumber}</p>
                                                 </div>
                                             </Link>

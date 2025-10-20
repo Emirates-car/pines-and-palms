@@ -701,7 +701,7 @@
         },
         "pricing": {
             "price": 59.14,
-            "price_info": "Prices are indicative and derived from average online market values.",
+            "price_info": "Inquiry is important for fitment check and final price after delivery",
             "currency": "AED",
             "discounted_price": 0.0,
             "offer": ""
@@ -799,7 +799,7 @@
         },
         "pricing": {
             "price": 62,
-            "price_info": "Prices are indicative and derived from average online market values.",
+            "price_info": "Inquiry is important for fitment check and final price after delivery",
             "currency": "AED",
             "discounted_price": 0.0,
             "offer": ""
@@ -993,7 +993,7 @@
         },
         "pricing": {
             "price": 105,
-            "price_info": "Prices are indicative and derived from average online market values.",
+            "price_info": "Inquiry is important for fitment check and final price after delivery",
             "currency": "AED",
             "discounted_price": 0.0,
             "offer": ""
@@ -1051,7 +1051,7 @@
         },
         "pricing": {
             "price": 170,
-            "price_info": "Prices are indicative and derived from average online market values.",
+            "price_info": "Inquiry is important for fitment check and final price after delivery",
             "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -1111,7 +1111,7 @@
         },
         "pricing": {
             "price": 68,
-            "price_info": "Prices are indicative and derived from average online market values.",
+            "price_info": "Inquiry is important for fitment check and final price after delivery",
             "currency": "AED",
             "discounted_price": 95.0,
             "offer": "20% OFF"
@@ -1171,10 +1171,10 @@
         },
         "pricing": {
             "price": 68,
-            "price_info": "Prices are indicative and derived from average online market values.",
+            "price_info": "Inquiry is important for fitment check and final price after delivery",
             "currency": "AED",
-            "discounted_price": 95.0,
-            "offer": "20% OFF"
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
         },
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
@@ -1261,10 +1261,10 @@
         },
         "pricing": {
             "price": 10.30,
-            "price_info": "Prices are indicative and derived from average online market values.",
-            "currency": "EUR",
-            "discounted_price": 95.0,
-            "offer": "20% OFF"
+            "price_info": "Inquiry is important for fitment check and final price after delivery",
+            "currency": "EURo",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
         },
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
@@ -1281,7 +1281,7 @@
         "category": "Body Kits",
         "partname": "Left Fender Liner Splash Guard",
         "partnumber": "74151-S84-A00",
-        "availability": "Out of Stock",
+        "availability": "Inquire Now",
         "compatibility": [
             {
                 "make": "Honda",
@@ -1340,7 +1340,7 @@
         "category": "Body Kits",
         "partname": "Right Fender Liner Splash Guard",
         "partnumber": "74101-S84-A0",
-        "availability": "Out of Stock",
+        "availability": "Inquire Now",
         "compatibility": [
             {
                 "make": "Honda",
@@ -1378,7 +1378,370 @@
         },
         "pricing": {
             "price": 209.66,
-            "price_info": "Prices are indicative and derived from average online market values.",
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Right Fender Liner Splash Guard. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "subcategory": "Front Bumper",
+        "category": "Body Kits",
+        "partname": "Primed Front Bumper Cover (DOT)",
+        "partnumber": "04711-TE0-A90ZZ",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4L L4, 3.5L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/hondafrontbumper07.png",
+        "item_specifics": {
+            "sku": "HON0007",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "04711TE0A90ZZ, 04711 TE0A 90ZZ",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71101-TE0-A00ZZ",
+                "HO1000256",
+                "04711TE0A90ZZ",
+                "101-50456",
+                "105-50316A"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Polypropylene (PP) Primed",
+            "Warranty": "This Genuine part warranty are based on official Honda manufacturer's warranty",
+            "Country/Region of Manufacture": "China",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 441.9,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Front Bumper Cover (DOT). Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "USD",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "subcategory": "Front Bumper",
+        "category": "Body Kits",
+        "partname": "Front Bumper Cover (DOT)",
+        "partnumber": "04711-TE0-A90ZZ",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4L L4, 3.5L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/hondafrontbumper08.jpg",
+        "item_specifics": {
+            "sku": "HON0008",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "04711TE0A90ZZ, 04711 TE0A 90ZZ",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71101-TE0-A00ZZ",
+                "HO1000256",
+                "04711TE0A90ZZ",
+                "101-50456",
+                "105-50316A"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Plastic",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "China",
+            "OEM or Aftermarket": "Aftermarket",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 195,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Front Bumper Cover (DOT). Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "USD",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "subcategory": "Front Bumper",
+        "category": "Body Kits",
+        "partname": "Front Bumper Face",
+        "partnumber": "04711-TA6-A90ZZ",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4L L4, 3.5L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/hondaaccordbumper.webp",
+        "item_specifics": {
+            "sku": "HON0013",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "04711TA6A90ZZ, 04711-TA6-A90ZZ",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71101-TA6-A00ZZ",
+                "HD04186BA",
+                "04711TA6A90ZZ",
+                "HO1000255"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Matte Black",
+            "Warranty": "This Genuine part warranty are based on official Honda manufacturer's warranty",
+            "Country/Region of Manufacture": "China",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 2473,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Front Bumper Face. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "subcategory": "Front Bumper",
+        "category": "Body Kits",
+        "partname": "Front Bumper Face",
+        "partnumber": "04711-TA6-A90ZZ",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4L L4, 3.5L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/hondaaccordbumper.webp",
+        "item_specifics": {
+            "sku": "HON0014",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "04711TA6A90ZZ, 04711-TA6-A90ZZ",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71101-TA6-A00ZZ",
+                "HD04186BA",
+                "04711TA6A90ZZ",
+                "HO1000255"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Plastic",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Taiwan",
+            "OEM or Aftermarket": "Aftermarket",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 240.5,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Front Bumper Face. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 14,
+        "subcategory": "Rear Bumper",
+        "category": "Body Kits",
+        "partname": "Rear Bumper Cover",
+        "partnumber": "04715-TA1-A90ZZ",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2012",
+                "engine": "2.4L L4, 3.5L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/hondaaccordbumper.webp",
+        "item_specifics": {
+            "sku": "HON0011",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "04711TA6A90ZZ, 04711-TA6-A90ZZ",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71101-TA6-A00ZZ",
+                "HD04191BAS",
+                "04711TA6A90ZZ",
+                "HO1000255"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Matte Black",
+            "Warranty": "This Genuine part warranty are based on official Honda manufacturer's warranty",
+            "Country/Region of Manufacture": "China",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 2612.5,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Rear Bumper. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Extra Delivery Charges applies",
+            "returns": "3 Days Returns Accepted",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 15,
+        "subcategory": "Rear Bumper",
+        "category": "Body Kits",
+        "partname": "Rear Bumper Cover (DOT)",
+        "partnumber": "04715-TA1-A90ZZ",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2012",
+                "engine": "2.4L L4, 3.5L V6"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/hondaaccordrearbumper.jpg",
+        "item_specifics": {
+            "sku": "HON0015",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "04715-TA1-A90ZZ, 04715TA1A90ZZ, 615343364858, HO1100245, HD04191BB, 11736651",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71101-TA6-A00ZZ",
+                "HD04191BAS",
+                "04711TA6A90ZZ",
+                "HO1000255",
+                "11736651"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Primed Black",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Taiwan",
+            "OEM or Aftermarket": "Aftermarket",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 405.8,
+            "price_info": "*Prices reflects the latest compared average online market values for Aftermarket Honda Accord Rear Bumper Cover. Inquiry is recommended to confirm compatibility and final pricing.",
             "currency": "AED",
             "discounted_price": 0.0,
             "offer": "0% OFF"

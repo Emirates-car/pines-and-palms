@@ -80,22 +80,29 @@ export default function CategoryPage({ params, searchParams }) {
 
     return (
         <div className="p-6 max-w-6xl mx-auto">
-            <h1 className="text-2xl font-bold mb-6 capitalize">
-                {make} {model} – {displayCategory}
-            </h1>
+            <header>
+                <h1 className="text-2xl font-bold mb-6 capitalize">
+                    {make} {model} – {displayCategory}
+                </h1>
+            </header>
 
-            {/* Filter section */}
-            {makeModelCategoryFiltered.length > 0 && (
-                <section>
-                    <ProductFilter
-                        make={make}
-                        model={model}
-                        products={filtered}
-                        allProducts={makeModelCategoryFiltered}
-                        searchParams={searchParams}
-                    />
-                </section>
-            )}
+
+            <main>
+                {/* Filter section */}
+                {makeModelCategoryFiltered.length > 0 && (
+                    <section aria-labelledby="filters-heading">
+                        <h2 id="filters-heading" className="sr-only">Filter {make} {model} Parts</h2>
+                        <ProductFilter
+                            make={make}
+                            model={model}
+                            products={filtered}
+                            allProducts={makeModelCategoryFiltered}
+                            searchParams={searchParams}
+                        />
+                    </section>
+                )}
+            </main>
+
 
 
         </div>

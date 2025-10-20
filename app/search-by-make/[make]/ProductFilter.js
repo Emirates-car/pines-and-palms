@@ -123,7 +123,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
     return (
         <div>
             {/* Search Bar */}
-            <div id="filter" className="sticky top-0 bg-white z-50 py-4 shadow-sm">
+            <section id="filter" className="sticky top-0 bg-white z-50 py-4 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex justify-center items-center relative w-full max-w-3xl mx-auto">
                         <input
@@ -150,7 +150,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                         )}
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Mobile filter button */}
             <div className="lg:hidden xl:hidden xxl:hidden md:hidden flex justify-end p-4">
@@ -257,7 +257,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                     <section className="lg:ml-0">
                         <h2 className="text-2xl font-bold mb-4">{make} Spare Parts</h2>
                         <p>{filteredProducts.length} Results</p>
-                        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-3 xxs:grid-cols-2 xs:grid-cols-2 xs:gap-2 s:gap-2 xxs:gap-2 md:gap-2 s:grid-cols-2 sm:grid-cols-2 sm:gap-2 gap-6 xl:gap-3 xxl:gap-3 lg:gap-3">
+                        <ul className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 xxl:grid-cols-3 xxs:grid-cols-2 xs:grid-cols-2 xs:gap-2 s:gap-2 xxs:gap-2 md:gap-2 s:grid-cols-2 sm:grid-cols-2 sm:gap-2 gap-6 xl:gap-3 xxl:gap-3 lg:gap-3">
                             {products.length > 0 ? (
                                 products.map(product => {
                                     const compat = product.compatibility.find(
@@ -269,7 +269,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                         }-${product.partnumber}-${product.id}`;
 
                                     return (
-                                        <div
+                                        <li
                                             key={product.id}
                                             className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
                                             itemScope
@@ -280,7 +280,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                                     }/${product.category}/${encodeURIComponent(slug)}`}
                                                 className="flex flex-col h-full" target='_blank' rel='noopener noreferrer'
                                             >
-                                                <div className="relative w-full aspect-square bg-white">
+                                                <figure className="relative w-full aspect-square bg-white">
                                                     <Image
                                                         src={product.image}
                                                         alt={product.partname}
@@ -288,15 +288,15 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                                         className="object-contain"
                                                         itemProp="image"
                                                     />
-                                                </div>
-                                                <div className="p-3">
+                                                </figure>
+                                                <figcaption className="p-3">
                                                     <h2 className="font-semibold line-clamp-1" itemProp="name">{product.partname}</h2>
                                                     <p className="text-sm text-gray-600">Part #: <span itemProp="mpn">{product.partnumber}</span></p>
                                                     <meta itemProp="brand" content={product.brand} />
                                                     <meta itemProp="category" content={product.category} />
                                                     <meta itemProp="description" content={`${product.partname} compatible with ${make} ${compat?.model || ""} ${compat?.years || ""}`} />
 
-                                                </div>
+                                                </figcaption>
                                             </Link>
                                             {product.pricing?.price && (
                                                 <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
@@ -307,7 +307,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                                     <meta itemProp="sku" content={product.sku || product.partnumber} />
                                                 </div>
                                             )}
-                                        </div>
+                                        </li>
                                     );
                                 })
                             ) : (
@@ -315,7 +315,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                     No {make} products found for "{localQuery}"
                                 </p>
                             )}
-                        </div>
+                        </ul>
                     </section>
                 </div>
             </div>

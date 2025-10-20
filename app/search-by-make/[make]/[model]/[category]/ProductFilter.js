@@ -103,7 +103,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
     return (
         <div>
             {/* Search Bar */}
-            <div id="filter" className="sticky top-0 bg-white z-50 py-4 shadow-sm">
+            <section id="filter" className="sticky top-0 bg-white z-50 py-4 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex items-center relative w-full max-w-3xl mx-auto">
                         <button
@@ -137,7 +137,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                         )}
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Filter & Results */}
             <div className="max-w-7xl mx-auto px-4">
@@ -158,70 +158,78 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                         </div>
 
                         <form method="get">
-                            <h4 className={`font-bold my-3 text-xl ${playfair_display.className}`}>Category</h4>
-                            <input
-                                type="text"
-                                placeholder="Search Categories..."
-                                value={categoryQuery}
-                                onChange={(e) => setCategoryQuery(e.target.value)}
-                                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
-                            />
-                            {filteredCategories.map(cat => (
-                                <label key={cat} className={`block ${firaSans.className}`}>
-                                    <input
-                                        type="checkbox"
-                                        name="categories"
-                                        value={cat}
-                                        defaultChecked={selectedCategories.includes(cat)}
-                                        className="mr-2"
-                                    />
-                                    {cat}
-                                </label>
-                            ))}
+                            <fieldset>
+                                <legend className={`font-bold my-3 text-xl ${playfair_display.className}`}>Category</legend>
+                                <input
+                                    type="text"
+                                    placeholder="Search Categories..."
+                                    value={categoryQuery}
+                                    onChange={(e) => setCategoryQuery(e.target.value)}
+                                    className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
+                                />
+                                {filteredCategories.map(cat => (
+                                    <label key={cat} className={`block ${firaSans.className}`}>
+                                        <input
+                                            type="checkbox"
+                                            name="categories"
+                                            value={cat}
+                                            defaultChecked={selectedCategories.includes(cat)}
+                                            className="mr-2"
+                                        />
+                                        {cat}
+                                    </label>
+                                ))}
+                            </fieldset>
                             <hr className="mt-5" />
 
-                            <h4 className={`font-bold my-3 text-xl ${playfair_display.className}`}>Engine</h4>
-                            <input
-                                type="text"
-                                placeholder="Search engines..."
-                                value={engineQuery}
-                                onChange={(e) => setEngineQuery(e.target.value)}
-                                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
-                            />
-                            {filteredEngines.map(eng => (
-                                <label key={eng} className={`block ${firaSans.className}`}>
-                                    <input
-                                        type="checkbox"
-                                        name="engine"
-                                        value={eng}
-                                        defaultChecked={selectedEngines.includes(eng)}
-                                        className="mr-2"
-                                    />
-                                    {eng}
-                                </label>
-                            ))}
-                            <hr className="mt-5" />
+                            <fieldset>
+                                <legend className={`font-bold my-3 text-xl ${playfair_display.className}`}>Engine</legend>
+                                <input
+                                    type="text"
+                                    placeholder="Search engines..."
+                                    value={engineQuery}
+                                    onChange={(e) => setEngineQuery(e.target.value)}
+                                    className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
+                                />
+                                {filteredEngines.map(eng => (
+                                    <label key={eng} className={`block ${firaSans.className}`}>
+                                        <input
+                                            type="checkbox"
+                                            name="engine"
+                                            value={eng}
+                                            defaultChecked={selectedEngines.includes(eng)}
+                                            className="mr-2"
+                                        />
+                                        {eng}
+                                    </label>
+                                ))}
+                            </fieldset>
 
-                            <h4 className={`font-bold my-3 text-xl ${playfair_display.className}`}>Compatibility</h4>
-                            <input
-                                type="text"
-                                placeholder="Search compatibility..."
-                                value={compatQuery}
-                                onChange={(e) => setCompatQuery(e.target.value)}
-                                className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
-                            />
-                            {filteredCompatibilities.map((comp, idx) => (
-                                <label key={idx} className={`block ${firaSans.className}`}>
-                                    <input
-                                        type="checkbox"
-                                        name="compatibility"
-                                        value={comp}
-                                        defaultChecked={selectedCompat.includes(comp)}
-                                        className="mr-2"
-                                    />
-                                    {comp}
-                                </label>
-                            ))}
+
+                            <hr className="mt-5" />
+                            <fieldset>
+                                <legend className={`font-bold my-3 text-xl ${playfair_display.className}`}>Compatibility</legend>
+                                <input
+                                    type="text"
+                                    placeholder="Search compatibility..."
+                                    value={compatQuery}
+                                    onChange={(e) => setCompatQuery(e.target.value)}
+                                    className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
+                                />
+                                {filteredCompatibilities.map((comp, idx) => (
+                                    <label key={idx} className={`block ${firaSans.className}`}>
+                                        <input
+                                            type="checkbox"
+                                            name="compatibility"
+                                            value={comp}
+                                            defaultChecked={selectedCompat.includes(comp)}
+                                            className="mr-2"
+                                        />
+                                        {comp}
+                                    </label>
+                                ))}
+                            </fieldset>
+
                             <hr className="mt-5" />
 
                             <button
@@ -240,7 +248,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                         </h2>
                         <p>{products.length} Results</p>
 
-                        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <ul className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                             {products.length > 0 ? (
                                 products.map(product => {
                                     const compat = product.compatibility?.find(
@@ -252,14 +260,14 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                     const slug = `${product.partname ?? "unknown"}-${make}-${model}${compat?.years ? `-${compat.years}` : ""}-${product.partnumber ?? "unknown"}-${product.id}`;
 
                                     return (
-                                        <div key={product.id} className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+                                        <li key={product.id} className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                                             <Link
                                                 href={`/search-by-make/${make}/${model}/${product.category}/${encodeURIComponent(slug)}`}
                                                 className="flex flex-col h-full"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <div className="relative w-full aspect-square">
+                                                <figure className="relative w-full aspect-square">
                                                     {product.image && (
                                                         <Image
                                                             src={product.image}
@@ -268,13 +276,13 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                                             className="object-contain"
                                                         />
                                                     )}
-                                                </div>
-                                                <div className="p-3">
-                                                    <h2 className={`line-clamp-2 ${firaSans.className}`}>{product.partname}</h2>
+                                                </figure>
+                                                <figcaption className="p-3">
+                                                    <h3 className={`line-clamp-2 ${firaSans.className}`}>{product.partname}</h3>
                                                     <p className="text-sm text-gray-600">Part #: {product.partnumber}</p>
-                                                </div>
+                                                </figcaption>
                                             </Link>
-                                        </div>
+                                        </li>
                                     );
                                 })
                             ) : (
@@ -282,7 +290,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                     No {make} products found for "{localQuery}"
                                 </p>
                             )}
-                        </div>
+                        </ul>
                     </section>
                 </div>
             </div>

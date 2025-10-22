@@ -1754,5 +1754,182 @@
                 "Cash on Delivery"
             ]
         }
+    },
+    {
+        "id": 17,
+        "subcategory": "Grille",
+        "category": "Body Kits",
+        "partname": "Grille Frame (Molding) (Chrome Bright)",
+        "partnumber": "71120-TA5-A000",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/grilleframe16.jpg",
+        "item_specifics": {
+            "sku": "HON0016",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "771122-TE0-A01",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71122-TE0-A01",
+                "HD07111MA",
+                "71122TE0A01"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Chrome",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": "0615343365893"
+        },
+        "pricing": {
+            "price": 597,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Grille Molding. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 18,
+        "subcategory": "Grille",
+        "category": "Body Kits",
+        "partname": "Grille Support (Mat-Dark Gray)",
+        "partnumber": "71123-TE0-A00",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2012",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/grillesupport17.jpg",
+        "item_specifics": {
+            "sku": "HON0017",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "71123-TE0-A00",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71123-TE0-A00",
+                "HD07111CA",
+                "71123TE0A00"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Matte",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 597,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Grille Support. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 19,
+        "subcategory": "Grille",
+        "category": "Body Kits",
+        "partname": "Grille Matte - Black",
+        "partnumber": "71121-TA0-A00",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/grille18.jpg",
+        "item_specifics": {
+            "sku": "HON0018",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "71121-TA0-A00",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71121-TA0-A00",
+                "HD07111CA",
+                "71121TA0A00"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Matte Black",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 597,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Grille. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
     }
 ]

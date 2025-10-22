@@ -164,7 +164,7 @@ export default function PartInquiryForm({ product, make, model, oemoraftermarket
             >
                 Inquire Now
             </button>
-            <span className={`text-red-500 text-sm ${roboto.className}`}><br />{product.pricing.price_info}</span>
+            <span className={`text-green-500 text-sm ${roboto.className}`}><br />{product.pricing.price_info}</span>
 
             <PartInquiryModal
                 isOpen={isModalOpen}

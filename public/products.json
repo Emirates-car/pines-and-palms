@@ -1931,5 +1931,127 @@
                 "Cash on Delivery"
             ]
         }
+    },
+    {
+        "id": 20,
+        "subcategory": "Grille",
+        "category": "Body Kits",
+        "partname": "Grille Molding - Chrome Bright",
+        "partnumber": "71126-TA5-A00",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/grille19.png",
+        "item_specifics": {
+            "sku": "HON0019",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "71126-TA5-A00",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71126-TA5-A00",
+                "HD07114MA",
+                "71126TA5A00",
+                "HO1202104",
+                "75102-TK8-A01",
+                "75103-TK8-A01",
+                "75105-TK8-A01"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Chrome Bright",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 794,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Grille. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 21,
+        "subcategory": "Grille",
+        "category": "Body Kits",
+        "partname": "Grille Support/Cover Dark Gray Matte",
+        "partnumber": "71123-TA5-A00",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008-2010",
+                "engine": "2.4, 3.5"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/grillecover21.png",
+        "item_specifics": {
+            "sku": "HON0020",
+            "Brand": "Honda",
+            "Manufacturer Part Number": "71123-TA5(0)-A00",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "71123-TA5-A00",
+                "HD07114CA",
+                "71125-TK8-A00"
+            ],
+            "Placement on Vehicle": [
+                "Front"
+            ],
+            "Condition": "New",
+            "Material": "Matte Black",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 176,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Accord Grille. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
     }
 ]

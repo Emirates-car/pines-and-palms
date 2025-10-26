@@ -315,13 +315,10 @@ export default function ProductPage({ params }) {
                         >
                             <p className="text-xl font-semibold text-gray-800">
                                 Price:{" "}
-                                <span
-                                    className=" text-black"
-
-                                >
-                                    {product.pricing?.price} <span itemProp="priceCurrency">{product.pricing.currency}</span>
+                                <span className="text-black">
+                                    <span itemProp="price">{product.pricing?.price}</span>{" "}
+                                    <span itemProp="priceCurrency">{product.pricing?.currency || "AED"}</span>
                                 </span>{" "}
-
                                 <span>
                                     <PartInquiryForm
                                         product={product}
@@ -334,11 +331,16 @@ export default function ProductPage({ params }) {
                                     />
                                 </span>
                             </p>
-                            <link itemProp="url" href={`https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`} />
+
+                            <link
+                                itemProp="url"
+                                href={`https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`}
+                            />
 
                             {/* Hidden structured data for availability */}
-                            <meta itemProp="availability" href="https://schema.org/InStock" />
+                            <meta itemProp="availability" content="https://schema.org/InStock" />
                         </div>
+
                     </div>
                 </section>
             </div>

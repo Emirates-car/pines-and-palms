@@ -1103,7 +1103,7 @@
             "Condition": "Used",
             "Material": "Aluminum / Synthetic Filter Media",
             "Warranty": "No manufacturer or seller warranty is offered on this item.",
-            "Country/Region of Manufacture": "Japan",
+            "Country/Region of Manufacture": "Taiwan",
             "OEM or Aftermarket": "Genuine",
             "Surface Finish": "Smooth",
             "Fitment Type": "Direct Replacement",
@@ -1113,8 +1113,8 @@
             "price": 68,
             "price_info": "Inquiry is important for fitment check and final price after delivery",
             "currency": "AED",
-            "discounted_price": 95.0,
-            "offer": "20% OFF"
+            "discounted_price": 0.0,
+            "offer": "0% OFF"
         },
         "policies": {
             "shipping": "Free Standard Shipping (3-5 Business Days)",
@@ -1127,7 +1127,7 @@
     },
     {
         "id": 7,
-        "subcategory": "Fender (Front)",
+        "subcategory": "Fender Liner",
         "category": "Body Kits",
         "partname": "Fender Liner Left Front",
         "partnumber": "60260-TE0-A91ZZ",
@@ -1163,7 +1163,7 @@
             "Condition": "Used",
             "Material": "Aluminum / Synthetic Filter Media",
             "Warranty": "No manufacturer or seller warranty is offered on this item.",
-            "Country/Region of Manufacture": "Japan",
+            "Country/Region of Manufacture": "Taiwan",
             "OEM or Aftermarket": "Genuine",
             "Surface Finish": "Smooth",
             "Fitment Type": "Direct Replacement",

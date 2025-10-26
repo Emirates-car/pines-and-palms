@@ -91,12 +91,13 @@ export async function generateMetadata({ params }) {
                 "offers": {
                     "@type": "Offer",
                     "url": `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
-                    "price": product.pricing.price,
                     "priceCurrency": product.pricing.currency || "USD",
-                    "availability":
-                        product.availability === "In Stock"
-                            ? "http://schema.org/InStock"
-                            : "http://schema.org/OutOfStock"
+                    "availability": product.availability === "In Stock" ? "http://schema.org/InStock" : "http://schema.org/OutOfStock",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "price": product.pricing.price ?? 0,
+                        "priceCurrency": product.pricing.currency || "USD"
+                    }
                 },
                 "additionalProperty": Object.entries({
                     Condition: product.item_specifics?.Condition,

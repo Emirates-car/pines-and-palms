@@ -2053,5 +2053,100 @@
                 "Cash on Delivery"
             ]
         }
+    },
+    {
+        "id": 22,
+        "subcategory": "Suspension",
+        "category": "Suspension & Steering Parts",
+        "partname": "Front Lower Arm Ball Joint",
+        "partnumber": "4M0407689C",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Bentley",
+                "model": "Flying Spur",
+                "years": "2008-2010",
+                "engine": "2.4,3.5"
+            },
+            {
+                "make": "Audi",
+                "model": "Q7",
+                "years": "2017-2022",
+                "engine": "2.0 TFSI / 3.0 TFSI / 3.0 TDI"
+            },
+            {
+                "make": "Audi",
+                "model": "Q8",
+                "years": "2019-2022",
+                "engine": "3.0 TFSI / 4.0 TFSI"
+            },
+            {
+                "make": "Audi",
+                "model": "A8 Quattro L",
+                "years": "2018-2022",
+                "engine": "3.0 TFSI / 4.0 TFSI"
+            },
+            {
+                "make": "Bentley",
+                "model": "Bentayga",
+                "years": "2016-2022",
+                "engine": "4.0 T / 6.0 W12"
+            },
+            {
+                "make": "Lamborghini",
+                "model": "Urus",
+                "years": "2018-2022",
+                "engine": "4.0 T V8"
+            },
+            {
+                "make": "Volkswagen",
+                "model": "Touareg",
+                "years": "2019-2022",
+                "engine": "3.0 TFSI / 4.0 TFSI"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/bentley/bentleyballjoint21.webp",
+        "item_specifics": {
+            "sku": "BEN0001",
+            "Brand": "Bentley",
+            "Manufacturer Part Number": "4M0 407 689 C",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "4M0 407 689 C",
+                "4M0407689C",
+                "FFAM250327942176"
+            ],
+            "Placement on Vehicle": [
+                "Left & Right Suspension system"
+            ],
+            "Condition": "New",
+            "Material": "Matte Black",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "United Kingdom (Crewe, England)",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 600,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Bentley Front Lower Arm Ball Joint. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Free Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
     }
 ]

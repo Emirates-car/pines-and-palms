@@ -329,18 +329,7 @@ async function getDescription(make) {
   }
 }
 
-async function getLatestInquiryByMake(make) {
-  const res = await fetch(
-    `/api/latest/${make}`,
-    { cache: 'no-store' }
-  );
 
-  if (!res.ok) {
-    throw new Error(`Failed to fetch inquiries for ${make}`);
-  }
-
-  return res.json();
-}
 
 export default async function MakePage({ params, searchParams }) {
   const make = decodeURIComponent(params.make);
@@ -350,11 +339,7 @@ export default async function MakePage({ params, searchParams }) {
   const modelsform = await getFormModel();
   const imageMake = await getMakeImage(make)
   const description = await getDescription(make)
-  const latestInquiry = await getLatestInquiryByMake(make);
 
-  if (!latestInquiry || latestInquiry.length < 10) {
-    return null;
-  }
 
   //search filte
   const {
@@ -806,6 +791,7 @@ export default async function MakePage({ params, searchParams }) {
       </section>
       <TenEntries />
       <PartsAccordion make={make} />
+
 
       <section className='mx-3' aria-labelledby={`How to buy ${make} parts`}>
         <h6 className={`text-4xl xs:text-2xl xxs:text-2xl md:text-3xl text-blue-600 font-semibold mx-auto mt-10 ${playfair_display.className}`}>

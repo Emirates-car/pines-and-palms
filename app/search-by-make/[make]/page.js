@@ -383,22 +383,6 @@ export default async function MakePage({ params, searchParams }) {
   });
 
 
-  const excludedMakes = [
-    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
-    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
-    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan',
-    'Aptera', 'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
-    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
-    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin',
-    'Fillmore', 'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker'
-  ];
-
-  if (excludedMakes.includes(make)) {
-    notFound();
-  }
-  const isExcludedMake = excludedMakes.includes(make);
-
-
   const images = [
     {
       images: ABS,
@@ -676,18 +660,11 @@ export default async function MakePage({ params, searchParams }) {
 
           <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
             {carmodel.map((post, i) => {
-              const linkHref = isExcludedMake
-                ? '/get-in-touch'
-                : '/search-by-make/[make]/[model]';
-              const linkAs = isExcludedMake
-                ? '/get-in-touch'
-                : `/search-by-make/${post.make}/${encodeURIComponent(post.model)}`;
-
               return (
                 <li key={i} className="h-full">
                   <Link
-                    href={linkHref}
-                    as={linkAs}
+                    href='/search-by-make/[make]/[model]'
+                    as={`/search-by-make/${post.make}/${encodeURIComponent(post.model)}`}
                     title={`${post.make} ${post.model} spare parts`}
                     className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
                   >

@@ -61,7 +61,9 @@ export async function generateStaticParams() {
     'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
     'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
     'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin', 'Fillmore',
-    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker'
+    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker', 'Great Wall GWM', 'Zeekr', 'ZNA', 'GAC', 'Gs7', 'Hongqi',
+    'W Motor', 'JAC', 'Jaecoo', 'Jetour', 'TANK', 'Soueast', 'Zarooq Motors', 'Changan', 'Maxus', 'Haval', 'Zotye', 'Sandstorm',
+    'Chery', 'Geely', 'BAIC', 'Bestune'
   ];
 
   try {

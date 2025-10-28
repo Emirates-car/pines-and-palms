@@ -41,26 +41,6 @@ module.exports = withPWA({
   async redirects() {
     return [
       {
-        source: '/honda-parts/ajman',
-        destination: '/search-by-make/Honda',
-        permanent: true,
-      },
-      {
-        source: '/honda-parts/deira',
-        destination: '/search-by-make/Honda',
-        permanent: true,
-      },
-      {
-        source: '/honda-parts/ras-al-khaimah',
-        destination: '/search-by-make/Honda',
-        permanent: true,
-      },
-      {
-        source: '/honda-accord-10th-gen-body-parts',
-        destination: '/search-by-make/Honda',
-        permanent: true,
-      },
-      {
         source: "/search-by-make/Great%20Wall%20GWM/Wingle%205",
         destination: "/get-in-touch",
         permanent: true,

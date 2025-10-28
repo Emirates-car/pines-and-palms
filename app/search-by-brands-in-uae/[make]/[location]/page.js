@@ -39,20 +39,35 @@ import HondaOfferButton from '../../../../components/HondaOfferButton';
 import PartsAccordion from '../../../../components/Parts-Accordion';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { redirect } from 'next/navigation';
 
 export async function generateStaticParams({ params }) {
+
+  const excludedMakes = [
+    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
+    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
+    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan', 'Aptera',
+    'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
+    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
+    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin', 'Fillmore',
+    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker', 'Great Wall GWM', 'Zeekr', 'ZNA', 'GAC', 'Gs7', 'Hongqi',
+    'W Motor', 'JAC', 'Jaecoo', 'Jetour', 'TANK', 'Soueast', 'Zarooq Motors', 'Changan', 'Maxus', 'Haval', 'Zotye', 'Sandstorm',
+    'Chery', 'Geely', 'BAIC', 'Bestune'
+  ];
 
   try {
     const carPath = path.join(process.cwd(), 'public/lib/car-data.json');
     const carData = await fs.readFile(carPath, 'utf8');
     const cars = JSON.parse(carData);
+    const filtered = cars.filter(car => !excludedMakes.includes(car.make));
+
 
     const cityPath = path.join(process.cwd(), 'public/lib/basecity.json');
     const cityData = await fs.readFile(cityPath, 'utf8');
     const locations = JSON.parse(cityData);
 
     const uniqueMakes = Array.from(
-      new Set(cars.map(car => car.make))
+      new Set(filtered.map(car => car.make))
     );
 
     const paths = [];
@@ -244,6 +259,23 @@ export default async function Cities({ params }) {
   const cities = await getCity();
   const posts = await getMake();
   const modelsform = await getFormModel();
+
+  const excludedMakes = [
+    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
+    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
+    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan', 'Aptera',
+    'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
+    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
+    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin', 'Fillmore',
+    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker', 'Great Wall GWM', 'Zeekr', 'ZNA', 'GAC', 'Gs7', 'Hongqi',
+    'W Motor', 'JAC', 'Jaecoo', 'Jetour', 'TANK', 'Soueast', 'Zarooq Motors', 'Changan', 'Maxus', 'Haval', 'Zotye', 'Sandstorm',
+    'Chery', 'Geely', 'BAIC', 'Bestune'
+  ];
+  const haksMakes = ['Honda', 'Audi', 'Porsche', 'Volvo', 'Mini', 'Mercedes-Benz', 'Renault', 'Peugeot', 'Jaguar', 'Ford', 'Hummer', 'Dodge', 'GMC', 'Jeep', 'Lincoln']
+  const isExcludedMake = excludedMakes.includes(make);
+  if (excludedMakes.includes(make)) {
+    redirect('/get-in-touch');
+  }
 
   const images = [
     {

@@ -31,7 +31,7 @@ import Wheel from '../../../../public/img/honda-eighth-gen/Wheel.webp';
 import MudFlap from '../../../../public/img/honda-eighth-gen/Mud_Flap.webp';
 import { getFormModel, getParts } from '../../../page';
 import FormComponent from '../../../../components/FormComponent';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { promises as fs } from 'fs';
 import path from 'path';
 import products from '../../../../public/products.json'
@@ -84,7 +84,7 @@ export async function generateStaticParams() {
       model: model
     }));
   } catch (error) {
-    console.error('Error reading static params from car.json:', error);
+    console.error('Error', error);
     return [];
   }
 }
@@ -404,55 +404,15 @@ export default async function Model({ params, searchParams }) {
   })
 
   const excludedMakes = [
-    'Acura',
-    'Buick',
-    'Eagle',
-    'Lotus',
-    'Plymouth',
-    'Pontiac',
-    'Saab',
-    'Subaru',
-    'Alpha Romeo',
-    'Geo',
-    'Oldsmobile',
-    'Isuzu',
-    'Saturn',
-    'Corbin',
-    'Holden',
-    'Spyker',
-    'Spyker Cars',
-    'Aston Martin',
-    'Panoz',
-    'Foose',
-    'Morgan',
-    'Aptera',
-    'Smart',
-    'SRT',
-    'Roush Performance',
-    'Pagani',
-    'Mobility Ventures LLC',
-    'RUF Automobile',
-    'Koenigsegg',
-    'Karma',
-    'Polestar',
-    'STI',
-    'Kandi',
-    'Abarth',
-    'Dorcen',
-    'Foton',
-    'W Motors',
-    'Opel',
-    'Skoda',
-    'Hillman',
-    'Austin',
-    'Fillmore',
-    'Maybach',
-    'Merkur',
-    'Rambler',
-    'RUF Automobile',
-    'Saturn',
-    'Shelby',
-    'Studebaker',
+    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
+    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
+    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan', 'Aptera',
+    'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
+    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
+    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin', 'Fillmore',
+    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker', 'Great Wall GWM', 'Zeekr', 'ZNA', 'GAC', 'Gs7', 'Hongqi',
+    'W Motor', 'JAC', 'Jaecoo', 'Jetour', 'TANK', 'Soueast', 'Zarooq Motors', 'Changan', 'Maxus', 'Haval', 'Zotye', 'Sandstorm',
+    'Chery', 'Geely', 'BAIC', 'Bestune'
   ];
   const haksMakes = ['Honda', 'Audi', 'Porsche', 'Volvo', 'Mini', 'Mercedes-Benz', 'Renault', 'Peugeot', 'Jaguar', 'Ford', 'Hummer', 'Dodge', 'GMC', 'Jeep', 'Lincoln']
   const isExcludedMake = excludedMakes.includes(make);

@@ -137,23 +137,19 @@ export async function generateMetadata({ params }) {
     ]
   };
   return {
-    title: `${make} - ${decodeURIComponent(
-      location,
-    )} Car Auto Spare Parts Order Online in UAE from Dubai -
+    title: `${make} Spare Parts in ${decodeURIComponent(location)}, UAE from Dubai dealers -
       Best Prices`,
     description: `Buy ${make} - ${decodeURIComponent(
       location,
     )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
     openGraph: {
-      images: '/favicon.png',
-      title: `${make} - ${decodeURIComponent(
-        location,
-      )} Car Auto Spare Parts Order Online in UAE from Dubai -
+      images: 'https://www.emirates-car.com/favicon.png',
+      title: `${make} Spare Parts in ${decodeURIComponent(location)}, UAE from Dubai dealers -
       Best Prices`,
       description: `Buy ${make} - ${decodeURIComponent(
         location,
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
-      url: 'https://emirates-car.com/search-by-make/' + make + '/' + location,
+      url: 'https://emirates-car.com/search-by-brands-in-uae/' + make + '/' + location,
       image: '/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [
@@ -178,7 +174,7 @@ export async function generateMetadata({ params }) {
         location,
       )} Car Auto Spare Parts Order Online in UAE from Dubai -
       Best Prices`,
-      url: '/search-by-make/' + make + '/' + location,
+      url: '/search-by-brands-in-uae/' + make + '/' + location,
       description: `Buy ${make} - ${decodeURIComponent(
         location,
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
@@ -194,28 +190,23 @@ export async function generateMetadata({ params }) {
       },
     },
     alternates: {
-      canonical: `/search-by-make/${make}/${location}`,
+      canonical: `https://emirates-car.com/search-by-brands-in-uae/${make}/${location}`,
     },
     category: `${make} ${decodeURIComponent(location)} auto spare parts`,
-    keywords: `${make} ${decodeURIComponent(
+    keywords: `${make} spare parts ${decodeURIComponent(location)}, used ${make} spare parts ${decodeURIComponent(location)},
+     ${make} spare parts near me, ${make} spark plugs in ${decodeURIComponent(
       location,
-    )} spare parts sharjah, used ${make} ${location} spare parts, ${make} ${decodeURIComponent(
-      location,
-    )} spare parts online, ${make} ${decodeURIComponent(
-      location,
-    )} spare parts near me, ${make} ${decodeURIComponent(
-      location,
-    )} wheels, ${make} ${decodeURIComponent(
+    )}, ${make} ${decodeURIComponent(
       location,
     )} distributor, ${make} ${decodeURIComponent(
       location,
-    )} shock absorber, ${make} ${decodeURIComponent(
+    )} shock absorber, ${make} fender in ${decodeURIComponent(
       location,
-    )} spark plugs, ${make} ${decodeURIComponent(
+    )}, ${make} fuse box in ${decodeURIComponent(
       location,
-    )} fuse box, ${make} ${decodeURIComponent(
+    )}, ${make} radiator in ${decodeURIComponent(
       location,
-    )} radiator, ${make} ${decodeURIComponent(location)} fuel pump`,
+    )}, ${make} fuel pump in ${decodeURIComponent(location)}`,
     other: {
       "script:ld+json": JSON.stringify(faqSchema),
     },
@@ -433,7 +424,7 @@ export default async function Cities({ params }) {
                 <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 xxs:mt-8 xs:px-5 sm:ml-6 lg:ml-1 xl:ml-20 sm:mx-auto mt-10 sm:mt-12 md:mt-10 lg:mt-20 lg:px-8 xl:mt-28 xs:mt-2 xs:text-left s:mt-2">
                   <div className="lg:text-left">
                     <h2 className="block text-3xl sm:text-sm xs:text-base xxs:text-base md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight dark:text-white">
-                      <span class="block">
+                      <span className="block">
                         Expert Parts&nbsp;
                         <span class="block text-blue-600 xl:inline">
                           Seamless Performance
@@ -441,12 +432,13 @@ export default async function Cities({ params }) {
                       </span>
                     </h2>
                     <h1 className="mt-3 text-3xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
-                      Used / Genuine / Aftermarket&nbsp;
-                      <span className="block text-blue-600 xl:inline">
-                        {encodeURIComponent(make)} Auto parts&nbsp;
-                      </span>
-                      in {decodeURIComponent(location)} UAE
+                      Genuine <span className="text-blue-600 xl:inline">
+                        {encodeURIComponent(make)}
+                      </span> Spare Parts in {decodeURIComponent(location)}, UAE&nbsp;
                     </h1>
+                    <p className="block xxl:text-xl sm:text-sm xs:text-base xxs:text-base md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight pt-5">
+                      Get authentic {encodeURIComponent(make)}&nbsp; parts for all models — fast delivery across {decodeURIComponent(location)}, UAE&nbsp;
+                    </p>
                     <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
                       <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
                         <a
@@ -467,6 +459,9 @@ export default async function Cities({ params }) {
             </div>
           </div>
         </div>
+        <section className='#myForm'>
+          <FormComponent formsData={modelsform} postFilter={partspost} />
+        </section>
         <div>
           <p className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
             Searching for reliable {make} parts in the{' '}
@@ -485,10 +480,6 @@ export default async function Cities({ params }) {
           </p>
         </div>
         <div>
-          <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 md:grid md:grid-cols-1 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 xxs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
-            <FormComponent formsData={modelsform} postFilter={partspost} />
-          </div>
-
           <div className="bg-bglight">
             <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
               Search{' '}

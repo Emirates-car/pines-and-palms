@@ -243,7 +243,7 @@ export async function generateMetadata({ params }) {
       description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
       url: 'https://emirates-car.com/search-by-make/' + encodeURIComponent(make),
       image: 'https://www.emirates-car.com/img/car-spare-parts.png',
-      siteName: 'Emirates Auto Parts',
+      siteName: 'EMIRATESCAR',
       images: [
         '/favicon.png',
         {

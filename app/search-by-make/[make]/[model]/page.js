@@ -217,7 +217,7 @@ export async function generateMetadata({ params }) {
       description: `Find and buy all new, used, and genuine ${make} ${decodeURIComponent(model)} spare parts online in the UAE. Get fast delivery and expert support from reliable dealers. Shop now! `,
       url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model,
       image: `https://www.emirates-car.com/img/car-logos/${imageMake}`,
-      siteName: 'Emirates Auto Parts',
+      siteName: 'EMIRATESCAR',
       images: [
         'https://www.emirates-car.com/favicon.png',
         {

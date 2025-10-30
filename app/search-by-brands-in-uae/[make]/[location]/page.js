@@ -150,8 +150,8 @@ export async function generateMetadata({ params }) {
         location,
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
       url: 'https://emirates-car.com/search-by-brands-in-uae/' + make + '/' + location,
-      image: '/img/car-spare-parts.png',
-      siteName: 'Emirates Auto Parts',
+      image: 'https://www.emirates-car.com/img/car-spare-parts.png',
+      siteName: 'EMIRATESCAR',
       images: [
         {
           url: '/icon-192x192.png',
@@ -415,212 +415,203 @@ export default async function Cities({ params }) {
     },
   ];
   return (
-    <div>
-      <main className="d-flex justify-center pt-10 xs:pt-5 mx-2 font-sans">
-        <div className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
-          <div className="bg-backgroundlight rounded-sm">
-            <div className="grid grid-cols-2 xs:grid xs:grid-cols-1 s:grid s:grid-cols-1 xs:text-center sm:grid sm:grid-cols-2 xxs:grid xxs:grid-cols-1 xs:pt-5 s:pt-5">
-              <div>
-                <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 xxs:mt-8 xs:px-5 sm:ml-6 lg:ml-1 xl:ml-20 sm:mx-auto mt-10 sm:mt-12 md:mt-10 lg:mt-20 lg:px-8 xl:mt-28 xs:mt-2 xs:text-left s:mt-2">
-                  <div className="lg:text-left">
-                    <h2 className="block text-3xl sm:text-sm xs:text-base xxs:text-base md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight dark:text-white">
-                      <span className="block">
-                        Expert Parts&nbsp;
-                        <span class="block text-blue-600 xl:inline">
-                          Seamless Performance
-                        </span>
-                      </span>
-                    </h2>
-                    <h1 className="mt-3 text-3xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
-                      Genuine <span className="text-blue-600 xl:inline">
-                        {encodeURIComponent(make)}
-                      </span> Spare Parts in {decodeURIComponent(location)}, UAE&nbsp;
-                    </h1>
-                    <p className="block xxl:text-xl sm:text-sm xs:text-base xxs:text-base md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight pt-5">
-                      Get authentic {encodeURIComponent(make)}&nbsp; parts for all models — fast delivery across {decodeURIComponent(location)}, UAE&nbsp;
-                    </p>
-                    <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
-                      <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
-                        <a
-                          href={'/search-by-make/' + make + '#myForm'}
-                          title="vehicle parts online"
-                          className="flex items-center justify-center py-2 xs:py-2 xxs:py-1 sm:py-0 text-xl sm:text-base xl:text-xl border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md md:text-lg md:px-5 xs:text-sm xxs:text-sm xxs:my-2 lg:my-2 s:text-sm s:my-2 focus:filter brightness-125"
-                        >
-                          Inquire Now
-                        </a>
-                      </div>
+    <main className="d-flex justify-center pt-10 xs:pt-5 mx-2 font-sans">
+      <div className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
+        <div className="bg-backgroundlight rounded-sm">
+          <div className="grid grid-cols-2 xs:grid xs:grid-cols-1 s:grid s:grid-cols-1 xs:text-center sm:grid sm:grid-cols-2 xxs:grid xxs:grid-cols-1 xs:pt-5 s:pt-5">
+            <div>
+              <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 xxs:mt-8 xs:px-5 sm:ml-6 lg:ml-1 xl:ml-20 sm:mx-auto mt-10 sm:mt-12 md:mt-10 lg:mt-20 lg:px-8 xl:mt-28 xs:mt-2 xs:text-left s:mt-2">
+                <div className="lg:text-left">
+                  <h1 className="mt-3 text-3xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold">
+                    Genuine <span className="text-blue-600 xl:inline">
+                      {encodeURIComponent(make)}
+                    </span> Spare Parts in {decodeURIComponent(location)}, UAE&nbsp;
+                  </h1>
+                  <p className="block xxl:text-xl sm:text-sm xs:text-base xxs:text-base md:text-lg lg:text-2xl font-medium font-poppins text-gray-800  lg:leading-tight pt-5">
+                    Get authentic {encodeURIComponent(make)}&nbsp; parts for all models — fast delivery across {decodeURIComponent(location)}, UAE&nbsp;
+                  </p>
+                  <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
+                    <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
+                      <a
+                        href={'/search-by-make/' + make + '#myForm'}
+                        title="vehicle parts online"
+                        className="flex items-center justify-center py-2 xs:py-2 xxs:py-1 sm:py-0 text-xl sm:text-base xl:text-xl border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md md:text-lg md:px-5 xs:text-sm xxs:text-sm xxs:my-2 lg:my-2 s:text-sm s:my-2 focus:filter brightness-125"
+                      >
+                        Inquire Now
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="xxs:hidden xs:hidden hero_section_blob s:hidden">
-                <Image src={Hero_img} alt="car spare parts online" priority />
-              </div>
+            </div>
+            <div className="xxs:hidden xs:hidden hero_section_blob s:hidden">
+              <Image src={Hero_img} alt="car spare parts online" priority />
             </div>
           </div>
         </div>
-        <section className='#myForm'>
-          <FormComponent formsData={modelsform} postFilter={partspost} />
-        </section>
-        <div>
-          <p className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
-            Searching for reliable {make} parts in the{' '}
-            {decodeURIComponent(location)} UAE? Whether you're looking for
-            genuine, used, or aftermarket parts, Emirates Auto Parts has you
-            covered. We stock a wide range of parts for popular {make} models,
-            including the{' '}
-            {carmodel
-              .slice(0, 5)
-              .map(c => c.make + ' ' + c.model)
-              .join(', ')}
-            , and many more. With fast shipping to Dubai, Sharjah, and across
-            the UAE, and a commitment to quality, we ensure your {make} remains
-            road-ready. Explore our inventory and enjoy quality parts backed by
-            expert support
-          </p>
-        </div>
-        <div>
-          <div className="bg-bglight">
-            <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-              Search{' '}
-              <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
-              Spare parts in{' '}
-              <span className="text-blue-500">
-                {decodeURIComponent(location)}
-              </span>
-            </h3>
-            <SearchModel make={make} car={carmodel} />
-            <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
-              {carmodel.map((post, i) => (
-                <div key={i}>
-                  <Link
-                    href="/search-by-make/[make]/[model]"
-                    as={'/search-by-make/' + post.make + '/' + post.model}
-                    title={post.make + post.model + ' spare parts' + location}
-                  >
-                    <div className="border-blue-800 h-full  hover:border-blue-900 bg-white rounded-sm">
-                      <p className="text-center text-black text-sm font-medium hover:text-gray-800 p-2">
-                        {make +
-                          ' ' +
-                          post.model.replace('%2F', '/') +
-                          ' parts in ' +
-                          decodeURIComponent(location)}{' '}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              ))}{' '}
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
-          **Model not found above?
-          <Link href="/get-in-touch">
-            <nobr className="text-blue-500 text-sm underline">
-              {' '}
-              Get in touch with us {'>>'}**
-            </nobr>
-          </Link>{' '}
-        </div>
-        <div className="text-center">
-          {make === 'Honda' ? <HondaOfferButton /> : <></>}
-        </div>
-        <div>
-          <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
-            Popular{' '}
-            <span className="text-blue-500">
-              Searched {encodeURIComponent(make)} Parts
-            </span>{' '}
-            in UAE
-          </div>
-          <div className="grid grid-cols-5 sm:gril-cols-2 xxs:grid-cols-2 gap-2 s:grid-cols-2 xs:grid-cols-1 px-5 xs:px-2 xxs:px-2 md:grid-cols-3 lg:grid-cols-3 max-w-7xl mx-auto">
-            {images.map((i, k) => (
-              <div key={k} className="border-2 p-5 relative bg-gray-200">
-                <sup className="absolute top-0 right-0 text-xs font-bold text-white bg-red-600 rounded-sm p-1">
-                  Sale!
-                </sup>
-                <div className="h-50 flex justify-center">
-                  <div className="text-lg font-bold font-sans xs:text-base">
-                    {i.name}
-                  </div>
-                </div>
-
-                <Image
-                  src={i.images}
-                  alt={i.alt}
-                  height={250}
-                  width={250}
-                  className="object-none object-center p-1"
-                  priority
-                />
-
-                <Link
-                  href={i.link}
-                  className="flex items-center justify-center px-8 py-2 my-5 text-lg border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 xxs:text-sm xxs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
-                  title={i.name}
-                >
-                  Inquire Now
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bg-bglight ">
+      </div>
+      <section className='#myForm'>
+        <FormComponent formsData={modelsform} postFilter={partspost} />
+      </section>
+      <div>
+        <p className="py-5 xxs:px-7 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
+          Searching for reliable {make} parts in the{' '}
+          {decodeURIComponent(location)} UAE? Whether you're looking for
+          genuine, used, or aftermarket parts, Emirates Auto Parts has you
+          covered. We stock a wide range of parts for popular {make} models,
+          including the{' '}
+          {carmodel
+            .slice(0, 5)
+            .map(c => c.make + ' ' + c.model)
+            .join(', ')}
+          , and many more. With fast shipping to Dubai, Sharjah, and across
+          the UAE, and a commitment to quality, we ensure your {make} remains
+          road-ready. Explore our inventory and enjoy quality parts backed by
+          expert support
+        </p>
+      </div>
+      <div>
+        <div className="bg-bglight">
           <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
             Search{' '}
             <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
-            Spare parts Anywhere in {location}
+            Spare parts in{' '}
+            <span className="text-blue-500">
+              {decodeURIComponent(location)}
+            </span>
           </h3>
-          <SearchCity cities={cities} />
-          <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
-            {cities.map((post, i) => (
+          <SearchModel make={make} car={carmodel} />
+          <div className="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-4 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
+            {carmodel.map((post, i) => (
               <div key={i}>
                 <Link
-                  href="/search-by-cities-in-uae/[city]"
-                  as={'/search-by-cities-in-uae/' + post.city}
-                  title={make + ' spare parts ' + post.city}
+                  href="/search-by-make/[make]/[model]"
+                  as={'/search-by-make/' + post.make + '/' + post.model}
+                  title={post.make + post.model + ' spare parts' + location}
                 >
-                  <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
-                    <p className="text-center text-black font-medium text-sm hover:text-gray-800 p-2">
-                      {encodeURIComponent(make)} parts in {post.city}
+                  <div className="border-blue-800 h-full  hover:border-blue-900 bg-white rounded-sm">
+                    <p className="text-center text-black text-sm font-medium hover:text-gray-800 p-2">
+                      {make +
+                        ' ' +
+                        post.model.replace('%2F', '/') +
+                        ' parts in ' +
+                        decodeURIComponent(location)}{' '}
                     </p>
                   </div>
                 </Link>
               </div>
-            ))}
+            ))}{' '}
           </div>
         </div>
-        <TenEntries />
-        <div className="grid grid-cols-4 xs:ml-4 md:mx-4 sm:ml-0 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-3 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 2xs:mx-4 md:ml-11 mr-3 my-10 font-sans">
-          {posts.map((post, i) => (
-            <div key={i}>
+      </div>
+
+      <div className="text-center mt-2 text-red-400 text-sm xs:text-xs py-5">
+        **Model not found above?
+        <Link href="/get-in-touch">
+          <nobr className="text-blue-500 text-sm underline">
+            {' '}
+            Get in touch with us {'>>'}**
+          </nobr>
+        </Link>{' '}
+      </div>
+      <div className="text-center">
+        {make === 'Honda' ? <HondaOfferButton /> : <></>}
+      </div>
+      <div>
+        <div className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
+          Popular{' '}
+          <span className="text-blue-500">
+            Searched {encodeURIComponent(make)} Parts
+          </span>{' '}
+          in UAE
+        </div>
+        <div className="grid grid-cols-5 sm:gril-cols-2 xxs:grid-cols-2 gap-2 s:grid-cols-2 xs:grid-cols-1 px-5 xs:px-2 xxs:px-2 md:grid-cols-3 lg:grid-cols-3 max-w-7xl mx-auto">
+          {images.map((i, k) => (
+            <div key={k} className="border-2 p-5 relative bg-gray-200">
+              <sup className="absolute top-0 right-0 text-xs font-bold text-white bg-red-600 rounded-sm p-1">
+                Sale!
+              </sup>
+              <div className="h-50 flex justify-center">
+                <div className="text-lg font-bold font-sans xs:text-base">
+                  {i.name}
+                </div>
+              </div>
+
+              <Image
+                src={i.images}
+                alt={i.alt}
+                height={250}
+                width={250}
+                className="object-none object-center p-1"
+                priority
+              />
+
               <Link
-                href="/search-by-brands-in-uae/[make]/[location]"
-                as={'/search-by-brands-in-uae/' + post.make + '/' + location}
-                title={post.make + ' spare parts'}
+                href={i.link}
+                className="flex items-center justify-center px-8 py-2 my-5 text-lg border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-lg md:px-5 xs:py-2 xs:text-xs xs:my-2 xxs:text-sm xxs:my-2 s:text-sm s:my-2 focus:filter brightness-125"
+                title={i.name}
               >
-                <main className="text-center text-base xs:text-xs xs:text-center font-mono text-blue-500 underline hover:text-blue-700 focus:text-blue-700 border border-gray-100">
-                  <div className="flex justify-center">
-                    <Image
-                      alt={post.make + ' parts uae'}
-                      src={'/img/car-logos/' + post.img}
-                      className="object-scale-down shadow-xl"
-                      height={30}
-                      width={30}
-                    />
-                    <br />
-                  </div>
-                  {post.make.toUpperCase()}
-                </main>
+                Inquire Now
               </Link>
             </div>
           ))}
         </div>
-        <PartsAccordion make={make} location={location} />
-        <Contents />
-      </main>
+      </div>
+      <div className="bg-bglight ">
+        <h3 className="text-black text-4xl my-10 text-center md:text-2xl lg:text-2xl font-bold xs:text-xl xxs:text-2xl pt-10">
+          Search{' '}
+          <span className="text-blue-500">{encodeURIComponent(make)}</span>{' '}
+          Spare parts Anywhere in {location}
+        </h3>
+        <SearchCity cities={cities} />
+        <div className="grid grid-cols-7 md:grid-cols-5 lg:grid-cols-7 mx-10 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-5 xxs:grid xxs:grid-cols-5 s:grid s:grid-cols-3 gap-1 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 pb-10 font-sans">
+          {cities.map((post, i) => (
+            <div key={i}>
+              <Link
+                href="/search-by-cities-in-uae/[city]"
+                as={'/search-by-cities-in-uae/' + post.city}
+                title={make + ' spare parts ' + post.city}
+              >
+                <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">
+                  <p className="text-center text-black font-medium text-sm hover:text-gray-800 p-2">
+                    {encodeURIComponent(make)} parts in {post.city}
+                  </p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+      <TenEntries />
+      <div className="grid grid-cols-4 xs:ml-4 md:mx-4 sm:ml-0 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-3 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 2xs:mx-4 md:ml-11 mr-3 my-10 font-sans">
+        {posts.map((post, i) => (
+          <div key={i}>
+            <Link
+              href="/search-by-brands-in-uae/[make]/[location]"
+              as={'/search-by-brands-in-uae/' + post.make + '/' + location}
+              title={post.make + ' spare parts'}
+            >
+              <main className="text-center text-base xs:text-xs xs:text-center font-mono text-blue-500 underline hover:text-blue-700 focus:text-blue-700 border border-gray-100">
+                <div className="flex justify-center">
+                  <Image
+                    alt={post.make + ' parts uae'}
+                    src={'/img/car-logos/' + post.img}
+                    className="object-scale-down shadow-xl"
+                    height={30}
+                    width={30}
+                  />
+                  <br />
+                </div>
+                {post.make.toUpperCase()}
+              </main>
+            </Link>
+          </div>
+        ))}
+      </div>
+      <PartsAccordion make={make} location={location} />
+      <Contents />
       <Footer />
-    </div>
+    </main>
+
   );
 }

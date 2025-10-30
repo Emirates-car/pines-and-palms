@@ -72,7 +72,7 @@ export async function generateMetadata({ params }) {
       description: `Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodeURIComponent(city)}  uae`,
       url: 'https://emirates-car.com/search-by-cities-in-uae/' + city,
       image: 'https://emirates-car.com/img/car-spare-parts.png',
-      siteName: 'Emirates Auto Parts',
+      siteName: 'EMIRATESCAR',
       images: [
         {
           url: 'https://emirates-car.com/icon-192x192.png',

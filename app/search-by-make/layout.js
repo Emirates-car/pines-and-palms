@@ -22,7 +22,7 @@ export const metadata = {
       'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE for German, American, Korean, Japanese models',
     url: 'https://www.emirates-car.com/search-by-make',
     image: 'https://emirates-car.com/img/car-spare-parts.png',
-    siteName: 'Emirates Auto Parts',
+    siteName: 'EMIRATESCAR',
     images: [
       {
         url: 'https://emirates-car.com/icon-192x192.png',

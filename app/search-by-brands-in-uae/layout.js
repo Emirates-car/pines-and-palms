@@ -14,22 +14,22 @@ export const metadata = {
   description:
     'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE for German, American, Korean, Japanese models',
   openGraph: {
-    images: '/favicon.png',
+    images: 'https://www.emirates-car.com/favicon.png',
     title:
       'Auto Spare Parts Order Online in UAE from Dubai dealers |Emirates-car.com',
     description:
       'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE for German, American, Korean, Japanese models',
     url: 'https://www.emirates-car.com/search-by-make',
-    image: 'https://emirates-car.com/img/car-spare-parts.png',
-    siteName: 'Emirates Auto Parts',
+    image: 'https://www.emirates-car.com/img/car-spare-parts.png',
+    siteName: 'EMIRATESCAR',
     images: [
       {
-        url: 'https://emirates-car.com/icon-192x192.png',
+        url: 'https://www.emirates-car.com/icon-192x192.png',
         width: 192,
         height: 192
       },
       {
-        url: 'https://emirates-car.com/icons/icon-512x512.png',
+        url: 'https://www.emirates-car.com/icons/icon-512x512.png',
         width: 512,
         height: 512,
         alt: 'car parts'
@@ -42,10 +42,10 @@ export const metadata = {
     card: 'summary_large_image',
     title:
       'Auto Spare Parts Order Online in UAE from Dubai dealers |Emirates-car.com',
-    url: `https://emirates-car.com/search-by-make`,
+    url: `https://www.emirates-car.com/search-by-make`,
     description:
       'Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE for German, American, Korean, Japanese models',
-    images: ['https://emirates-car.com/favicon.png']
+    images: ['https://www.emirates-car.com/favicon.png']
   },
   icons: {
     icon: '/favicon.png',
@@ -58,7 +58,7 @@ export const metadata = {
   },
   category: 'car parts',
   alternates: {
-    canonical: `https://emirates-car.com/search-by-brands-in-uae`
+    canonical: `https://www.emirates-car.com/search-by-brands-in-uae`
   },
   keywords:
     'how to buy auto spare parts in uae, how to search for auto spare parts in dubai sharjah, how to search for auto spare parts in dubai online, dubai spare parts market, dubai spare parts market online, auto spare parts sharjah, auto spare parts wholesalers dubai, Whats the best online auto parts store, parts market uae'

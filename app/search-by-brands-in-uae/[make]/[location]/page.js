@@ -174,7 +174,7 @@ export async function generateMetadata({ params }) {
         location,
       )} Car Auto Spare Parts Order Online in UAE from Dubai -
       Best Prices`,
-      url: '/search-by-brands-in-uae/' + make + '/' + location,
+      url: 'https://www.emirates-car.com/search-by-brands-in-uae/' + make + '/' + location,
       description: `Buy ${make} - ${decodeURIComponent(
         location,
       )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,

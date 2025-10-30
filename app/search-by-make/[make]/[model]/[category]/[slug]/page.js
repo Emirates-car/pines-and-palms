@@ -168,8 +168,8 @@ export async function generateMetadata({ params }) {
 
 
     return {
-        title: `${product.item_specifics["OEM or Aftermarket"]} ${product.partname} (${product.partnumber}) – ${product.item_specifics.Condition} ${make} ${decodeURIComponent(model)} ${compat?.years || ""} Spare Part`,
-        description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.partname}, Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
+        title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${compat?.years || ""} ${product.partname}`,
+        description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.item_specifics.Condition} ${product.partname} (${product.partnumber}), Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
 
         openGraph: {
             images: 'https://www.emirates-car.com/favicon.png',
@@ -340,7 +340,6 @@ export default function ProductPage({ params }) {
                             {/* Hidden structured data for availability */}
                             <meta itemProp="availability" content="https://schema.org/InStock" />
                         </div>
-
                     </div>
                 </section>
             </div>

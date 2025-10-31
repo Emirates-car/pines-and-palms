@@ -1260,9 +1260,9 @@
             "UPC": "4027816012345"
         },
         "pricing": {
-            "price": 10.30,
+            "price": 44,
             "price_info": "Inquiry is important for fitment check and final price after delivery",
-            "currency": "EURo",
+            "currency": "AED",
             "discounted_price": 0.0,
             "offer": "0% OFF"
         },

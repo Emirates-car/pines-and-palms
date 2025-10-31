@@ -4,7 +4,7 @@ import RelatedPost from '../relatedpost/page';
 import Image from 'next/image';
 
 async function getBlogDetail(slug) {
-  const res = await fetch(`https://rozy.vercel.app/api/blog/${slug}`);
+  const res = await fetch(`https://rozy-api-two.vercel.app/api/blog/${slug}`);
   const data = await res.json();
   return data;
 }

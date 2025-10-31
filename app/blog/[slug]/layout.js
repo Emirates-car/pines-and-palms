@@ -2,7 +2,7 @@ import '../../../styles/globals.css';
 import Navbar from '../../../components/nav';
 
 async function getBlogDetail(slug) {
-  const res = await fetch(`https://rozy.vercel.app/api/blog/${slug}`);
+  const res = await fetch(`https://rozy-api-two.vercel.app/api/blog/${slug}`);
   const data = await res.json();
   return data;
 }
@@ -21,22 +21,22 @@ export async function generateMetadata({ params }) {
   return {
     title: `${data.TITLE} | Emirates-car.com`,
     description: `${data.DESCRIPTION}`,
-    manifest: 'https://emirates-car.com/manifest.json',
+    manifest: 'https://www.emirates-car.com/manifest.json',
     openGraph: {
-      images: '/favicon.png',
+      images: 'https://www.emirates-car.com/favicon.png',
       title: `${data.TITLE} | Emirates-car.com`,
       description: `${data.DESCRIPTION}`,
       url: `https://emirates-car.com/${data.TITLE}`,
-      image: `https://emirates-car.com/img/blog/ + ${slug}`,
-      siteName: 'Emirates Auto Parts',
+      image: `https://www.emirates-car.com/img/blog/ + ${slug}`,
+      siteName: 'EMIRATESCAR',
       images: [
         {
-          url: 'https://emirates-car.com/icon-192x192.png',
+          url: 'https://www.emirates-car.com/icon-192x192.png',
           width: 192,
           height: 192
         },
         {
-          url: 'https://emirates-car.com/icons/icon-512x512.png',
+          url: 'https://www.emirates-car.com/icons/icon-512x512.png',
           width: 512,
           height: 512,
           alt: 'car parts'
@@ -49,18 +49,18 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: `${data.TITLE}`,
       description: `${data.DESCRIPTION}`,
-      images: ['https://emirates-car.com/favicon.png']
+      images: ['https://www.emirates-car.com/favicon.png']
     },
     icons: {
-      icon: '/favicon.png',
-      shortcut: '/icons/icon-96x96.png',
-      apple: '/icons/icon-192x192.png',
+      icon: 'https://www.emirates-car.com/favicon.png',
+      shortcut: 'https://www.emirates-car.com/icons/icon-96x96.png',
+      apple: 'https://www.emirates-car.com/icons/icon-192x192.png',
       other: {
         rel: 'apple-touch-icon-precomposed',
-        url: '/icons/icon-152x152.png'
+        url: 'https://www.emirates-car.com/icons/icon-152x152.png'
       }
     },
-    category: 'car parts',
+    category: 'Blog',
     alternate: {
       cannonical: "https://emirates-car.com",
     }

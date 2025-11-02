@@ -122,16 +122,16 @@ export async function generateMetadata({ params }) {
     "position": index + 1,
     "item": {
       "@type": "Product",
-      "@id": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}#product`,
+      "@id": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}#product`,
       "name": `${product.partname} ${product.partnumber} ${make}`,
-      "url": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+      "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
       "image": `https://www.emirates-car.com${product.image}`,
       "description": `${product.partname} compatible with ${make} ${product.compatibility?.map(c => c.model).join(", ")}`,
       "brand": { "@type": "Brand", "name": product.compatibility[0]?.make || make },
       "mpn": product.partnumber,
       "offers": {
         "@type": "Offer",
-        "url": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+        "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
         "priceCurrency": product.pricing.currency,
         "price": product.pricing.price,
         "availability": "https://schema.org/InStock",
@@ -238,21 +238,21 @@ export async function generateMetadata({ params }) {
       `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}`
     ),
     openGraph: {
-      images: 'https://emirates-car.com/favicon.png',
+      images: 'https://www.emirates-car.com/favicon.png',
       title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
       description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
-      url: 'https://emirates-car.com/search-by-make/' + encodeURIComponent(make),
+      url: 'https://www.emirates-car.com/search-by-make/' + encodeURIComponent(make),
       image: 'https://www.emirates-car.com/img/car-spare-parts.png',
       siteName: 'EMIRATESCAR',
       images: [
         '/favicon.png',
         {
-          url: 'https://emirates-car.com/icon-192x192.png',
+          url: 'https://www.emirates-car.com/icon-192x192.png',
           width: 192,
           height: 192,
         },
         {
-          url: 'https://emirates-car.com/icons/icon-512x512.png',
+          url: 'https://www.emirates-car.com/icons/icon-512x512.png',
           width: 512,
           height: 512,
           alt: 'car parts',
@@ -264,22 +264,22 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
-      url: 'https://emirates-car.com/search-by-make/' + encodeURIComponent(make),
+      url: 'https://www.emirates-car.com/search-by-make/' + encodeURIComponent(make),
       description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
-      images: ['https://emirates-car.com/favicon.png'],
+      images: ['https://www.emirates-car.com/favicon.png'],
     },
     icons: {
-      icon: 'https://emirates-car.com/favicon.png',
-      shortcut: 'https://emirates-car.com/icons/icon-96x96.png',
-      apple: 'https://emirates-car.com/icons/icon-192x192.png',
+      icon: 'https://www.emirates-car.com/favicon.png',
+      shortcut: 'https://www.emirates-car.com/icons/icon-96x96.png',
+      apple: 'https://www.emirates-car.com/icons/icon-192x192.png',
       other: {
         rel: 'apple-touch-icon-precomposed',
-        url: 'https://emirates-car.com/icons/icon-152x152.png',
+        url: 'https://www.emirates-car.com/icons/icon-152x152.png',
       },
     },
     category: `${make} auto spare parts`,
     alternates: {
-      canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}`,
+      canonical: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}`,
     },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),
@@ -657,6 +657,7 @@ export default async function MakePage({ params, searchParams }) {
             Search <span className='text-blue-600'>{make}</span> spare parts by Model
           </h2>
           <SearchModel make={make} car={carmodel} />
+
 
           <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
             {carmodel.map((post, i) => {

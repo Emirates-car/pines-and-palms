@@ -20,12 +20,12 @@ const homepageSchema = {
       "@type": "WebSite",
       "@id": "https://www.emirates-car.com/#website",
       "url": "https://www.emirates-car.com/",
-      "name": "Emirates Car",
+      "name": "EMIRATESCAR",
     },
     {
       "@type": "Organization",
       "@id": "https://www.emirates-car.com/#organization",
-      "name": "Emirates Car",
+      "name": "EMIRATESCAR",
       "url": "https://www.emirates-car.com/",
       "logo": "https://www.emirates-car.com/img/car-spare-parts.png",
       "sameAs": [
@@ -37,7 +37,7 @@ const homepageSchema = {
     },
     {
       "@type": "AutoPartsStore",
-      "name": "Emirates Car",
+      "name": "EMIRATESCAR",
       "url": "https://www.emirates-car.com/",
       "areaServed": [
         { "@type": "City", "name": "Total Abu Al Bukhoosh Abu Dhabi", "url": "https://www.emirates-car.com/search-by-cities-in-uae/Total%20Abu%20Al%20Bukhoosh%20Abu%20Dhabi" },

@@ -12,6 +12,7 @@ export default async function Make() {
   const modelforms = await getFormModel();
   const partsposts = await getParts();
   const cities = await getCity();
+
   return (
     <div>
       <div className="flex xs:grid xs:grid-cols-1 sm:grid sm:grid-cols-1 2xs:grid 2xs:grid-cols-1 xs:mx-auto font-sans">
@@ -81,7 +82,7 @@ export default async function Make() {
                   title="spare parts"
                   className="text-blue-400 underline"
                 >
-                  https://emirates-car.com/search-by-part-name
+                  All Parts
                 </Link>
                 . We deal in auto spare parts such as{' '}
                 {partsposts.map((p, i) => (

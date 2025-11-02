@@ -19,12 +19,12 @@ export async function generateMetadata({ params }) {
   const { slug } = params;
   const data = await getBlogDetail(slug);
   return {
-    title: `${data.TITLE} | Emirates-car.com`,
+    title: `${data.TITLE} | EMIRATESCAR`,
     description: `${data.DESCRIPTION}`,
     manifest: 'https://www.emirates-car.com/manifest.json',
     openGraph: {
       images: 'https://www.emirates-car.com/favicon.png',
-      title: `${data.TITLE} | Emirates-car.com`,
+      title: `${data.TITLE} | EMIRATESCAR`,
       description: `${data.DESCRIPTION}`,
       url: `https://emirates-car.com/${data.TITLE}`,
       image: `https://www.emirates-car.com/img/blog/ + ${slug}`,

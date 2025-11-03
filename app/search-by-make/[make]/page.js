@@ -581,73 +581,7 @@ export default async function MakePage({ params, searchParams }) {
           </div>
         </div>
       </header>
-      <section className='xs:px-3 xxs:px-3 md:px-3 lg:max-w-4xl lg:mx-auto'>
-        <h3 className={`text-3xl xs:text-2xl font-semibold mx-auto my-5 xs:my-3 xxs:my-3 sm:my-3 md:my-4 ${playfair_display.className}`}>Why Emirates-car.com?</h3>
-        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
-          Emirates-car.com is the online dealer in <span className='text-blue-600'>{make}{' '}
-          </span> spare parts and for any car brands running on roads
-          of UAE. We find the correct used, genuine (otherwise
-          called OEM parts) and aftermarket parts that matches your fitment. We have
-          experienced professional who can find the parts at affordable and
-          reasonable price. We deal in Used, Genuine {make} {' '} parts and Aftermarket {make} {' '}
-          parts such as Engine parts, Mechanical parts, Electrical and
-          Electronic parts, Body parts and Lights, AC parts and Service and
-          Maintenance parts.
-        </p>
-        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
-          You can inquire {make} {' '} spare parts by simply
-          submitting the online inquiry form{' '}
-          <Link
-            href="/"
-            target="_newtab"
-            className="text-blue-500 underline hover:text-blue-900"
-            title={make + ' parts'}
-          >
-            here
-          </Link>
-          . You can get callback or whatsapp chat or email after submitting your
-          form inquiry.
-        </p>
-        {description.length > 0 ? <p
-          className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}
-          dangerouslySetInnerHTML={{ __html: description || '' }}
-        ></p> : <></>}
 
-        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
-          We deal with any country auto spare parts including{' '}
-          <a href='/spare-parts/japanese-auto-spare-parts' className='text-blue-600'>Japanese</a>,
-          {' '}<a href='/spare-parts/american-auto-spare-parts' className='text-blue-600'>American</a>,
-          {' '}<a href='/spare-parts/german-auto-spare-parts' className='text-blue-600'>German</a>,
-          {' '}<a href='/spare-parts/chinese-auto-spare-parts' className='text-blue-600'>Chinese</a>,
-          {' '}<a href='/spare-parts/german-auto-spare-parts' className='text-blue-600'>German</a>,
-          {' '}<a href='/spare-parts/korean-auto-spare-parts' className='text-blue-600'>Korean</a>,
-          {' '}<a href='/spare-parts/french-auto-spare-parts' className='text-blue-600'>French</a>,
-          {' '}<a href='/spare-parts/british-auto-spare-parts' className='text-blue-600'>Britain</a>,
-          in UAE. We also operate in main cities such as
-          {' '}<a href={`/search-by-brands-in-uae/${make}/Dubai`} className='text-blue-600'>Dubai</a>,
-          {' '}<a href={`/search-by-brands-in-uae/${make}/Sharjah`} className='text-blue-600'>Sharjah</a>,
-          {' '}<a href={`/search-by-brands-in-uae/${make}/Abu Dhabi`} className='text-blue-600'>Abu Dhabi</a>,
-          {' '}<a href={`/search-by-brands-in-uae/${make}/Ajman`} className='text-blue-600'>Ajman</a>,
-          {' '}<a href={`/search-by-brands-in-uae/${make}/Al Quoz`} className='text-blue-600'>Al Quoz</a>,
-          {' '}<a href={`/search-by-brands-in-uae/${make}/Palm Jumeirah`} className='text-blue-600'>Palm Jumeirah</a>,
-          {' '}<a href={`/search-by-brands-in-uae/${make}/Deira`} className='text-blue-600'>Deira</a>,
-          etc. You can check our catalogue at{' '}
-          <Link
-            href="/search-by-part-name"
-            className="text-blue-400 underline"
-            title={make}
-          >
-            /search-by-part-name
-          </Link>
-          . We provide auto spare parts for any vehicles including :
-        </p>
-        <ul className={`list-disc text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
-          <li>New auto spare parts in uae</li>
-          <li>Used auto spare parts in uae</li>
-          <li>Genuine auto spare parts in uae</li>
-          <li>Aftermarket auto spare parts in uae</li>
-        </ul>
-      </section>
       <section className='#myForm'>
         <FormComponent formsData={modelsform} postFilter={partspost} />
       </section>
@@ -769,6 +703,73 @@ export default async function MakePage({ params, searchParams }) {
       </section>
       <TenEntries />
       <PartsAccordion make={make} />
+      <section className='xs:px-3 xxs:px-3 md:px-3 lg:max-w-4xl lg:mx-auto'>
+        <h3 className={`text-3xl xs:text-2xl font-semibold mx-auto my-5 xs:my-3 xxs:my-3 sm:my-3 md:my-4 ${playfair_display.className}`}>Why Emirates-car.com?</h3>
+        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+          Emirates-car.com is the online dealer in <span className='text-blue-600'>{make}{' '}
+          </span> spare parts and for any car brands running on roads
+          of UAE. We find the correct used, genuine (otherwise
+          called OEM parts) and aftermarket parts that matches your fitment. We have
+          experienced professional who can find the parts at affordable and
+          reasonable price. We deal in Used, Genuine {make} {' '} parts and Aftermarket {make} {' '}
+          parts such as Engine parts, Mechanical parts, Electrical and
+          Electronic parts, Body parts and Lights, AC parts and Service and
+          Maintenance parts.
+        </p>
+        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
+          You can inquire {make} {' '} spare parts by simply
+          submitting the online inquiry form{' '}
+          <Link
+            href="/"
+            target="_newtab"
+            className="text-blue-500 underline hover:text-blue-900"
+            title={make + ' parts'}
+          >
+            here
+          </Link>
+          . You can get callback or whatsapp chat or email after submitting your
+          form inquiry.
+        </p>
+        {description.length > 0 ? <p
+          className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}
+          dangerouslySetInnerHTML={{ __html: description || '' }}
+        ></p> : <></>}
+
+        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
+          We deal with any country auto spare parts including{' '}
+          <a href='/spare-parts/japanese-auto-spare-parts' className='text-blue-600'>Japanese</a>,
+          {' '}<a href='/spare-parts/american-auto-spare-parts' className='text-blue-600'>American</a>,
+          {' '}<a href='/spare-parts/german-auto-spare-parts' className='text-blue-600'>German</a>,
+          {' '}<a href='/spare-parts/chinese-auto-spare-parts' className='text-blue-600'>Chinese</a>,
+          {' '}<a href='/spare-parts/german-auto-spare-parts' className='text-blue-600'>German</a>,
+          {' '}<a href='/spare-parts/korean-auto-spare-parts' className='text-blue-600'>Korean</a>,
+          {' '}<a href='/spare-parts/french-auto-spare-parts' className='text-blue-600'>French</a>,
+          {' '}<a href='/spare-parts/british-auto-spare-parts' className='text-blue-600'>Britain</a>,
+          in UAE. We also operate in main cities such as
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Dubai`} className='text-blue-600'>Dubai</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Sharjah`} className='text-blue-600'>Sharjah</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Abu Dhabi`} className='text-blue-600'>Abu Dhabi</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Ajman`} className='text-blue-600'>Ajman</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Al Quoz`} className='text-blue-600'>Al Quoz</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Palm Jumeirah`} className='text-blue-600'>Palm Jumeirah</a>,
+          {' '}<a href={`/search-by-brands-in-uae/${make}/Deira`} className='text-blue-600'>Deira</a>,
+          etc. You can check our catalogue at{' '}
+          <Link
+            href="/search-by-part-name"
+            className="text-blue-400 underline"
+            title={make}
+          >
+            /search-by-part-name
+          </Link>
+          . We provide auto spare parts for any vehicles including :
+        </p>
+        <ul className={`list-disc text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg mt-3 ${firaSans.className}`}>
+          <li>New auto spare parts in uae</li>
+          <li>Used auto spare parts in uae</li>
+          <li>Genuine auto spare parts in uae</li>
+          <li>Aftermarket auto spare parts in uae</li>
+        </ul>
+      </section>
 
 
       <section className='mx-3' aria-labelledby={`How to buy ${make} parts`}>

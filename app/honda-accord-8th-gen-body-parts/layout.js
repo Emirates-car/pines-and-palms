@@ -11,18 +11,18 @@ export const viewport = {
 
 export const metadata = {
   title:
-    '8TH Generation Honda Accord 2008 - 2012 parts - Used / Genuine / OEM /  Aftermarket | Emirates-car.com',
+    '8TH Generation Honda Accord 2008, 2009, 2010, 2011, 2012 parts - Used / Genuine / OEM /  Aftermarket | EMIRATESCAR',
   description:
     'Engines for 2.4L, 3.5L, 2.2L VTEC, DTEC, V6 engines , Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
   openGraph: {
     images: '/favicon.png',
     title:
-      '8TH Generation Honda Accord 2008 - 2012 parts - Used / Genuine / OEM /  Aftermarket | Emirates-car.com',
+      '8TH Generation Honda Accord 2008, 2009, 2010, 2011, 2012 parts - Used / Genuine / OEM /  Aftermarket | EMIRATESCAR',
     description:
       'Engines for 2.4L, 3.5L, 2.2L VTEC, DTEC, V6 engines , Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
     url: 'https://www.emirates-car.com/contact',
-    image: 'https://emirates-car.com/img/car-logos/Honda.webp',
-    siteName: 'Emirates Auto Parts',
+    image: 'https://www.emirates-car.com/img/car-logos/Honda.webp',
+    siteName: 'EMIRATESCAR',
     images: [
       {
         url: 'https://emirates-car.com/icon-192x192.png',
@@ -42,11 +42,11 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title:
-      '8TH Generation Honda Accord 2008 - 2012 parts - Used / Genuine / OEM /  Aftermarket | Emirates-car.com',
+      '8TH Generation Honda Accord 2008, 2009, 2010, 2011, 2012 parts - Used / Genuine / OEM /  Aftermarket | Emirates-car.com',
     url: 'https://www.emirates-car.com/honda-accord-8th-gen-body-parts',
     description:
       'Engines for 2.4L, 3.5L, 2.2L VTEC, DTEC, V6 engines , Body parts, Interior and exterior parts, suspension parts, headlight, fog lights and other lighting parts, performance parts and more',
-    images: ['https://emirates-car.com/favicon.png']
+    images: ['https://www.emirates-car.com/favicon.png']
   },
   icons: {
     icon: '/favicon.png',

@@ -72,6 +72,22 @@ export async function generateMetadata({ params }) {
             c?.model?.trim().toLowerCase() === decodeURIComponent(params.model).trim().toLowerCase()
     );
 
+    const expandYears = (range) => {
+        if (!range) return "";
+
+        const [start, end] = range.split("-").map(Number);
+
+        if (!end) return start.toString();
+
+        let years = [];
+        for (let year = start; year <= end; year++) {
+            years.push(year);
+        }
+
+        return years.join(", ");
+    };
+
+
 
     const faqSchema = {
         "@context": "https://schema.org",
@@ -168,13 +184,13 @@ export async function generateMetadata({ params }) {
 
 
     return {
-        title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${compat?.years || ""} ${product.partname}`,
+        title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
         description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.item_specifics.Condition} ${product.partname} (${product.partnumber}), Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
 
         openGraph: {
             images: 'https://www.emirates-car.com/favicon.png',
-            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat?.years || ""}`,
-            description: `Buy ${product.partname} fits ${compat?.make || "" + compat?.model || "" + compat?.years || ""}`,
+            title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
+            description: `Buy ${product.partname} fits ${compat?.make || "" + compat?.model || "" + expandYears(compat?.years) || ""}`,
             url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             image: `https://www.emirates-car.com/img/honda/${product.image}`,
             siteName: 'EMIRATESCAR',
@@ -197,7 +213,7 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${product.partnumber} ${product.item_specifics.Condition} ${product.item_specifics["OEM or Aftermarket"]} ${product.partname} for ${make} ${decodeURIComponent(model)} ${compat?.years || ""}`,
+            title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
             url: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             description: `Buy ${make} - ${decodeURIComponent(
                 model
@@ -234,8 +250,6 @@ export async function generateMetadata({ params }) {
         },
     };
 }
-
-
 
 
 export default function ProductPage({ params }) {

@@ -192,7 +192,7 @@ export async function generateMetadata({ params }) {
             title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
             description: `Buy ${product.partname} fits ${compat?.make || "" + compat?.model || "" + expandYears(compat?.years) || ""}`,
             url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
-            image: `https://www.emirates-car.com/img/honda/${product.image}`,
+            image: `https://www.emirates-car.com/img/${product.image}`,
             siteName: 'EMIRATESCAR',
             images: [
                 'https://www.emirates-car.com/favicon.png',

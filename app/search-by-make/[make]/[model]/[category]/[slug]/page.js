@@ -343,7 +343,7 @@ export default function ProductPage({ params }) {
                     </div>
                 </section>
             </div>
-            <section><ProductTabs product={product} /></section>
+            <section><ProductTabs product={product} slug={slug} /></section>
 
 
             {/* Related Products */}

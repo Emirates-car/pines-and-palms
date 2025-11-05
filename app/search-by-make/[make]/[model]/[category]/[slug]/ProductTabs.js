@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Fira_Sans, Playfair_Display, Poppins, Roboto } from 'next/font/google';
+import Link from 'next/link';
 
 const playfair_display = Playfair_Display({
     subsets: ['latin'],
@@ -31,7 +32,7 @@ const poppins = Poppins({
     weight: ['600'],
 });
 
-export default function ProductTabs({ product }) {
+export default function ProductTabs({ product, slug }) {
     const [activeTab, setActiveTab] = useState('item-specifics');
 
     return (
@@ -69,7 +70,12 @@ export default function ProductTabs({ product }) {
                         <h2 className="text-xl font-semibold mb-2">Compatibility</h2>
                         <ul className={`list-disc pl-6 space-y-1 ${firaSans.className}`}>
                             {product.compatibility?.map((c, i) => (
-                                <li key={i}>{c.make} {c.model} ({c.years})</li>
+
+                                <li key={i}>
+                                    <Link href={`/search-by-make/${c.make}/${c.model}/${product.category}/${encodeURIComponent(slug)}`} target='_blank' className='text-blue-700 underline hover:text-blue-600'>
+                                        {c.make} {c.model} ({c.years})
+                                    </Link>
+                                </li>
                             ))}
                         </ul>
                     </div>

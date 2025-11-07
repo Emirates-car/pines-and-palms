@@ -26,7 +26,6 @@ export default function FormComponent({ formsData, postFilter }) {
         var filtered = postFilter[i].parts;
         part.push(filtered);
       }
-      console.log(part);
       setFormPartname(part);
     };
     loadPart();

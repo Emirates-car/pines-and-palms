@@ -744,10 +744,9 @@ export default async function Model({ params, searchParams }) {
               );
             })}
           </ul>
+
         </div>
       </section>
-
-
       <section
         aria-labelledby={`all-${make}-brands`}
         className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-5 md:px-20 lg:px-10"

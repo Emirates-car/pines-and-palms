@@ -7734,6 +7734,11 @@ module.exports = withPWA({
         source: "/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
         destination: "/search-by-make/Honda/Accord/Body%20Kits/Grille/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
         permanent: true
+      },
+      {
+        source: "/search-by-make/Renault/Duster/Wiring%20&%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
+        destination: "/search-by-make/Renault/Duster/Wiring%20&%20Harness/Fuse%20Box/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
+        permanent: true
       }
     ];
   },

@@ -1,4 +1,4 @@
-import products from "../../../../../../public/products.json";
+import products from "../../../../../../../public/products.json";
 import PartInquiryForm from "./PartInquiryForm";
 import ProductTabs from "./ProductTabs";
 import { Copse, Fira_Sans, Playfair_Display, Poppins, Roboto } from 'next/font/google';
@@ -372,7 +372,7 @@ export default function ProductPage({ params }) {
                             return (
                                 <li key={p.id} className="border p-3 rounded-lg hover:shadow-md">
                                     <a
-                                        href={`/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(compatForMake.model)}/${encodeURIComponent(p.category)}/${encodeURIComponent(otherSlug)}`}
+                                        href={`/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(compatForMake.model)}/${encodeURIComponent(p.category)}/${encodeURIComponent(p.subcategory)}/${encodeURIComponent(otherSlug)}`}
                                         className="block"
                                     >
                                         <img

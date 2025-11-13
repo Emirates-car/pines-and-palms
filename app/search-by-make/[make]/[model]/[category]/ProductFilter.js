@@ -171,7 +171,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                     <label key={cat} className={`block ${firaSans.className}`}>
                                         <input
                                             type="checkbox"
-                                            name="categories"
+                                            name="filter_car_parts[]"
                                             value={cat}
                                             defaultChecked={selectedCategories.includes(cat)}
                                             className="mr-2"
@@ -195,7 +195,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                     <label key={eng} className={`block ${firaSans.className}`}>
                                         <input
                                             type="checkbox"
-                                            name="engine"
+                                            name="engine[]"
                                             value={eng}
                                             defaultChecked={selectedEngines.includes(eng)}
                                             className="mr-2"
@@ -220,7 +220,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                     <label key={idx} className={`block ${firaSans.className}`}>
                                         <input
                                             type="checkbox"
-                                            name="compatibility"
+                                            name="compatibility[]"
                                             value={comp}
                                             defaultChecked={selectedCompat.includes(comp)}
                                             className="mr-2"
@@ -262,7 +262,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                     return (
                                         <li key={product.id} className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                                             <Link
-                                                href={`/search-by-make/${make}/${model}/${product.category}/${encodeURIComponent(slug)}`}
+                                                href={`/search-by-make/${make}/${model}/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`}
                                                 className="flex flex-col h-full"
                                                 target="_blank"
                                                 rel="noopener noreferrer"

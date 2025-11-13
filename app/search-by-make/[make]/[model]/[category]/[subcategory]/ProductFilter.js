@@ -1,30 +1,29 @@
 "use client"
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
-import { Fira_Sans, Playfair_Display } from 'next/font/google';
-import { Menu, X } from 'lucide-react';
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { Fira_Sans, Playfair_Display } from "next/font/google";
+import { Menu, X } from "lucide-react";
 
 const playfair_display = Playfair_Display({
-    subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-playfair-display',
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-playfair-display",
 });
 
 const firaSans = Fira_Sans({
-    weight: ['400', '700'],
-    subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-fira-sans',
+    weight: ["400", "700"],
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-fira-sans",
 });
-
 
 export default function ProductFilter({ make, model, products, allProducts, searchParams }) {
     const router = useRouter();
     const [localQuery, setLocalQuery] = useState(searchParams.search || "");
-    const [suggestions, setSuggestions] = useState([])
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+    const [suggestions, setSuggestions] = useState([]);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [categoryQuery, setCategoryQuery] = useState("");
     const [engineQuery, setEngineQuery] = useState("");
     const [compatQuery, setCompatQuery] = useState("");
@@ -47,7 +46,6 @@ export default function ProductFilter({ make, model, products, allProducts, sear
         : searchParams["compatibility"]
             ? [searchParams["compatibility"]]
             : [];
-
     // Build options
     const categories = [...new Set(allProducts.map(item => item.category))];
     const engines = [...new Set(allProducts.flatMap(item => item.engine || []))];
@@ -57,23 +55,26 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                 item.compatibility.map(c =>
                     typeof c === "string"
                         ? c
-                        : `${c.make} ${c.model ?? " "} ${c.years ? `(${c.years})` : " "}`
+                        : `${c.make} ${c.model ?? ""}${c.years ? ` (${c.years})` : ""}`
                 )
             )
         ),
     ];
-
     const filteredCategories = categories.filter(cat =>
         cat.toLowerCase().includes(categoryQuery.toLowerCase())
     );
-
     const filteredEngines = engines.filter(eng =>
         eng.toLowerCase().includes(engineQuery.toLowerCase())
     );
-
     const filteredCompatibilities = compatibilities.filter(comp =>
         comp.toLowerCase().includes(compatQuery.toLowerCase())
     );
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            router.push(`?search=${encodeURIComponent(localQuery)}`);
+        }
+    };
 
     const handleSearchChange = (e) => {
         const value = e.target.value;
@@ -83,20 +84,15 @@ export default function ProductFilter({ make, model, products, allProducts, sear
         const q = value.toLowerCase();
         const matches = allProducts
             .filter(p =>
-                p.partname.toLowerCase().includes(q) ||
-                p.partnumber.toLowerCase().includes(q) ||
+                (p.partname?.toLowerCase().includes(q) || false) ||
+                (p.partnumber?.toLowerCase().includes(q) || false) ||
                 p.engine?.some(e => e.toLowerCase().includes(q)) ||
                 p.compatibility?.some(c =>
-                    `${c.make} ${c.model} ${c.years ?? ""}`.toLowerCase().includes(q))
-            ).slice(0, 6);
+                    `${c.make} ${c.model} ${c.years ?? ""}`.toLowerCase().includes(q)
+                )
+            )
+            .slice(0, 6);
         setSuggestions(matches);
-    };
-
-    const handleKeyDown = (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            updateURLAndFilter(localQuery);
-        }
     };
 
     const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
@@ -107,37 +103,31 @@ export default function ProductFilter({ make, model, products, allProducts, sear
             <section id="filter" className="sticky top-0 bg-white z-50 py-4 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex items-center relative w-full max-w-3xl mx-auto">
-
-                        {/* Mobile Menu Button (only shows on small screens) */}
                         <button
                             onClick={toggleDrawer}
-                            className="mr-2 px-2 py-2 bg-blue-900 text-white rounded-full 
-                   block md:hidden lg:hidden xl:hidden xxl:hidden"
+                            className="mr-2 px-2 py-2 bg-blue-900 text-white rounded-full block md:hidden"
                         >
                             {isDrawerOpen ? <X /> : <Menu />}
                         </button>
 
-                        {/* Search Input */}
                         <input
                             type="text"
-                            placeholder={`Search ${make} parts by partname, partnumber, engine, compatibility...`}
+                            placeholder={`Search ${make} ${model} parts by name, number, engine, compatibility...`}
                             value={localQuery}
                             onChange={handleSearchChange}
                             onKeyDown={handleKeyDown}
                             className="w-full px-4 py-2 border border-gray-300 rounded-full shadow-sm text-sm"
                         />
 
-                        {/* Suggestions Dropdown */}
                         {suggestions.length > 0 && (
                             <ul className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
                                 {suggestions.map((s) => (
                                     <li
                                         key={s.id}
                                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                                        onClick={() => updateURLAndFilter(s.partname)}
+                                        onClick={() => router.push(`?search=${encodeURIComponent(s.partname)}`)}
                                     >
-                                        {s.partname}{" "}
-                                        <span className="text-gray-500">({s.partnumber})</span>
+                                        {s.partname} <span className="text-gray-500">({s.partnumber})</span>
                                     </li>
                                 ))}
                             </ul>
@@ -146,10 +136,10 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                 </div>
             </section>
 
-
-            {/**Filter aside bar*/}
+            {/* Filter & Results */}
             <div className="max-w-7xl mx-auto px-4">
                 <div className="lg:grid lg:grid-cols-[20rem_1fr] xl:grid xl:grid-cols-[24rem_1fr] xxl:grid xxl:grid-cols-[28rem_1fr] md:grid md:grid-cols-[16rem_1fr] gap-6 xl:gap-4 xxl:gap-4 lg:gap-4">
+                    {/* Sidebar */}
                     <aside
                         className={`fixed top-0 left-0 h-full lg:w-80 xl:w-96 xxl:w-auto md:w-64 bg-white shadow-lg p-4 z-50
       transform ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 lg:sticky lg:translate-x-0 lg:shadow-none lg:block lg:h-auto
@@ -159,20 +149,19 @@ export default function ProductFilter({ make, model, products, allProducts, sear
        md:top-4 md:max-h-[calc(100vh-4rem)] md:overflow-y-auto md:z-auto`}
                     >
                         <div className="lg:hidden xl:hidden xxl:hidden md:hidden flex justify-end p-4">
-                            <button
-                                onClick={toggleDrawer}
-                                className="px-2 py-2 bg-blue-900 text-white rounded-full"
-                            >
+                            <button onClick={toggleDrawer} className="px-2 py-2 bg-blue-900 text-white rounded-full">
                                 {isDrawerOpen ? <X /> : <Menu />}
                             </button>
                         </div>
+
                         <form method="get">
                             <fieldset>
                                 <legend className={`font-bold my-3 text-xl ${playfair_display.className}`}>Category</legend>
                                 <input
-                                    type='text'
-                                    placeholder='Search Categories...'
+                                    type="text"
+                                    placeholder="Search Categories..."
                                     value={categoryQuery}
+                                    name="filter_car_parts[]"
                                     onChange={(e) => setCategoryQuery(e.target.value)}
                                     className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
                                 />
@@ -189,12 +178,14 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                     </label>
                                 ))}
                             </fieldset>
+                            <hr className="mt-5" />
 
-                            <hr className='mt-5' />
-                            <fieldset><h4 className={`font-bold my-3 text-xl ${playfair_display.className}`}>Engine</h4>
+                            <fieldset>
+                                <legend className={`font-bold my-3 text-xl ${playfair_display.className}`}>Engine</legend>
                                 <input
                                     type="text"
                                     placeholder="Search engines..."
+                                    name="engines"
                                     value={engineQuery}
                                     onChange={(e) => setEngineQuery(e.target.value)}
                                     className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
@@ -210,9 +201,11 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                         />
                                         {eng}
                                     </label>
-                                ))}</fieldset>
+                                ))}
+                            </fieldset>
 
-                            <hr className='mt-5' />
+
+                            <hr className="mt-5" />
                             <fieldset>
                                 <legend className={`font-bold my-3 text-xl ${playfair_display.className}`}>Compatibility</legend>
                                 <input
@@ -236,7 +229,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                 ))}
                             </fieldset>
 
-                            <hr className='mt-5' />
+                            <hr className="mt-5" />
 
                             <button
                                 type="submit"
@@ -249,40 +242,42 @@ export default function ProductFilter({ make, model, products, allProducts, sear
 
                     {/* Results Grid */}
                     <section className="lg:ml-0">
-                        <h2 className={`text-4xl md:text-3xl lg:text-3xl xs:text-2xl xxs:text-2xl font-bold mb-4 ${playfair_display.className}`}>All <span className='text-blue-600'>{make} {model}</span> items</h2>
-                        <p>{allProducts.length} Results</p>
+                        <h2 className={`text-4xl font-bold mb-4 ${playfair_display.className}`}>
+                            All <span className="text-blue-600">{make} {model}</span> items
+                        </h2>
+                        <p>{products.length} Results</p>
 
-                        <ul className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 xxs:grid-cols-1 s:grid-cols-1 gap-6">
+                        <ul className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                             {products.length > 0 ? (
                                 products.map(product => {
-                                    const compat = product.compatibility.find(
+                                    const compat = product.compatibility?.find(
                                         c =>
-                                            c.make.toLowerCase() === make.toLowerCase() &&
-                                            c.model.toLowerCase() === model.toLowerCase()
+                                            c.make?.toLowerCase() === make.toLowerCase() &&
+                                            c.model?.toLowerCase() === model.toLowerCase()
                                     );
 
-                                    const slug = `${product.partname}-${make}-${model}${compat?.years ? `-${compat.years}` : ""
-                                        }-${product.partnumber}-${product.id}`;
+                                    const slug = `${product.partname ?? "unknown"}-${make}-${model}${compat?.years ? `-${compat.years}` : ""}-${product.partnumber ?? "unknown"}-${product.id}`;
 
                                     return (
-                                        <li
-                                            key={product.id}
-                                            className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
-                                        >
+                                        <li key={product.id} className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                                             <Link
-                                                href={`/search-by-make/${make}/${model}/${product.category}/${encodeURIComponent(slug)}`}
-                                                className="flex flex-col h-full" target='_blank' rel='noopener noreferrer'
+                                                href={`/search-by-make/${make}/${model}/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`}
+                                                className="flex flex-col h-full"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                             >
                                                 <figure className="relative w-full aspect-square">
-                                                    <Image
-                                                        src={product.image}
-                                                        alt={product.partname}
-                                                        fill
-                                                        className="object-contain"
-                                                    />
+                                                    {product.image && (
+                                                        <Image
+                                                            src={product.image}
+                                                            alt={product.partname}
+                                                            fill
+                                                            className="object-contain"
+                                                        />
+                                                    )}
                                                 </figure>
                                                 <figcaption className="p-3">
-                                                    <h3 className={`line-clamp-3 ${firaSans.className}`}>{product.item_specifics['OEM or Aftermarket']}{' '}{product.partname} {compatibilities.slice(0, 2)}</h3>
+                                                    <h3 className={`line-clamp-2 ${firaSans.className}`}>{product.partname}</h3>
                                                     <p className="text-sm text-gray-600">Part #: {product.partnumber}</p>
                                                 </figcaption>
                                             </Link>

@@ -72,7 +72,7 @@ export default function ProductTabs({ product, slug }) {
                             {product.compatibility?.map((c, i) => (
 
                                 <li key={i}>
-                                    <Link href={`/search-by-make/${c.make}/${c.model}/${product.category}/${encodeURIComponent(slug)}`} target='_blank' className='text-blue-700 underline hover:text-blue-600'>
+                                    <Link href={`/search-by-make/${c.make}/${c.model}/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`} target='_blank' className='text-blue-700 underline hover:text-blue-600'>
                                         {c.make} {c.model} ({c.years})
                                     </Link>
                                 </li>

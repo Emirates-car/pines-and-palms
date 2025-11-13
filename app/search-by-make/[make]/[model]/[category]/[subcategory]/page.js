@@ -1,7 +1,7 @@
-import products from "../../../../../public/products.json";
-import ProductFilter from "./ProductFilter";
-import path from 'path';
+import React from 'react'
 import { promises as fs } from 'fs';
+import ProductFilter from './ProductFilter';
+import products from "../../../../../../public/products.json";
 
 async function getMakeImage(make, model) {
     try {
@@ -25,10 +25,11 @@ async function getMakeImage(make, model) {
 }
 
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params, searchParams }) {
     const make = decodeURIComponent(params.make);
     const model = decodeURIComponent(params.model);
     const category = decodeURIComponent(params.category || '');
+    const subcategory = decodeURIComponent(params.subcategory || '');
     const imageMake = getMakeImage(make, model);
 
     const productsForMake = products.filter(p =>
@@ -39,16 +40,16 @@ export async function generateMetadata({ params }) {
         "position": index + 1,
         "item": {
             "@type": "Product",
-            "@id": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}#product`,
+            "@id": `https://emirates-car.com/search-by-make/${make}/${product.category}/${product.subcategory}/${product.partname}-${product.partnumber}-${product.id}#product`,
             "name": `${product.partname} ${product.partnumber} ${make}`,
-            "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+            "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.subcategory}/${product.partname}-${product.partnumber}-${product.id}`,
             "image": `https://www.emirates-car.com${product.image}`,
             "description": `${product.partname} compatible with ${make} ${product.compatibility?.map(c => c.model).join(", ")}`,
             "brand": { "@type": "Brand", "name": product.compatibility[0]?.make || make },
             "mpn": product.partnumber,
             "offers": {
                 "@type": "Offer",
-                "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+                "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.subcategory}/${product.partname}-${product.partnumber}-${product.id}`,
                 "priceCurrency": product.pricing.currency,
                 "price": product.pricing.price,
                 "availability": "https://schema.org/InStock",
@@ -79,9 +80,9 @@ export async function generateMetadata({ params }) {
             },
             {
                 "@type": "CollectionPage",
-                "name": `${make} ${model} ${category} | EMIRATESCAR`,
+                "name": `${make} ${model} ${subcategory} | EMIRATESCAR`,
                 "url": `https://www.emirates-car.com/search-by-make/${make}`,
-                "description": `Buy ${category} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
+                "description": `Buy ${subcategory} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
                 "about": { "@type": "Brand", "name": make },
                 "mainEntity": {
                     "@type": "ItemList",
@@ -121,6 +122,12 @@ export async function generateMetadata({ params }) {
                         "position": 4,
                         "name": `${make} ${model} ${category}`,
                         "item": `https://www.emirates-car.com/search-by-make/${make}/${model}/${category}`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "name": `${make} ${model} ${subcategory}`,
+                        "item": `https://www.emirates-car.com/search-by-make/${make}/${model}/${category}/${subcategory}`
                     }
                 ]
             },
@@ -128,13 +135,13 @@ export async function generateMetadata({ params }) {
     };
 
     return {
-        title: `${make} ${model} ${category} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
-        description: `Buy ${category} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
+        title: `${make} ${model} ${subcategory} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
+        description: `Buy ${subcategory} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
 
         openGraph: {
             images: 'https://www.emirates-car.com/favicon.png',
-            title: `${make} ${model} ${category} Used & Genuine at Best Prices | EMIRATESCAR`,
-            description: `Buy ${category} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now! `,
+            title: `${make} ${model} ${subcategory} Used & Genuine at Best Prices | EMIRATESCAR`,
+            description: `Buy ${subcategory} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now! `,
             url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model + '/' + category,
             image: `https://www.emirates-car.com/img/car-logos/${imageMake}`,
             siteName: 'EMIRATESCAR',
@@ -157,9 +164,9 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${make} ${model} ${category} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
+            title: `${make} ${model} ${subcategory} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
             url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model + '/' + category,
-            description: `Buy ${category} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
+            description: `Buy ${subcategory} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
             images: ['https://www.emirates-car.com/favicon.png'],
         },
         icons: {
@@ -172,7 +179,7 @@ export async function generateMetadata({ params }) {
             },
         },
         alternates: {
-            canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${encodeURIComponent(category)}`,
+            canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${encodeURIComponent(category)}/${encodeURIComponent(subcategory)}`,
         },
         robots: {
             index: true,
@@ -186,21 +193,24 @@ export async function generateMetadata({ params }) {
                 'max-snippet': -1,
             },
         },
-        category: `${make} ${decodeURIComponent(model)} ${category}`,
+        category: `${make} ${decodeURIComponent(model)} ${category} ${subcategory}`,
         other: {
             "script:ld+json": JSON.stringify(faqSchema),
         },
     };
 }
 
-export default function CategoryPage({ params, searchParams }) {
-    // Decode parameters to handle %20 and other URL encodings
+
+
+export default function Subcategory({ params, searchParams }) {
     const make = decodeURIComponent(params.make);
     const model = decodeURIComponent(params.model);
     const category = decodeURIComponent(params.category || '');
+    const subcategory = decodeURIComponent(params.subcategory || '');
 
     const {
         "filter_car_parts[]": categories = [],
+        "subcategory": subcategories = [],
         "engine[]": engines = [],
         "compatibility[]": compats = [],
         search = "",
@@ -209,10 +219,12 @@ export default function CategoryPage({ params, searchParams }) {
     // Helper function to normalize strings
     const normalize = (str) => str?.toLowerCase().replace(/\s+/g, " ").trim();
 
-    // Normalize arrays
     const selectedCategories = Array.isArray(categories)
         ? categories
         : [categories].filter(Boolean);
+    const selectedSubcategories = Array.isArray(subcategories)
+        ? subcategories
+        : [subcategories].filter(Boolean);
     const selectedEngines = Array.isArray(engines)
         ? engines
         : [engines].filter(Boolean);
@@ -220,17 +232,16 @@ export default function CategoryPage({ params, searchParams }) {
         ? compats
         : [compats].filter(Boolean);
     const query = search?.toLowerCase() || "";
-
-    // STEP 1: Base filtering by make, model, and category
-    const makeModelCategoryFiltered = products.filter(
+    const makeModelCategorySubcategoryFiltered = products.filter(
         (product) =>
             product.compatibility.some(
                 (c) => normalize(c.make) === normalize(make) && normalize(c.model) === normalize(model)
-            ) && normalize(product.category) === normalize(category)
+            ) && normalize(product.category) === normalize(category) && normalize(product.subcategory) === normalize(subcategory)
     );
-
     // STEP 2: Additional filter by user selection
-    const filtered = makeModelCategoryFiltered.filter((product) => {
+    const filtered = makeModelCategorySubcategoryFiltered.filter((product) => {
+        const matchesSubcategory = selectedSubcategories.length === 0 || selectedSubcategories.includes(product.subcategory)
+
         const matchesCategory =
             selectedCategories.length === 0 || selectedCategories.includes(product.category);
 
@@ -250,24 +261,23 @@ export default function CategoryPage({ params, searchParams }) {
                 selectedCompats.includes(`${c.make} ${c.model} ${c.years ? `(${c.years})` : ""}`.trim())
             );
 
-        return matchesCategory && matchesSearch && matchesEngine && matchesCompatibility;
+        return matchesSubcategory && matchesCategory && matchesSearch && matchesEngine && matchesCompatibility;
     });
-
     // STEP 3: Fallback for other products from the same make
     const otherProducts = products.filter((p) =>
         p.compatibility.some((c) => normalize(c.make) === normalize(make))
     );
 
     // Handle no results
-    if (makeModelCategoryFiltered.length === 0) {
+    if (makeModelCategorySubcategoryFiltered.length === 0) {
         return (
             <div className="p-6 text-center text-gray-700">
-                No products found for {make} {model} in {category.replace(/-/g, " ")}.
+                No products found for {make} {model} in {subcategory.replace(/-/g, " ")} {category.replace(/-/g, " ")}.
             </div>
         );
     }
-
     const displayCategory = category.replace(/-/g, " ");
+
 
     return (
         <div className="p-6 max-w-6xl mx-auto">
@@ -276,26 +286,21 @@ export default function CategoryPage({ params, searchParams }) {
                     {make} {model} – {displayCategory}
                 </h1>
             </header>
-
-
             <main>
                 {/* Filter section */}
-                {makeModelCategoryFiltered.length > 0 && (
+                {makeModelCategorySubcategoryFiltered.length > 0 && (
                     <section aria-labelledby="filters-heading">
                         <h2 id="filters-heading" className="sr-only">Filter {make} {model} Parts</h2>
                         <ProductFilter
                             make={make}
                             model={model}
                             products={filtered}
-                            allProducts={makeModelCategoryFiltered}
+                            allProducts={makeModelCategorySubcategoryFiltered}
                             searchParams={searchParams}
                         />
                     </section>
                 )}
             </main>
-
-
-
         </div>
-    );
+    )
 }

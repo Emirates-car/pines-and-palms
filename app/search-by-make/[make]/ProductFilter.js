@@ -192,7 +192,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                 <label key={cat} className="block text-sm">
                                     <input
                                         type="checkbox"
-                                        name="categories"
+                                        name="filter_car_parts[]"
                                         value={cat}
                                         defaultChecked={selectedCategories.includes(cat)}
                                         className="mr-2"
@@ -213,7 +213,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                 <label key={eng} className="block text-sm">
                                     <input
                                         type="checkbox"
-                                        name="engine"
+                                        name="engine[]"
                                         value={eng}
                                         defaultChecked={selectedEngines.includes(eng)}
                                         className="mr-2"
@@ -234,7 +234,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                 <label key={idx} className="block text-sm">
                                     <input
                                         type="checkbox"
-                                        name="compatibility"
+                                        name="compatibility[]"
                                         value={comp}
                                         defaultChecked={selectedCompat.includes(comp)}
                                         className="mr-2"

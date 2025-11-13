@@ -29,7 +29,6 @@ export async function generateMetadata({ params }) {
     const model = decodeURIComponent(params.model);
     const category = decodeURIComponent(params.category || '');
     const imageMake = getMakeImage(make, model);
-    const subcategory = products.filter((p) => p.subcategory)
 
     const productsForMake = products.filter(p =>
         p.compatibility?.some(c => c.make.toLowerCase() === make.toLowerCase())
@@ -128,13 +127,13 @@ export async function generateMetadata({ params }) {
     };
 
     return {
-        title: `${make} ${model} ${subcategory} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
-        description: `Buy ${subcategory} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
+        title: `${make} ${model} ${category} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
+        description: `Buy ${category} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
 
         openGraph: {
             images: 'https://www.emirates-car.com/favicon.png',
-            title: `${make} ${model} ${subcategory} Used & Genuine at Best Prices | EMIRATESCAR`,
-            description: `Buy ${subcategory} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now! `,
+            title: `${make} ${model} ${category} Used & Genuine at Best Prices | EMIRATESCAR`,
+            description: `Buy ${category} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now! `,
             url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model + '/' + category,
             image: `https://www.emirates-car.com/img/car-logos/${imageMake}`,
             siteName: 'EMIRATESCAR',
@@ -157,9 +156,9 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${make} ${model} ${subcategory} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
+            title: `${make} ${model} ${category} Used & Genuine Parts at Best Prices | EMIRATESCAR`,
             url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model + '/' + category,
-            description: `Buy ${subcategory} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
+            description: `Buy ${category} for ${make} ${decodeURIComponent(model)} New, Used, and Aftermarket in UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
             images: ['https://www.emirates-car.com/favicon.png'],
         },
         icons: {
@@ -186,7 +185,7 @@ export async function generateMetadata({ params }) {
                 'max-snippet': -1,
             },
         },
-        category: `${make} ${decodeURIComponent(model)} ${subcategory}`,
+        category: `${make} ${decodeURIComponent(model)} ${category}`,
         other: {
             "script:ld+json": JSON.stringify(faqSchema),
         },
@@ -257,7 +256,6 @@ export default function CategoryPage({ params, searchParams }) {
     const otherProducts = products.filter((p) =>
         p.compatibility.some((c) => normalize(c.make) === normalize(make))
     );
-    const subcategory = products.filter((p) => p.subcategory)
 
     // Handle no results
     if (makeModelCategoryFiltered.length === 0) {
@@ -274,7 +272,7 @@ export default function CategoryPage({ params, searchParams }) {
         <div className="p-6 max-w-6xl mx-auto">
             <header>
                 <h1 className="text-2xl font-bold mb-6 capitalize">
-                    {make} {model} – {subcategory}
+                    {make} {model} – {displayCategory}
                 </h1>
             </header>
 

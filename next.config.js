@@ -7739,6 +7739,16 @@ module.exports = withPWA({
         source: "/search-by-make/Renault/Duster/Wiring%20&%20Harness/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
         destination: "/search-by-make/Renault/Duster/Wiring%20&%20Harness/Fuse%20Box/Fuse%20Box%20set-Renault-Duster-2010-2015-243800196R-8",
         permanent: true
+      },
+      {
+        source: "/search-by-make/Volkswagen/Touareg/Suspension%20%26%20Steering%20Parts/Front%20Lower%20Arm%20Ball%20Joint-Volkswagen-Touareg-2019-2022-4M0407689C-22",
+        destination: "/search-by-make/Volkswagen/Touareg/Suspension%20%26%20Steering%20Parts/Suspension/Front%20Lower%20Arm%20Ball%20Joint-Volkswagen-Touareg-2019-2022-4M0407689C-22",
+        permanent: true
+      },
+      {
+        source: "/search-by-make/Audi/TT%20Quattro/Cooling%20System/Engine%20Water%20Pump%20with%20Gasket%20and%20Temp%20sensor-Audi-TT%20Quattro-2009-2015-06H121026DR-23",
+        destination: "/search-by-make/Audi/TT%20Quattro/Cooling%20System/Water%20Pump/Engine%20Water%20Pump%20with%20Gasket%20and%20Temp%20sensor-Audi-TT%20Quattro-2009-2015-06H121026DR-23",
+        permanent: true
       }
     ];
   },

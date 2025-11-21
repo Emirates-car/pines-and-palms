@@ -61,7 +61,6 @@ export async function generateStaticParams({ params }) {
     const cars = JSON.parse(carData);
     const filtered = cars.filter(car => !excludedMakes.includes(car.make));
 
-
     const cityPath = path.join(process.cwd(), 'public/lib/basecity.json');
     const cityData = await fs.readFile(cityPath, 'utf8');
     const locations = JSON.parse(cityData);

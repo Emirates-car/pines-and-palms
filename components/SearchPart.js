@@ -75,7 +75,7 @@ export default function SearchPartsComponent({ partsposts }) {
                 >
                   <Link
                     href={
-                      'https://emirates-car.com/search-by-part-name/' +
+                      'https://www.emirates-car.com/search-by-part-name/' +
                       suggestion
                     }
                     target="_newtab"

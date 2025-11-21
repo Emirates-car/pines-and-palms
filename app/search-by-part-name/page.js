@@ -33,7 +33,7 @@ export default async function PartPage() {
               </nobr>
               index{'>>>'}
             </p>
-            <article>
+            <section>
               <SearchPartsComponent partsposts={partsposts} />
               <div className="grid grid-cols-4 xs:ml-4 md:mx-4 sm:ml-0 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 2xs:grid 2xs:grid-cols-3 gap-1 2xs:mx-4 md:ml-11 m-1 my-10">
                 {partsposts.map((post, i) => (
@@ -43,16 +43,16 @@ export default async function PartPage() {
                       as={'/search-by-part-name/' + post.parts}
                       title={post.parts + ' in uae'}
                     >
-                      <main className="border border-blue-800 h-full p-3 ">
+                      <span className="border border-blue-800 h-full p-3">
                         <p className="text-center text-lg xs:text-2xl xs:text-center font-mono text-blue-500 underline hover:text-blue-700 focus:text-blue-700 ">
                           {post.parts}
                         </p>
-                      </main>
+                      </span>
                     </Link>
                   </div>
                 ))}
               </div>
-            </article>
+            </section>
 
             <div className="place-content-center grid grid-cols-1 gap-3 xs:grid-cols-1 xs:grid s:grid s:grid-cols-1 py-5 xl:mx-10 lg:mx-10 md:mx-10 sm:mx-5 xs:mx-2 xs:py-0 2xs:mx-2 s:mx-2  md:ml-11 my-5 mx-10">
               <Social />

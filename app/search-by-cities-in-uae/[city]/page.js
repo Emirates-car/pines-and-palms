@@ -256,8 +256,8 @@ export default async function City({ params }) {
           {partsposts.map((post, i) => (
             <div key={i}>
               <Link
-                href="/search-by-part-name/[parts]"
-                as={'/search-by-part-name/' + post.parts}
+                href="/search-by-cities-in-uae/[cities]"
+                as={'/search-by-cities-in-uae/' + cityData.city}
                 title={post.parts + ' in ' + cityData.city}
               >
                 <div className="border-blue-800 h-full hover:border-blue-900 bg-white rounded-sm">

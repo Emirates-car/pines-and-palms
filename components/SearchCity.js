@@ -56,7 +56,7 @@ export default function SearchCity({ cities }) {
             {recommendcities.map((city, i) => (
               <li key={i} className="cursor-pointer text-base bg-white">
                 <Link
-                  href={`https://emirates-car.com/search-by-part-name/${city}`}
+                  href={`/search-by-cities-in-uae/${city}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   title={`Spare parts online in ${city}`}

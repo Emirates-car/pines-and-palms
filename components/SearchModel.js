@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 
-export default function SearchModel({ car, make }) {
+export default function SearchModel({ car, make, subcategory }) {
   const [searchModel, setSearchModel] = useState('');
   const [recommend, setRecommend] = useState('');
   const [formModelChange, setFormModelChange] = useState('');
@@ -98,7 +98,7 @@ export default function SearchModel({ car, make }) {
           className="w-full px-4 py-2 border border-gray-300 rounded-full shadow-sm text-sm"
           id="partname"
           type="search"
-          placeholder={`Search Your ${make} Model`}
+          placeholder={`Search Your ${subcategory ? subcategory + " for" : ""} ${make} Model`}
           onChange={e => onModelFormChange(e.target.value)}
           value={searchModel}
           autoComplete="off"
@@ -121,6 +121,7 @@ export default function SearchModel({ car, make }) {
                       : `/search-by-make/${make}/${encodeURIComponent(item)}`
                   }
                   title={`${item} model`}
+                  target='_blank'
                   className="block"
                 >
                   {item}

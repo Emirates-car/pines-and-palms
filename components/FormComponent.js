@@ -472,7 +472,7 @@ export default function FormComponent({ formsData, postFilter }) {
           </button>
         </div>
 
-        <footer className="flex justify-between text-xs pt-3">
+        <div className="flex justify-between text-xs pt-3">
           <div>
             <Link
               href="https://emirates-car.com/privacy-policy"
@@ -492,7 +492,7 @@ export default function FormComponent({ formsData, postFilter }) {
             </Link>
           </div>
           <div>100% secure and trusted</div>
-        </footer>
+        </div>
       </form>
     </div>
 

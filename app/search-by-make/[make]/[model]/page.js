@@ -425,6 +425,11 @@ export default async function Model({ params, searchParams }) {
   const allData = JSON.parse(jsonData);
 
   const data = allData.filter(item => item.make === make && item.model === model);
+  const grouped = partspost.reduce((acc, item) => {
+    if (!acc[item.category]) acc[item.category] = [];
+    acc[item.category].push(item.parts);
+    return acc;
+  }, {});
 
   if (!data || data.length === 0) {
     notFound();
@@ -1410,10 +1415,11 @@ export default async function Model({ params, searchParams }) {
           {partspost.map((post, i) => (
             <li key={i}>
               <Link
-                href="/search-by-part-name/[parts]"
-                as={'/search-by-part-name/' + encodeURIComponent(post.parts)}
+                href={`/search-by-make/${make}/${model}/[category]/[parts]`}
+                as={'/search-by-make/' + make + "/" + model + "/" + encodeURIComponent(post.category) + "/" + encodeURIComponent(post.parts)}
+                target='_blank'
                 title={`${make} ${decodeURIComponent(model)} ${post.parts}`}
-                className={`text-gray-700 hover:text-blue-700 focus:text-blue-700 text-xl xs:text-lg xl:text-2xl xxl:text-2xl font-sans flex items-center ${firaSans.className}`}
+                className={`text-blue-700 underline hover:text-blue-900 focus:text-blue-800 text-xl xs:text-lg xl:text-2xl xxl:text-2xl font-sans flex items-center ${firaSans.className}`}
               >
                 {make} {decodeURIComponent(model)} {post.parts} price list
               </Link>
@@ -1421,6 +1427,12 @@ export default async function Model({ params, searchParams }) {
           ))}
         </ul>
       </section>
+      {Object.entries(grouped).map(([category, parts], i) => (
+        <div key={i}>
+          <span className='font-bold'>{category}</span> - {parts.join(", ")}
+        </div>
+      ))}
+
 
     </div >
   );

@@ -13,6 +13,7 @@ import { getCity, getFormModel, getMake, getParts } from "../../../../../page";
 import FormComponent from "../../../../../../components/FormComponent";
 import SearchCity from "../../../../../../components/SearchCity";
 import FormComponentMakeModelCatSubcat from "../../../../../../components/FormComponentMakeModelCatSubcat";
+import { notFound } from "next/navigation";
 
 const playfair_display = Playfair_Display({
     subsets: ["latin"],
@@ -283,68 +284,73 @@ export default async function SubcategoryPage({ params, searchParams }) {
         );
     });
 
+
     const genericMatch = genericParts.find(
         (gp) =>
             normalize(gp.parts) === normalize(subcategory) &&
             normalize(gp.category) === normalize(category)
     );
+    if (!productMatches.length && !genericMatch) {
+        notFound();
+    }
 
     const finalData = productMatches.length > 0 ? productMatches : genericMatch ? [genericMatch] : [];
 
     if (finalData.length === 0) {
-        return (
-            <div className="p-6 text-center text-gray-700">
-                No parts found for {make} {model} in {subcategory}.
-            </div>
-        );
+        notFound()
     }
 
     return (
         <div className="p-6 max-w-6xl mx-auto">
-            <div className="py-5 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
-                <div className="bg-backgroundlight rounded-sm">
-                    <div className="grid grid-cols-2 xs:grid xs:grid-cols-1 s:grid s:grid-cols-1 xs:text-center sm:grid sm:grid-cols-2 xxs:grid xxs:grid-cols-1 xs:pt-5 s:pt-5">
-                        <div>
-                            <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 xxs:mt-8 xs:px-5 sm:ml-6 lg:ml-1 xl:ml-20 sm:mx-auto mt-10 sm:mt-12 md:mt-10 lg:mt-20 lg:px-8 xl:mt-28 xs:mt-2 xs:text-left s:mt-2">
-                                <div className="lg:text-left">
+            {productMatches.length > 0 && (
+                <div className="py-5 sm:px-7 s:py-6 lg:mx-6 md:mx-6 xs:mx-2 xxs:mx-2 max-w-7xl mx-auto">
+                    <div className="bg-backgroundlight rounded-sm">
+                        <div className="grid grid-cols-2 xs:grid xs:grid-cols-1 s:grid s:grid-cols-1 xs:text-center sm:grid sm:grid-cols-2 xxs:grid xxs:grid-cols-1 xs:pt-5 s:pt-5">
+                            <div>
+                                <div className="ml-8 md:ml-8 xs:ml-1 xxs:ml-4 xxs:mt-8 xs:px-5 sm:ml-6 lg:ml-1 xl:ml-20 sm:mx-auto mt-10 sm:mt-12 md:mt-10 lg:mt-20 lg:px-8 xl:mt-28 xs:mt-2 xs:text-left s:mt-2">
+                                    <div className="lg:text-left">
 
-                                    <header>
-                                        <h1 className={`mt-3 text-5xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold ${playfair_display.className}`}>
-                                            {make} {model} <span className="text-blue-500">{subcategory.replace(/-/g, " ")}</span> - Genuine & Aftermarket in UAE
-                                        </h1>
-                                    </header>
+                                        <header>
+                                            <h1 className={`mt-3 text-5xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-extrabold ${playfair_display.className}`}>
+                                                {make} {model} <span className="text-blue-500">{subcategory.replace(/-/g, " ")}</span> - Genuine & Aftermarket in UAE
+                                            </h1>
+                                        </header>
 
-                                    <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
-                                        <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
-                                            <a
-                                                href="/#myForm"
-                                                title={`${make} ${model} ${subcategory}`}
-                                                className="flex items-center justify-center py-2 xs:py-2 xxs:py-1 sm:py-0 text-xl sm:text-base xl:text-xl border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md md:text-lg md:px-5 xs:text-sm xxs:text-sm xxs:my-2 lg:my-2 s:text-sm s:my-2 focus:filter brightness-125"
-                                            >
-                                                Inquire Now
-                                            </a>
+                                        <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
+                                            <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
+                                                <a
+                                                    href="/#myForm"
+                                                    title={`${make} ${model} ${subcategory}`}
+                                                    className="flex items-center justify-center py-2 xs:py-2 xxs:py-1 sm:py-0 text-xl sm:text-base xl:text-xl border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md md:text-lg md:px-5 xs:text-sm xxs:text-sm xxs:my-2 lg:my-2 s:text-sm s:my-2 focus:filter brightness-125"
+                                                >
+                                                    Inquire Now
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="xxs:hidden xs:hidden p-35 md:p-20 lg:p-20">
-                            <Image
-                                alt="emirates car"
-                                className="rounded-sm"
-                                src={partImage || CarParts}
-                                width={400}
-                                height={400}
-                            />
+                            <div className="xxs:hidden xs:hidden p-35 md:p-20 lg:p-20">
+                                <Image
+                                    alt="emirates car"
+                                    className="rounded-sm"
+                                    src={partImage || CarParts}
+                                    width={400}
+                                    height={400}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
+            {productMatches.length > 0 && (
+                <section className='#myForm'>
+                    <FormComponentMakeModelCatSubcat formsData={modelsform} postFilter={partspost} mke={make} model={model} subcategory={subcategory} />
+                </section>
+            )}
 
 
-            <section className='#myForm'>
-                <FormComponentMakeModelCatSubcat formsData={modelsform} postFilter={partspost} mke={make} model={model} subcategory={subcategory} />
-            </section>
+
 
             {/* Filters + Products */}
             {productMatches.length > 0 && (
@@ -356,145 +362,151 @@ export default async function SubcategoryPage({ params, searchParams }) {
                     searchParams={searchParams}
                 />
             )}
-            <section className="mt-10 shadow-sm mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
-                <div className="container py-6">
+            {productMatches.length > 0 && (
+                <section className="mt-10 shadow-sm mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
+                    <div className="container py-6">
 
+                        <h2 className={`font-bold text-center text-3xl xs:text-2xl my-3 ${playfair_display.className}`}>
+                            Similar {category} Parts Categories for {make} {model}
+                        </h2>
+
+                        <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
+                            {relatedCategories.map((item, i) => (
+                                <li key={i} className="h-full">
+                                    <Link
+                                        href={`/search-by-make/${make}/${encodeURIComponent(model)}/${encodeURIComponent(item.category)}/page`}
+                                        title={`${make} ${model} ${item.category}`}
+                                        className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
+                                    >
+                                        <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline">
+                                            {make} {model} <span className="text-blue-500">{item.parts}</span>
+                                        </span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+
+                    </div>
+                </section>
+            )}
+            {productMatches.length > 0 && (
+                <section className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
+                    <div className="container py-6">
+                        <h2 className={`font-bold text-center text-3xl xs:text-2xl my-3 ${playfair_display.className}`}>
+                            Search <span className='text-blue-600'>{subcategory}</span> for All {make} Models
+                        </h2>
+                        <SearchModel make={make} subcategory={subcategory} car={carmodel} />
+
+                        <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
+                            {carmodel.map((post, i) => {
+                                return (
+                                    <li key={i} className="h-full">
+                                        <Link
+                                            href='/search-by-make/[make]/[model]'
+                                            as={`/search-by-make/${post.make}/${encodeURIComponent(post.model)}/${category}/${subcategory}`}
+                                            title={`${post.make} ${post.model} ${subcategory}`}
+                                            target="_blank"
+                                            className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
+                                        >
+                                            <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline ">
+                                                {make} {post.model.replace('%2F', '/')} <span className="text-blue-600">{subcategory}</span>
+                                            </span>
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                </section>
+            )}
+            {productMatches.length > 0 && (
+                <section>
                     <h2 className={`font-bold text-center text-3xl xs:text-2xl my-3 ${playfair_display.className}`}>
-                        Similar {category} Parts Categories for {make} {model}
+                        Search All spare parts for <span className='text-blue-600'>{make} {model}</span>
                     </h2>
+                    <SearchMakeModelParts partsposts={partsposts} make={make} model={model} category={category} />
+
 
                     <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
-                        {relatedCategories.map((item, i) => (
-                            <li key={i} className="h-full">
-                                <Link
-                                    href={`/search-by-make/${make}/${encodeURIComponent(model)}/${encodeURIComponent(item.category)}/page`}
-                                    title={`${make} ${model} ${item.category}`}
-                                    className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
-                                >
-                                    <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline">
-                                        {make} {model} <span className="text-blue-500">{item.parts}</span>
-                                    </span>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-
-                </div>
-            </section>
-
-
-            <section className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
-                <div className="container py-6">
-                    <h2 className={`font-bold text-center text-3xl xs:text-2xl my-3 ${playfair_display.className}`}>
-                        Search <span className='text-blue-600'>{subcategory}</span> for All {make} Models
-                    </h2>
-                    <SearchModel make={make} subcategory={subcategory} car={carmodel} />
-
-                    <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
-                        {carmodel.map((post, i) => {
+                        {partsposts.map((post, i) => {
                             return (
                                 <li key={i} className="h-full">
                                     <Link
-                                        href='/search-by-make/[make]/[model]'
-                                        as={`/search-by-make/${post.make}/${encodeURIComponent(post.model)}/${category}/${subcategory}`}
-                                        title={`${post.make} ${post.model} ${subcategory}`}
-                                        target="_blank"
+                                        href='/search-by-make/[make]/[model]/[category]/[subcategory]'
+                                        as={'/search-by-make/' + make + "/" + model + "/" + post.category + "/" + post.parts}
+                                        title={make + " " + model + " " + post.parts}
                                         className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
                                     >
                                         <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline ">
-                                            {make} {post.model.replace('%2F', '/')} <span className="text-blue-600">{subcategory}</span>
+                                            {make} {model} <span className="text-blue-500">{post.parts}</span>
                                         </span>
                                     </Link>
                                 </li>
                             );
                         })}
                     </ul>
-                </div>
-            </section>
+                </section>
+            )}
 
+            {productMatches.length > 0 && (
+                <section
+                    aria-labelledby={`all-${make}-${model}-${subcategory}-brands`}
+                    className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-5 md:px-20 lg:px-10"
+                >
+                    <h2
+                        id={`all-${make}-brands`}
+                        className={`text-4xl text-center md:text-3xl lg:text-3xl xs:text-2xl xxs:text-2xl font-semibold py-5 ${playfair_display.className}`}
+                    >
+                        Search <span className="text-blue-500">{subcategory}</span> for Any Models - Used, Genuine & Aftermarket
+                    </h2>
 
-            <section>
-                <h2 className={`font-bold text-center text-3xl xs:text-2xl my-3 ${playfair_display.className}`}>
-                    Search All spare parts for <span className='text-blue-600'>{make} {model}</span>
-                </h2>
-                <SearchMakeModelParts partsposts={partsposts} make={make} model={model} category={category} />
-
-
-                <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
-                    {partsposts.map((post, i) => {
-                        return (
-                            <li key={i} className="h-full">
+                    <ul className="grid grid-cols-4 md:grid-cols-3 xs:grid-cols-1 xxs:grid-cols-1 sm:grid-cols-2 xs:gap-1 xxs:gap-1 sm:gap-1 gap-4 my-10">
+                        {makeArray.map((p, i) => (
+                            <li key={i} className="list-none">
                                 <Link
-                                    href='/search-by-make/[make]/[model]/[category]/[subcategory]'
-                                    as={'/search-by-make/' + make + "/" + model + "/" + post.category + "/" + post.parts}
-                                    title={make + " " + model + " " + post.parts}
-                                    className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
+                                    href="/search-by-make/[make]/parts/[subcategory]"
+                                    as={`/search-by-make/${p.make}/parts/${subcategory}`}
+                                    title={`${p.make} ${subcategory}`}
+                                    target="_blank"
+                                    className="flex flex-col items-center justify-center border hover:border-blue-600 p-3 rounded-sm bg-white"
                                 >
-                                    <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline ">
-                                        {make} {model} <span className="text-blue-500">{post.parts}</span>
+                                    <Image
+                                        alt={`${p.make}`}
+                                        src={`/img/car-logos/${p.img}`}
+                                        height={90}
+                                        width={90}
+                                        className="object-contain"
+                                        priority
+                                    />
+                                    <span className={`mt-2 px-3 py-1 text-sm md:text-xs xl:text-2xl xxl:text-lg font-medium font-sans text-white bg-blue-600 rounded-sm hover:bg-blue-700 text-center w-max ${firaSans.className}`}>
+                                        {p.make} {subcategory}
                                     </span>
                                 </Link>
                             </li>
-                        );
-                    })}
-                </ul>
-            </section>
-            <section
-                aria-labelledby={`all-${make}-${model}-${subcategory}-brands`}
-                className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-5 md:px-20 lg:px-10"
-            >
-                <h2
-                    id={`all-${make}-brands`}
-                    className={`text-4xl text-center md:text-3xl lg:text-3xl xs:text-2xl xxs:text-2xl font-semibold py-5 ${playfair_display.className}`}
-                >
-                    Search <span className="text-blue-500">{subcategory}</span> for Any Models - Used, Genuine & Aftermarket
-                </h2>
-
-                <ul className="grid grid-cols-4 md:grid-cols-3 xs:grid-cols-1 xxs:grid-cols-1 sm:grid-cols-2 xs:gap-1 xxs:gap-1 sm:gap-1 gap-4 my-10">
-                    {makeArray.map((p, i) => (
-                        <li key={i} className="list-none">
-                            <Link
-                                href="/search-by-make/[make]/parts/[subcategory]"
-                                as={`/search-by-make/${p.make}/parts/${subcategory}`}
-                                title={`${p.make} ${subcategory}`}
-                                target="_blank"
-                                className="flex flex-col items-center justify-center border hover:border-blue-600 p-3 rounded-sm bg-white"
-                            >
-                                <Image
-                                    alt={`${p.make}`}
-                                    src={`/img/car-logos/${p.img}`}
-                                    height={90}
-                                    width={90}
-                                    className="object-contain"
-                                    priority
-                                />
-                                <span className={`mt-2 px-3 py-1 text-sm md:text-xs xl:text-2xl xxl:text-lg font-medium font-sans text-white bg-blue-600 rounded-sm hover:bg-blue-700 text-center w-max ${firaSans.className}`}>
-                                    {p.make} {subcategory}
-                                </span>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-            <section>
-                <h2 className={`font-bold text-3xl text-center xs:text-2xl my-3 ${playfair_display.className}`}>
-                    Search <span className='text-blue-600'>{make} {model} {subcategory}</span> Anywhere in UAE
-                </h2>
-                <SearchCity cities={cities} />
-                <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-2 xxs:grid-cols-2 gap-4 xs:gap-2 xxs:gap-2 mt-10">
-                    {subCity.map((city) => (
-                        <li key={city.id} className="border rounded-md overflow-hidden bg-white shadow hover:shadow-lg transition-shadow h-full flex flex-col">
-                            <Link href={`/search-by-brands-in-uae/${make}/${city.city}`} target="_blank"
-                                title={`${make} ${model} ${subcategory} dubai`}>
-                                <div className="p-3 flex-1 flex flex-col">
-                                    <h3 className="text-lg font-semibold mb-2 underline text-center">{make} {model} {subcategory} <span className="text-blue-500">{city.city}</span></h3>
-                                </div>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
+                        ))}
+                    </ul>
+                </section>
+            )}
+            {productMatches.length > 0 && (
+                <section>
+                    <h2 className={`font-bold text-3xl text-center xs:text-2xl my-3 ${playfair_display.className}`}>
+                        Search <span className='text-blue-600'>{make} {model} {subcategory}</span> Anywhere in UAE
+                    </h2>
+                    <SearchCity cities={cities} />
+                    <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-2 xxs:grid-cols-2 gap-4 xs:gap-2 xxs:gap-2 mt-10">
+                        {subCity.map((city) => (
+                            <li key={city.id} className="border rounded-md overflow-hidden bg-white shadow hover:shadow-lg transition-shadow h-full flex flex-col">
+                                <Link href={`/search-by-brands-in-uae/${make}/${city.city}`} target="_blank"
+                                    title={`${make} ${model} ${subcategory} dubai`}>
+                                    <div className="p-3 flex-1 flex flex-col">
+                                        <h3 className="text-lg font-semibold mb-2 underline text-center">{make} {model} {subcategory} <span className="text-blue-500">{city.city}</span></h3>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
 
         </div>
     );

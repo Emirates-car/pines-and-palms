@@ -1427,13 +1427,6 @@ export default async function Model({ params, searchParams }) {
           ))}
         </ul>
       </section>
-      {Object.entries(grouped).map(([category, parts], i) => (
-        <div key={i}>
-          <span className='font-bold'>{category}</span> - {parts.join(", ")}
-        </div>
-      ))}
-
-
     </div >
   );
 }

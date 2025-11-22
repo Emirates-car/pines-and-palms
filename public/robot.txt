@@ -3,7 +3,7 @@ Allow: /
 Disallow: /private/
 Disallow: /ar
 Disallow: /blocked-secret
-Disallow: /search-by-make/
+Disallow: /search-by-make/*/*/*/*/
 Disallow: /catalogs
 
 Sitemap: https://www.emirates-car.com/allsitemaps/allbrandsitemap.xml

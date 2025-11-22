@@ -261,11 +261,6 @@ export default async function SubcategoryPage({ params, searchParams }) {
         'W Motor', 'JAC', 'Jaecoo', 'Jetour', 'TANK', 'Soueast', 'Zarooq Motors', 'Changan', 'Maxus', 'Haval', 'Zotye', 'Sandstorm',
         'Chery', 'Geely', 'BAIC', 'Bestune'
     ];
-
-
-
-
-
     // Load generic parts list
     const genericParts = await loadJSON("public/lib/parts.json");
 

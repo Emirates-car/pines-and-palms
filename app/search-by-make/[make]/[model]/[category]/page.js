@@ -97,44 +97,7 @@ export default async function CategoryPage({ params, searchParams }) {
                 : [];
 
     if (finalData.length === 0) {
-        return (
-            <div className="max-w-5xl mx-auto p-6 space-y-8">
-
-                <h1 className="text-2xl font-bold">
-                    {make} {model} – {category.replace(/-/g, " ")}
-                </h1>
-
-                <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
-                    <p className="text-gray-700">
-                        We don&apos;t currently have parts listed under
-                        <strong> {category.replace(/-/g, " ")} </strong>
-                        for <strong>{make} {model}</strong>.
-                        But don&apos;t worry — we can still source them for you.
-                    </p>
-                </div>
-
-                <section className="prose">
-                    <h2>Find {category} for {make} {model} in UAE</h2>
-                    <p>
-                        EmiratesCar helps you source genuine, aftermarket, and used
-                        <strong> {category.replace(/-/g, " ")} </strong>
-                        for <strong>{make} {model}</strong> across UAE.
-                        Submit an inquiry and our team will provide pricing and availability.
-                    </p>
-                </section>
-
-                <section className="mt-6">
-                    <h3 className="text-xl font-semibold mb-3">
-                        Request {category.replace(/-/g, " ")} for {make} {model}
-                    </h3>
-
-                    <div className="p-4 border rounded-lg bg-gray-50">
-                        {/* Replace with your existing Inquiry form component */}
-                        <GetInTouchForm />
-                    </div>
-                </section>
-            </div>
-        );
+        return notFound()
     }
 
     return (

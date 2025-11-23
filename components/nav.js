@@ -23,7 +23,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Image src={Iconpng} width={32} height={32} alt="car spare parts" />
             <span className="px-2 sm:px-1 s:px-1 xs:px-1 xxs:px-0 font-extrabold">
-              <Link
+              <a
                 href={`/#spare_parts`}
                 className="text-xl sm:text-base xs:text-sm leading-snug inline-block py-2 whitespace-nowrap text-white font-heading"
               >
@@ -31,31 +31,31 @@ export default function Navbar() {
                 <span className="px-0 text-xl sm:text-base xs:text-sm leading-snug inline-block py-2 whitespace-nowrap text-blue-400 font-heading font-extrabold">
                   CAR
                 </span>
-              </Link>
+              </a>
             </span>
           </div>
           <div className="flex items-center">
             <ul className="flex flex-row space-x-4 xxs:space-x-1 xs:space-x-3">
               <li className="nav-item">
-                <Link
+                <a
                   href={`https://www.facebook.com/emirates.auto.parts/`}
                   className="text-white hover:opacity-75"
                   aria-label="Facebook"
                 >
                   <FontAwesomeIcon icon={faFacebook} className="text-xl" />
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link
+                <a
                   href={`https://www.instagram.com/emiratescar_parts/`}
                   className="text-white hover:opacity-75"
                   aria-label="Instagram"
                 >
                   <FontAwesomeIcon icon={faInstagram} className="text-xl" />
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link
+                <a
                   href={`https://twitter.com/emiratescarpart`}
                   className="text-white hover:opacity-75"
                   aria-label="Twitter"
@@ -64,10 +64,10 @@ export default function Navbar() {
                     icon={faTwitter}
                     className="text-xl sm:text-base"
                   />
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link
+                <a
                   href={`https://emirates-car.tumblr.com/`}
                   className="text-white hover:opacity-75"
                   aria-label="Tumblr"
@@ -76,7 +76,7 @@ export default function Navbar() {
                     icon={faTumblr}
                     className="text-xl sm:text-base"
                   />
-                </Link>
+                </a>
               </li>
             </ul>
             <button
@@ -95,60 +95,60 @@ export default function Navbar() {
         >
           <ul className="flex flex-col lg:flex-row xl:flex-row xxl:flex-row list-none lg:mx-auto xl:mx-auto 2xs:mx-auto space-y-2 lg:space-y-0 lg:space-x-4">
             <li className="nav-item">
-              <Link
+              <a
                 href={`/`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >
                 Home
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
+              <a
                 href={`/about`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >
                 About
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
+              <a
                 href={`/contact`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >
                 Contact
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
+              <a
                 href={`/search-by-make`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >
                 Brands
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
+              <a
                 href={`/search-by-part-name`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >
                 Parts
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
+              <a
                 href={`/search-by-cities-in-uae`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >
                 Location
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link
+              <a
                 href={`/blog`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >
                 Blog
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

@@ -251,15 +251,11 @@ export default async function SubcategoryPage({ params, searchParams }) {
     const cities = await getCity()
     const relatedCategories = await getPartsByCategory(category, subcategory)
     const carmodel = await getModel(make);
-
-    // Load generic parts list
     const genericParts = await loadJSON("public/lib/parts.json");
 
-    // Normalize function
     const normalize = (v) =>
         v?.toString().toLowerCase().trim().replace(/\s+/g, " ") || "";
 
-    // Filter products by make/model/category/subcategory
     const productMatches = productsFile.filter((p) => {
         const matchesMakeModel = p.compatibility?.some(
             (c) =>
@@ -327,7 +323,7 @@ export default async function SubcategoryPage({ params, searchParams }) {
                                 <Image
                                     alt="emirates car"
                                     className="rounded-sm"
-                                    src={partImage || CarParts}
+                                    src={partImage ? partImage : CarParts}
                                     width={400}
                                     height={400}
                                 />
@@ -364,11 +360,14 @@ export default async function SubcategoryPage({ params, searchParams }) {
                         </h2>
 
                         <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
+
                             {relatedCategories.map((item, i) => (
+
                                 <li key={i} className="h-full">
                                     <Link
-                                        href={`/search-by-make/${make}/${encodeURIComponent(model)}/${encodeURIComponent(item.category)}/page`}
+                                        href={`/search-by-make/${make}/${encodeURIComponent(model)}/${encodeURIComponent(item.category)}`}
                                         title={`${make} ${model} ${item.category}`}
+                                        target="_blank"
                                         className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
                                     >
                                         <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline">

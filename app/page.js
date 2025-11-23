@@ -82,8 +82,7 @@ export default async function Home() {
               { href: "/search-by-make/Ram", alt: "Ram spare parts in UAE", label: "Ram", src: "/img/car-logos/ram.webp" },
             ].map(({ href, alt, label, src }) => (
               <figure key={label} className="border hover:border-blue-600 py-3 text-center rounded-sm">
-                <Link href={href} passHref className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
-
+                <a href={href} className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
                   <Image
                     alt={alt}
                     src={src}
@@ -95,7 +94,7 @@ export default async function Home() {
                     {label}
                   </figcaption>
 
-                </Link>
+                </a>
               </figure>
             ))}
 
@@ -123,7 +122,7 @@ export default async function Home() {
               { href: "/search-by-make/Isuzu", alt: "Isuzu spare parts in UAE", label: "Isuzu", src: "/img/car-logos/isuzu.webp" },
             ].map(({ href, alt, label, src }) => (
               <figure key={label} className="border hover:border-blue-600 py-3 text-center rounded-sm">
-                <Link href={href} passHref className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
+                <a href={href} className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
 
                   <Image
                     alt={alt}
@@ -136,7 +135,7 @@ export default async function Home() {
                     {label}
                   </figcaption>
 
-                </Link>
+                </a>
               </figure>
             ))}
           </div>
@@ -160,7 +159,7 @@ export default async function Home() {
               { href: "/search-by-make/Rolls-Royce", alt: "Rolls Royce spare parts in UAE", label: "Rolls Royce", src: "/img/car-logos/rolls-royce.webp" },
             ].map(({ href, alt, label, src }) => (
               <figure key={label} className="border hover:border-blue-600 py-3 text-center rounded-sm">
-                <Link href={href} passHref className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
+                <a href={href} className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
 
                   <Image
                     alt={alt}
@@ -173,7 +172,7 @@ export default async function Home() {
                     {label}
                   </figcaption>
 
-                </Link>
+                </a>
               </figure>
             ))}
           </div>
@@ -193,7 +192,7 @@ export default async function Home() {
               { href: "/search-by-make/Bugatti", alt: "Bugatti spare parts in UAE", label: "Bugatti", src: "/img/car-logos/bugatti.webp" },
             ].map(({ href, alt, label, src }) => (
               <figure key={label} className="border hover:border-blue-600 py-3 text-center rounded-sm">
-                <Link href={href} passHref className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
+                <a href={href} className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
 
                   <Image
                     alt={alt}
@@ -206,7 +205,7 @@ export default async function Home() {
                     {label}
                   </figcaption>
 
-                </Link>
+                </a>
               </figure>
             ))}
           </div>
@@ -257,7 +256,7 @@ export default async function Home() {
               },
             ].map(({ href, alt, label, src }) => (
               <figure key={label} className="border hover:border-blue-600 py-3 text-center rounded-sm">
-                <Link href={href} passHref className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
+                <a href={href} className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
 
                   <Image
                     alt={alt}
@@ -270,7 +269,7 @@ export default async function Home() {
                     {label}
                   </figcaption>
 
-                </Link>
+                </a>
               </figure>
             ))}
           </div>
@@ -303,7 +302,7 @@ export default async function Home() {
               },
             ].map(({ href, alt, label, src }) => (
               <figure key={label} className="border hover:border-blue-600 py-3 text-center rounded-sm">
-                <Link href={href} passHref className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
+                <a href={href} className="flex flex-col items-center no-underline" aria-label={`${label} spare parts`}>
 
                   <Image
                     alt={alt}
@@ -316,7 +315,7 @@ export default async function Home() {
                     {label}
                   </figcaption>
 
-                </Link>
+                </a>
               </figure>
             ))}
           </div>
@@ -358,7 +357,7 @@ export default async function Home() {
               { name: 'Land Rover', href: '/search-by-make/Land Rover', src: '/img/car-logos/land_rover.webp', alt: 'Land Rover parts UAE' },
             ].map((brand) => (
               <li key={brand.name}>
-                <Link href={brand.href} className="block border h-full hover:border-blue-600 py-3" aria-label={`${brand.name} spare parts`}>
+                <a href={brand.href} className="block border h-full hover:border-blue-600 py-3" aria-label={`${brand.name} spare parts`}>
 
                   <figure className="flex flex-col items-center justify-center">
                     <Image
@@ -373,7 +372,7 @@ export default async function Home() {
                     </figcaption>
                   </figure>
 
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

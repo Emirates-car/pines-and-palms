@@ -255,18 +255,14 @@ export async function generateMetadata({ params }) {
 export default function ProductPage({ params }) {
     const { make, model, category, slug } = params;
 
-    // Extract the ID from the slug
     const id = Number(slug.split("-").pop());
-    console.log(id)
 
-    // Find product by ID
     const product = products.find((p) => p.id === id);
 
     if (!product) {
         return <div className="p-6 text-center text-gray-700">Product not found</div>;
     }
 
-    // Filter compatibility for the selected make and model
     const compat = product.compatibility?.find(
         (c) =>
             c?.make?.trim().toLowerCase() === decodeURIComponent(params.make).trim().toLowerCase() &&

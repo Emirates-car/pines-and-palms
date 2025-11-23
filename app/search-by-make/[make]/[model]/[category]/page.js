@@ -62,7 +62,6 @@ export default async function CategoryPage({ params, searchParams }) {
     const model = decodeURIComponent(params.model);
     const category = decodeURIComponent(params.category);
 
-    // Load parts.json
     const partsData = await loadJSON("public/lib/parts.json");
 
     const normalize = (x) =>
@@ -80,6 +79,10 @@ export default async function CategoryPage({ params, searchParams }) {
             normalize(p.category) === normalize(category)
         );
     });
+
+    if (!productMatches || productMatches.length === 0) {
+        notFound();
+    }
 
     const genericParts = partsData.filter(
         (p) => normalize(p.category) === normalize(category)

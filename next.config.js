@@ -7751,11 +7751,6 @@ module.exports = withPWA({
         permanent: true
       },
       {
-        source: "/search-by-make/:make/:model/:category/:subcategory*",
-        destination: "/get-in-touch",
-        permanent: false,
-      },
-      {
         source: "/search-by-brands-in-uae/:make/:location*",
         destination: "/get-in-touch",
         permanent: false,

@@ -308,7 +308,7 @@ export default async function SubcategoryPage({ params, searchParams }) {
                                         <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
                                             <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
                                                 <a
-                                                    href="/#myForm"
+                                                    href="#myMakeModelSubcategoryForm"
                                                     title={`${make} ${model} ${subcategory}`}
                                                     className="flex items-center justify-center py-2 xs:py-2 xxs:py-1 sm:py-0 text-xl sm:text-base xl:text-xl border border-transparent font-medium rounded-sm text-white bg-blue-600 hover:bg-blue-700 md:py-2 md:text-md md:text-lg md:px-5 xs:text-sm xxs:text-sm xxs:my-2 lg:my-2 s:text-sm s:my-2 focus:filter brightness-125"
                                                 >
@@ -346,6 +346,7 @@ export default async function SubcategoryPage({ params, searchParams }) {
                 <ProductFilter
                     make={make}
                     model={model}
+                    subcategory={subcategory}
                     products={productMatches}
                     allProducts={productMatches}
                     searchParams={searchParams}

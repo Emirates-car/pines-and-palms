@@ -507,8 +507,8 @@ export default async function Model({ params, searchParams }) {
     {
       images: Grille,
       name: 'Grille',
-      alt: `${make} ${model} " grill"`,
-      link: '/search-by-part-name/Grille',
+      alt: `${make} ${model} " grille"`,
+      link: '/Toyota/Camry/AC%20&%20Heating%20(HVAC)/AC%20Compressor',
     },
     {
       images: Headlight,
@@ -623,7 +623,7 @@ export default async function Model({ params, searchParams }) {
             <div className="xxs:hidden xs:hidden s:hidden hero_section_blob">
               <Image
                 src={'/img/car-logos/' + imageMake}
-                alt={make + ' spare parts'}
+                alt={make + model + ' spare parts'}
                 className="ml-20 md:ml-5 lg:ml-8 lg:mt-10 xl:mt-10 xxl:mt-10 xl:ml-16 xxl:ml-16"
                 priority
                 width={300}
@@ -637,7 +637,7 @@ export default async function Model({ params, searchParams }) {
       <section className='xs:px-3 xxs:px-3 md:px-3 lg:max-w-4xl lg:mx-auto'>
         <h3 className={`text-3xl xs:text-2xl font-semibold mx-auto my-5 xs:my-3 xxs:my-3 sm:my-3 md:my-4 ${playfair_display.className}`}>Why Emirates-car.com?</h3>
         <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
-          Emirates-car.com is the online dealer in <span className='text-blue-600'>{make}{' '}
+          EMIRATESCAR is the online dealer in <span className='text-blue-600'>{make}{' '}
             {decodeURIComponent(model)}</span> spare parts and for any car brands running on roads
           of UAE. We find the correct used, genuine (otherwise
           called OEM parts) and aftermarket parts that matches your fitment. We have
@@ -742,7 +742,7 @@ export default async function Model({ params, searchParams }) {
                     className="block border border-blue-800 hover:border-blue-900 bg-white rounded-sm h-full p-3 text-center"
                   >
                     <span className="text-center text-black text-lg font-medium hover:text-gray-800 p-2 xs:p-0 font-sans underline ">
-                      {make} {post.model.replace('%2F', '/')} parts
+                      {make} <span className='text-blue-500'>{post.model.replace('%2F', '/')}</span> parts
                     </span>
                   </Link>
                 </li>

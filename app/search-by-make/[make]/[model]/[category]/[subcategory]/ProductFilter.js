@@ -19,7 +19,7 @@ const firaSans = Fira_Sans({
     variable: "--font-fira-sans",
 });
 
-export default function ProductFilter({ make, model, products, allProducts, searchParams }) {
+export default function ProductFilter({ make, model, products, subcategory, allProducts, searchParams }) {
     const router = useRouter();
     const [localQuery, setLocalQuery] = useState(searchParams.search || "");
     const [suggestions, setSuggestions] = useState([]);
@@ -243,7 +243,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                     {/* Results Grid */}
                     <section className="lg:ml-0">
                         <h2 className={`text-4xl font-bold mb-4 ${playfair_display.className}`}>
-                            All <span className="text-blue-600">{make} {model}</span> items
+                            {make} {model} <span className="text-blue-600">{subcategory}</span> items
                         </h2>
                         <p>{products.length} Results</p>
 

@@ -8,7 +8,6 @@ import { notFound } from 'next/navigation';
 import path from 'path';
 import FormComponent from '../../../../../components/FormComponent';
 import TenEntries from '../../../../../components/tenentries';
-import Counter from '../../../../../components/service-countup';
 import { getCity, getFormModel, getMake, getParts } from '../../../../page';
 import CarParts from '../../../../../public/img/car-spare-parts.png';
 import SearchModel from '../../../../../components/SearchModel';

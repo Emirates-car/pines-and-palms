@@ -13,7 +13,7 @@ import { getCity, getFormModel, getMake, getParts } from "../../../../../page";
 import FormComponent from "../../../../../../components/FormComponent";
 import SearchCity from "../../../../../../components/SearchCity";
 import FormComponentMakeModelCatSubcat from "../../../../../../components/FormComponentMakeModelCatSubcat";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const playfair_display = Playfair_Display({
     subsets: ["latin"],
@@ -277,16 +277,16 @@ export default async function SubcategoryPage({ params, searchParams }) {
             normalize(gp.category) === normalize(category)
     );
     if (!productMatches.length && !genericMatch) {
-        notFound();
+        redirect('/get-in-touch')
     }
     if (!productMatches || productMatches.length === 0) {
-        notFound();
+        redirect('/get-in-touch')
     }
 
     const finalData = productMatches.length > 0 ? productMatches : genericMatch ? [genericMatch] : [];
 
     if (finalData.length === 0) {
-        notFound()
+        redirect('/get-in-touch')
     }
 
     return (

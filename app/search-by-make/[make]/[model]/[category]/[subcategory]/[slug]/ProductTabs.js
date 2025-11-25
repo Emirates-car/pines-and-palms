@@ -81,6 +81,19 @@ export default function ProductTabs({ product, slug }) {
                     </div>
                 )}
 
+                {product.compatibility?.map((c, i) => (
+                    <div>
+                        {`</url>`}
+                        {`<loc>http://www.emirates-car.com/search-by-make/${encodeURIComponent(c.make)}/${encodeURIComponent(c.model)}/${encodeURIComponent(product.category)}/${encodeURIComponent(product.subcategory)}</loc>`}
+                        {`<lastmod>2025-11-25T12:45:55.555Z</lastmod>`}
+                        {`<changefreq>weekly</changefreq>`}
+                        {`<priority>1.0</priority>`}
+                        {`</url>`}
+                    </div>
+                ))}
+
+
+
                 {activeTab === 'item-specifics' && (
                     <div>
                         <h2 className="text-xl font-semibold mb-2">Item Specifics</h2>

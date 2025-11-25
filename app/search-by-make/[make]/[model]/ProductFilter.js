@@ -270,7 +270,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                             className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
                                         >
                                             <Link
-                                                href={`/search-by-make/${make}/${model}/${product.category}/${encodeURIComponent(slug)}`}
+                                                href={`/search-by-make/${make}/${model}/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`}
                                                 className="flex flex-col h-full" target='_blank' rel='noopener noreferrer'
                                             >
                                                 <figure className="relative w-full aspect-square">

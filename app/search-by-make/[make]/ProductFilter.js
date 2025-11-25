@@ -277,7 +277,7 @@ export default function ProductFilter({ make, products, allProducts, searchParam
                                         >
                                             <Link
                                                 href={`/search-by-make/${make}/${compat?.model ? `${compat.model}` : ""
-                                                    }/${product.category}/${encodeURIComponent(slug)}`}
+                                                    }/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`}
                                                 className="flex flex-col h-full" target='_blank' rel='noopener noreferrer'
                                             >
                                                 <figure className="relative w-full aspect-square bg-white">

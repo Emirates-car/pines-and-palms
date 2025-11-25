@@ -277,7 +277,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                                     )}
                                                 </figure>
                                                 <figcaption className="p-3">
-                                                    <h3 className={`line-clamp-2 ${firaSans.className}`}>{product.partname}</h3>
+                                                    <h3 className={`line-clamp-3 ${firaSans.className}`}>{make} {model} {product.partname}</h3>
                                                     <p className="text-sm text-gray-600">Part #: {product.partnumber}</p>
                                                 </figcaption>
                                             </Link>

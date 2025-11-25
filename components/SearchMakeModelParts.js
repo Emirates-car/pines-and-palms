@@ -91,7 +91,7 @@ export default function SearchMakeModelParts({ partsposts, make, model, category
                                                 "/" +
                                                 encodeURIComponent(name)
                                             }
-                                            target="_newtab"
+                                            target="_blank"
                                         >
                                             <div>{make} {model} {name}</div>
                                         </Link>

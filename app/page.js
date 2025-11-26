@@ -57,6 +57,7 @@ export async function getParts() {
 }
 
 export default async function Home() {
+
   return (
     <div>
       <Hero />

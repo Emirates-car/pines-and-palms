@@ -17,10 +17,75 @@ import FormComponent from './FormComponent';
 import { getFormModel, getParts } from '../app/page';
 import StaticParts from './StaticParts';
 import HeroCarousel from './HeroCarousel';
+import products from "../public/products.json"
+import ProductFilter from './ProductFilter';
 
-export default async function HomeHero() {
+export default async function HomeHero({ searchParams }) {
   const modelforms = await getFormModel();
   const partsposts = await getParts();
+  const {
+    "filter_car_parts[]": categories = [],
+    "engine[]": engines = [],
+    "compatibility[]": compats = [],
+    search = "",
+    featured,
+  } = searchParams || {};
+
+  const selectedCategories = Array.isArray(categories)
+    ? categories
+    : [categories].filter(Boolean);
+
+  const selectedEngines = Array.isArray(engines)
+    ? engines
+    : [engines].filter(Boolean);
+
+  const selectedCompats = Array.isArray(compats)
+    ? compats
+    : [compats].filter(Boolean);
+
+  const query = search?.toLowerCase() || "";
+
+  // All products
+  const allProducts = products;
+
+  // STEP 1 — FILTER ALL RULES
+  let filtered = allProducts.filter(product => {
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(product.category);
+
+    const matchesSearch =
+      product.partname.toLowerCase().includes(query) ||
+      product.partnumber.toLowerCase().includes(query) ||
+      product.engine?.some(e => e.toLowerCase().includes(query)) ||
+      product.compatibility?.some(c =>
+        `${c.make} ${c.model} ${c.years ?? ""}`.toLowerCase().includes(query)
+      );
+
+    const matchesEngine =
+      selectedEngines.length === 0 ||
+      product.engine?.some(e => selectedEngines.includes(e));
+
+    const matchesCompatibility =
+      selectedCompats.length === 0 ||
+      product.compatibility?.some(c =>
+        selectedCompats.includes(
+          `${c.make} ${c.model} ${c.years ? `(${c.years})` : ""}`
+        )
+      );
+
+    return (
+      matchesCategory &&
+      matchesSearch &&
+      matchesEngine &&
+      matchesCompatibility
+    );
+  });
+
+  // STEP 2 — FILTER FEATURED ONLY
+  if (featured === "true") {
+    filtered = filtered.filter(p => p.featured === "true");
+  }
   return (
     <div>
       <section
@@ -158,6 +223,13 @@ export default async function HomeHero() {
       </div>
 
       <FormComponent formsData={modelforms} postFilter={partsposts} />
+      <section className="mt-6">
+        <ProductFilter
+          products={filtered}
+          allProducts={allProducts}
+          searchParams={searchParams}
+        />
+      </section>
 
       <StaticParts />
       <div className="bg-bglight">

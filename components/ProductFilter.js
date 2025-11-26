@@ -302,7 +302,7 @@ export default function ProductFilter({ products, allProducts, searchParams }) {
                     {/* Product Grid */}
                     <section>
                         <h2 className={`text-4xl font-bold mb-4 ${playfair_display.className}`}>
-                            All Products
+                            Featured Products
                         </h2>
 
                         <p>{products.length} Results</p>

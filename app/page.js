@@ -382,7 +382,6 @@ export default async function Home() {
       </div>
       <StaticCities />
 
-      <Featured />
       <Contents />
     </div>
   );

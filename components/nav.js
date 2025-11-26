@@ -120,6 +120,14 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <a
+                href={`/catalogs`}
+                className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
+              >
+                Catalogs
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
                 href={`/search-by-make`}
                 className="px-3 py-2 flex items-center text-xl sm:text-base leading-snug text-white hover:opacity-75"
               >

@@ -27,6 +27,8 @@ module.exports = {
         bghover: '#b5caf8',
         bglight: '#d9e4fb',
         bgform: '#1557e7',
+        fitment: '#00D100',
+        info: "#0000FF",
       },
     },
     screens: {

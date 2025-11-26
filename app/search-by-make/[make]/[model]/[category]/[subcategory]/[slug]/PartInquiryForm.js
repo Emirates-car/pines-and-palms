@@ -71,7 +71,7 @@ const PartInquiryModal = ({ isOpen, onClose, product }) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-indigo-50 text-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
-                <h2 className="text-2xl font-bold mb-4">Inquire Now</h2>
+                <h4 className="text-2xl font-bold mb-4">Inquire Now</h4>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-sm font-bold mb-2">Part List</label>
@@ -164,7 +164,7 @@ export default function PartInquiryForm({ product, make, model, oemoraftermarket
             >
                 Inquire Now
             </button>
-            <span className={`text-green-500 text-sm ${roboto.className}`}><br />{product.pricing.price_info}</span>
+            <span className={`text-info text-sm ${roboto.className}`}><br />{product.pricing.price_info}</span>
 
             <PartInquiryModal
                 isOpen={isModalOpen}

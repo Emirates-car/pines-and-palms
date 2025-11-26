@@ -107,6 +107,7 @@ async function getPartsData(parts) {
     return filtered;
 }
 
+
 async function getMakeImage(make) {
     try {
         const filePath = path.join(process.cwd(), 'public/lib/car-data.json');
@@ -152,6 +153,7 @@ export default async function Parts({ params }) {
     const partsData = await getPartsData(parts);
     const carmodel = await getModel(make)
     const imageMake = await getMakeImage(make)
+    const partsDa = await getParts()
 
 
 
@@ -245,6 +247,7 @@ export default async function Parts({ params }) {
                         ></iframe>
                     </div>
                 </section>
+
                 <section className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
                     <div className="container py-6">
                         <h2 className={`text-black text-4xl text-center md:text-2xl lg:text-3xl font-bold xs:text-xl xxs:text-2xl pt-10 ${firaSans.className}`}>

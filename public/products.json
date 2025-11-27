@@ -3268,5 +3268,269 @@
                 "Cash on Delivery"
             ]
         }
+    },
+    {
+        "id": 42,
+        "subcategory": "Alternator",
+        "category": "Electrical & Electronics",
+        "partname": "Alternator Assembly",
+        "partnumber": "31100-5PA-A01",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2023",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2022",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2022",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2023",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2021",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2021",
+                "engine": ""
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2021",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2020",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2020",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2020",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2018",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2018",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2017",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2016",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2017",
+                "engine": "1.5L"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/alternator21.webp",
+        "item_specifics": {
+            "sku": "HON0021",
+            "Brand": "Honda Motor Company",
+            "Manufacturer Part Number": "31100-5PA-A01",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "311005PAA01,31100 5PA A01, CSP71, CSR34 ,"
+            ],
+            "Placement on Vehicle": [
+                "Front of Engine Compartment"
+            ],
+            "Condition": "New",
+            "Material": "Polished",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 464,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Alternator Assembly. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 43,
+        "subcategory": "Alternator",
+        "category": "Electrical & Electronics",
+        "partname": "Alternator Assembly",
+        "partnumber": "31100-R40-A01",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2012",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2011",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2010",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2009",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Acura",
+                "model": "TSX",
+                "years": "2009-2014",
+                "engine": "2.4L"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/alternator22.png",
+        "item_specifics": {
+            "sku": "HON0022",
+            "Brand": "Honda Motor Company",
+            "Manufacturer Part Number": "31100-R40-A01",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "31100R40A01, 31100 R40 A01, 31100-R40-A01, CSF89, 104210-5890, 11390, 13-9444,  31100-R40-A01RM, 06311-R50-505RM, 911-000-ACC, N11390"
+            ],
+            "Placement on Vehicle": [
+                "Front of Engine Compartment"
+            ],
+            "Condition": "New",
+            "Material": "Polished",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan (Osaka)",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 1279,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Alternator Assembly. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
     }
 ]

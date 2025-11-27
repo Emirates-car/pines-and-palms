@@ -40,7 +40,6 @@ module.exports = withPWA({
   },
   async redirects() {
     return [
-
       {
         source: "/search-by-make/Great%20Wall%20GWM/Wingle%205",
         destination: "/get-in-touch",
@@ -7724,16 +7723,6 @@ module.exports = withPWA({
       {
         source: "/search-by-make/Volkswagen/Touareg/Suspension%20&%20Steering%20Parts/Front%20Lower%20Arm%20Ball%20Joint-Volkswagen-Touareg-2019-2022-4M0407689C-22",
         destination: "/search-by-make/Volkswagen/Touareg/Suspension%20&%20Steering%20Parts/Suspension/Front%20Lower%20Arm%20Ball%20Joint-Volkswagen-Touareg-2019-2022-4M0407689C-22",
-        permanent: true
-      },
-      {
-        source: "/search-by-make/Honda/Accord/Body%20Kits/Grille%20Matte%20-%20Black-Honda-Accord-2008-2010-71121-TA0-A00-19",
-        destination: "/search-by-make/Honda/Accord/Body%20Kits/Grille/Grille%20Matte%20-%20Black-Honda-Accord-2008-2010-71121-TA0-A00-19",
-        permanent: true
-      },
-      {
-        source: "/search-by-make/Honda/Accord/Body%20Kits/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
-        destination: "/search-by-make/Honda/Accord/Body%20Kits/Grille/Grille-Honda-Accord-2008-2012-71120-TA5-A000-5",
         permanent: true
       },
       {

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { promises as fs } from 'fs';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import path from 'path';
 import FormComponent from '../../../../../components/FormComponent';
 import TenEntries from '../../../../../components/tenentries';
@@ -12,6 +12,8 @@ import { getCity, getFormModel, getMake, getParts } from '../../../../page';
 import CarParts from '../../../../../public/img/car-spare-parts.png';
 import SearchModel from '../../../../../components/SearchModel';
 import { Fira_Sans, Playfair_Display } from 'next/font/google';
+import products from "../../../../../public/products.json"
+import ProductFilter from './ProductFilter';
 
 const playfair_display = Playfair_Display({
     subsets: ['latin'],
@@ -148,7 +150,7 @@ async function getModel(make) {
         return [];
     }
 }
-export default async function Parts({ params }) {
+export default async function Parts({ params, searchParams }) {
     const { make, parts } = params;
     const partsData = await getPartsData(parts);
     const carmodel = await getModel(make)
@@ -160,6 +162,64 @@ export default async function Parts({ params }) {
     if (!partsData || partsData.length === 0) {
         notFound();
     }
+    const {
+        "filter_car_parts[]": categories = [],
+        "engine[]": engines = [],
+        "compatibility[]": compats = [],
+        search = ""
+    } = searchParams;
+
+
+    const selectedCategories = Array.isArray(categories) ? categories : [categories].filter(Boolean);
+    const selectedEngines = Array.isArray(engines) ? engines : [engines].filter(Boolean);
+    const selectedCompats = Array.isArray(compats) ? compats : [compats].filter(Boolean);
+    const query = search?.toLowerCase() || "";
+    const partEntry = partsDa.find(
+        (p) => p.parts.toLowerCase() === decodeURIComponent(parts).toLowerCase()
+    );
+
+    if (!partEntry) {
+        redirect("/get-in-touch");
+    }
+
+    // Filter all products that:
+    // 1. Match make
+    // 2. Match subcategory === parts
+    const makeFiltered = products.filter(product =>
+        product.compatibility?.some(
+            (c) => c.make.toLowerCase() === make.toLowerCase()
+        )
+    );
+
+    const partFiltered = makeFiltered.filter(product =>
+        product.subcategory.toLowerCase() === partEntry.parts.toLowerCase()
+    );
+
+    if (partFiltered.length === 0) {
+        redirect("/get-in-touch");
+    }
+
+
+
+    const filtered = partFiltered.filter(product => {
+        const matchesCategory =
+            selectedCategories.length === 0 || selectedCategories.includes(product.category);
+
+        const matchesSearch =
+            product.partname.toLowerCase().includes(query) ||
+            product.partnumber.toLowerCase().includes(query) ||
+            product.engine?.some(e => e.toLowerCase().includes(query)) ||
+            product.compatibility?.some(c =>
+                `${c.make} ${c.model} ${c.years ?? ""}`.toLowerCase().includes(query))
+
+        const matchesEngine =
+            selectedEngines.length === 0 || product.engine?.some(e => selectedEngines.includes(e));
+
+        const matchesCompatibility =
+            selectedCompats.length === 0 ||
+            product.compatibility?.some(c => selectedCompats.includes(`${c.make} ${c.model} ${c.years ? `(${c.years})` : ""}`));
+        return matchesCategory && matchesSearch && matchesEngine && matchesCompatibility;
+    });
 
     const excludedMakes = [
         'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
@@ -172,7 +232,6 @@ export default async function Parts({ params }) {
         'W Motor', 'JAC', 'Jaecoo', 'Jetour', 'TANK', 'Soueast', 'Zarooq Motors', 'Changan', 'Maxus', 'Haval', 'Zotye', 'Sandstorm',
         'Chery', 'Geely', 'BAIC', 'Bestune'
     ];
-    const haksMakes = ['Honda', 'Audi', 'Porsche', 'Volvo', 'Mini', 'Mercedes-Benz', 'Renault', 'Peugeot', 'Jaguar', 'Ford', 'Hummer', 'Dodge', 'GMC', 'Jeep', 'Lincoln']
     const isExcludedMake = excludedMakes.includes(make);
     if (excludedMakes.includes(make)) {
         redirect('/get-in-touch');
@@ -233,6 +292,16 @@ export default async function Parts({ params }) {
                         </div>
                     </div>
                 </div>
+                <section>
+                    {partFiltered.length > 0 ?
+                        <ProductFilter
+                            make={make}
+                            products={filtered}
+                            allProducts={partFiltered}
+                            searchParams={searchParams}
+                        /> : <></>}
+                </section>
+
                 <section className="grid grid-cols-1 s:grid s:grid-cols-1 xs:grid xs:grid-cols-1 xxs:grid xxs:grid-cols-1 sm:grid sm:grid-cols-1">
                     <FormComponent formsData={modelsform} postFilter={partsposts} />
                     <div className="p-5 pt-10">
@@ -318,6 +387,7 @@ export default async function Parts({ params }) {
                         ))}
                     </div>
                 </section>
+
                 <TenEntries />
                 <section>
                     <h3 className={`text-black text-4xl text-center md:text-2xl lg:text-3xl font-bold xs:text-xl xxs:text-2xl pt-10 ${firaSans.className}`}>

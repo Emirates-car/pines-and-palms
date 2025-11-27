@@ -48,25 +48,179 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
     const { parts, make } = params;
-    const decodedParts = decodeURIComponent(parts);
+    const partsDa = await getParts()
+
+    const partEntry = partsDa.find(
+        (p) => p.parts.toLowerCase() === decodeURIComponent(parts).toLowerCase()
+    );
+
+    if (!partEntry) {
+        redirect("/get-in-touch");
+    }
+
+    const makeFiltered = products.filter(product =>
+        product.compatibility?.some(
+            (c) => c.make.toLowerCase() === make.toLowerCase()
+        )
+    );
+
+    const partFiltered = makeFiltered.filter(product =>
+        product.subcategory.toLowerCase() === partEntry.parts.toLowerCase()
+    );
+    const getAllCompatibilityModels = (product) =>
+        product.compatibility?.map(c => c.model).join(", ");
+
+    const getAllCompatibilityYears = (product) =>
+        product.compatibility?.map(c => c.years).join(", ");
+
+    const getAllCompatibilityMakes = (product) =>
+        product.compatibility?.map(c => c.make).join(", ");
+
+    const getAllCompatibilityEngines = (product) =>
+        product.compatibility?.map(c => c.engine).join(", ");
+
+    const productListItems = partFiltered.map((product, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+            "@type": "Product",
+            "@id": `https://www.emirates-car.com/search-by-make/${make}/${product.compatibility[0].model}/${product.category}/${product.partname}-${make}-${product.compatibility[0].model}-${product.compatibility[0].years}-${product.partnumber}-${product.id}#product`,
+            "name": `${product.partname} ${product.partnumber} ${make}`,
+            "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+            "image": `https://www.emirates-car.com/${product.image}`,
+            "description": `${product.partname} compatible with ${make} ${product.compatibility?.map(c => c.model).join(", ")}`,
+            "brand": { "@type": "Brand", "name": product.compatibility[0]?.make || make },
+            "mpn": product.partnumber,
+            "offers": {
+                "@type": "Offer",
+                "url": `https://www.emirates-car.com/search-by-make/${make}/${product.category}/${product.partname}-${product.partnumber}-${product.id}`,
+                "priceCurrency": product.pricing.currency,
+                "price": product.pricing.price,
+                "availability": "https://schema.org/InStock",
+                "itemCondition": "https://schema.org/NewCondition"
+            },
+            "isAccessoryOrSparePartFor": {
+                "@type": "Car",
+                "make": { "@type": "Brand", "name": product.compatibility[0]?.make || make },
+                "model": product.compatibility[0]?.model
+            }
+        }
+    }));
+
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "FAQPage",
+                "divEntity": [
+                    {
+                        "@type": "Question",
+                        "name": `Do you sell genuine ${make} spare parts in UAE?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `Yes, we supply genuine OEM ${make} ${parts} parts, as well as used and aftermarket options to suit your budget.`
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": `Can I buy used or aftermarket ${make} ${parts} parts to save costs?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `Yes, we offer used and aftermarket ${make} ${parts} spare parts that are tested for quality and performance.`
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": `Do you deliver ${make} ${parts} parts across UAE?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `Yes, we deliver ${make} ${parts} spare parts to Dubai, Abu Dhabi, Sharjah, Ajman, and other Emirates. International shipping is also available.`
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": `How do I know if a part fits my ${make} ${parts}?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `You can share your car's VIN or model details with us, and we will confirm compatibility before shipping.`
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": `Do your ${make} spare parts come with warranty?`,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": `Yes, all new and OEM ${make} ${parts} spare parts come with a standard warranty. Used parts are tested but carry limited warranty.`
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "CollectionPage",
+                "name": `${make} ${parts} Spare Parts | EMIRATESCAR`,
+                "url": `https://www.emirates-car.com/search-by-make/${make}`,
+                "description": `Find ${parts} genuine, OEM, and aftermarket spare parts for all ${make} models.`,
+                "about": { "@type": "Brand", "name": make },
+                "mainEntity": {
+                    "@type": "ItemList",
+                    "itemListElement": productListItems
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.emirates-car.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Car Makes",
+                        "item": `https://www.emirates-car.com/search-by-makes/`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": `${make} Spare Parts`,
+                        "item": `https://www.emirates-car.com/search-by-make/${make}`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": `${make} ${parts} Spare Parts`,
+                        "item": `https://www.emirates-car.com/search-by-make/${make}/parts/${parts}`
+                    }
+                ]
+            },
+        ]
+    };
     return {
-        title: `${decodedParts} Auto Spare Parts Order Online in UAE | Emirates-car.com`,
-        description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
+        title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
+        description: `Find genuine, OEM, used & aftermarket ${make} ${parts} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
+        metadataBase: new URL(
+            `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/parts/${encodeURIComponent(parts)}`
+        ),
         openGraph: {
-            images: 'https://emirates-car.com/favicon.png',
-            title: `${decodedParts} Auto Spare Parts Order Online in UAE | Emirates-car.com`,
-            description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
-            url: 'https://emirates-car.com/search-by-part-name/' + parts,
-            image: 'https://emirates-car.com/img/car-spare-parts.png',
-            siteName: 'Emirates Auto Parts',
+            images: 'https://www.emirates-car.com/favicon.png',
+            title: `${make} ${parts}- Used, Genuine, OEM and Aftermarket`,
+            description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
+            url: 'https://www.emirates-car.com/search-by-make/' + encodeURIComponent(make) + "/parts/" + encodeURIComponent(parts),
+            image: 'https://www.emirates-car.com/img/car-spare-parts.png',
+            siteName: 'EMIRATESCAR',
             images: [
+                '/favicon.png',
                 {
-                    url: 'https://emirates-car.com/icon-192x192.png',
+                    url: 'https://www.emirates-car.com/icon-192x192.png',
                     width: 192,
                     height: 192,
                 },
                 {
-                    url: 'https://emirates-car.com/icons/icon-512x512.png',
+                    url: 'https://www.emirates-car.com/icons/icon-512x512.png',
                     width: 512,
                     height: 512,
                     alt: 'car parts',
@@ -77,27 +231,31 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${decodedParts} Auto Spare Parts Order Online in UAE - Used, Genuine, Aftermarket | Emirates-car.com`,
-            url: 'https://www.emirates-car.com/search-by-part-name/' + parts,
-            description: `Buy Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in ${decodedParts} UAE`,
-            images: ['https://emirates-car.com/favicon.png'],
+            title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
+            url: 'https://www.emirates-car.com/search-by-make/' + encodeURIComponent(make) + "/parts/" + encodeURIComponent(parts),
+            description: `Find genuine, OEM, used & aftermarket ${make} ${parts} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
+            images: ['https://www.emirates-car.com/favicon.png'],
         },
         icons: {
-            icon: 'https://emirates-car.com/favicon.png',
-            shortcut: 'https://emirates-car.com/icons/icon-96x96.png',
-            apple: 'https://emirates-car.com/icons/icon-192x192.png',
+            icon: 'https://www.emirates-car.com/favicon.png',
+            shortcut: 'https://www.emirates-car.com/icons/icon-96x96.png',
+            apple: 'https://www.emirates-car.com/icons/icon-192x192.png',
             other: {
                 rel: 'apple-touch-icon-precomposed',
-                url: 'https://emirates-car.com/icons/icon-152x152.png',
+                url: 'https://www.emirates-car.com/icons/icon-152x152.png',
             },
         },
-        category: `${decodedParts}`,
+        category: `${make} auto spare parts`,
         alternates: {
-            canonical: `https://emirates-car.com/search-by-part-name/${parts}`,
+            canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/parts/${encodeURIComponent(parts)}`,
         },
-        keywords: `${decodedParts} for honda, ${decodedParts} in dubai, ${decodedParts} for porsche, ${decodedParts} for volkswagen, ${decodedParts} for volvo, ${decodedParts} online, ${decodedParts} for ford, ${decodedParts} spare parts uae, ${decodedParts} spare parts online, ${decodedParts} used spare parts dubai, ${decodedParts} spare parts near me`,
+        other: {
+            "script:ld+json": JSON.stringify(faqSchema),
+        },
     };
 }
+
+
 async function getPartsData(parts) {
     const filePath = path.join(process.cwd(), 'public/lib/parts.json');
     const jsonData = await fs.readFile(filePath, 'utf8');
@@ -157,8 +315,6 @@ export default async function Parts({ params, searchParams }) {
     const imageMake = await getMakeImage(make)
     const partsDa = await getParts()
 
-
-
     if (!partsData || partsData.length === 0) {
         notFound();
     }
@@ -182,9 +338,6 @@ export default async function Parts({ params, searchParams }) {
         redirect("/get-in-touch");
     }
 
-    // Filter all products that:
-    // 1. Match make
-    // 2. Match subcategory === parts
     const makeFiltered = products.filter(product =>
         product.compatibility?.some(
             (c) => c.make.toLowerCase() === make.toLowerCase()
@@ -198,8 +351,6 @@ export default async function Parts({ params, searchParams }) {
     if (partFiltered.length === 0) {
         redirect("/get-in-touch");
     }
-
-
 
     const filtered = partFiltered.filter(product => {
         const matchesCategory =
@@ -292,6 +443,10 @@ export default async function Parts({ params, searchParams }) {
                         </div>
                     </div>
                 </div>
+                <section className="grid grid-cols-1 s:grid s:grid-cols-1 xs:grid xs:grid-cols-1 xxs:grid xxs:grid-cols-1 sm:grid sm:grid-cols-1">
+                    <FormComponent formsData={modelsform} postFilter={partsposts} />
+
+                </section>
                 <section>
                     {partFiltered.length > 0 ?
                         <ProductFilter
@@ -302,20 +457,7 @@ export default async function Parts({ params, searchParams }) {
                         /> : <></>}
                 </section>
 
-                <section className="grid grid-cols-1 s:grid s:grid-cols-1 xs:grid xs:grid-cols-1 xxs:grid xxs:grid-cols-1 sm:grid sm:grid-cols-1">
-                    <FormComponent formsData={modelsform} postFilter={partsposts} />
-                    <div className="p-5 pt-10">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722504.3860201286!2d51.71183150969869!3d24.337497293019872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1641654109734!5m2!1sen!2sin"
-                            title={parts + ' parts'}
-                            width="100%"
-                            height="100%"
-                            style={{ border: '0' }}
-                            allowFullScreen=""
-                            loading="lazy"
-                        ></iframe>
-                    </div>
-                </section>
+
 
                 <section className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
                     <div className="container py-6">
@@ -403,8 +545,9 @@ export default async function Parts({ params, searchParams }) {
                                 <Link
                                     href="/search-by-cities-in-uae/[city]"
                                     as={'/search-by-cities-in-uae/' + post.city}
+                                    target='_blank'
                                     title={
-                                        decodeURIComponent(partsData.parts) + ' in ' + post.city
+                                        make + " " + decodeURIComponent(partsData.parts) + ' in ' + post.city
                                     }
                                 >
                                     <span className="h-full hover:border-blue-600 py-auto bg-gray-100 rounded-sm">

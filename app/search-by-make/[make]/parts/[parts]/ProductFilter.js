@@ -260,7 +260,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                             c.make.toLowerCase() === make.toLowerCase()
                                     );
 
-                                    const slug = `${product.partname}-${make}-${model}${compat?.years ? `-${compat.years}` : ""
+                                    const slug = `${product.partname}-${make}-${product.compatibility[0].model}${compat?.years ? `-${compat.years}` : ""
                                         }-${product.partnumber}-${product.id}`;
 
                                     return (
@@ -269,7 +269,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                             className="flex flex-col border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
                                         >
                                             <Link
-                                                href={`/search-by-make/${make}/${model}/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`}
+                                                href={`/search-by-make/${make}/${product.compatibility[0].model}/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`}
                                                 className="flex flex-col h-full" target='_blank' rel='noopener noreferrer'
                                             >
                                                 <figure className="relative w-full aspect-square">

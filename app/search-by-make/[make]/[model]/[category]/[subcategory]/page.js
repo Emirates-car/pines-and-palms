@@ -351,8 +351,6 @@ export default async function SubcategoryPage({ params, searchParams }) {
             )}
 
 
-
-
             {/* Filters + Products */}
             {productMatches.length > 0 && (
                 <ProductFilter

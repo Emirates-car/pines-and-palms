@@ -33,7 +33,8 @@ const poppins = Poppins({
 });
 
 export default function ProductTabs({ product, slug }) {
-    const [activeTab, setActiveTab] = useState('item-specifics');
+    const [activeTab, setActiveTab] = useState('compatibility');
+
 
     return (
         <div className="mt-10">
@@ -69,14 +70,27 @@ export default function ProductTabs({ product, slug }) {
                     <div>
                         <h2 className="text-xl font-semibold mb-2">Compatibility</h2>
                         <ul className={`list-disc pl-6 space-y-1 ${firaSans.className}`}>
-                            {product.compatibility?.map((c, i) => (
+                            {product?.compatibility?.map((comp, index) => {
+                                const compatMake = encodeURIComponent(comp.make);
+                                const compatModel = encodeURIComponent(comp.model);
+                                const compatYear = comp.years;
 
-                                <li key={i}>
-                                    <Link href={`/search-by-make/${c.make}/${c.model}/${product.category}/${product.subcategory}/${encodeURIComponent(slug)}`} target='_blank' className='text-blue-700 underline hover:text-blue-600'>
-                                        {c.make} {c.model} ({c.years})
-                                    </Link>
-                                </li>
-                            ))}
+                                const partSlug = `${product.partname}-${comp.make}-${comp.model}-${compatYear}-${product.partnumber}-${product.id}`;
+
+                                return (
+                                    <li key={index}>
+                                        <Link
+                                            className="text-blue-700 hover:underline"
+                                            href={`/search-by-make/${compatMake}/${compatModel}/${encodeURIComponent(
+                                                product.category
+                                            )}/${encodeURIComponent(product.subcategory)}/${encodeURIComponent(partSlug)}`}
+                                            target='_blank'
+                                        >
+                                            {comp.make} {comp.model} {compatYear}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 )}
@@ -166,6 +180,8 @@ export default function ProductTabs({ product, slug }) {
                         </dl>
                     </div>
                 )}
+
+
 
 
                 {activeTab === 'policies' && (

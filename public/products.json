@@ -3532,5 +3532,490 @@
                 "Cash on Delivery"
             ]
         }
+    },
+    {
+        "id": 45,
+        "subcategory": "Spark Plug",
+        "category": "Ignition & Electrical",
+        "partname": "Spark Plug",
+        "partnumber": "12290-R40-A01",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2009",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2009",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2009",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2008",
+                "engine": "2.4L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2012",
+                "engine": "2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2013",
+                "engine": "2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2014",
+                "engine": "2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2015",
+                "engine": "2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2016",
+                "engine": "2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2017",
+                "engine": "2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2018",
+                "engine": "2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic Saloon",
+                "years": "2011",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic Saloon",
+                "years": "2012",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic Saloon",
+                "years": "2013",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic Saloon",
+                "years": "2014",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic Saloon",
+                "years": "2015",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic Saloon",
+                "years": "2016",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Honda",
+                "model": "Legend",
+                "years": "2008",
+                "engine": "3.7L"
+            },
+            {
+                "make": "Honda",
+                "model": "Legend",
+                "years": "2009",
+                "engine": "3.7L"
+            },
+            {
+                "make": "Honda",
+                "model": "Legend",
+                "years": "2010",
+                "engine": "3.7L"
+            },
+            {
+                "make": "Honda",
+                "model": "Legend",
+                "years": "2011",
+                "engine": "3.7L"
+            },
+            {
+                "make": "Honda",
+                "model": "Legend",
+                "years": "2012",
+                "engine": "3.7L"
+            },
+            {
+                "make": "Chrylser",
+                "model": "300C",
+                "years": "2011",
+                "engine": "3.6L"
+            },
+            {
+                "make": "Dodge",
+                "model": "Avenger",
+                "years": "2012",
+                "engine": "3.6L"
+            },
+            {
+                "make": "Dodge",
+                "model": "Avenger",
+                "years": "2013",
+                "engine": "3.6L"
+            },
+            {
+                "make": "Dodge",
+                "model": "Avenger",
+                "years": "2014",
+                "engine": "3.6L"
+            },
+            {
+                "make": "Dodge",
+                "model": "Challenger Coupe",
+                "years": "2011",
+                "engine": "3.6L"
+            },
+            {
+                "make": "Dodge",
+                "model": "Charger",
+                "years": "2011",
+                "engine": "3.6"
+            },
+            {
+                "make": "Dodge",
+                "model": "Durango",
+                "years": "2011",
+                "engine": "3.6"
+            },
+            {
+                "make": "Dodge",
+                "model": "Durango AWD",
+                "years": "2011",
+                "engine": "3.6"
+            },
+            {
+                "make": "Jeep",
+                "model": "Grand Cherokee",
+                "years": "2016",
+                "engine": "3.6L"
+            },
+            {
+                "make": "Jeep",
+                "model": "Grand Cherokee",
+                "years": "2011",
+                "engine": "3.6L"
+            },
+            {
+                "make": "Jeep",
+                "model": "Wrangler",
+                "years": "2011",
+                "engine": "3.6L"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/sparkplug24.png",
+        "item_specifics": {
+            "sku": "HON0024",
+            "Brand": "Honda Motor Company",
+            "Manufacturer Part Number": "12290R40A01",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "12290-R1A-H01, 12290-R40-A01, 12290-R40-A02, 12290-RL6-G01, \r\nCCH9407, RER8ZWYCB4, 267600001, 267700-5530, 3461, 34614, MW267700553, S61, 12290-R1A-H01, 12290-R40-A01, 12290-R40-A02, 12290-RL6-G01,5787, 7960, ILZKR7B-11S, ILZKR7B11GS, SILZKR7C11S"
+            ],
+            "Placement on Vehicle": [
+                "Engine",
+                "Cylinder Head"
+            ],
+            "Condition": "New",
+            "Material": "Platinum/Iridium",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 143,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Spark Plug. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 46,
+        "subcategory": "Alternator",
+        "category": "Electrical & Electronics",
+        "partname": "Alternator Assembly",
+        "partnumber": "31100-5PA-A02",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2018",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2020",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2021",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2022",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2023",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2024",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2025",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2017",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2018",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2019",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2020",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2021",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2022",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2023",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2024",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "Civic",
+                "years": "2025",
+                "engine": "1.5L, 2.0L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2017",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2018",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2019",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2020",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2021",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2022",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2023",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2024",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Honda",
+                "model": "CR-V",
+                "years": "2025",
+                "engine": "1.5L"
+            },
+            {
+                "make": "Acura",
+                "model": "Integra",
+                "years": "2023",
+                "engine": "1.5L,2.0L"
+            },
+            {
+                "make": "Acura",
+                "model": "Integra",
+                "years": "2024",
+                "engine": "1.5L"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/alternator25.png",
+        "item_specifics": {
+            "sku": "HON0025",
+            "Brand": "Honda Motor Company",
+            "Manufacturer Part Number": "311005PAA02,CSR34,CSP71,CJP78",
+            "Other Part Number": [],
+            "Interchange Part Number": [],
+            "Placement on Vehicle": [
+                "Front of Engine Compartment"
+            ],
+            "Condition": "New",
+            "Material": "Aluminium,Copper,Steel",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 629,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Alternator Assembly. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
     }
 ]

@@ -366,7 +366,22 @@ export default async function MakePage({ params, searchParams }) {
   const selectedEngines = Array.isArray(engines) ? engines : [engines].filter(Boolean);
   const selectedCompats = Array.isArray(compats) ? compats : [compats].filter(Boolean);
   const query = search?.toLowerCase() || "";
-
+  const excludedMakes = [
+    'Acura', 'Buick', 'Eagle', 'Lotus', 'Plymouth', 'Pontiac', 'Saab', 'Subaru',
+    'Alpha Romeo', 'Geo', 'Oldsmobile', 'Isuzu', 'Saturn', 'Corbin', 'Holden',
+    'Spyker', 'Spyker Cars', 'Aston Martin', 'Panoz', 'Foose', 'Morgan', 'Aptera',
+    'Smart', 'SRT', 'Roush Performance', 'Pagani', 'Mobility Ventures LLC',
+    'RUF Automobile', 'Koenigsegg', 'Karma', 'Polestar', 'STI', 'Kandi', 'Abarth',
+    'Dorcen', 'Foton', 'W Motors', 'Opel', 'Skoda', 'Hillman', 'Austin', 'Fillmore',
+    'Maybach', 'Merkur', 'Rambler', 'Shelby', 'Studebaker', 'Great Wall GWM', 'Zeekr', 'ZNA', 'GAC', 'Gs7', 'Hongqi',
+    'W Motor', 'JAC', 'Jaecoo', 'Jetour', 'TANK', 'Soueast', 'Zarooq Motors', 'Changan', 'Maxus', 'Haval', 'Zotye', 'Sandstorm',
+    'Chery', 'Geely', 'BAIC', 'Bestune'
+  ];
+  const haksMakes = ['Honda', 'Audi', 'Porsche', 'Volvo', 'Mini', 'Mercedes-Benz', 'Renault', 'Peugeot', 'Jaguar', 'Ford', 'Hummer', 'Dodge', 'GMC', 'Jeep', 'Lincoln']
+  const isExcludedMake = excludedMakes.includes(make);
+  if (excludedMakes.includes(make)) {
+    redirect('/get-in-touch');
+  }
 
   const makeFiltered = products.filter(product =>
     product.compatibility?.some(c =>

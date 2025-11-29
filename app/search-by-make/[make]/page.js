@@ -281,6 +281,18 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     other: {
       "script:ld+json": JSON.stringify(faqSchema),
     },

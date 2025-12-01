@@ -4134,5 +4134,86 @@
                 "Cash on Delivery"
             ]
         }
+    },
+    {
+        "id": 47,
+        "subcategory": "Alternator",
+        "category": "Electrical & Electronics",
+        "partname": "Alternator / Dynamo / Generator Assembly",
+        "partnumber": "270600T290 ",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Toyota",
+                "model": "Corolla",
+                "years": "2014",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Toyota",
+                "model": "Corolla",
+                "years": "2015",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Toyota",
+                "model": "Corolla",
+                "years": "2016",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Toyota",
+                "model": "Corolla",
+                "years": "2017",
+                "engine": "1.6L"
+            },
+            {
+                "make": "Toyota",
+                "model": "Corolla",
+                "years": "2018",
+                "engine": "1.6L"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/toyota/alternator15.webp",
+        "item_specifics": {
+            "sku": "TOY0015",
+            "Brand": "Toyota Motor Corporation",
+            "Manufacturer Part Number": "270600T290 ",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "1042109750 Denso, 1042109751 Denso, 1042109800 Denso, 1042113500 Denso, 1042113501 Denso, 270600T290 Toyota Genuine, 270600T300 Toyota Genuine, 270600T340 Toyota Genuine, 1042109750 Denso, 1042109751 Denso, 1042109800 Denso, 1042113500 Denso, 1042113501 Denso, 270600T290, 270600T300, 270600T340, 301N21872Z, ALN4260AN SAT Industrial, ALN4260BA Krauf, ALN4260BS, ALN4260GB LIRUFENGYXGS, ALN4260LP Krauf, ALN4260XH, ALN4260ZD, ALTY0069 JPC, AS A6627S"
+            ],
+            "Placement on Vehicle": [
+                "Front of Engine Compartment"
+            ],
+            "Condition": "New",
+            "Material": "Aluminium,Copper,Steel",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 3670,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Toyota Motor Corporation Alternator / Dynamo / Generator Assembly. Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
     }
 ]

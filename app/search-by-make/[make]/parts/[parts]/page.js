@@ -203,17 +203,16 @@ export async function generateMetadata({ params }) {
         title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
         description: `Find genuine, OEM, used & aftermarket ${make} ${parts} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
         metadataBase: new URL(
-            `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/parts/${encodeURIComponent(parts)}`
+            `https://www.emirates-car.com`
         ),
         openGraph: {
-            images: 'https://www.emirates-car.com/favicon.png',
             title: `${make} ${parts}- Used, Genuine, OEM and Aftermarket`,
             description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
             url: 'https://www.emirates-car.com/search-by-make/' + encodeURIComponent(make) + "/parts/" + encodeURIComponent(parts),
             image: 'https://www.emirates-car.com/img/car-spare-parts.png',
             siteName: 'EMIRATESCAR',
             images: [
-                '/favicon.png',
+                'https://www.emirates-car.com/favicon.png',
                 {
                     url: 'https://www.emirates-car.com/icon-192x192.png',
                     width: 192,
@@ -247,7 +246,7 @@ export async function generateMetadata({ params }) {
         },
         category: `${make} auto spare parts`,
         alternates: {
-            canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/parts/${encodeURIComponent(parts)}`,
+            canonical: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/parts/${encodeURIComponent(parts)}`,
         },
         other: {
             "script:ld+json": JSON.stringify(faqSchema),

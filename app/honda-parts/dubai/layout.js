@@ -59,7 +59,7 @@ export const metadata = {
   },
   category: 'car parts',
   alternates: {
-    canonical: 'https://emirates-car.com/honda-parts/dubai',
+    canonical: 'https://www.emirates-car.com/honda-parts/dubai',
   },
   keyword:
     'honda accord spare parts sharjah, honda accord spare parts, honda accord 2008 brake pads, honda accord 2009 distributor, honda accord wheel, honda accord 2012 abs, honda accord engine, honda accord gearbox, honda accord axle, honda accord air filter, honda accord carburetor',

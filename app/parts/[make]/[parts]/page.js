@@ -94,7 +94,7 @@ export async function generateMetadata({ params }) {
         title: `${make} ${decodedPart} - Car Auto Spare Parts Order Online in UAE`,
         description: `Buy ${make} ${decodedPart} Online and Get Delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
         alternates: {
-            canonical: `/search-by-make/${make}/${decodedPart}`,
+            canonical: `https://www.emirates-car.com/search-by-make/${make}/${decodedPart}`,
         },
         keywords: `${make} ${decodedPart} spare parts, ${make} ${decodedPart} online dubai, ${make} ${decodedPart} uae`,
         openGraph: {

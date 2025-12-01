@@ -56,7 +56,7 @@ export const metadata = {
   },
   category: 'car parts',
   alternates: {
-    canonical: 'https://emirates-car.com/honda-parts',
+    canonical: 'https://www.emirates-car.com/honda-parts',
   },
   keywords:
     'honda spare parts sharjah, honda spare parts, honda brake pads, honda distributor, honda  wheel, honda abs, honda engine, honda gearbox, honda axle, honda air filter, honda accord carburetor',

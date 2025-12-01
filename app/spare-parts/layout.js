@@ -54,7 +54,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: `https://emirates-car.com/spare-parts}`,
+    canonical: `https://www.emirates-car.com/spare-parts}`,
   },
   category: 'car parts',
 };

@@ -317,7 +317,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: 'https://emirates-car.com',
+    canonical: 'https://www.emirates-car.com',
   },
   robots: {
     index: true,

@@ -69,7 +69,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: `https://emirates-car.com/spare-parts/french-auto-spare-parts}`,
+    canonical: `https://www.emirates-car.com/spare-parts/french-auto-spare-parts}`,
   },
   category: 'french origin car parts',
   other: {

@@ -189,7 +189,7 @@ export async function generateMetadata({ params }) {
       },
     },
     alternates: {
-      canonical: `https://emirates-car.com/search-by-brands-in-uae/${make}/${location}`,
+      canonical: `https://www.emirates-car.com/search-by-brands-in-uae/${make}/${location}`,
     },
     category: `${make} ${decodeURIComponent(location)} auto spare parts`,
     keywords: `${make} spare parts ${decodeURIComponent(location)}, used ${make} spare parts ${decodeURIComponent(location)},

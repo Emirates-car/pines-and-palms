@@ -61,7 +61,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: `https://emirates-car.com/spare-parts/british-auto-spare-parts}`,
+    canonical: `https://www.emirates-car.com/spare-parts/british-auto-spare-parts}`,
   },
   category: 'Britain auto spare parts',
   other: {

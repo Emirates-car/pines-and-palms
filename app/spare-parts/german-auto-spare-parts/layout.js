@@ -68,7 +68,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: `https://emirates-car.com/spare-parts/german-auto-spare-parts}`,
+    canonical: `https://www.emirates-car.com/spare-parts/german-auto-spare-parts}`,
   },
   category: 'german origin spare parts',
   other: {

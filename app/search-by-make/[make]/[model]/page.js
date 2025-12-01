@@ -213,7 +213,6 @@ export async function generateMetadata({ params }) {
     description: `Find and buy all new, used, and genuine ${make} ${decodeURIComponent(model)} spare parts online in the UAE. Get fast delivery and expert support from reliable dealers. Shop now!`,
 
     openGraph: {
-      images: 'https://www.emirates-car.com/favicon.png',
       title: `${make} ${model} Spare Parts in Dubai, UAE | Genuine, OEM & Aftermarket – Best Prices`,
       description: `Find and buy all new, used, and genuine ${make} ${decodeURIComponent(model)} spare parts online in the UAE. Get fast delivery and expert support from reliable dealers. Shop now! `,
       url: 'https://www.emirates-car.com/search-by-make/' + make + '/' + model,
@@ -253,7 +252,7 @@ export async function generateMetadata({ params }) {
       },
     },
     alternates: {
-      canonical: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}`,
+      canonical: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}`,
     },
     robots: {
       index: true,

@@ -108,7 +108,7 @@ export async function generateMetadata({ params }) {
     },
     category: `Auto spare parts in ${decodeURIComponent(city)}`,
     alternates: {
-      canonical: `https://emirates-car.com/search-by-cities-in-uae/${city}`,
+      canonical: `https://www.emirates-car.com/search-by-cities-in-uae/${city}`,
     },
     keywords:
       'auto parts in ' +

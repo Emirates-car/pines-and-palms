@@ -238,14 +238,13 @@ export async function generateMetadata({ params }) {
       `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}`
     ),
     openGraph: {
-      images: 'https://www.emirates-car.com/favicon.png',
       title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
       description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
       url: 'https://www.emirates-car.com/search-by-make/' + encodeURIComponent(make),
       image: 'https://www.emirates-car.com/img/car-spare-parts.png',
       siteName: 'EMIRATESCAR',
       images: [
-        '/favicon.png',
+        'https://www.emirates-car.com/favicon.png',
         {
           url: 'https://www.emirates-car.com/icon-192x192.png',
           width: 192,

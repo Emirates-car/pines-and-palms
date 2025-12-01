@@ -69,7 +69,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: `https://emirates-car.com/spare-parts/japanese-auto-spare-parts}`,
+    canonical: `https://www.emirates-car.com/spare-parts/japanese-auto-spare-parts}`,
   },
   category: 'japanese origin spare parts',
   other: {

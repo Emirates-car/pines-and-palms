@@ -189,7 +189,6 @@ export async function generateMetadata({ params }) {
         description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.item_specifics.Condition} ${product.partname} (${product.partnumber}), Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
 
         openGraph: {
-            images: 'https://www.emirates-car.com/favicon.png',
             title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
             description: `Buy ${product.partname} fits ${compat?.make || "" + compat?.model || "" + expandYears(compat?.years) || ""}`,
             url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,

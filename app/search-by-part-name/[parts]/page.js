@@ -53,7 +53,6 @@ export async function generateMetadata({ params }) {
     title: `${decodedParts} Car Spare Parts Order Online in UAE | EMIRATESCAR`,
     description: `Buy ${decodedParts}  Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE`,
     openGraph: {
-      images: 'https://emirates-car.com/favicon.png',
       title: `${decodedParts} Car Spare Parts Order Online in UAE | EMIRATESCAR`,
       description: `Buy ${decodedParts} Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE`,
       url: 'https://emirates-car.com/search-by-part-name/' + parts,
@@ -93,7 +92,7 @@ export async function generateMetadata({ params }) {
     },
     category: `${decodedParts}`,
     alternates: {
-      canonical: `https://emirates-car.com/search-by-part-name/${parts}`,
+      canonical: `https://www.emirates-car.com/search-by-part-name/${parts}`,
     },
     keywords: `${decodedParts} for honda, ${decodedParts} in dubai, ${decodedParts} for porsche, ${decodedParts} for volkswagen, ${decodedParts} for volvo, ${decodedParts} online, ${decodedParts} for ford, ${decodedParts} spare parts uae, ${decodedParts} spare parts online, ${decodedParts} used spare parts dubai, ${decodedParts} spare parts near me`,
   };

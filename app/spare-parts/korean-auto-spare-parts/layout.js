@@ -70,7 +70,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: `https://emirates-car.com/spare-parts/korean-auto-spare-parts}`,
+    canonical: `https://www.emirates-car.com/spare-parts/korean-auto-spare-parts}`,
   },
   category: 'car parts',
 };

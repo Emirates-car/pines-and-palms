@@ -3416,7 +3416,7 @@
             "Manufacturer Part Number": "31100-5PA-A01",
             "Other Part Number": [],
             "Interchange Part Number": [
-                "311005PAA01,31100 5PA A01, CSP71, CSR34 ,"
+                "311005PAA01 ,31100 5PA A01, CSP71 Denso, CSR34  Chengshan Austone, APALT1082D A-Premium, AEK4398 Autoelectro, AL-5004 Masuma, WAL01321 Walker, 2221761352 DRI, 125.903.135.058 BV PSH, 12061212 EUROTEC,  125.903.135.050 BV PSH, 9091428 ROTOVIS, F032116927 HC-Cargo, 28-8507 ELSTOCK, STX102375R STARDAX, 40699 CEVAM, J5114063 HERTH+BUSS JAKOPARTS,  8310 40012 TRISCAN, 1 986 A01 752 BOSCH, 209716A ERA, 556715RI AD KUHNER, A26-13-50002 ACKOJA, 915125004 RHEINMANN GERMANY, AS A6664S"
             ],
             "Placement on Vehicle": [
                 "Front of Engine Compartment"
@@ -3431,7 +3431,7 @@
             "UPC": ""
         },
         "pricing": {
-            "price": 464,
+            "price": 8594,
             "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Alternator Assembly. Inquiry is recommended to confirm compatibility and final pricing.",
             "currency": "AED",
             "discounted_price": 0,

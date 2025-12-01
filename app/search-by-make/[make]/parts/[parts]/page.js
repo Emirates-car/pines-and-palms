@@ -206,7 +206,7 @@ export async function generateMetadata({ params }) {
             `https://www.emirates-car.com`
         ),
         openGraph: {
-            title: `${make} ${parts}- Used, Genuine, OEM and Aftermarket`,
+            title: `${make} ${parts} - Used, Genuine, OEM and Aftermarket`,
             description: `Find genuine, OEM, used & aftermarket ${make} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
             url: 'https://www.emirates-car.com/search-by-make/' + encodeURIComponent(make) + "/parts/" + encodeURIComponent(parts),
             image: 'https://www.emirates-car.com/img/car-spare-parts.png',
@@ -495,37 +495,52 @@ export default async function Parts({ params, searchParams }) {
                     </div>
                 </section>
                 <section>
-                    <h3 className={`text-black text-4xl text-center md:text-2xl lg:text-3xl font-bold xs:text-xl xxs:text-2xl pt-10 ${firaSans.className}`}>
-                        Search{' '}
+                    <h3
+                        className={`text-black text-4xl text-center md:text-2xl lg:text-3xl font-bold xs:text-xl xxs:text-2xl pt-10 ${firaSans.className}`}
+                    >
+                        Search{" "}
                         <span className="text-blue-500">
-                            {decodeURIComponent(partsData.parts)}{' '}
+                            {decodeURIComponent(partsData.parts)}{" "}
                         </span>
                         for Any Models
                     </h3>
+
                     <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-5 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-6 xxs:grid xxs:grid-cols-2 s:grid s:grid-cols-2 gap-3 xs:gap-1 xxs:gap-1 sm:gap-2 s:gap-2 md:gap-2 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 mx-10">
-                        {makedatas.map((post, i) => (
-                            <div key={i} className='border'>
-                                <Link
-                                    href="/search-by-make/[make]"
-                                    as={'/search-by-make/' + post.make}
-                                    title={post.make + ' ' + decodeURIComponent(partsData.parts)}
-                                >
-                                    <span className="h-full hover:border-blue-600 py-3 bg-gray-100 rounded-sm">
-                                        <Image
-                                            src={'/img/car-logos/' + post.img}
-                                            alt={make + ' spare parts'}
-                                            className="mx-auto m-3"
-                                            priority
-                                            width={70}
-                                            height={70}
-                                        />
-                                        <p className={`text-center font-sans font-medium text-lg`}>
-                                            <span className='text-blue-600'>{post.make}</span> {decodeURIComponent(partsData.parts)}
-                                        </p>
-                                    </span>
-                                </Link>
-                            </div>
-                        ))}
+                        {makedatas.map((post, i) => {
+                            // Check if the given [parts] exists for this make
+                            const partsAvailable = products.some(p =>
+                                p.compatibility?.some(c =>
+                                    c.make.toLowerCase() === post.make.toLowerCase()
+                                ) &&
+                                p.subcategory.toLowerCase() === decodeURIComponent(partsData.parts).toLowerCase()
+                            );
+
+                            // Build link conditionally
+                            const href = partsAvailable
+                                ? `/search-by-make/${encodeURIComponent(post.make)}/parts/${encodeURIComponent(partsData.parts)}`
+                                : `/search-by-make/${encodeURIComponent(post.make)}`;
+
+                            return (
+                                <div key={i} className="border">
+                                    <Link href={href} title={`${post.make} ${decodeURIComponent(partsData.parts)}`}>
+                                        <span className="h-full hover:border-blue-600 py-3 bg-gray-100 rounded-sm">
+                                            <Image
+                                                src={`/img/car-logos/${post.img}`}
+                                                alt={`${post.make} spare parts`}
+                                                className="mx-auto m-3"
+                                                priority
+                                                width={70}
+                                                height={70}
+                                            />
+                                            <p className="text-center font-sans font-medium text-lg">
+                                                <span className="text-blue-600">{post.make}</span>{" "}
+                                                {decodeURIComponent(partsData.parts)}
+                                            </p>
+                                        </span>
+                                    </Link>
+                                </div>
+                            );
+                        })}
                     </div>
                 </section>
 

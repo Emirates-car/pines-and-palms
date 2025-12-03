@@ -20,7 +20,7 @@ const firaSans = Fira_Sans({
 });
 
 
-export default function ProductFilter({ make, model, products, allProducts, searchParams }) {
+export default function ProductFilter({ make, model, parts, products, allProducts, searchParams }) {
     const router = useRouter();
     const [localQuery, setLocalQuery] = useState(searchParams.search || "");
     const [suggestions, setSuggestions] = useState([])
@@ -231,7 +231,7 @@ export default function ProductFilter({ make, model, products, allProducts, sear
                                             defaultChecked={selectedCompat.includes(comp)}
                                             className="mr-2"
                                         />
-                                        {comp}
+                                        {comp} {parts}
                                     </label>
                                 ))}
                             </fieldset>

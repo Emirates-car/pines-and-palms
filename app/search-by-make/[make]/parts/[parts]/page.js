@@ -457,6 +457,7 @@ export default async function Parts({ params, searchParams }) {
                     {partFiltered.length > 0 ?
                         <ProductFilter
                             make={make}
+                            parts={parts}
                             products={filtered}
                             allProducts={partFiltered}
                             searchParams={searchParams}

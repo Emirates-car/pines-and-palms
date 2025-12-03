@@ -67,17 +67,6 @@ export async function generateMetadata({ params }) {
     const partFiltered = makeFiltered.filter(product =>
         product.subcategory.toLowerCase() === partEntry.parts.toLowerCase()
     );
-    const getAllCompatibilityModels = (product) =>
-        product.compatibility?.map(c => c.model).join(", ");
-
-    const getAllCompatibilityYears = (product) =>
-        product.compatibility?.map(c => c.years).join(", ");
-
-    const getAllCompatibilityMakes = (product) =>
-        product.compatibility?.map(c => c.make).join(", ");
-
-    const getAllCompatibilityEngines = (product) =>
-        product.compatibility?.map(c => c.engine).join(", ");
 
     const productListItems = partFiltered.map((product, index) => ({
         "@type": "ListItem",
@@ -200,7 +189,7 @@ export async function generateMetadata({ params }) {
         ]
     };
     return {
-        title: `${make} Spare Parts Dubai dealers UAE - Used, Genuine, OEM and Aftermarket`,
+        title: `${make} ${parts} for sale from Dubai dealers in UAE - Used, Genuine, OEM and Aftermarket`,
         description: `Find genuine, OEM, used & aftermarket ${make} ${parts} spare parts in Dubai, Sharjah & across the UAE. Get best prices and fast quotes from trusted dealers today.`,
         metadataBase: new URL(
             `https://www.emirates-car.com`
@@ -307,12 +296,30 @@ async function getModel(make) {
         return [];
     }
 }
+
+async function getBlog(make) {
+    try {
+        const filePath = path.join(process.cwd(), 'public/lib/makeparts/honda.json');
+        const jsonData = await fs.readFile(filePath, 'utf8');
+        const data = JSON.parse(jsonData);
+        const decodedMake = decodeURIComponent(make);
+
+        const filtered = data.filter(item => item.make === decodedMake);
+        console.log(filtered.map((m) => m.description))
+        const content = filtered.map((m) => m.description)
+        return content;
+    } catch (error) {
+        console.error('Error reading model data:', error.message);
+        return [];
+    }
+}
 export default async function Parts({ params, searchParams }) {
     const { make, parts } = params;
     const partsData = await getPartsData(parts);
     const carmodel = await getModel(make)
     const imageMake = await getMakeImage(make)
     const partsDa = await getParts()
+    const content = await getBlog(make);
 
     if (!partsData || partsData.length === 0) {
         notFound();
@@ -495,7 +502,7 @@ export default async function Parts({ params, searchParams }) {
                     </div>
                 </section>
                 <section>
-                    <h3
+                    <h2
                         className={`text-black text-4xl text-center md:text-2xl lg:text-3xl font-bold xs:text-xl xxs:text-2xl pt-10 ${firaSans.className}`}
                     >
                         Search{" "}
@@ -503,7 +510,7 @@ export default async function Parts({ params, searchParams }) {
                             {decodeURIComponent(partsData.parts)}{" "}
                         </span>
                         for Any Models
-                    </h3>
+                    </h2>
 
                     <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-5 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-6 xxs:grid xxs:grid-cols-2 s:grid s:grid-cols-2 gap-3 xs:gap-1 xxs:gap-1 sm:gap-2 s:gap-2 md:gap-2 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 mx-10">
                         {makedatas.map((post, i) => {
@@ -546,13 +553,13 @@ export default async function Parts({ params, searchParams }) {
 
                 <TenEntries />
                 <section>
-                    <h3 className={`text-black text-4xl text-center md:text-2xl lg:text-3xl font-bold xs:text-xl xxs:text-2xl pt-10 ${firaSans.className}`}>
+                    <h2 className={`text-black text-4xl text-center md:text-2xl lg:text-3xl font-bold xs:text-xl xxs:text-2xl pt-10 ${firaSans.className}`}>
                         Search{' '}
                         <span className="text-blue-500">
                             {decodeURIComponent(partsData.parts)}{' '}
                         </span>
                         parts in UAE
-                    </h3>
+                    </h2>
                     <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-5 md:mx-4 sm:mx-3 xs:grid xs:grid-cols-2 sm:grid sm:grid-cols-6 xxs:grid xxs:grid-cols-2 s:grid s:grid-cols-2 gap-3 xs:gap-1 xxs:gap-1 sm:gap-2 s:gap-2 md:gap-2 xs:mx-4 s:mx-4 xxs:mx-4 md:ml-11 my-10 mx-10">
                         {cities.map((post, i) => (
                             <div key={i} className='border'>
@@ -574,8 +581,8 @@ export default async function Parts({ params, searchParams }) {
                         ))}
                     </div>
                 </section>
-            </div>
 
+            </div>
         </div>
     );
 }

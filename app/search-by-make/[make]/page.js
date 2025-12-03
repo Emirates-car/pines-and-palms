@@ -706,9 +706,9 @@ export default async function MakePage({ params, searchParams }) {
       </section>
 
       <section className="mt-10 shadow-sm mx-4 md:mx-4 lg:max-w-4xl lg:mx-auto xl:mx-10 bg-bglight px-20 xs:px-3 xxs:px-3">
-        <h5 className={`text-4xl md:text-3xl xs:text-2xl xxs:text-xl sm:text-2xl font-bold mx-auto my-10 ${playfair_display.className}`}>
+        <h2 className={`text-4xl md:text-3xl xs:text-2xl xxs:text-xl sm:text-2xl font-bold mx-auto my-10 ${playfair_display.className}`}>
           Availability of <span className='text-blue-600'>{make} spare parts</span> in UAE
-        </h5>
+        </h2>
 
         <ul className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-4 xs:grid-cols-2 xxs:grid-cols-3 gap-3 xs:gap-1 mt-10">
           {cities.map((post, i) => (
@@ -730,7 +730,7 @@ export default async function MakePage({ params, searchParams }) {
       <TenEntries />
       <PartsAccordion make={make} />
       <section className='xs:px-3 xxs:px-3 md:px-3 lg:max-w-4xl lg:mx-auto'>
-        <h3 className={`text-3xl xs:text-2xl font-semibold mx-auto my-5 xs:my-3 xxs:my-3 sm:my-3 md:my-4 ${playfair_display.className}`}>Why Emirates-car.com?</h3>
+        <h3 className={`text-3xl xs:text-2xl font-semibold mx-auto my-5 xs:my-3 xxs:my-3 sm:my-3 md:my-4 ${playfair_display.className}`}>Why EMIRATESCAR?</h3>
         <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
           Emirates-car.com is the online dealer in <span className='text-blue-600'>{make}{' '}
           </span> spare parts and for any car brands running on roads

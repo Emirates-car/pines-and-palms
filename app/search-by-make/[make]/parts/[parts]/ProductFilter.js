@@ -231,7 +231,7 @@ export default function ProductFilter({ make, model, parts, products, allProduct
                                             defaultChecked={selectedCompat.includes(comp)}
                                             className="mr-2"
                                         />
-                                        {comp} {parts}
+                                        {comp.replace(/[()\[\]{}]/g, '')} {parts}
                                     </label>
                                 ))}
                             </fieldset>

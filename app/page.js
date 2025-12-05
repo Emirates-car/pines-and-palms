@@ -10,6 +10,7 @@ import StaticCities from '../components/StaticCities';
 import MainAccordion from '../components/Main-Accordion';
 import { promises as fs } from 'fs';
 import path from 'path';
+import "../public/main.css"
 
 export async function getMake() {
   const filePath = path.join(process.cwd(), 'public/lib/car-data.json');

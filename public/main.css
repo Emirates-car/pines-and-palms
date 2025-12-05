@@ -1,3 +1,30 @@
-html body {
-  background: url(https://github.com/ithaksinterlance/pines-and-palms/blob/main/public/favicon.png?raw=true);
+.blog-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  font-size: 2rem;
+}
+
+@media (max-width: 639px) {
+  .blog-heading {
+    font-size: 1rem;
+    /* xxs & xs:text-2xl */
+  }
+}
+
+/* Medium screens: 768px–1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-heading {
+    font-size: 1.5rem;
+    /* md:text-2xl */
+  }
+}
+
+/* Large screens: 1024px–1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .blog-heading {
+    font-size: 1.75rem;
+    /* lg:text-3xl */
+  }
 }

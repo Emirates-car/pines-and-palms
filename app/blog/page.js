@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '../../components/footer.js';
 import RelatedPost from './relatedpost/page.js';
+import path from 'path';
+import { promises as fs } from 'fs';
 
 async function getPosts() {
   const res = await fetch(`https://rozy-api-two.vercel.app/api/blog`);
@@ -10,8 +12,16 @@ async function getPosts() {
   return posts;
 }
 
+async function getBlog() {
+  const filePath = path.join(process.cwd(), 'public/lib/blog.json');
+  const data = await fs.readFile(filePath, 'utf8');
+  const carList = JSON.parse(data);
+
+  return carList;
+}
+
 export default async function Blog() {
-  const blogPost = await getPosts();
+  const blogPost = await getBlog();
   return (
     <div>
       <div className="container mx-auto w-full">
@@ -20,7 +30,7 @@ export default async function Blog() {
             <div className="w-3/4 xs:w-full sm:w-full 2xs:w-full">
               {blogPost.map(post => (
                 <div key={post.TITLE}>
-                  <Link href={'https://emirates-car.com/blog/' + post.TITLE}>
+                  <Link href={'https://www.emirates-car.com/blog/' + post.TITLE}>
                     <div className="py-3">
                       <div className="border border-gray-200 p-3 rounded-sm">
                         <div className="w-full bg-blue-200 rounded-xl text-white items-center text-center flex justify-center font-bold">

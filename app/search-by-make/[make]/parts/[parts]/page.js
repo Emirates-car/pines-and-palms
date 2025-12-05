@@ -14,6 +14,7 @@ import SearchModel from '../../../../../components/SearchModel';
 import { Fira_Sans, Playfair_Display } from 'next/font/google';
 import products from "../../../../../public/products.json"
 import ProductFilter from './ProductFilter';
+import parse from "html-react-parser";
 
 const playfair_display = Playfair_Display({
     subsets: ['latin'],
@@ -305,8 +306,8 @@ async function getBlog(make) {
         const decodedMake = decodeURIComponent(make);
 
         const filtered = data.filter(item => item.make === decodedMake);
-        console.log(filtered.map((m) => m.description))
-        const content = filtered.map((m) => m.description)
+        console.log(filtered.map((m) => m.content))
+        const content = filtered.map((m) => m.content)
         return content;
     } catch (error) {
         console.error('Error reading model data:', error.message);
@@ -320,6 +321,7 @@ export default async function Parts({ params, searchParams }) {
     const imageMake = await getMakeImage(make)
     const partsDa = await getParts()
     const content = await getBlog(make);
+
 
     if (!partsData || partsData.length === 0) {
         notFound();
@@ -422,7 +424,6 @@ export default async function Parts({ params, searchParams }) {
                                     <h1 className={`mt-3 text-5xl lg:text-4xl sm:text-lg xs:text-xl xxs:text-xl md:text-xl font-head font-bold ${firaSans.className}`}>
                                         <span className="text-blue-500">{make} {partsData.parts}</span> - Used, Genuine & Aftermarket in UAE
                                     </h1>
-                                    <p className='text-base'></p>
                                     <div className="mt-5 sm:mt-5 xxs:my-5 xs:my-5 lg:justify-start">
                                         <div className="py-3 px-4 sm:py-0 sm:px-0 w-1/2 lg:w-full xs:w-full xxs:w-3/4 xs:mx-auto s:w-full sm:w-3/4 md:w-full md:mx-auto md:px-0 md:py-0 xs:py-0 xs:px-0 xxs:px-0 xxs:py-0 lg:px-0 lg:py-0 xl:px-0 xl:py-0 xxl:px-0 xxl:py-0 rounded-lg shadow-md sm:shadow-none">
                                             <a
@@ -582,6 +583,161 @@ export default async function Parts({ params, searchParams }) {
                         ))}
                     </div>
                 </section>
+                {parts === 'Alternator' ? <>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Find the Right Honda Alternator in the UAE — For Garages & Car Owners
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            Whether you run a workshop, showroom, spare parts shop or you are a Honda owner,
+                            <span className='text-blue-600'> EMIRATESCAR</span> operates as a secure, centralized spare parts hub that sources quotes from verified,
+                            reputable suppliers across the UAE. We conduct the full price comparison internally and provide the
+                            most cost-effective option, ensuring no third-party involvement or direct supplier interactions.
+                            Our inventory covers a full range of <strong>OEM, aftermarket, refurbished and
+                                high-output Honda alternators</strong>. We serve Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah
+                            and Fujairah with fast delivery, warranty options and bulk pricing tailored for garages and workshops.
+                        </p>
+                    </section>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Why Choose EMIRATESCAR for Your Honda Alternator Replacement
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            We deal in a wide range of Honda alternators across models and engine types, backed by
+                            trusted UAE suppliers. Whether you need <em>one unit</em> or a <em>bulk order</em> for
+                            your garage, you can compare prices, check compatibility and request quotations easily.
+                        </p>
+                        <ul className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            <li>✔ Genuine OEM and reliable aftermarket options</li>
+                            <li>✔ Verified suppliers and warranty-backed parts</li>
+                            <li>✔ Bulk order discounts for workshops and spare parts shops</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Common Alternator Symptoms — When to Replace It
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            If your Honda shows electrical issues, don&apos;t ignore it. Typical signs include the battery
+                            warning light, dim or flickering headlights, slow cranking, frequent battery drain, or
+                            electrical accessories failing. Early replacement prevents battery and ECU damage — and
+                            saves your time and money.
+                        </p>
+                    </section>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Models & Engine Coverage (Including K-Series Engines)
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            We list alternators for all popular Honda models found on UAE roads — Accord, Civic, CR-V,
+                            City, HR-V, Odyssey and Pilot — and we specifically support a wide range of <strong>K-series</strong>
+                            and related engine codes used in these models. This makes it easy for both garage buyers and
+                            individual owners to find a direct-fit alternator.
+                        </p>
+
+
+                        <ul className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            <li>Popular models: Honda Accord, Civic, CR-V, City, HR-V, Odyssey, Pilot</li>
+                            <li>Targeted engine codes: <strong>K20A, K20A2, K20, K20C, K20C1 (crate)</strong></li>
+                            <li>Targeted engine codes: <strong>K24, K24A, K24A1, K24A2, K24A4, K24Z3, K24Z7</strong></li>
+                        </ul>
+
+
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            Each K-series variant may require a different amperage, mounting bracket or regulator spec —
+                            our listings include those details so a mechanic or owner can choose the correct alternator
+                            the first time.
+                        </p>
+                    </section>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Types of Honda Alternators Available in the UAE
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            We make it easy to choose between OEM reliability and cost-effective aftermarket options.
+                            Our marketplace lists brand-new OEM alternators, dependable aftermarket units, refurbished
+                            assemblies and high-output alternators for vehicles with added electrical loads.
+                        </p>
+
+
+                        <ul className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            <li>Genuine OEM alternators — exact fit and factory performance</li>
+                            <li>Aftermarket alternators — value-focused replacements and popular with workshops</li>
+                            <li>Refurbished/reconditioned alternators — economical for older vehicles</li>
+                            <li>High-output alternators — for modified cars or heavy-electrical loads</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Pricing Guide — What to Expect in the UAE Market
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            Prices vary by model, engine and condition. Below are approximate ranges that help both
+                            visitors budgeting a repair and garages planning inventory purchases.
+                        </p>
+
+                        <ul className={`text-center font-sans font-medium text-lg mt-3 ${firaSans.className}`}>
+                            <li>Aftermarket alternator: AED 200 – 450</li>
+                            <li>Genuine OEM alternator: AED 450 – 900</li>
+                            <li>Premium new alternator: AED 900 – 1,500</li>
+                            <li>Used/rebuilt alternator: AED 100 – 250</li>
+                        </ul>
+
+
+
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            For K-series engines such as <strong>K20A2</strong> or <strong>K24A2</strong>, prices can
+                            skew higher if you need OEM or high-output units. Garages ordering in bulk should ask
+                            suppliers for wholesale discounts (typically 5–25% depending on quantity).
+                        </p>
+                    </section>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Why Workshops & Showrooms Trust Our Platform
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            UAE garages and showrooms rely on <a href="/" className='text-blue-600'>EMIRATESCAR</a> for streamlined procurement: supplier
+                            verification, stock visibility, and fast lead times. For engine rebuilds, crate engines
+                            (like K20C1 builds) and fleet maintenance, our bulk ordering and pricing tools reduce
+                            downtime and improve margins.
+                        </p>
+                    </section>
+                    {/* 8. Why Visitors Trust Us */}
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Why Honda Owners Choose <a href="/" className='text-blue-600'>EMIRATESCAR</a>
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            Individual owners benefit from easy compatibility checks, clear pricing and delivery
+                            across the UAE. If your Honda runs a K-series engine such as <strong>K20</strong> or
+                            <strong>K24Z7</strong>, you can quickly find alternators that match your engine’s amps and
+                            mounting style.
+                        </p>
+                    </section>
+                    <section>
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            How to Order Your Honda Alternator Online
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            Ordering is simple: choose your model and engine, select Alternator under parts, compare
+                            OEM and aftermarket listings, and submit an inquiry or request for bulk pricing. Suppliers
+                            will contact you via WhatsApp, phone or email with delivery and warranty details.
+                        </p>
+                    </section>
+                    <section className="pb-12">
+                        <h2 className={`text-4xl md:text-2xl lg:text-3xl font-semibold xs:text-2xl xxs:text-2xl py-5 ${playfair_display.className}`}>
+                            Buy Honda Alternators in the UAE — Fast, Reliable & Compatible
+                        </h2>
+                        <p className={`text-xl font-sans text-gray-700 mx-auto xs:text-lg xl:text-lg xxs:text-lg ${firaSans.className}`}>
+                            Whether you’re a garage stocking parts or an owner replacing an alternator on a K-series
+                            engine, <a href="/" className='text-blue-600'>EMIRATESCAR</a> helps you find the right part with confidence. Contact suppliers
+                            today to request a quote, check compatibility for <strong>K20A2, K24A2</strong> and other
+                            engines, or secure bulk order pricing for your workshop.
+                        </p>
+                    </section></> : ""}
+
+
+
 
             </div>
         </div>

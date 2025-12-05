@@ -6,6 +6,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    {
+      pattern: /(text|font|mx|py|px|xs|xxs|lg|md|xl|xxl)-(.*)/,
+    },
+  ],
   media: false,
   theme: {
     extend: {

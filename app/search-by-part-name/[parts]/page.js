@@ -55,7 +55,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${decodedParts} Car Spare Parts Order Online in UAE | EMIRATESCAR`,
       description: `Buy ${decodedParts} Online and Get delivered Used, New, Genuine / Original / OEM, Aftermarket auto spare parts Online in UAE`,
-      url: 'https://emirates-car.com/search-by-part-name/' + parts,
+      url: 'https://www.emirates-car.com/search-by-part-name/' + parts,
       image: 'https://emirates-car.com/img/car-spare-parts.png',
       siteName: 'Emirates Auto Parts',
       images: [

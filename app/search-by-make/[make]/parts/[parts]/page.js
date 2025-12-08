@@ -306,7 +306,6 @@ async function getBlog(make) {
         const decodedMake = decodeURIComponent(make);
 
         const filtered = data.filter(item => item.make === decodedMake);
-        console.log(filtered.map((m) => m.content))
         const content = filtered.map((m) => m.content)
         return content;
     } catch (error) {

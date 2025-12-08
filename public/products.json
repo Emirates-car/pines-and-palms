@@ -4290,5 +4290,80 @@
                 "Cash on Delivery"
             ]
         }
+    },
+    {
+        "id": 49,
+        "subcategory": "Alternator",
+        "category": "Electrical & Electronics",
+        "partname": "Alternator 12V 110 - 130 AMP ",
+        "partnumber": "31100-6B2-305",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2018",
+                "engine": "2.0L Sport"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2019",
+                "engine": "2.0L Sport"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2020",
+                "engine": "2.0L Turbo Sport"
+            },
+            {
+                "make": "Honda",
+                "model": "Accord",
+                "years": "2021",
+                "engine": "2.0L Sport"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/honda/alternator26.png",
+        "item_specifics": {
+            "sku": "HON0026",
+            "Brand": "Honda Motor Company",
+            "Manufacturer Part Number": "311006B2305",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "Honda 31100-6B2-305, Honda 311006B2305, Denso CSR31, Honda 31100-6B2-A01, Honda 311006B2315,31100-6B2-305RM Reman, SB parts SB11965oe, GO-PARTS ‎ARC001-1525132-0968709-AMZN,"
+            ],
+            "Placement on Vehicle": [
+                "Front of Engine Compartment"
+            ],
+            "Condition": "New",
+            "Material": "Aluminum,Copper,Steel",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Japan",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 3924,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Alternator . Inquiry is recommended to confirm compatibility and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
     }
 ]

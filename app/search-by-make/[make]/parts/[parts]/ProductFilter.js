@@ -167,6 +167,7 @@ export default function ProductFilter({ make, model, parts, products, allProduct
                             </button>
                         </div>
                         <form method="get">
+                           
                             <fieldset>
                                 <legend className={`font-bold my-3 text-xl ${playfair_display.className}`}>Category</legend>
                                 <input
@@ -223,6 +224,8 @@ export default function ProductFilter({ make, model, parts, products, allProduct
                                     className="w-full mb-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
                                 />
                                 {filteredCompatibilities.map((comp, idx) => (
+                                    
+                                    
                                     <label key={idx} className={`block ${firaSans.className}`}>
                                         <input
                                             type="checkbox"
@@ -230,7 +233,7 @@ export default function ProductFilter({ make, model, parts, products, allProduct
                                             value={comp}
                                             defaultChecked={selectedCompat.includes(comp)}
                                             className="mr-2"
-                                        />
+                                        /><a href=""></a>
                                         {comp.replace(/[()\[\]{}]/g, '')} {parts}
                                     </label>
                                 ))}

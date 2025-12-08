@@ -678,7 +678,7 @@ export default async function Parts({ params, searchParams }) {
 
                         <ul className={`text-center font-sans font-medium text-lg mt-3 ${firaSans.className}`}>
                             <li>Aftermarket alternator: AED 200 – 600</li>
-                            <li>Genuine OEM alternator: AED 1500 – 3500</li>
+                            <li>Genuine OEM alternator: AED 1,500 – 3,500</li>
                             <li>Premium new alternator: AED 900 – 1,500</li>
                             <li>Used/rebuilt alternator: AED 100 – 250</li>
                         </ul>

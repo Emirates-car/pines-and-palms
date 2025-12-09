@@ -185,11 +185,11 @@ export async function generateMetadata({ params }) {
 
 
     return {
-        title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
+        title: `${product.item_specifics["OEM or Aftermarket"]} ${decodeURIComponent(make)} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
         description: `Buy ${product.item_specifics["OEM or Aftermarket"]} ${product.item_specifics.Condition} ${product.partname} (${product.partnumber}), Check warranty, Fitment, Other part number, Manufacture part number and Policies`,
 
         openGraph: {
-            title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
+            title: `${product.item_specifics["OEM or Aftermarket"]} ${decodeURIComponent(make)} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
             description: `Buy ${product.partname} fits ${compat?.make || "" + compat?.model || "" + expandYears(compat?.years) || ""}`,
             url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             image: `https://www.emirates-car.com/img/${product.image}`,
@@ -214,7 +214,7 @@ export async function generateMetadata({ params }) {
         twitter: {
             card: 'summary_large_image',
             title: `${product.item_specifics["OEM or Aftermarket"]} ${make} ${decodeURIComponent(model)} ${expandYears(compat?.years) || ""} ${product.partname}`,
-            url: `https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
+            url: `https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`,
             description: `Buy ${make} - ${decodeURIComponent(
                 model
             )} auto spare parts Online and Get delivered Used, New, Genuine / OEM, Aftermarket in UAE`,
@@ -345,7 +345,7 @@ export default function ProductPage({ params }) {
 
                             <link
                                 itemProp="url"
-                                href={`https://emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`}
+                                href={`https://www.emirates-car.com/search-by-make/${encodeURIComponent(make)}/${encodeURIComponent(model)}/${category}/${slug}`}
                             />
 
                             {/* Hidden structured data for availability */}

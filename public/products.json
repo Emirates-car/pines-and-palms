@@ -4352,7 +4352,397 @@
         },
         "pricing": {
             "price": 3924,
-            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Alternator . Inquiry is recommended to confirm compatibility and final pricing.",
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Honda Motor Company Alternator . Inquiry is recommended to confirm compatibility, Affordable Aftermarket replacement options and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 50,
+        "subcategory": "Alternator",
+        "category": "Electrical & Electronics",
+        "partname": "Alternator 12V 225 AMP 6 Grooves",
+        "partnumber": "GB5Z-10346-A",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Ford",
+                "model": "Explorer",
+                "years": "2016",
+                "engine": "3.5L V6, 2.3L I4, 3.7L V6"
+            },
+            {
+                "make": "Ford",
+                "model": "Explorer",
+                "years": "2017",
+                "engine": "3.5L V6, 2.3L I4, 3.7L V6"
+            },
+            {
+                "make": "Ford",
+                "model": "Explorer",
+                "years": "2018",
+                "engine": "3.5L V6, 2.3L I4, 3.7L V6"
+            },
+            {
+                "make": "Ford",
+                "model": "Explorer",
+                "years": "2019",
+                "engine": "3.5L V6, 2.3L I4, 3.7L V6"
+            },
+            {
+                "make": "Lincoln",
+                "model": "MKT",
+                "years": "2013",
+                "engine": "2.0L L4, 3.5L, 3.7L"
+            },
+            {
+                "make": "Lincoln",
+                "model": "MKT",
+                "years": "2014",
+                "engine": "2.0L L4, 3.5L, 3.7L"
+            },
+            {
+                "make": "Lincoln",
+                "model": "MKT",
+                "years": "2015",
+                "engine": "2.0L L4, 3.5L, 3.7L"
+            },
+            {
+                "make": "Lincoln",
+                "model": "MKT",
+                "years": "2016",
+                "engine": "2.0L L4, 3.5L, 3.7L"
+            },
+            {
+                "make": "Lincoln",
+                "model": "MKT",
+                "years": "2017",
+                "engine": "2.0L L4, 3.5L, 3.7L"
+            },
+            {
+                "make": "Ford",
+                "model": "F-150",
+                "years": "2011",
+                "engine": "3.5L"
+            },
+            {
+                "make": "Ford",
+                "model": "F-150",
+                "years": "2012",
+                "engine": "3.5L"
+            },
+            {
+                "make": "Ford",
+                "model": "F-150",
+                "years": "2013",
+                "engine": "3.5L"
+            },
+            {
+                "make": "Ford",
+                "model": "F-150",
+                "years": "2014",
+                "engine": "3.5L"
+            },
+            {
+                "make": "Ford",
+                "model": "F-150",
+                "years": "2011",
+                "engine": "3.7L"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/ford/alternator01.webp",
+        "item_specifics": {
+            "sku": "FOR0001",
+            "Brand": "Ford Motor Company",
+            "Manufacturer Part Number": "GB5Z10346A",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "FORD GB5Z-10346-A, DENSO 104210-6600, DENSO 1042106600, DENSO 104210-6601, DENSO 1042106601, VEMO, BV PSH"
+            ],
+            "Placement on Vehicle": [
+                "Front of Engine Compartment"
+            ],
+            "Condition": "New",
+            "Material": "Aluminum,Copper,Steel",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "United State",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 588,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Ford Motor Company Alternator 12V 225 AMP 6 Grooves. Inquiry is recommended to confirm compatibility, Affordable Aftermarket replacement options and final pricing.",
+            "currency": "AED",
+            "discounted_price": 0,
+            "offer": "0% OFF"
+        },
+        "policies": {
+            "shipping": "Standard Shipping (3-5 Business Days)",
+            "delivery": "Delivery available in UAE",
+            "returns": "",
+            "payment_methods": [
+                "Cash on Delivery"
+            ]
+        }
+    },
+    {
+        "id": 51,
+        "subcategory": "Alternator",
+        "category": "Electrical & Electronics",
+        "partname": "Alternator 12V 150 AMP 6 Grooves",
+        "partnumber": "LR124471",
+        "availability": "Inquire Now",
+        "compatibility": [
+            {
+                "make": "Land Rover",
+                "model": "Range Rover Sport",
+                "years": "2010",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover Sport",
+                "years": "2011",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover Sport",
+                "years": "2012",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover",
+                "years": "2010",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover",
+                "years": "2011",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover",
+                "years": "2012",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "LR4",
+                "years": "2010",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "LR4",
+                "years": "2011",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "LR4",
+                "years": "2012",
+                "engine": "5.0L V8"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover Velar",
+                "years": "2018",
+                "engine": "3.0L V6"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover Velar",
+                "years": "2019",
+                "engine": "3.0L V6"
+            },
+            {
+                "make": "Land Rover",
+                "model": "Range Rover Velar",
+                "years": "2020",
+                "engine": "3.0L V6, 5.0L V8"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Pace",
+                "years": "2020",
+                "engine": "3.0L, 5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Type",
+                "years": "2020",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XF",
+                "years": "2020",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Pace",
+                "years": "2019",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Type",
+                "years": "2019",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XE",
+                "years": "2019",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XF",
+                "years": "2019",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XJ",
+                "years": "2019",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Pace",
+                "years": "2018",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Type",
+                "years": "2018",
+                "engine": "3.0L, 5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XE",
+                "years": "2018",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XF",
+                "years": "2018",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XJ",
+                "years": "2018",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Pace",
+                "years": "2017",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Type",
+                "years": "2017",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XE",
+                "years": "2017",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XF",
+                "years": "2017",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XJ",
+                "years": "2017",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "F-Type",
+                "years": "2015",
+                "engine": "3.0L,5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XF",
+                "years": "2015",
+                "engine": "3.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XJR",
+                "years": "2016",
+                "engine": "5.0L"
+            },
+            {
+                "make": "Jaguar",
+                "model": "XFR",
+                "years": "2015",
+                "engine": "5.0L"
+            }
+        ],
+        "engine": [
+            "1.8",
+            "1.9",
+            "2.0"
+        ],
+        "image": "/img/landrover/alternator51.png",
+        "item_specifics": {
+            "sku": "LND0001",
+            "Brand": "Jaguar Land Rover",
+            "Manufacturer Part Number": "LR124471",
+            "Other Part Number": [],
+            "Interchange Part Number": [
+                "LR023405, LR023421, LR065246, LR065865, LR072769, LR077418, LR091107,104210-5360"
+            ],
+            "Placement on Vehicle": [
+                "Front of Engine Compartment"
+            ],
+            "Condition": "New",
+            "Material": "Aluminum,Copper,Steel",
+            "Warranty": "Inquire to check",
+            "Country/Region of Manufacture": "Solihull and Halewood, UK",
+            "OEM or Aftermarket": "Genuine",
+            "Surface Finish": "Smooth",
+            "Fitment Type": "Direct Replacement",
+            "UPC": ""
+        },
+        "pricing": {
+            "price": 2094,
+            "price_info": "*Prices reflects the latest compared average online market values for Genuine Jaguar Land Rover Alternator 12V 150 AMP 6 Grooves. Inquiry is recommended to confirm compatibility, Affordable Aftermarket replacement options and final pricing.",
             "currency": "AED",
             "discounted_price": 0,
             "offer": "0% OFF"

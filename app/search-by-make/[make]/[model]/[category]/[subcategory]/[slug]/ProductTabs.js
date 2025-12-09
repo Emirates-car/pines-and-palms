@@ -81,7 +81,7 @@ export default function ProductTabs({ product, slug }) {
                                     <li key={index}>
                                         <Link
                                             className="text-blue-700 hover:underline"
-                                            href={`/search-by-make/${compatMake}/${compatModel}/${encodeURIComponent(
+                                            href={`https://www.emirates-car.com/search-by-make/${compatMake}/${compatModel}/${encodeURIComponent(
                                                 product.category
                                             )}/${encodeURIComponent(product.subcategory)}/${encodeURIComponent(partSlug)}`}
                                             target='_blank'
@@ -89,6 +89,28 @@ export default function ProductTabs({ product, slug }) {
                                             {comp.make} {comp.model} {compatYear} {comp.engine}
                                         </Link>
                                     </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                )}
+
+                {activeTab === 'compatibility' && (
+                    <div>
+                        <h2 className="text-xl font-semibold mb-2">Compatibility</h2>
+                        <ul className={`list-disc pl-6 space-y-1 ${firaSans.className}`}>
+                            {product?.compatibility?.map((comp, index) => {
+                                const compatMake = encodeURIComponent(comp.make);
+                                const compatModel = encodeURIComponent(comp.model);
+                                const compatYear = comp.years;
+
+                                const partSlug = `${product.partname}-${comp.make}-${comp.model}-${compatYear}-${product.partnumber}-${product.id}`;
+
+                                return (
+                                    <div key={index}>
+                                        {`<url><loc>http://www.emirates-car.com/search-by-make/${encodeURIComponent(comp.make)}/${encodeURIComponent(comp.model)}/${encodeURIComponent(product.category)}/${product.subcategory}/${slug}</loc><lastmod>2025-12-09T12:45:55.555Z</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`}
+
+                                    </div>
                                 );
                             })}
                         </ul>

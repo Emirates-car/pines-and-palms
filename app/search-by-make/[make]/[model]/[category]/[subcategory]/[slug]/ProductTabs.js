@@ -86,7 +86,7 @@ export default function ProductTabs({ product, slug }) {
                                             )}/${encodeURIComponent(product.subcategory)}/${encodeURIComponent(partSlug)}`}
                                             target='_blank'
                                         >
-                                            {comp.make} {comp.model} {compatYear}
+                                            {comp.make} {comp.model} {compatYear} {comp.engine}
                                         </Link>
                                     </li>
                                 );
